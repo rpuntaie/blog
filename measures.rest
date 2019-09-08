@@ -1,0 +1,302 @@
+.. vim: syntax=rst
+
+.. http://rolandpuntaier.blogspot.co.at/2017/04/measure.html
+
+.. {Measures and information}
+
+A `variable`_, the unit of `information`_, is basically finite, but when thinking,
+i.e. simulating with generated variables, mappable to all kind of real variables,
+it is best not to fix the size and precision until really needed.
+So one works with arbitrary precision, which practically is the meaning of `infinity`_.
+
+Having a flexible generated variable, like `ℝ`, the size is infinite.
+But by using it, one maps it to a specific real finite variable.
+How to measure the finite variable with the infinite `ℝ`?
+
+This is the topic of `integration and measure theory`_.
+We have a variable or space and a *quantity* associated to subsets of the space.
+This quantity adds up for the union of disjoint sets.
+
+In this blog I follow this path a little further,
+with special interest in the probability measure.
+
+Measure
+-------
+
+Basically we can model an infinite space with a (formal concept) lattice `FCA`_
+algorithmically refined ad infinitum.
+The nodes in the `FCA`_ consist of *intent* and *extent*. 
+We only look at one of these dual sets: the intent. 
+
+In the *finite* case, for each intent we can ask 
+
+- How many elements are there?
+- How many elements are there, that belong to some special variable(s)?
+
+If such a question can be answered in a unambiguous way, then it
+defines a **measure function** on the (intent) set.
+The intents may contain elements not of interest to our question, to our
+measure. Then they do not count, i.e. their measure is 0. 
+They are not part of the *support* of the measure. 
+
+For **infinite** variables we *start* with a measure function. 
+
+Many quantities encountered when describing the physical world 
+are values of a measure (function) `μ` on a measure space `(V,Σ)`
+(`(V,Σ,μ)`):
+
+.. math::
+
+  q = μ(σ) ∈ ℝ^+\\
+  σ ∈ Σ\\
+  μ(σ_1 ∪ σ_2) = μ(σ_1)+μ(σ_2)\\
+  σ_1 ∩ σ_2 = Ø
+
+The `σ-algebra`_ `Σ ⊂ 2^V` is a `set algebra`_ with the addition to
+be complete under countably infinite unions and complementation.
+Two sets of `Σ` can overlap, but the measure is only counted once
+via summing only over disjoint sets resulting from intersection and complementation.
+
+.. admonition:: Extensive variable
+
+  The value of the measure `μ(σ)` is determined by `σ ∈ Σ ⊂ 2^V`,
+  i.e. `μ(σ)` is determined by a set.
+  Although the `σ`'s are not exclusive, `μ` contains the intelligence
+  not to count overlapping parts twice. If `μ(σ_1)+μ(σ_2) < μ(σ_1∪σ_2)`,
+  then there is an overlapping.
+  If the exclusive values of a variable are sets, I've called it
+  an `extensive variable`_. A measure on an infinite variable `V`
+  splits `V` into disjoint sets and thus fits into this definition.
+  But there are more `i,j` with same `μ(σ_i)+μ(σ_j)`, i.e. the 
+  measure looses information. What remains is the 
+  measure value of the underlying `extensive values`_ (tautology).
+
+Examples of measures are
+
+- The `count`_. This exists only for finite variables.
+  The count `C` of a variable is a measure for its inherent information. 
+  `\text{lb} C` `\{0,1\}` combinations one needs to reproduce the same count and is thus
+  of relevance to information processing systems. 
+  Nature, itself a big computer, also combines small variables to create big ones.
+
+- The analogue to count for infinite variables is the `σ-finite`_ `lebesgue measure`_ 
+  (length, area, volume).  
+  
+- One can generalize a measure to have direction: `complex measure`_ and `vector measure`_.
+
+.. admonition:: Measure is the integral already
+
+  The summing over `Σ` is already in the measure: `μ=∫_Σdμ`
+
+`μ(σ) = ∫_Σ μ'(σ)dσ` corresponds to the `Riemann Interal`_,
+if the `σ`'s are adjacent infinitesimal sets 
+with a set size (length) defined (`dx`), e.g. via a `metric`_.
+The measure, though, can be applied to a broader range of sets,
+i.e to all sets satisfying the `σ-algebra`_.
+
+.. admonition:: `Radon-Nikodym derivative`_
+
+  When comparing two measures `ν(σ)` and `μ(σ)` for infinitesimal changes to `σ`,
+  ideally by one `x∈V`, which entails infintesimal changes in `dν=ν(\{x\})` 
+  and `dμ=μ(\{x\})`, then there is a function expressing the ratio of the change: 
+
+    `f=dν/dμ`
+
+    `ν(σ)=∫_σfdμ=∫_σdν/dμ dμ = ∫_σdν`
+    
+
+Probability
+-----------
+
+`Probability`_ `P` is a *measure* with the extra requirement `P(V)= ∫_V dP(v) = ∫_V P'(v)dv = 1`.
+
+The domain of `P` is `Σ ⊂ 2^V` not singular values of `V`. There is no topology required for `V`
+and probability arises by not looking at the details, i.e. on the topology.
+`Σ` is there only to satisfy the requirement of a measure. But a topology can induce
+the `Borel σ-algebra`_.
+
+`P` is the `CDF`_ (cumulative distribution function) and `P'` is the `PDF`_
+(probability density function).  A `PDF`_ does only make sense, if there is
+a metric or at least a `topology`_ on `V` and `dv` is a measure on the
+`neighborhood`_ of `v`.  Note, that there is `no uniform PDF`_ on a infinite `V`.
+
+- `V` in probability jargon is called *sample space* or set of *outcomes*.
+
+- `v ∈ Σ` are called *events*. 
+
+- The *average* bits or `nats`_ needed to reference a value of a variable `V`,
+  is the information of the variable `V`. With the measure we can define this for the infinite case
+  `I(V)=\sum N_i(\log N - \log N_i)/N = -\sum p_i\log p_i \rightarrow I(V) = ∫ P'\log P'dv= ∫\log P' dP`.
+  In physics this is called `entropy`_.
+
+.. admonition:: Random variable
+
+   A measure `X:Σ→ℝ` (also `(V,Σ,X)`) is a `random variable`_  on `V`,
+   if there is also a probability measure `P:Σ→[0,1]` (`(V,Σ,P)`) defined.
+
+   - `P(x)≡P(X^{-1}(x))` 
+   - `E(XY) = (X,Y) = ∫_V XYdP` defines an `inner product`_
+   - `E(X) = (X,1)1 = ∫_V XdP`
+   - `E((X-E(x))^2)` 
+      is the variance and the square root of it is the standard deviation,
+      which corresponds to the Euclidean distance `d(X,E(X))`.
+   - `(X,X-E(x)) = 0`, i.e. `X_o=X-E(x)` and `X` are `orthogonal`_
+
+
+.. admonition:: Occurrences and events
+
+   In the `information`_ blog I've avoided the name *event*. It sounds like *occurences*.
+   But what is meant is very different.
+
+   :Occurences: 
+
+      Sets that can be intersected to only contain exclusively one value `v` of
+      the variable `V`.  These are the `FCA`_ intents mentioned above, who
+      correspond to a `topology`_ on `V` that defines the values `v`.  
+      `Borel sets`_ augment the topology by *countable* intersections and complements
+      giving rize to the Borel `σ-algebra`_ of events.
+
+   :Events: 
+   
+      Sets that only consist of values of `V` combining *alternative* occurences and thus
+      forming the basis for the probability summation.
+
+   *Occurences* lead to the definition of probability by just counting them without looking
+   at the details of other elements in the occurence.
+   Let `O_v` be the set of occurences and `O_V=\bigcup_v O_v`, then ` P(v) = | O_v | / | O_V | `. 
+   The **exclusiveness is necessary** for `\sum P(v) = 1` (`∫ dP(v)=1`), else
+   ` | \bigcup_v O_v | < \sum | O_v | `. 
+   `O_V=\bigcup_v O_v` requires `O_v` to be finite (a finite measure on `V`), 
+   while `v` itself might be an infinite set. 
+   In the latter case in order for `O_V` to be finite, most `|O_v|=0`, 
+   which also entails `P(v)=0` for most `v`.
+
+   *Events* summarize occurences, i.e. probabilities, over `v`, by counting all
+   occurences that contain *either* this value of `V` *or* that value of `V` 
+   (summarized in the event `v`). This gives rise to probability `P`. 
+   `P` adds for alternatives of the same variable.
+
+.. admonition:: Fisher information is not information
+
+   Distinguish `entropy`_, which *is information*, from  `fisher information`_,
+   which *is not information*, and should rather be called *Fisher [score/inverse] variance*. 
+   The `score`_ `∂_θ\ell(x;θ)=∂_θ\log(x;θ)` is the change
+   of information at `x ∈ X` when modifying `θ`.  The first
+   moment `E(∂_θ\ell)=∫∂_θ\ell p(x;θ)dx=0`, the second moment
+   `F(θ)=E(∂_θ∂_θ\ell)=∫ ∂_θ\ell∂_θ\ell p(x;θ)dx`
+   is the `fisher information`_.  
+   `F(θ)` has as lower bound the inverse variance of the variable
+   `θ` (not value `θ`) (`Cramér-Rao`_): `F(θ) \geq 1/\text{Var}(θ)`. 
+   A `θ` where `\text{Var}(θ)` is small, makes all `F(θ)` big. 
+   The biggest `F(θ)` marks the best `θ`, because it has the biggest influence on `p(x;θ)`.
+   If we have two parameters `θ` and `φ` (or more) then 
+   `F(θ,φ)=∫ ∂_θ∂_φ\ell p(x;θ,φ)dx` is an
+   `inner product`_ for the scores (= `tangent space`_ on `(x;θ,φ)`), 
+   that `does not dependent on the parameters`_  `θ` and `φ`.
+
+.. https://jmanton.wordpress.com/2010/07/29/information-geometry-coordinate-independence-lecture-6/
+
+Product Measure
+---------------
+
+The `product measure`_ is defined as
+
+.. math::
+
+   (μ_A×μ_B)(A×B)=μ_A(A)μ_B(B)\\
+   A ∈ Σ_A\\
+   B ∈ Σ_B
+
+All combinations of `A×B` do occur.
+This is a complete independence of the two variables `A` and `B`.
+
+- If values are exclusive, then they belong to the same variable.
+- For a functional dependence only the couples that are elements of the function do occur.  
+- A relation we have, if part of the `A×B` space is filled.
+  With a probability measure this means that certain `P(a×b)=0` and other `P(a×b)\neq P(a)P(b)`,
+  but rather `P(a×b) = P(a|b)P(b) = P(b|a)P(a)`, i.e. the second event's probability
+  depends on the first one (`P(a|b)` or `P(b|a)`). If `P(a×b)=0`, then `P( a | b ) = P ( b | a ) = 0`:
+  `a` does not occur if `b` occurs. But for another `b_1` that might be different,
+  i.e. we cannot add the `a` as another value to the `B` variable, but we still can say
+  that on `A×B` we have less than maximum information I: 
+  `I(A×B) = ∫ \log P'(a×b)dP(a×b) \leq ∫ \log(P'(a)P'(b))P'(a)P'(b)dadb = I(A)+I(B)`
+- For complete independence we have the above product space. This might be in a common context,
+  but also if the contexts are completely unrelated, e.g. by taking variables from different unrelated times
+  and/or from unrelated places, the value couples will fill all of `A×B` and 
+  specifically for probability 
+  `P(a×b) = ∫ dP(a×b) = ∫ da P'(a)P(b|a) = ∫ db P'(b)P(a|b) = P(a)P(b)`,
+  with `a ⊂ A` and `b ⊂ B` and `P(b|a) = ∫_{\beta ∈ b} dP(\beta|a)`.
+
+
+
+.. _`orthogonal`: https://en.wikipedia.org/wiki/Orthogonality
+.. _`extensive variable`: http://rolandpuntaier.blogspot.co.at/2017/02/from-variable-to-structure.html#extensive-variable
+.. _`variable`: http://rolandpuntaier.blogspot.co.at/2017/02/from-variable-to-structure.html
+.. _`information`: http://rolandpuntaier.blogspot.com/2015/03/what-is-information.html
+.. _`infinity`: http://rolandpuntaier.blogspot.co.at/2017/04/infinity.html
+.. _`integration and measure theory`: `measure theory`_
+.. _`measure theory`: https://en.wikipedia.org/wiki/Measure_(mathematics)
+.. _`σ-algebra`: https://en.wikipedia.org/wiki/Sigma-algebra
+.. _`set algebra`: https://en.wikipedia.org/wiki/Algebra_of_sets
+.. _`extensive values`: https://en.wikipedia.org/wiki/Intensive_and_extensive_properties
+.. _`Count`: https://en.wikipedia.org/wiki/Counting_measure
+.. _`σ-finite`: https://en.wikipedia.org/wiki/%CE%A3-finite_measure
+.. _`lebesgue measure`: https://en.wikipedia.org/wiki/Lebesgue_measure
+.. _`complex measure`: https://en.wikipedia.org/wiki/Complex_measure
+.. _`vector measure`: https://en.wikipedia.org/wiki/Vector_measure
+.. _`Riemann Interal`: https://en.wikipedia.org/wiki/Riemann_integral
+.. _`metric`: https://en.wikipedia.org/wiki/Metric_(mathematics)#Definition
+.. _`Radon-Nikodym derivative`: https://en.wikipedia.org/wiki/Radon–Nikodym_theorem
+.. _`Probability`: https://en.wikipedia.org/wiki/Probability
+.. _`CDF`: https://en.wikipedia.org/wiki/Cumulative_distribution_function
+.. _`PDF`: https://en.wikipedia.org/wiki/Probability_density_function
+.. _`neighborhood`: https://en.wikipedia.org/wiki/Neighbourhood_(mathematics)
+.. _`no uniform PDF`: http://math.stackexchange.com/questions/255667/prove-there-exists-no-uniform-distribution-on-a-countable-and-infinite-set
+.. _`nats`: https://en.wikipedia.org/wiki/Nat_(unit)
+.. _`random variable`: https://en.wikipedia.org/wiki/Random_variable
+.. _`FCA`: http://rolandpuntaier.blogspot.com/2015/06/fca.html
+.. _`topology`: https://en.wikipedia.org/wiki/Topology#Concepts
+.. _`Borel σ-algebra`: `Borel sets`_
+.. _`Borel sets`: https://en.wikipedia.org/wiki/Borel_set
+.. _`entropy`: https://en.wikipedia.org/wiki/Entropy_(information_theory)
+.. _`score`: https://en.wikipedia.org/wiki/Score_(statistics)
+.. _`fisher information`: https://en.wikipedia.org/wiki/Fisher_information
+.. _`Cramér-Rao`: https://en.wikipedia.org/wiki/Cram%C3%A9r%E2%80%93Rao_bound
+.. _`inner product`: https://en.wikipedia.org/wiki/Inner_product_space
+.. _`does not dependent on the parameters`: https://jmanton.wordpress.com/2010/07/26/information-geometry-using-the-fisher-information-matrix-to-define-an-inner-product-lecture-5/
+.. _`product measure`: https://en.wikipedia.org/wiki/Product_measure
+.. _`tangent space`: https://en.wikipedia.org/wiki/Tangent_space
+
+
+
+..      .. _`context`: https://en.wikipedia.org/wiki/Formal_concept_analysis#Contexts_and_concepts
+..      .. _`lattice`: https://en.wikipedia.org/wiki/Lattice_(order)
+..      .. _`space`: https://en.wikipedia.org/wiki/Space_(mathematics)
+..      
+..      .. _`probability density`: https://en.wikipedia.org/wiki/Probability_density_function
+..      .. _`axiom of choice`: https://en.wikipedia.org/wiki/Axiom_of_choice
+..      .. _`cardinality of the real numbers`: https://en.wikipedia.org/wiki/Cardinality_of_the_continuum
+..      .. _`order topology`: https://en.wikipedia.org/wiki/Order_topology
+..      
+..      .. _`dot product`: https://en.wikipedia.org/wiki/Dot_product
+..      .. _`analytic geometry`: https://en.wikipedia.org/wiki/Analytic_geometry
+..      .. _`Pythagorean theorem`: https://en.wikipedia.org/wiki/Pythagorean_theorem
+..      .. _`exterior product`: https://en.wikipedia.org/wiki/Exterior_algebra
+..      .. _`geometric algebra`: https://en.wikipedia.org/wiki/Geometric_algebra
+..      .. _`dimension`: https://en.wikipedia.org/wiki/Measurement
+..      .. _`euclidean norm`: https://en.wikipedia.org/wiki/Norm_(mathematics)#Euclidean_norm
+..      .. _`vector space`: https://en.wikipedia.org/wiki/Vector_space
+..      .. _`complex number`: https://en.wikipedia.org/wiki/Complex_number#Absolute_value_and_argument
+..      .. _`set theory`: https://en.wikipedia.org/wiki/Set_theory
+..      .. _`probability space`: https://en.wikipedia.org/wiki/Probability_space
+..      .. _`Hilbert Space`: https://en.wikipedia.org/wiki/Hilbert_space
+..      .. _`conditional probability`: https://en.wikipedia.org/wiki/Conditional_probability
+..      .. _`integral`: https://en.wikipedia.org/wiki/Lebesgue_integration
+
+..      This blog_ addresses measure `Fubini-Tonelli theorem`_ and independence.  
+..      .. _`Fubini-Tonelli theorem`: https://en.wikipedia.org/wiki/Fubini's_theorem
+..      .. _blog: https://terrytao.wordpress.com/2015/10/12/275a-notes-2-product-measures-and-independence/
+
+..      With the measure we can also define a `measure compatible metric`_.
+..      .. _`measure compatible metric`: http://math.stackexchange.com/questions/1402847/whats-the-relationship-between-a-measure-space-and-a-metric-space
+

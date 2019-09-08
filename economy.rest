@@ -1,0 +1,556 @@
+.. encoding: utf-8
+.. vim: syntax=rst
+
+.. https://rolandpuntaier.blogspot.com/2019/05/economy-as-dynamic-system.html
+
+.. default-role:: math
+
+*************************
+Economy as Dynamic System
+*************************
+
+In `Evolution of dynamic systems`_ economics is mentioned as an example
+and here this is elaborated on qualitatively.
+
+
+Dynamic System
+==============
+
+`Free market`_ is based on elementary principles shared by every `dynamic system`_.
+The elementary interaction of the `evolution of dynamic systems`_ is `selection`_,
+which consists of
+
+- variable (a set of selectable/distinguishable elements) = space
+- value (selection from the variable) = time
+
+In economic parlance, but without reducing abstractness, this is
+
+- supply (of `resources`_, like alternative products) and 
+- demand (selection from `competing`_ alternative products)
+
+Like other dynamic systems, 
+`economy`_ `diversifies`_ on top of long-lasting structures.
+The interaction to buy a complex product like a smartphone,
+is the top of a hierarchy of interactions.
+
+The individual is the smallest entity considered in economy,
+although interactions in the brain,
+coming from `biological evolution`_ and `education`_,
+are the foundation of human interaction.
+
+Every encapsulation (subsystem, company, economic node) has interior selections,
+which correspond to its inner energy.
+The further down the hierarchy, the smaller the time steps.
+
+Every level undergoes a **creative phase** (adding information)
+
+- where `investments`_ create new resources (new products)
+- to produce profit (net input)
+- to create further resources
+
+In a **selective phase** the subsystem optimizes (removing information)
+
+- by filtering out products (variables) not getting momentum
+- by reducing cost by changing the company's context
+  (outsourcing, cooperation, change of product components, ...)
+- to improve higher level contexts, especially those of people
+
+This is `annealing`_ that produces macroeconomic evolution.
+
+The internal of non-closed subsystem, where `input and output`_ of energy balance,
+can keep the same internal cycle, as if closed.
+With an internal `storage`_ a subsystem can acquire a more independent trajectory.
+Input and output are interactions on the level of peer subsystems, 
+like a physical system of interacting particles.
+
+.. admonition:: microeconomy vs macroeconomy
+
+    Understanding every node of economy from the two perspectives,
+
+    - from inside (one node): `microeconomy`_
+    - from outside (all nodes): `macroeconomy`_
+
+    allows to find alternative interactions to counter unwanted developments
+    according to `needs`_, `personality`_ and `ethical values`_.
+
+Valuing Resources
+=================
+
+`Resource`_, `product`_, `service`_ or `good`_  are all comprised in the hypernym *variable*
+when regarding economy as a dynamic system.
+
+The physical energy of economy ultimately comes from the sun,
+that feeds us via the `food chain`_,
+but due to economic `diversification`_ the connection is not direct any more.
+
+A **resource** is (the source of) something 
+that satisfies a human need (`Maslow pyramid`_).
+The higher needs are there to protect the lower needs.
+How well the sum of all needs is satisfied determines the `living standard`_.
+Availability of resources is `wealth`_.
+
+One resource is one degree of freedom:
+All `products`_ satisfying the same need
+form the supply of a resource to the `market`_ (= those interested).
+
+A resource is an extensive variable.
+An extensive variable is a variable, where
+
+- each value is a set with a
+- `measure`_ defined
+
+The measure usually is **money** using a currency as unit.
+Although, a high percentage of economy is measured
+
+- not at all
+- not in detail
+- with a local measure
+
+In `bartering`_ the measure is a possibly ad hoc unit of another resource.
+Through `trading`_ different measures will acquire an `exchange rate`_.
+Here money stands for any measure, local or global.
+
+`Valuing`_ (`pricing`_) a product 
+
+- can be done directly through `bargaining`_, or else
+- is a collective (market) process by `supply and demand`_
+
+`Pricing`_ on the supply side is based on 
+
+- `production cost`_
+- `strategic`_ anticipation of customer valuing, to `maximize profit`_
+
+Valuing on the demand side (= market) is a mix of 
+
+- `taste`_
+- `utility`_ or `marginal utility`_
+- `competition`_ and
+- available money
+
+Initial pricing of a new product will get adjusted by the market over time,
+as a compromise between people's individual valuing.
+Very different valuing groups will split the market, e.g. in poor and rich market.
+
+For small markets (e.g. team, family)
+the valuing compromise is too burdensome, and prone to conflict.
+
+Valuing changes over economic evolution as new (types of) resources emerge.
+
+Comparison to Physics
+=====================
+
+There is a layer of complicated emotional and/or rational decision making
+between the physical world and economy
+before any economic selection happens.
+
+In physics the 
+
+- number of selections per cycle is **action** (information) and
+- the selections per time is **energy**
+
+The selections are observed at a space point `x`, consisting of more components.
+So the energy `V` is associated to the location: `V(x)`.
+The change of a component is a **momentum**.
+Simultaneous elementary momenta, summarized via `p`, determine a `ΔV(x)=V(x+Δx)-V(x)`.
+Via bookkeeping energy thus associates a kinetic energy change `ΔK` to `p`: `ΔK(p)-ΔV(x)=0`.
+
+The following mathematical analogy to physics is to be understood qualitatively.
+
+Economy's *key difference* to physics is
+
+- energy is *not directly* given by selections per time
+- but there is a `valuing`_ of the selections,
+  different for every resource `i` and at every location `x`: `V_i(x)`
+
+:time: `Transactions`_
+
+Selections are `transactions`_ and happen in space and time.
+They define economic space and time.
+Via comparison to physical space and time we get
+
+- momentum when looking at one resource (space, momentum)
+- energy when combining selections per physical time step (time, energy)
+
+:space: `resources`_
+
+Resources form a many-dimensional space.
+A physical **location** `x` corresponds to:
+
+- `assets`_
+- `means of production`_ (methods, tools, ...) not traded
+- links to other companies
+- ...
+
+Resources are linked to physical time and space,
+e.g. natural resources are localized, 
+crops grow better where and when there is sun and water.
+  
+:momentum: `Transactions`_ of one resource.
+
+`Transactions`_ of a unit `d x_i` of a resource `x_i` 
+per time `dt` for a `price`_ `m_i`
+along an established link between two agents:
+
+.. math::
+
+   p_i = m_i v_i(t) \\
+   v_i = \frac{d x_i(t)}{dt}
+
+`p_i` do not mix in an `euclidian`_ way, but mostly `linearly`_: `p = \sum p_i`.
+
+If product `i` is composed of `x^j` units of product `j` with unit price `P_{ij}`,
+then one `p_i` transaction is "simultaneous" with the according `p_j` transactions.
+
+.. math::
+
+    p_i = \sum_j P_{ij}x^j
+
+
+All `p={p_i}` together are `operations`_, describing which products are transacted.
+
+:mass: `price`_
+
+The price `m_i` corresponds to mass in physics,
+but different for every product `i`.
+
+.. math::
+
+   p_i = \frac{d}{dt}∫dI(x_i) = m_i\frac{d}{dt}∫dx_i = m_i v_i(t)
+
+It considers
+
+- lower level selections with `pricing`_ strategies
+- a mutual cost of selection (`transaction cost`_)
+
+One `transaction cost`_ comes from establishing links between agents for the resource.
+From the sellers side it is `advertisement`_,
+from the buyers side `filtering`_ out the right product, despite ads.
+The economic links can be accounted to a company's `goodwill`_.
+
+.. admonition:: search vs ads
+
+   A strategy of `advertisement`_ is to select everybody.
+   But with so many products it becomes a `nuisance`_.
+   Even `targeted`_ ads never turn up at the right time.
+   But they still `anchor`_ and `frame`_.
+   `Findability`_ is preferable,
+   best through dedicated unbiased product comparison sites,
+   as `paid inclusion`_ in `search engines`_ are flawed by a `bias`_.
+
+:velocity: `demand`_
+
+Like physical mass, prices `m_i` can depend on `velocity`_ `v_i`:
+inverse `demand function`_, `price elasticity`_ .
+
+| A negative `v_i` codes expenses (`cost`_)
+| A positive `v_i` codes `revenue`_ (`sales`_, `wages`_ or `salary`_,...)
+
+`v_i` is expressed in a product specific unit.
+It could be expressed relative to a maximum production `capacity`_ `c_i`.
+
+`phase space`_: economic context
+
+Time `t` links momentum `p_i` with space `x_i`.
+The **economic context** at time `t` is given by both `p_i` and `x_i`.
+With constant (input and output of) energy,
+`(x_i,p_i)` will cycle more or less the same way.
+
+:action: `economic value`_ 
+
+The accumulated `economic value`_  `I(x)=∫dI(x)`
+is the result of a `valuation`_ process.
+
+For a product this is the price.
+
+For a company valuation happens annually via `financial statements`_.
+`I(x)` at a point in time `t` is given by the `balance sheet`_
+
+- once split by category (`assets`_)
+- once by ownership (`liabilities`_ and owner's `equity`_)
+
+The `balance sheet`_ includes the results of `operations`_:
+
+- by category: `cash`, `accounts receivable`_ and `accounts payable`_ 
+  for unfinished `transactions`_
+- by ownership: `retained earnings`_ under owner's `equity`_ to sum up 
+  finished `transactions`_ of the separate `income statement`_
+
+Changes of `balance sheet`_ with regard to the last `fiscal year`_ are in the `cash flow statement`_.
+
+`Accounting`_ throughout the year considers finer details of value flow (energy),
+associated with many sub-accounts (subsystems).
+
+:energy: `economic growth`_ 
+
+`Operations`_ `p(t)` represents the **kinetic energy** `K(p(t))=p(t)` of a company.
+They are `input and output`_ and summarized in the `income statement`_.
+Summing over a `fiscal year`_ gives `profit`_ `P = ∫p(t)dt`.
+It is loss, if negative.
+
+`V(x(t)) = dI(x(t))/dt` can be seen as **potential energy**
+(`Current assets`_, `non-current assets`_ in the `balance sheet`_).
+
+`H(x,p) = V(x(t))+K(p(t))` is the total change of `value of a company`_
+(`GDP`_ macroeconomically for a country).
+
+`H=0`: Without input `V = -K`, i.e. operations change the company value or vice versa.
+`V = dI(x)/dt = ∂I(x)/∂x_i d x_i/dt = -Σ m_i v_i = Σ p_i = -p(t) = -K`.
+
+`H>0` is the default, 
+because people produce a net input through `p(t)`.
+
+`Economic growth`_  rate `g` gives the relative change of growth.
+`g` is normally positive, but not constant.
+With a modified `\bar{g}` as `CAGR`_ it is still `exponential growth`_ on the average.
+
+.. math::
+
+    \frac{dH}{dt} = \bar{g} H \Rightarrow \\
+    H(t) = H_0 e^{\bar{g} t} \\
+    I(t) = \frac{H_0}{\bar{g}} e^{\bar{g} t} 
+
+The human-valued driving **force** of a company (and thus of economy as a whole)
+is to improve the value of context `x`
+ultimately for the purpose of improving the context of people
+according their `values`_: `-dV(x)/dx = F`
+
+By analysing the context,
+simulating variations and valuing them to be better,
+a change towards the new context,
+according to simulated plan, *will* be better.
+So the `value of a company`_ will increase in normal conditions: 
+
+.. math::
+
+   g > 0
+
+Company products offered to the market `compete`_ with products from other companies.
+Price, `perceived quality`_, `advertisment manipulations`_ are competition factors.
+If the `market value`_ does not cover the investment the company either adapts or
+`dies in an orderly way`_.
+Still, on average, i.e. from a macroeconomic perspective `g > 0`,
+and this is what an average company in the market can expect, too.
+
+This table summarizes the correspondence between physics and economy.
+
+.. list-table::
+   :widths: 20 80
+   :header-rows: 1
+
+
+   * - Physics
+     - Economy
+
+   * - mass (inner selections)
+     - price
+
+   * - time (selection)
+     - any selling/buying event: `transaction`_ 
+
+   * - space
+     - very high dimensional economic context
+
+       - every product type a variable
+       - every product a value
+
+   * - momentum
+     - profit
+
+   * - action (information)
+     - `economic value`_, not equal to profit
+
+   * - energy (information per time)
+     - `economic growth`_
+
+Structural Evolution
+====================
+
+Structural evolution produces higher level resources
+through improvements on top of longer living lower level resources.
+Every `invention`_ `x_i` (usage of new resource) 
+can be considered an **evolution time** step
+in the `metaspace`_ of product types.
+Every invention is a `paradigm shift`_ 
+that changes `x={x_i}` and `p={p_i}`.
+
+`d x` is the addition of a resource `x_i` and 
+`d p` are the transactions for `i`: `p_i`.
+
+`d x` and `d p` are independent:
+
+- `d x` is structural: adding variable
+- `d p` is dynamic: selecting values of the new variable
+
+The valuing `I` is local.
+If a product `i` has more potential at the side (`x+x_i=x+Δx`) of customer `c`,
+than given by the market price, 
+transactions `i` start to make up `ṗ_i`:  `(I_c(x)-I_c(x+Δx))/Δx = F_i = ṗ_i = m_i ẍ_i`.
+
+The value element `d p d x` is `activation value`_.
+The total value is:
+
+.. math::
+
+   I(x,p) =  ∬ d p d x
+
+This entails an average growth `H = I/T = m v^2 / 2` in time `T`,
+assuming an average constant `m`,
+which is true for prices and wages `only considering inflation`_.
+
+`Hamilton-Jacobi`_ equations:
+
+- `\frac{∂I}{∂t}=-H`
+
+  Structural change is growth through investment `-H`.
+
+- `\frac{∂I}{∂x}=p`
+
+  A move to a new context involves selections.
+
+`Newton second law`_, using `Hamilton equations`_:
+
+- `F=∂H(p,x)/∂x=ṗ` 
+
+  A change in growth through structural change implies a change in profit.
+
+- `∂H(p,x)/∂p=-ẋ`
+
+  Growth change through profit change implies structural change, like simplifications.
+
+`Symmetry`_:
+
+- space symmetry: there are `x` changes that keep `p` constant
+
+- time symmetry: there are simultaneous `x` and `p` changes that keep `H` constant
+  A company who's value is kept constant via balancing input and output.
+
+During `operations`_ the company cycles through the phase points `(x,p)`.
+With `input and output`_ balancing, this can be compared to circular motion.
+Growth `H=∬dI dω` is an accumulation of structure `I` times `angular velocity`_ `ω=2πf = 2π/T`.
+As the cycle time can vary between companies *or projects*,
+instead of time one uses `action angle`_ `w`, a kind of `phase`_.
+With constant cycle frequency `ω` we have `w(t) = ωt`.
+
+
+.. _`action angle`: https://en.wikipedia.org/wiki/Action-angle_coordinates
+.. _`microeconomy`: https://en.wikipedia.org/wiki/Microeconomics
+.. _`macroeconomy`: https://en.wikipedia.org/wiki/Macroeconomics
+.. _`selection`: https://en.wikipedia.org/wiki/Natural_selection
+.. _`evolution of dynamic systems`: https://rolandpuntaier.blogspot.com/2019/01/evolution.html
+.. _`values`: `ethical value`_
+.. _`ethical values`: `ethical value`_
+.. _`ethical value`: https://en.wikipedia.org/wiki/Value_(ethics)
+.. _`compete`: `competition`_
+.. _`competing`: `competition`_
+.. _`resource`: https://en.wikipedia.org/wiki/Resource
+.. _`dynamic system`: https://en.wikipedia.org/wiki/Dynamical_system
+.. _`service`: https://en.wikipedia.org/wiki/Service_(economics)
+.. _`good`: https://en.wikipedia.org/wiki/Goods
+.. _`education`: https://en.wikipedia.org/wiki/Education
+.. _`biological evolution`: https://en.wikipedia.org/wiki/Evolution
+.. _`diversifies`: `diversification`_
+.. _`diversification`: https://en.wikipedia.org/wiki/Genetic_divergence
+.. _`personality`: https://en.wikipedia.org/wiki/Personality
+.. _`economy`: https://en.wikipedia.org/wiki/Economy
+.. _`food chain`: https://en.wikipedia.org/wiki/Food_chain
+.. _`wealth`: https://en.wikipedia.org/wiki/Wealth
+.. _`valuing`: `economic value`_
+.. _`economic value`: https://en.wikipedia.org/wiki/Value_(economics)
+.. _`utility`: https://en.wikipedia.org/wiki/Utility
+.. _`taste`: https://en.wikipedia.org/wiki/Taste_(sociology)
+.. _`maximize profit`: https://en.wikipedia.org/wiki/Profit_maximization
+.. _`bargaining`: https://en.wikipedia.org/wiki/Bargaining
+.. _`marginal utility`: https://en.wikipedia.org/wiki/Marginal_utility
+.. _`exchange rate`: https://en.wikipedia.org/wiki/Exchange_rate
+.. _`trading`: https://en.wikipedia.org/wiki/Trade
+.. _`transaction`: `transactions`_
+.. _`transactions`: https://en.wikipedia.org/wiki/Financial_transaction
+.. _`bartering`: https://en.wikipedia.org/wiki/Barter
+.. _`competition`: https://en.wikipedia.org/wiki/Competition
+.. _`living standard`: https://en.wikipedia.org/wiki/Standard_of_living
+.. _`cost`: https://en.wikipedia.org/wiki/Cost
+.. _`products`: https://en.wikipedia.org/wiki/Product_(business)
+.. _`price`: `pricing`_
+.. _`pricing`: https://en.wikipedia.org/wiki/Pricing
+.. _`supply and demand`: https://en.wikipedia.org/wiki/Supply_and_demand
+.. _`information`: http://rolandpuntaier.blogspot.com/2015/03/what-is-information.html
+.. _`measure`: https://en.wikipedia.org/wiki/Measure_(mathematics)
+.. _`needs`: `Maslow pyramid`_
+.. _`Maslow pyramid`: https://en.wikipedia.org/wiki/Maslow%27s_hierarchy_of_needs
+.. _`bias`: https://en.wikipedia.org/wiki/Bias
+.. _`search engines`: https://en.wikipedia.org/wiki/Web_search_engine
+.. _`paid inclusion`: https://en.wikipedia.org/wiki/Paid_inclusion
+.. _`filtering`: https://en.wikipedia.org/wiki/Broadbent%27s_filter_model_of_attention
+.. _`targeted`: https://en.wikipedia.org/wiki/Targeted_advertising
+.. _`nuisance`: https://en.wikipedia.org/wiki/Criticism_of_advertising
+.. _`frame`: `media`_
+.. _`media`: https://en.wikipedia.org/wiki/Framing_(social_sciences)
+.. _`inequality`: https://en.wikipedia.org/wiki/Economic_inequality
+.. _`cooperations`: `cooperation`_
+.. _`cooperation`: https://en.wikipedia.org/wiki/Co-operation_(evolution)
+.. _`symmetry`: https://en.wikipedia.org/wiki/Symmetry_(physics)
+.. _`input and output`: https://en.wikipedia.org/wiki/Input%E2%80%93output_model
+.. _`market`: https://en.wikipedia.org/wiki/Market_(economics)
+.. _`wages`: https://en.wikipedia.org/wiki/Wage
+.. _`salary`: https://en.wikipedia.org/wiki/Salary
+.. _`Newton second law`: https://en.wikipedia.org/wiki/Newton%27s_laws_of_motion
+.. _`Hamilton equations`: https://en.wikipedia.org/wiki/Hamiltonian_mechanics
+.. _`investments`: https://en.wikipedia.org/wiki/Investment
+.. _`transaction cost`: https://en.wikipedia.org/wiki/Transaction_cost
+.. _`revenue`: https://en.wikipedia.org/wiki/Revenue
+.. _`sales`: https://en.wikipedia.org/wiki/Sales
+.. _`means of production`: https://en.wikipedia.org/wiki/Means_of_production
+.. _`profit`: https://en.wikipedia.org/wiki/Profit_(accounting)
+.. _`assets`: https://en.wikipedia.org/wiki/Asset
+.. _`balance sheet`: https://en.wikipedia.org/wiki/Balance_sheet
+.. _`income statement`: https://en.wikipedia.org/wiki/Income_statement
+.. _`financial statements`: https://en.wikipedia.org/wiki/Financial_statement
+.. _`storage`: https://en.wikipedia.org/wiki/Energy_storage
+.. _`velocity`: https://en.wikipedia.org/wiki/ABC_analysis
+.. _`goodwill`: https://en.wikipedia.org/wiki/Goodwill_(accounting)
+.. _`euclidian`: http://mathworld.wolfram.com/EuclideanMetric.html
+.. _`linearly`: https://en.wikipedia.org/wiki/Taxicab_geometry
+.. _`demand`: https://en.wikipedia.org/wiki/Demand
+.. _`annealing`: https://en.wikipedia.org/wiki/Simulated_annealing
+.. _`advertisment manipulations`: https://en.wikipedia.org/wiki/Media_manipulation
+.. _`perceived quality`: https://en.wikipedia.org/wiki/Quality_(business)
+.. _`dies in an orderly way`: https://en.wikipedia.org/wiki/Liquidation
+.. _`market value`: https://en.wikipedia.org/wiki/Market_value
+.. _`GDP`: https://en.wikipedia.org/wiki/Gross_domestic_product
+.. _`exponential growth`: https://en.wikipedia.org/wiki/Exponential_growth
+.. _`CAGR`: https://en.wikipedia.org/wiki/Compound_annual_growth_rate
+.. _`valuation`: https://en.wikipedia.org/wiki/Valuation_(finance)
+.. _`accounts payable`: https://en.wikipedia.org/wiki/Accounts_payable
+.. _`accounts receivable`: https://en.wikipedia.org/wiki/Accounts_receivable
+.. _`equity`: https://en.wikipedia.org/wiki/Equity_(finance)
+.. _`cash flow statement`: https://en.wikipedia.org/wiki/Cash_flow_statement
+.. _`operations`: https://en.wikipedia.org/wiki/Business_operations
+.. _`current assets`: https://en.wikipedia.org/wiki/Current_asset
+.. _`non-current assets`: https://en.wikipedia.org/wiki/Fixed_asset
+.. _`fiscal year`: https://en.wikipedia.org/wiki/Fiscal_year
+.. _`production cost`: https://en.wikipedia.org/wiki/Cost_of_goods_sold#Cost_of_goods_made_by_the_business
+.. _`liabilities`: https://en.wikipedia.org/wiki/Balance_sheet#Liabilities
+.. _`resources`: https://en.wikipedia.org/wiki/Resource
+.. _`findability`: https://en.wikipedia.org/wiki/Findability
+.. _`anchor`: https://en.wikiped``ia.org/wiki/Anchoring
+.. _`phase space`: https://en.wikipedia.org/wiki/Phase_space
+.. _`invention`: https://en.wikipedia.org/wiki/Invention
+.. _`capacity`: https://en.wikipedia.org/wiki/Capacity_planning
+.. _`metaspace`: https://en.wikipedia.org/wiki/Meta
+.. _`paradigm shift`: https://en.wikipedia.org/wiki/Paradigm_shift
+.. _`demand function`: https://en.wikipedia.org/wiki/Inverse_demand_function
+.. _`price elasticity`: https://en.wikipedia.org/wiki/Price_elasticity_of_demand
+.. _`strategic`: https://en.wikipedia.org/wiki/Aggregative_game
+.. _`only considering inflation`: https://en.wikipedia.org/wiki/Real_wages
+.. _`activation value`: https://en.wikipedia.org/wiki/Activation_energy
+.. _`phase`: https://en.wikipedia.org/wiki/Phase_(waves)
+.. _`angular velocity`: https://en.wikipedia.org/wiki/Angular_velocity
+.. _`moment of inertia`: https://en.wikipedia.org/wiki/Moment_of_inertia
+.. _`economic growth`: https://en.wikipedia.org/wiki/Economic_growth
+.. _`advertisement`: https://en.wikipedia.org/wiki/Advertisement
+.. _`retained earnings`: https://en.wikipedia.org/wiki/Retained_earnings
+.. _`value of a company`: https://rolandpuntaier.blogspot.com/2019/02/economy.html
+.. _`Hamilton-Jacobi`: https://en.wikipedia.org/wiki/Hamilton%E2%80%93Jacobi_equation
+.. _`Free market`: https://en.wikipedia.org/wiki/Free_market
+.. _`product`: https://en.wikipedia.org/wiki/Product_(business)
+.. _`accounting`: https://en.wikipedia.org/wiki/Accounting

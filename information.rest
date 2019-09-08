@@ -1,0 +1,325 @@
+.. vim: syntax=rst
+
+.. http://rolandpuntaier.blogspot.com/2015/03/what-is-information.html
+
+.. {information}
+
+--------------------
+What is Information?
+--------------------
+
+This is a very fundamental question that promises insight to all
+our intellectual activities and beyond.
+
+The word information is ubiquitous and of course
+we know what it means. We would describe it 
+as: something that reduces our uncertainty.
+Are we happy with suchlike descriptions? 
+They use words, which again need clarification,
+which again can be decomposed into smaller parts.
+As long as you still can abstract away, you are not done.
+
+.. note::
+
+    | First you abstract until you can't abstract no more.
+    | Then you synthesize.
+
+Still, we need to start with the natural usage of the word. 
+We talk about information in newspapers, in books, in sentences,
+in words. 
+
+What is involved? 
+
+- a sender: a person, an animal, our environment,...
+- a message: written or spoken text, signs, ...
+- a receiver: again a person, a computer, a radio, ...
+
+    This is communication. Is Communication = Information?
+    No, it's communication of information.
+
+We need to decompose more: A person has a brain with a map
+of our world, with concepts. A message consists of words of a natural language, but it can also consist of
+signs, Chinese pictographic characters, hieroglyphs, bits or bytes....
+
+These and other things we can think of, are all quite different. 
+Still they must have something in common.
+
+| **They are a multitude** 
+| A multitude of concepts in the brain
+| A multitude of brain cells, of synapses
+| A multitude of phonemes
+| A multitude of photoreceptors in the eye
+| A multitude of colors
+| A multitude of voltages in the radio receiver
+| A multitude of frequencies in the radio signal
+| A multitude of words or letters or signs in a message
+
+A person as a sender consists of many parts, these parts all
+communicate as well.
+
+What is the smallest part of a communication processes?
+
+**Selection from a multitude**
+
+.. note::
+
+    First a multitude, then the selection.
+    That's evolution. Evolution is how all dynamic systems work.
+
+- This is how biological evolution works. Selection by environment.
+- Economy: supply/demand = creation of multitude;
+  publicity, offers, comparison = selection
+- The brain: ideas = creating multitude = creativity; 
+  selection via comparison with sensory input and experience
+- Sciences: papers = multitude; research, studying = selection
+- Memetics: ideas communicated to others
+- Culture in societies
+- ...
+
+We have abstracted everything away and remain with a multitude.
+In mathematics the foundation is set theory. The set is what
+we so far called multitude.
+
+.. note::
+
+    Where are we now? We have a 
+
+    - **set of elements**
+    - **a way to choose or select**
+
+One *instance of choosing* means to choose exactly *one element*.
+By selecting one element we *de-select* the others. 
+The elements are **exclusive**.
+
+    Regarding choosing or selecting in relation to the set theory
+    one might want to check out the 
+    `axiom of choice <http://en.wikipedia.org/wiki/Axiom_of_choice>`_.
+
+With this exclusiveness added the best words I came up
+with are variable and value.
+
+.. note::
+
+    set --> variable
+    element --> value
+
+Value and variable turn up everywhere: in programming,
+in physics, in statistics,..., because they are the building
+blocks of everything: They are information.
+
+.. note::
+
+    building block for information = variable = set of exclusive values
+
+*Value* and *variable* are quite ubiquitous and thus appropriate for
+something as fundamental as information.  
+
+.. TODO: extensive variables.
+
+.. In statistics a variable corresonds to the *sample space*.
+
+.. *Events* are subsets of the sample space. 
+.. σ-algebra is the set of all *events*.
+
+.. Probability is associated to events.
+
+.. This applies for extensive variables.
+
+
+Let's get quantitative: What is the smallest amount, we can choose from? The answer: 2.
+The important aspect quantitatively is only the size of the variable, also called cardinality.
+For a variable `V` I shall denote the size with `|V|`.
+It makes sense to use the smallest variable, the **bit** (`B` of size `|B|=2`), 
+as unit of measurement for information. 
+Values of bigger variables can be mapped to combinations of bits, which are elements
+of the Cartesian product. `n` bits can create `|B^n|=2^n` combinations.
+
+.. note::
+
+    The **information** of `V` is how many bits do we need to select a value of `V`. 
+
+Because `2^{\log_2 |V|} = |V|` we get
+
+.. math::
+        
+        I_V = \log_2 |V|
+
+.. note::
+
+    Information as a measure is a property of a variable, not of its values.
+
+The *occurrences* of values of a variable need to be distinguished from the variable itself.
+They make another variable. 
+Let's denote this variable with `\bar{V}`. 
+To select an occurrence of any value of `V` we need `\log|\bar V|` bits.
+
+The *frequency of occurrence* is yet another variable. Here we look at `p_i = |\bar{V_i}|/|\bar{V}|`.
+`\sum_i p_i = 1`. Something like this is called a `probability <http://en.wikipedia.org/wiki/Probability_theory>`_.
+The exclusiveness is essential to it. It is a `measure <https://en.wikipedia.org/wiki/Probability_measure>`_.
+
+.. note::
+
+    *Add* probability for *or* `\vee`, but only for exclusive values of the same variable,
+    else in general `p(a\vee b)=p(a)+p(b)-p(a \& b)` holds. Note that `p(a\vee b)=p(~a&~b)`.
+
+    *Multiply* probability for *and*, but only for values belonging to independent variables
+    else `p(a&b)=p(a)p(b | a)` holds. See `below`_.
+
+One can select values of `V`, i.e. `V_i`, by first selecting an occurrence of any value (`\log|\bar V|`)
+and then subtract the excess selection done (`\log|\bar V_i|`): `\log|\bar V|-\log|\bar V_i|= -log p_i`.
+Via this selection path one can do with less bits to reference the total amount
+of occurrences: `-\sum_i|\bar V_i|\log p_i \le |\bar V| \log |V|`.
+Dividing both sides by `|\bar V|` we get the average bits needed 
+to select a value of `V`.
+It is called `entropy <http://en.wikipedia.org/wiki/Entropy_encoding>`_ (`S`).
+
+.. {entropy}
+
+.. math::
+    &S_V = -\sum_i p_i \log p_i \\
+    &S_V \le I_V
+
+`I_V` is the upper limit of `S_V`. `I_V` can also be expressed with the `S_V` formula by using a uniform `p_i=1/|V|`.
+
+    `I_V` is the upper limit of `S_V`. Considering that a variable is always embedded 
+    in a context of other variables, this limit case vaguely can be interpreted as loss
+    of structure.
+
+.. note::
+    The entropy is the average number of bits needed to select a value of the variable.
+
+The occurrences of values of a variable are due to the variable's environment (= context),
+i.e. its relation to other variables. This context is often
+unknown or too complex (= too much information) to describe.
+It might also be known and used to derive the frequency of occurrences of values (a priori probability).
+
+Physical systems can be regarded as a huge set of variables. 
+
+There is even a deeper relation between
+between energy and information. Check out these links:
+- `Physics of information <http://arxiv.org/pdf/0708.2837v2.pdf>`_
+- `Statistical physics <https://en.wikipedia.org/wiki/Maxwell%E2%80%93Boltzmann_statistics>`_
+- `Statistical thermodynamics <https://en.wikipedia.org/wiki/Entropy_(statistical_thermodynamics)>`_
+
+--------------------------------------------------------------------------------
+
+So far information was regarded as inherent to a variable (= a piori).
+
+I continue with the perspective of a learning system, like humans and other
+animals or learning machines (computers).
+
+A learning system needs to provide as much memory as there is
+in the observed system to fix one state.
+
+But often the learning system is confronted with a system too complex (= too much information)
+to create a complete map of it.
+It doesn't see all the variables. Most of them stay hidden 
+(`latent variables <http://en.wikipedia.org/wiki/Latent_variable>`_).
+In this situation including the frequency of occurrences of values,
+i.e. the probability, is often the best thing one can do.
+The probability distribution is a result of hidden dependencies from hidden variables.
+
+    Or it is due to the limited information content of nature itself,
+    i.e. due to quantum mechanics. With probability distributions quantum mechanics 
+    can continue to use the well known continuum mathematics (real
+    numbers,...), although the major statement of quantum mechanics is, that there is no continuum.
+
+In such a complex system it normally is not possible to select a single value of a variable.
+Then one resorts to a partial selection via a probability distribution 
+for the variable. This method includes also the case of selecting one value 
+via a `dirac distribution <http://en.wikipedia.org/wiki/Dirac_delta_function>`_,
+the entropy of which is 0. A larger entropy expresses
+an more imprecise selection or, when talking
+about predictions, more uncertainty about what to expect.
+
+For an exactly fixated value of one variable we
+often can predict the value of another variable
+via a functional dependency. 
+
+.. note::
+    Functions are important, because there is no
+    information needed to fix the value of the dependant variable.
+
+With an imprecise selection and an imprecise relation,
+analytical expressions for dependencies are often not feasible.
+Then one resorts to 
+`conditinal probability <http://en.wikipedia.org/wiki/Conditional_probability>`_:
+`p(a|b)` (probability of `a` given `b`),  `a\in A` and `b\in B`.
+
+.. _below:
+
+It is 
+
+.. math::
+
+    p(ab)=p(a)p(b|a)=p(b)p(a|b)
+
+.. note::
+
+    `p(a)p(a|b)` does not make sense.
+
+This is `Bayes Theorem <http://en.wikipedia.org/wiki/Bayes'_theorem>`_.
+It allows to derive `p(b|a)` from `p(a|b)`, i.e. the inverse dependency
+(corresponding to inverse function in exact mathematics). 
+The starting variable's distribution is the 
+`prior <http://en.wikipedia.org/wiki/Prior_probability>`_
+and the dependent variable's distribution is the *posterior*.
+
+There is a probability distribution for `B` for every value of `A` (`p(b | a)\in p(B | a)`):
+`\sum_b p(b|a)=1`. But for `p(b|a)` as a function of `a` 
+(`likelihood funcion <https://en.wikipedia.org/wiki/Likelihood_function>`_)
+there is no such normalization.
+In general `p(B | a_i)` and `p(B | a_j)` can actually be completely unrelated.
+
+Based on theoretical reasoning and assumptions, i.e by creating a model 
+(= finding variables and their dependency), one normally ends up
+using a predefined distribution, like the normal distribution.
+The parameters of such a distribution often need to be estimated 
+based on measurements. There are two related methods to do this:
+
+- There is the fundamental
+  `principle of maximum entropy <http://en.wikipedia.org/wiki/Principle_of_maximum_entropy>`_ (ME).
+  By maximizing the entropy one does not assume more 
+  or make a more precise selection than what is actually known.
+
+  Via a `Bayesian inference <https://en.wikipedia.org/wiki/Bayesian_inference>`_ one gets
+  `p(a|\{b_i\})=p(a)\frac{p(\{b_i\}|a)}{p(\{b_i\})}` (`p(\{b_i\}|a)=\prod_i p(b_i | a)`)
+  for the (parameter) variable `A` 
+  and then one can maximize the entropy of this distribution and take the `a\in A` with maximum `p(a|\{b_i\})`.
+  For a uniform `p(a)` this yields the same result as ...
+
+- `Maximum likelihood <https://en.wikipedia.org/wiki/Maximum_likelihood>`_ (ML).
+  It selects `a\in A` such that `\prod_i p(b_i | a)` becomes a maximum. 
+  
+The product (`\prod`) is an assumption that the observed `b_i` values belong to
+*independent and identical distributions* (i.i.d).
+
+Here some links regarding ML and ME: 
+`1 <http://thirdorderscientist.org/homoclinic-orbit/2013/4/1/maximum-likelihood-and-entropy>`_,
+`2 <http://www.cs.huji.ac.il/~shashua/papers/class3-ML-MaxEnt.pdf>`_,
+`3 <http://stats.stackexchange.com/questions/4978/comparison-between-maxent-ml-bayes-and-other-kind-of-statistical-inference-met>`_.
+
+
+-----------------------------------------------------------------------
+
+For more on information and probability I recommend these great books:
+
+- `Jaynes <http://omega.albany.edu:8008/JaynesBook.html>`_,
+
+- `MacKay <http://www.inference.phy.cam.ac.uk/itprnn/book.pdf>`_,
+
+- `Gray <http://www-ee.stanford.edu/~gray/it.pdf>`_.
+
+
+-----------------------------------------------------------------------
+
+Whether values are exclusive in the first place, i.e. are variables, 
+depends on the context, i.e. on the values of other variables. 
+An intelligent system can find out the exclusiveness by observation.
+Only then it can observe the frequency of values with respect to other values
+of the same variable. 
+
+
+
+
+

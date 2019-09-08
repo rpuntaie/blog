@@ -1,0 +1,549 @@
+.. vim: syntax=rst
+
+.. http://rolandpuntaier.blogspot.com/2015/01/scons.html
+
+.. {scons}
+
+The purpose of this post is to get acquainted with the cross-platform build
+automation system `SCons <http://www.scons.org>`_.
+
+.. contents::
+
+Why SCons
+---------
+
+In the past I've looked at ``boost-build`` and ``waf``.
+
+``boost-build`` has a huge code base in its own scripting language ``jam``.
+I don't want to learn that language. It is not general purpose.
+So in case of troubles I won't be able to dig into it.
+``CMake``, by the way, too, has its own scripting language.
+
+It needs to use a general purpose scripting language.
+Since I'm used to ``Python`` I go for something in ``Python``.
+
+``waf`` was too much work-in-progress,
+so it didn't have building knowledge implemented yet.
+It is actively developed, though, and I will look at it later again.
+
+``SCons`` and the build specification in a ``SConscript`` is written in
+``Python``.  ``SCons`` knows about many tools.  What I miss most about it,
+though, is that it is not Python 3 compatible yet.
+
+The ``SCons`` `user guide`_ and `man page`_ gives a comprehensive coverage.  But I feel more at
+ease if I have a rudimentary understanding of how it is implemented. Then I can
+look up things in the primary source of information, the code.
+It also helps in case of troubles.
+
+The ``SCons`` code is at bitbucket_. 
+
+Scons code
+----------
+
+SConstruct and SConscript
+.........................
+
+``SConstruct``, the starting ``SConscript``, is expected in the current directory,
+or somewhere above with ``-u``.
+
+``SConscipt`` is normal python code, which has at its disposal globals like ``Program``, 
+``SharedLibrary``, ``StaticLibrary``,..., ``Environment``. You can use these to specify
+your building steps. 
+
+``scons`` creates this environment for ``SConscript`` files, then forwards the
+``SConscript`` to the python interpreter.  The calls in the ``SConscript`` file
+create a node graphs, which ``scons`` uses to do the actual building
+afterwards.
+
+The ``src`` directory
+.....................
+
+.. code::
+
+    ├── src
+    │   ...
+    │   └── engine
+    │       ...
+    │       └── SCons
+    │           ├── Action.py Builder.py CacheDir.py Environment.py Executor.py Job.py 
+    │           │   Memoize.py PathList.py SConf.py SConsign.py Util.py Subst.py Warnings.py
+    │           ├── Node
+    │           │   ├ ...
+    │           ├── Options
+    │           │   ├ ...
+    │           ├── Platform
+    │           │   ├── ...
+    │           ├── Scanner
+    │           │   ├── C.py
+    │           │   ├── ...
+    │           ├── Script
+    │           │   ├── Main.py SConscript.py
+    │           │   ├ ...
+    │           ├── Tool
+    │           │   ├ ...
+    │           ├── Variables
+    │           │   ├── ...
+    ├── test
+    │   ├── ..
+
+
+``Environment``, ``Action``, ``Builder``, ... ``Node``, ... ``Options``, ... ``Scanner``, ... 
+provide the tools to use in the ``SConscript``. 
+
+``Script`` contains the ``scons`` code that orchestrates everything,
+the command line parsing, the creation of the environment for ``SConscript``, the building, ...
+It starts in ``Script/Main.py``.
+
+Creation of SConscript Environment
+..................................
+
+I'll squash the code and comment it to convey an idea about what is going on. 
+Don't skip these code squashes.
+
+We start in ``Main.py``.
+
+.. code:: python
+
+    main
+        #parse the command line
+        parser = SConsOptions.Parser(version) 
+        values = SConsOptions.SConsValues(parser.get_default_values())
+        _exec_main(parser, values) #function
+            _main(parser) #function
+                # get the SConscript file(s)
+                sfile = _SConstruct_exists(repositories=options.repository,
+                for script in scripts:
+                    # interpret SConscript files. further detail below
+                    SCons.Script._SConscript._SConscript(fs, script)
+                #then build
+                nodes = _build_targets(fs, options, targets, target_top)
+                    #in _build_targets
+                    #targets can come from the command line or
+                    targets = SCons.Script.BUILD_TARGETS
+                    #or the default target
+                    targets = SCons.Script._Get_Default_Targets(d, fs)
+                    #make nodes
+                    nodes = [_f for _f in map(Entry, targets) if _f]
+                    #and then run the required build tasks
+                    taskmaster = SCons.Taskmaster.Taskmaster(nodes, task_class, order, tmtrace)
+                    jobs = SCons.Job.Jobs(num_jobs, taskmaster)
+                    jobs.run(postfunc = jobs_postfunc)
+
+
+``_SConscript`` is where 
+
+    - the globals for the ``SConscript`` get provided
+
+    - the ``SConscript`` files get interpreted by python
+
+``_SConscript`` is also called by the ``SConscript`` command placed in a ``SConscript`` file.
+
+.. code:: python
+
+    _SConscript
+        for fn in files:#SConscript files
+            call_stack.append(Frame(fs, exports, fn))
+                #in Frame
+                BuildDefaultGlobals()
+                    global GlobalDict
+                    d = SCons.Script.__dict__ 
+                    for m in filter(not_a_module, dir(SCons.Script)):
+                         GlobalDict[m] = d[m]
+            exec _file_ in call_stack[-1].globals
+
+
+This means that the globals available to a ``SConscript`` are in::
+
+    src/engine/SCons/Script/__init__.py
+
+Functions of a global default ``SConsEnvironment`` instance are made global as well.
+
+.. code:: python
+
+    SCons.Environment.Environment = SConsEnvironment
+    DefaultEnvironmentCall
+        global _default_env
+        _default_env = SCons.Environment.Environment(*args, **kw)
+
+    #in Script/__init__.py
+    for name in GlobalDefaultEnvironmentFunctions + GlobalDefaultBuilders:
+        exec "%s = _SConscript.DefaultEnvironmentCall(%s)" % (name, repr(name))
+
+Here is the list of the globals (``Script/__init__.py``).
+
+*BuildTask CleanTask QuestionTask AddOption GetOption SetOption Progress
+GetBuildFailures call_stack Action AddMethod AllowSubstExceptions Builder
+Configure Environment FindPathDirs Platform Return Scanner Tool WhereIs
+BoolVariable EnumVariable ListVariable PackageVariable PathVariable Chmod Copy
+Delete Mkdir Move Touch CScanner DScanner DirScanner ProgramScanner
+SourceFileScanner CScan DefaultEnvironment ARGUMENTS ARGLIST BUILD_TARGETS
+COMMAND_LINE_TARGETS DEFAULT_TARGETS Variables Options Command*
+
+and the default Environment functions made global (``Environment.py, SConscipt.py``).
+
+*SConscript Default EnsurePythonVersion EnsureSConsVersion Exit Export
+GetLaunchDir Help Import SConscriptChdir AddPostAction AddPreAction Alias
+AlwaysBuild BuildDir CacheDir Clean Decider Depends Dir NoClean NoCache
+Entry Execute File FindFile FindInstalledFiles FindSourceFiles Flatten
+GetBuildPath Glob Ignore Install InstallAs Literal Local ParseDepends
+Precious Repository Requires SConsignFile SideEffect SourceCode
+SourceSignatures Split Tag TargetSignatures Value VariantDir CFile CXXFile
+DVI Jar Java JavaH Library M4 MSVSProject Object PCH PDF PostScript Program
+RES RMIC SharedLibrary SharedObject StaticLibrary StaticObject Tar
+TypeLibrary Zip Package*
+
+The **Environment** is a pivotal element. All variables, lists and
+classes are in it and can be addressed using ``$<variable>``, which then 
+will be substituted when needed.
+
+.. code:: python
+
+    SConsEnvironment(Base(SubstitutionEnvironment))
+        #the environment dict starts with
+        self._dict = semi_deepcopy(SCons.Defaults.ConstructionEnvironment)
+        self._dict['BUILDERS'] = BuilderDict(self._dict['BUILDERS'], self)
+        self._dict['PLATFORM'] = str(platform)
+        ...
+        #then tools are added
+        SCons.Tool.Initializers(self) #Install
+        if tools is None:
+            tools = self._dict.get('TOOLS', None)
+            if tools is None:
+                # sets up the default tools in SCons/Tool/__init__.tool_list
+                tools = ['default']
+        apply_tools(self, tools, toolpath)
+
+Every tool is a module in the Tool folder. 
+
+.. code:: python
+
+    class Tool(object):
+            module = self._tool_module()
+                #load the tool module
+                return imp.load_module(self.name, file, path, desc)
+            self.generate = module.generate
+        def __call__(self, env, *args, **kw):
+            env.Append(TOOLS = [ self.name ])
+            #the tool module's generate fills the environment with variables, actions,... 
+            self.generate(env, *args, **kw)
+
+Because of the default tools in ``tool_list`` in ``SCons/Tool/__init__`` 
+the environment gets populated with many construction variables (``CCFLAGS``, ``ASFLAGS``,...).
+
+System environment variables are not used, unless you choose to do so
+
+.. code:: 
+
+    import os
+    env = Environment(ENV = {'PATH' : os.environ['PATH']})
+
+``env['ENV'][PATH]`` is used in ``env.PrependENVPATH``, ``env.AppendENVPath`` and ``env.WhereIs``.
+
+Actions, Builders and Scanners
+..............................
+
+**Actions** do the work. The action types are created using one function: **Action**.
+Depending on the parameters it generates one of these types::
+
+    CommandAction
+    CommandGeneratorAction
+    FunctionAction
+    ListAction
+
+The ``__call__()`` method takes *Target, Source, env*. 
+
+This example creates ``tst.txt`` at the time the ``SConscript`` is interpreted.
+
+.. code:: python
+
+    a=Action('touch tst.txt')
+    a([],[],Environment)
+
+But actual execution is supposed to be done after the interpretation of ``SConscript``
+orchestrated by ``Taskmaster``.
+
+A **Builder** wraps an action. And again there is a global ``Builder`` factory function.
+It either has an ``action`` or a ``generator`` parameter creating an action.
+A ``generator`` can be a function that yields another function or command(s).
+A builder can also take an ``emitter`` modifying *target,source,env*. 
+
+Calling the builder's ``__call__()`` creates nodes. The target nodes get an
+``executor``, which will execute the action after the ``SConscript`` has been
+interpreted, if necessary.  A target will usually have sources that can be
+targets themselves. This makes up a nodes graphs. There are more of them. If
+not all targets should be built, specify the wanted one using ``Default`` or
+via command line. A builder can derive the target from the source.
+
+.. code:: python
+
+    __call__(self, env, target=None, source=None,...
+        _execute(self, env, target, source,...
+            #in this targets are derived from sources if needed
+            tlist, slist = self._create_nodes(env, target, source)
+            if executor is None:
+                executor = SCons.Executor.Executor(self.action, env, [],...
+            for t in tlist:
+                t.cwd = env.fs.getcwd()
+                t.builder_set(self)
+                t.env_set(env)
+                t.add_source(slist)
+                t.set_executor(executor)
+                t.set_explicit(self.is_explicit)
+            return SCons.Node.NodeList(tlist)
+
+Builders are in the ``BUILDERS`` Environment variable. 
+
+The global function ``Command`` creates a builder and executes it. It also
+takes python functions as actions.
+
+The ``executor`` will also scan for implicit dependencies using scanner
+functions taking *node,env,path* and returning File nodes.  Add new scanners
+with the global **Scanner** factory function taking
+*scannerfunc,name,optionalarg,skeys,...*, *skeys* being a list of suffixes.
+Scanners are collected in the ``SCANNERS`` environment variable.
+
+Scons Commands in Vim
+---------------------
+
+Vim with python interpreter integrated can be used to experiment with SCons.
+
+The following injects the ``SCons`` globals into the current (Vim) python.
+
+.. code:: python
+
+    import sys
+    class global_injector:
+        def __init__(self):
+            try:
+                self.__dict__['builtin'] = sys.modules['__builtin__'].__dict__
+            except KeyError:
+                self.__dict__['builtin'] = sys.modules['builtins'].__dict__
+        def __setattr__(self,name,value):
+            self.builtin[name] = value
+        def update(self,d):
+            self.builtin.update(d)
+    Global = global_injector()
+
+    def gscons():
+        from SCons.Script.SConscript import BuildDefaultGlobals
+        Global.update(BuildDefaultGlobals())
+
+        from SCons.Defaults import DefaultEnvironment
+        env = DefaultEnvironment()
+
+        from SCons.Node.FS import FS
+        env.fs = FS()
+        env.fs.set_SConstruct_dir(env.fs.getcwd())
+
+    gscons()
+
+
+``Command`` returns a node list. A ``Node`` has a ``build()`` method.
+
+.. code:: python
+
+    tsttxt = Command('tst.txt',[],'touch tst.txt')
+    tsttxt[0].build()
+
+The following will only work once, because ``SCons`` caches the file system call results.
+Repeat ``gscons();tsttxt=...``, then it creates ``tst.txt`` again.
+
+.. code:: python
+
+    from SCons.Taskmaster import Taskmaster
+    from SCons.Job import Jobs
+    taskmaster=Taskmaster(tsttxt)
+    jobs = Jobs(1, taskmaster)
+    jobs.run()
+
+A SCons Example
+---------------
+
+My example here uses bottle *SimpleTemplate* to create a *c* file 
+for a shared library and a test program for that library.
+
+SConstruct
+
+.. code:: python
+
+    from bottle import SimpleTemplate
+
+    def simple(target,source,env):
+        for s,t in zip(source,target):
+            st=SimpleTemplate(name=s.name)
+            with open(t.path,'w') as f: f.write(st.render())
+
+    stpl = lambda fl: Command(fl,[f+'.stpl' for f in fl],simple)
+    stpl('funi.h funi.c tst.cpp'.split())
+
+    SharedLibrary('funi.c')
+    Program('tst.cpp',LIBS=['funi'],LIBPATH=['.'],RPATH=Literal('\\$$ORIGIN'))
+
+
+funi.h.stpl
+
+.. code:: cpp
+
+    #pragma once
+    #if defined _WIN32 || defined __CYGWIN__
+      #ifdef BUILDING_DLL
+        #ifdef __GNUC__
+          #define DLL_PUBLIC __attribute__ ((dllexport))
+        #else
+          #define DLL_PUBLIC __declspec(dllexport)
+        #endif
+      #else
+        #ifdef __GNUC__
+          #define DLL_PUBLIC __attribute__ ((dllimport))
+        #else
+          #define DLL_PUBLIC __declspec(dllimport)
+        #endif
+      #endif
+      #define DLL_LOCAL
+    #else
+      #if __GNUC__ >= 4
+        #define DLL_PUBLIC __attribute__ ((visibility ("default")))
+        #define DLL_LOCAL  __attribute__ ((visibility ("hidden")))
+      #else
+        #define DLL_PUBLIC
+        #define DLL_LOCAL
+      #endif
+    #endif
+    
+    #ifdef __cplusplus
+    extern "C"
+    {
+    #endif
+    %for i in range(4):
+    int func{{i}}(int a);
+    %end
+    #ifdef __cplusplus
+    }
+    #endif
+
+funi.c.stpl
+
+.. code:: cpp
+
+    #include "funi.h"
+    %for i in range(4):
+    int func{{i}}(int a)
+    {
+        if (a < {{i}})
+            return a;
+        return {{i}};
+    }
+    %end
+
+tst.cpp.stpl
+
+.. code:: cpp
+
+    #include <iostream>
+    #include "funi.h"
+    using namespace std;
+    int main()
+    {
+        %for i in range(4):
+            cout << func{{i}}(2) << endl;
+        %end
+        return 0;
+    }
+
+
+A variation of this with ``variant_dir`` I've posted as answer to this 
+`question <http://stackoverflow.com/questions/16545459/scons-code-generation-and-variantdir/>`_.
+
+Comparison with Make
+--------------------
+
+Make despite its `flaws <whats wrong with gnu make_>` is the predominant build automation system.
+Let's look at a simple `Makefile <https://gist.github.com/reecer/11065346>`_.
+
+.. code:: 
+
+    CC=gcc
+    CCFLAGS=-Wall
+    LDFLAGS=
+    SOURCES=$(wildcard *.c)
+    OBJECTS=$(SOURCES:.c=.o)
+    TARGET=puttargethere
+
+SCons knows about most variables and they have default values that work on most platforms. 
+You can replace or add to them like this.
+    
+.. code:: python
+
+    env.Replace(CC='mycc')
+    env.Append(CCFLAGS='-g')
+
+For the following you would use ``Default``.
+
+.. code::
+
+    all: $(TARGET)
+
+``SCons`` can derive the target name from the source name, and it also knows how to build 
+the target.  So there is no need to provide the command.
+
+.. code::
+
+    $(TARGET): $(OBJECTS)
+            $(CC) $(LDFLAGS) -o $@ $^
+     
+    %.o: %.c %.h
+            $(CC) $(CCFLAGS) -c $<
+     
+can be 
+
+.. code:: python
+
+    o = Object('a.c b.c c.c'.split())
+    Program('puttargethere',o)
+
+but because of the internal knowledge it's enough to have.
+
+.. code:: python
+
+    Program('puttargethere','a.c b.c c.c'.split())
+
+
+Configure
+.........
+
+The global ``Configure`` method creates a ``SConfBase`` instance (see ``SConf.py``),
+whose methods allow to make checks on the system, like ``autoconf`` does.
+
+With this we have the following analogy::
+
+    make configure && make && make install
+    scons configure && scons && scons install
+
+
+Links
+-----
+
+| SCons `user guide`_
+| SCons `man page`_
+| SCons `wiki`_
+| SCons at bitbucket_
+| `scons vs make`_ 
+| `whats wrong with gnu make`_
+
+.. _user guide: http://www.scons.org/doc/production/HTML/scons-user.html
+.. _man page: http://www.scons.org/doc/production/HTML/scons-man.html
+.. _wiki: http://www.scons.org/wiki
+.. _whats wrong with gnu make: http://www.conifersystems.com/whitepapers/gnu-make/
+.. _scons vs make: http://www.genode-labs.com/publications/scons-vs-make-2008.pdf
+.. _bitbucket: https://bitbucket.org/scons/scons.
+
+
+.. Further Examples
+.. ................
+.. 
+.. In general to get acquainted with a new software a good idea is to look through
+.. its test software. This way one sees many examples.  SCons comes with its own test
+.. framework in the QMTest. The main class there is ``TestSCons``.  The tests themselves 
+.. are in the ``test`` folder.
+
+

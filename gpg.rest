@@ -1,0 +1,337 @@
+.. vim: syntax=rst
+
+.. http://rolandpuntaier.blogspot.com/2016/05/gnupg.html
+
+.. note:: A short keyid is insecure.
+
+    Current GnuPG will print a 16 digit keyid. And that should also be used in commands.
+
+    https://security.stackexchange.com/questions/84280/short-openpgp-key-ids-are-insecure-how-to-configure-gnupg-to-use-long-key-ids-i
+
+
+I recently decided to use `GNU Privacy Guard <https://www.gnupg.org/>`_ (gnupg, gpg2).
+This blog summarizes the steps taken.
+
+To avoid exposing keys to risk of interception **asymmetric** encryption was
+adopted, in which everybody can know your public key. It is needed to
+**encrypt** messages for only you to read. While the private key never needs to
+be communicated. It is used to **decrypt** messages meant for you, and to
+**sign** messages to assure others you are the sender.  A message can be any
+data, any file, binary or text.
+
+.. code:: sh
+
+    gpg2 -e <file>                   # encrypt for yourself; creates .gpg file
+    gpg2 -e <file> -r <recipient>    # encrypt for someone else
+    gpg2 -d <file>.gpg               # decrypt u
+
+    gpg2 -s <file>                   # sign a file
+    gpg2 -s -e <file> -r <recipient> # sign and ecrypt a file for someone
+    gpg2 -b <file>                   # create separte signature .asc file
+    gpg2 -v <file>.asc               # verify authenticity of message
+
+To get to use ``gpg2`` like that you need to create a key pair for you.
+
+.. note:: A password you will use for *some* time, but a ``gpg`` key pair should accompany you for
+    a *long, long time*. It is like the key to a flat.
+    If you loose it you loose access to your encrypted data or access to internet services you use,
+    but you also loose the `trust <https://www.gnupg.org/gph/en/manual/x547.html>`_ associated with your public key.
+
+    Opt therefore for a longer and stronger key length (currently 4096 bits) and
+    adopt Debian practice to only use `subkeys <https://wiki.debian.org/Subkeys>`_,
+    which get automatically signed by the primary key (selfsigning), i.e. inherit the trust of the primary key.
+
+    To verify the subkey, signed with the private primary key, only the public primary key is needed.
+    The only passphrase protected private primary key (``<keygrip>.key``) can be removed from disk.
+
+To set you up:
+
+#. generate a primary key (automatically generates an encrypting subkey)
+#. generate a signing subkey
+#. backup the keys
+#. remove the master private key
+#. import the subkeys on other computers
+#. let (the public part of) the primary key be signed to increase your trust
+
+The steps in more detail:
+
+#. generate a primary key
+
+    .. code:: sh
+
+        gpg2 --full-gen-key
+
+    allows to specify 4096 as key length, which is wanted by `debian <https://wiki.debian.org/Keysigning>`_.
+    ``gpg2 --gen-key`` uses the current default of 2048 bits.
+
+    It takes some time to gain entropy needed for the actual creation of the key.
+
+    .. code:: sh
+
+        gpg2 -K
+
+    prints::
+
+        /home/roland/.gnupg/pubring.gpg
+        -------------------------------
+        pub   rsa4096/43B86228 2016-04-09
+        uid         [ultimate] Roland Puntaier (1971) <roland.puntaier@gmail.com>
+        sub   rsa4096/89E58C2B 2016-04-09
+
+
+    This
+
+    .. code:: sh
+
+        gpg2 -K --with-colons
+
+    also prints the usage flags: ``sc`` (sign certification) for the primary key, and ``e`` (encryption) for the sub key::
+
+        tru::1:1460238398:0:3:1:5
+        pub:u:4096:1:BC9A552643B86228:1460237000:::u:::scESC:::::::
+        uid:u::::1460237000::67D66F8E5A03CB7F1D67822B723617535D8A3CC9::Roland Puntaier (1971) <roland.puntaier@gmail.com>:::::::::
+        sub:u:4096:1:39DCC42189E58C2B:1460237000::::::e::::::
+
+    `-K` stands for ``--list-secret-keys``. ``-k`` will list also the key IDs of all your contacts, of whom you only have the public key.
+
+    There was one subkey for encryption automatically generated, but we want to do without the primary key for the daily use.
+    Therefore we need to create a signing subkey.
+
+#. generate a signing subkey
+
+    .. code:: sh
+
+         gpg2 --edit-key 43B86228
+
+    prints::
+
+        gpg (GnuPG) 2.1.10; Copyright (C) 2015 Free Software Foundation, Inc.
+        This is free software: you are free to change and redistribute it.
+        There is NO WARRANTY, to the extent permitted by law.
+
+        Secret key is available.
+
+        sec  rsa4096/43B86228
+             created: 2016-04-09  expires: never       usage: SC
+             trust: ultimate      validity: ultimate
+        ssb  rsa4096/89E58C2B
+             created: 2016-04-09  expires: never       usage: E
+        [ultimate] (1). Roland Puntaier (1971) <roland.puntaier@gmail.com>
+
+    At the prompt wite::
+
+        addkey
+
+    and choose a signing only RSA 4096 key. Then save and quit::
+
+        save
+        quit
+
+    .. note:: This signing subkey cannot be used to sign other keys, because a subkey is expected to be revoked
+              and replaced after some time.
+
+#. backup the keys
+
+   #. Back up the primary key separately.
+
+      .. code:: sh
+
+          gpg2 --armor --output my-secret-key.asc  --export-secret-keys roland.puntaier@gmail.com
+
+      You will need it to replace the current subkeys some time in the future, in a few years,
+      or to sign other keys (see further down, and `subkeys <https://wiki.debian.org/Subkeys>`_).
+
+   #. Back up the subkeys without the primary key.
+
+      .. code:: sh
+
+          gpg2 --armor --output my-secret-subkeys.asc --export-secret-subkeys roland.puntaier@gmail.com
+
+      .. note::
+
+          ``gpg2`` command line parameters containing ``secret`` denote both the private and the public part of keys you have created yourself.
+          There is no need to additionally use the non-secret command line parameter. ``gpg2`` output and documentation
+          seems to use *private* and *secret* interchangingly.
+
+
+      This backup can be imported on other devices.
+
+      .. code:: sh
+
+          gpg2 --import /mnt/usb/my-secret-subkeys.asc
+
+      Else copy with ``scp`` from computer to computer.
+
+      .. code:: sh
+
+          cd
+          gpg2 --export-secret-keys -a -o sk.asc roland.puntaier@gmail.com
+          scp sk.asc 192.168.1.109:/home/roland/sk.asc
+          rm sk.asc
+          #other computer
+          cd
+          gpg2 --import sk.asc
+          rm sk.asc
+
+      Do the same with ``--export-ownertrust`` and ``--import-ownertrust",
+      or copy ``.gnupg/trustdb.gpg``.
+
+#. remove the master private key
+
+   The files storing the private key is ``~\.gnupg\private-keys-v1.d\<keygrip>.key``, where keygrip is shown with ``--with-keygrip``.
+
+    .. code:: sh
+
+        gpg2 -K --with-keygrip
+
+   Remove this file, or alternatively::
+
+        gpg-connect-agent "DELETE_KEY <keygrip>" /bye
+
+   Or yet another way::
+
+        gpg2 --delete-secret-key roland.puntaier@gmail.com
+        gpg2 --import my-secret-subkeys.asc
+
+#. let the (public part of) your primary key be signed
+
+   The public key is identified by an ID and or by a fingerprint. The latter you need to provide in order to
+   let your public key be signed. The signer will know you in person or will verify your identity via some official document.
+
+   If your public key does not have trust yet you can give the fingerprint to a person on request, e.g. by telephone.
+
+   The command
+
+   .. code:: sh
+
+       gpg2 --fingerprint
+
+
+   shows::
+
+      /home/roland/.gnupg/pubring.kbx
+      -------------------------------
+      pub   rsa4096/43B86228 2016-04-09
+            Key fingerprint = F85C B631 327E D8DC D50C  9FD3 BC9A 5526 43B8 6228
+      uid         [ unknown] Roland Puntaier (1971) <roland.puntaier@gmail.com>
+      sub   rsa4096/89E58C2B 2016-04-09
+      sub   rsa4096/0DF70FCE 2016-04-10
+
+
+   At a `signing party <https://herrons.com/keysigning-party-guide/>`_
+   participants will verify each other's fingerprint and
+   identity, the latter by inspecting an official document, like a passport or driving
+   license.
+
+   The organizer will probably have provided a link to upload your ``--fingerprint`` output.
+   He will print out a list for everyone. The list contains all the fingerprints.
+   In addition bring along a printout of your own and read from this one and let the others
+   check against the list entry.
+
+   Back at home you `sign the keys <http://www.spywarewarrior.com/uiuc/gpg/gpg-com-4.htm#4-6>`_:
+
+   First you need to get the public keys:
+
+   .. code:: sh
+
+      gpg2 --recv-keys <(last 8 or 16 digits of)fingerprint> #key needs to be on key server
+      #or
+      gpg2 --import <text file with public key> #e.g. sent via email
+
+   Then use the backed up primary key via or as in this script modified from `here <https://incenp.org/notes/2015/using-an-offline-gnupg-master-key.html>`_.
+
+   .. code:: sh
+
+        #!/usr/bin/env sh
+        # script name and usage: gpg-offline-master --sign-key <keyid>
+        # https://incenp.org/notes/2015/using-an-offline-gnupg-master-key.html
+        LABEL=${SECRET_KEY_DEVICE_LABEL:-ARCH_201512}
+        KEYFILE=$USER/my-secret-key.asc
+        device=$(findfs LABEL=$LABEL)
+        if [ -n "$device" ]; then
+            udisksctl mount --block-device $device
+            tmpdir=$(mktemp -d -p $XDG_RUNTIME_DIR gpg.XXXXXX)
+            gpg2 --homedir $tmpdir --import /run/media/$USER/$LABEL/$KEYFILE
+            udisksctl unmount --block-device $device
+            gpg2 --homedir $tmpdir --keyring ${GNUPGHOME:-$HOME/.gnupg}/pubring.kbx $@
+            [ -f $tmpdir/S.gpg-agent ] && gpg-connect-agent --homedir $tmpdir KILLAGENT /bye
+            rm -rf $tmpdir
+        fi
+
+   Next upload the signed keys to the keyserver
+
+   .. code:: sh
+
+      gpg2 --send-key <keyid>
+
+   and/or send them via email to the participant of the signing party.
+
+
+**QA**
+
+How are more recipients handled?
+
+.. [#] https://security.stackexchange.com/questions/85157/can-i-check-who-can-decrypt-my-gpg-message-after-i-encrypt-it
+
+    When you encrypt a message, GPG generates a random symmetric key, called a
+    "session key", and uses it to encrypt the message.  It then makes a bunch of
+    copies of the session key, and encrypts each one under a different public key,
+    one for each recipient.  It then packages all of these encrypted "key packets"
+    along with the encrypted message using the 
+    `OpenPGP container format <https://tools.ietf.org/html/rfc4880>`__
+
+
+Why do I always get ``There is no assurance this key belongs to the named user``?
+
+.. [#] https://security.stackexchange.com/questions/129474/how-to-raise-a-key-to-ultimate-trust-on-another-machine
+
+    You [give your subkeys] ultimate trust through opening the key edit command line::
+
+        gpg --edit-key <keyid>
+
+
+.. [#] https://security.stackexchange.com/questions/46595/what-trust-level-should-i-give-keys-i-need-for-encryption
+
+    You can explicitly bypass all key validation in GPG by changing the 'trust
+    model' for the command you're executing. By default the 'PGP' trust model is
+    used which is why GPG expects you to explicitly mark keys as trusted.
+    Alternatively you can tell GPG to use the 'always' trust model which will
+    bypass the message you're seeing::
+
+        --trust-model always
+
+Is brute-force cracking a GPG encrypted file feasible, without possessing the private key?
+
+.. [#] https://security.stackexchange.com/questions/77340/how-easy-is-it-to-crack-gpg-with-private-key-but-without-password
+
+    ... an AES ... can be randomly generated. 
+    For 128-bit AES, the brute-force attacker will take ``2^(128-30-1) = 2^97``
+    seconds. That's about 5,000,000,000,000,000,000,000 years.
+
+Having the private key, is brute-force guessing the passphrase to it feasible?
+
+.. [#] https://github.com/felipesi/gpg-crack/blob/master/crackgpg.sh
+.. [#] https://stackoverflow.com/questions/4531253/bruteforce-gpg-passphrase-using-script
+
+
+Why save a revocation certificate, if I can generate one when needed?
+
+.. [#] https://askubuntu.com/questions/597750/how-to-revoke-old-openpgp-keys
+
+    One needs the primary secret key to generate the revocation certificate.
+    So one should generate the revocation certificate (``--gen-revoke``)
+    before removing the primary key from the computer to savely store it away.
+    ``gpg`` does that automatically now, but the certificate needs to be printed and saved.
+
+How to migrate/copy ``.gnupg`` to another computer?
+
+.. [#] https://access.redhat.com/solutions/211551
+   but the following works with the same gnupg versions::
+
+    tar -czf gnupg.tar.gz .gnupg
+    scp gnupg.tar.gz roland@192.168.1.106:/home/roland/gnupg.tar.gz
+    #on target machine
+    tar -xf gnupg.tar.gz
+    rm gnupg.tar.gz
+    chmod -R 700 .gnupg
+

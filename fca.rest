@@ -1,0 +1,318 @@
+.. vim: syntax=rst
+
+.. http://rolandpuntaier.blogspot.com/2015/06/fca.html
+
+-----------------------
+Formal Concept Analysis
+-----------------------
+
+My Motivation
+-------------
+
+A had my first contact with 
+`Formal Concept Analysis (FCA) <http://en.wikipedia.org/wiki/Formal_concept_analysis>`_
+in Summer 2004.  At the time I did some experiments in python, which I want to share here.
+Later on I became too busy again with work and other projects.
+Writing about it is also a refresher to myself.
+
+My first motivation that made me google and find FCA
+was `DB <https://en.wikipedia.org/wiki/Database>`_ related.
+
+    As an example let's take ``(Givenname,Familyname)``. You can do either
+    ``(G,iG)1-n(iG,F)`` and you will have many family names ``F`` occurring
+    more than once (``n>1`` times) or you can do ``(G,iF)m-1(iF,F)`` and you
+    will have many given names ``G`` occurring more than once (``m>1`` times).
+
+    To avoid this you would do
+
+    +-----------------------------------------------------------------+
+    | ``(G,iG)m-n(iF,F)`` `\Rightarrow` ``(G,iG)1-m(iG,iF)n-1(iF,F)`` |
+    +-----------------------------------------------------------------+
+
+    This way a given name and a family name would be there once
+    and you would reference each of them. 
+
+    One can repeat the process, if there are more columns. This is 
+    called `DB normalization <https://en.wikipedia.org/wiki/Database_normalization>`_. 
+
+    - Basically whenever a combination of values turns up more then
+      once one would have to make an extra table. This extreme
+      normally is not done.
+    - Actually the `foreign key <https://en.wikipedia.org/wiki/Foreign_key>`_
+      is still repeated instead.
+      Something like run-length encoding would mean referencing 
+      tables instead of rows in tables. It is possible but
+      not relational database like.
+    - Normally you end up having a lot of repeats in a table.
+      This flattening of data and thereby ignoring the context
+      is the reason for `probability <https://en.wikipedia.org/wiki/Probability>`_.
+
+
+My previous blog was `What is Information <http://rolandpuntaier.blogspot.co.at/2015/03/what-is-information.html>`_. 
+There I identify the omnipresent *variable*, understood as a set to exclusively choose from,
+as a fundamental building block of information processing.
+
+In FCA the basic variable is binary:
+distinguishable elements of a set, called *attributes*, are either there or not there together,
+and such a subset of the set of attributes is an *object*.
+
+The next step of an information processing system, in order to reduce the memory usage,
+is to find, which of the attributes are exclusive in a context, and thus form a new variable.
+
+A DBs is designed by a human.
+The analysis leading to tables/variables is done in our mind.
+How is the algorithm we perform in our mind?
+How could this 'intelligence be done artificially'?
+It seemed quite basic to information processing.
+People quite dynamically create variables, relate them,
+and categorize them based on certain properties or usages
+of relevance to the task at hand. 
+
+For me two questions are important. 
+
+- How does our mind come up with variables and how do we organize them?
+
+- What is the most (memory) efficient way to do it?
+
+Years before I had come across an `article <http://www.jucs.org/jucs_5_11/computing_as_information_compression>`_ 
+and subsequently the Web site of `Gerard Wolff <http://www.cognitionresearch.org/extras/bio.htm>`_, which 
+considers compression the basis of computing.
+
+During university time I also had some contact with `artificial neural network <https://en.wikipedia.org/wiki/Artificial_neural_network>`_.
+It has some commonalities with FCA, like `Hebb rule <https://en.wikipedia.org/wiki/Hebbian_theory>`_, which associates stimuli
+and thus forms concepts in a parallel fashion. 
+
+Definitions
+-----------
+
+Basic starting point is the context, but not the diffuse context of everyday language, but mathematically well confined.
+
+.. math::
+
+    K = (O,A,I)
+
+
+- `K` is called **context**.
+
+- `O` is a set of **objects**.
+
+- `A` is a set of **attributes**.
+
+- `I\subset O\times A` is the **incidence**.
+
+`\mathbf{2} = \{1,2\}` and `2^A` denotes the power set.
+For subsets `O_s\subset O` (`O_s\in 2^O`) and `A_s\subset A` (`A_s\in 2^A`) one defines these mappings:
+
+- from a subset of `O` (`O_s`) to a subset of `A` (`A_s`):
+
+.. math::
+
+  &\mathbf{2}^O \rightarrow \mathbf{2}^A \\
+  &O_s^K = O_s' = \{a\in A|\forall_{o\in O_s} (o,a)\in I\}
+  
+- and vice versa
+
+.. math::
+
+  &\mathbf{2}^A \rightarrow \mathbf{2}^O \\
+  &A_s^K = A_s' = \{o\in O|\forall_{a\in A_s} (o,a)\in I\}
+
+`K` is represented as a table where rows are objects and columns are attributes. 
+
+Note that `K(o) = o^K = o'\qquad := \{o\}^K` maps `O\rightarrow 2^A` and that
+`A_s^K \neq K(A_s)=\{K(a)|a\in A_s\}`.
+
+The context is called **clarified**, if there are no duplicate rows or columns:
+`K(o)=o'` and `K(a)=a'` are injective.
+
+`K(K(o)) = o''` and `K(K(a)) = a''` are 
+`closure operation <http://en.wikipedia.org/wiki/Closure_operator>`_.
+
+`C=\{c|c=(O_s'',O_s')=(A_s',A_s''),O_s\in 2^O, A_s\in 2^A\}=\{O,A\}`
+is a concept 
+`lattice <http://en.wikipedia.org/wiki/Lattice_(order)>`_.
+Every concept node in the lattice consists of a set of objects and a set of attributes.
+Nodes further up have more objects and nodes further down have more attributes.
+If the sets of objects (attributes) of the one above is a superset (subset) of the objects (attributes) 
+of the one below, then these nodes are linked; they are comparable and form a *chain*.
+For neighboring linked nodes, the one above is called *successor*, the one below *predecessor*.
+Two links *meet* when moving downward and they *join* upward.
+
+meet = `infimum <https://en.wikipedia.org/wiki/Infimum_and_supremum>`_ = `\wedge`:
+
+.. math::
+
+    \bigwedge C_s = \{\bigcap O_s'',\bigcup O_s'\}
+
+join = `supremum <https://en.wikipedia.org/wiki/Infimum_and_supremum>`_ = `\vee`:
+
+.. math::
+
+    \bigvee C_s = \{\bigcup O_s'',\bigcap O_s'\}
+
+The `s` subscript is iterated over after the mapping has been done.
+
+The `\bigvee` is a logical *or* (union) of the extents.
+The `\bigwedge` is a logical *and* (intersection) of the intents.
+
+The `partial ordering <http://en.wikipedia.org/wiki/Partially_ordered_set>`_
+is by convention based on the **extent** (objects)
+and not the **intent** (attributes) of concepts. 
+One can, though, regard the attributes as objects and the objects as attributes:
+The two concept lattices are called *dual* to each other.
+
+Attributes or objects that don't produce new
+nodes in the lattice, but are only an addition to
+already existing nodes, can be removed.
+The intent of such objects (extent of such attributes)
+are equal to the intersection of other intents (extents).
+Removing them will produce a `reduced <http://en.wikipedia.org/wiki/Formal_concept_analysis#reduced>`_ context.
+
+Two concepts that can be compared (`a < b`), will meet in `a` and join in `b`.
+If not comparable they will join or meet somewhere else, say `c`. 
+`c` is comparable to `a` and `b`.
+Possibly they will join at the *top* or meet at the *bottom*.
+
+Discussion
+----------
+
+Here some thoughts of interest to me, skimming the surface, asking for further explorations.
+
+The *open sets* in a `topology <https://en.wikipedia.org/wiki/Topology#Open_sets_definition>`_
+
+- The empty set and X itself are open.
+- Any union of open sets is open.
+- The intersection of any finite number of open sets is open.
+
+can be compared to concepts. The set X can be identified as attributes.
+
+The concept lattice is the result of many (open set) inputs.
+
+A *chain* can be seen as an extensive quantity, whose elementary constituents are a selection of attributes.
+In a one-dimensional crossing of a chain the attributes
+can be ordered by the time they meet the chain. 
+'How far down' from a starting point 
+would be a `metric <https://en.wikipedia.org/wiki/Metric_%28mathematics%29#Definition>`_
+for these attributes.
+
+If going down the chain we have a regular pattern of meeting 2 new attributes, 
+then we deal with a 2-dimensional space.
+The shortest distance determines, which attributes belong to which dimension.
+This thread leads to geometry.
+
+Elementary attributes are the intents of the nodes just below *top*.
+It is waisted resources linking them to *top*. Instead in a lattice they
+can be identified by their links downward, by their topology.
+
+Due to the topology induced ordering it is possible to address the attributes
+via counting, i.e. via combinations of concepts. That is the start of analytical descriptions
+and of languages.
+
+In the context every attribute was linked to every object with a switch: *there* xor *not there* (bit).
+N attributes that are exclusive can consume less than N bits memory by using combinations: `\log N` bits.
+Concepts `a_i` are (locally) exclusive if they meet with a concept `b` in the pattern
+`a_i\vee b = c_i`. So the `a_i` form a *variable* and the `c_i` are a *function* of `a_1`,
+i.e. they can be constructed instead of stored.
+
+A variable is a meta-concept. A variable doesn't need to be linked to every individual *value* (=concept),
+if a linear ordering is available to allow *intervals*.
+When each of a set of attributes (concepts) meets with each of another set,
+a 2-dimensional space is spanned 
+(`cartesion product <https://en.wikipedia.org/wiki/Cartesian_product>`_).
+Here analytic descriptions of shapes allow to reduce
+memory usage.
+
+These analytical elements are also concepts, concepts with 
+`parameters <https://en.wikipedia.org/wiki/Parameter_(computer_programming)>`_:
+they are called functions in programming.
+When these functions with *formal parameters* meet actual parameters, 
+they generate concepts. 
+To address `space-time tradeoff <https://en.wikipedia.org/wiki/Space–time_tradeoff>`_
+the generated concepts must stay around for some time.
+
+The actual parameters must fit to the formal parameters in the 
+requirements imposed by the functions. These requirements 
+are another important kind of concepts: 
+`types <https://en.wikipedia.org/wiki/Type_theory#Basic_concepts>`_.
+
+The links in a concept lattice don't have any order.
+When mapped to a linear memory space 
+a linear order is automatically overlaid, though.
+If a linear order is inherent to concepts due to their topology,
+then it's natural to keep this order in memory.
+Else mechanisms must be installed for the linking that don't use
+the linear order of the memory space.
+
+If (almost) all combination of concepts are there
+a natural representation in linear binary memory
+is by mapping the concepts to bits.
+Every concept is then an
+`arbitrary precission integer <https://en.wikipedia.org/wiki/Arbitrary-precision_arithmetic>`_
+
+If the purpose of the combinations is to address
+exclusive concepts a register machine's addressing capabilities
+are best put to work.
+
+Actual links, adjustable, like via synapses in the brain, are more kindred
+to concept lattices.
+
+`Register machines <https://en.wikipedia.org/wiki/Register_machine>`_
+with more or less hardware implemented functions (instruction set),
+can be regarded as an extraction of the analytical features
+of our brain, first evolved via biological evolution, then 
+via the science culture. Many algorithms developed address
+special application and are surely very efficient there. 
+
+I regard FCA as a connection to the starting points of this development
+and therefore to consider in a venture to artificially reproduce analytic 
+capabilities of our brain.
+
+Experiments in Python
+---------------------
+
+Since my first contact with FCA new algorithms have been devised to efficiently make 
+a concept lattice, i.e. construct all concepts.
+*In-Close*, *In-Close2*, *CbO*, *FCbO* seem to be among the currently fastest ones. 
+(from *Comparing Perfomance of Algorithms for Generating Concept Lattices (Kurznetsov)*).
+
+My experiments were with older algorithms: *NextConcept*, *Neighbors* and *AddIntent*.
+
+While writing this blog, I've decided to make a github repository `pyfca <https://github.com/pyfca/pyfca>`_ 
+to collect some algorithms in python. 
+
+So far it includes a python implementation of the **AddIntent** 
+algorithm from *AddIntent: A New Incremental Algorithm for Constructing Concept Lattices*
+and a lattice drawing algorithm
+I had taken from `Galicia <http://www.iro.umontreal.ca/~galicia/>`_. So it can
+be used to create a concept lattice (fca_lattice) and to draw it
+(lattice_diagram) either using tkinter() or svg().inkscape().
+
+My intention is to add more algorithms in times of leisure.
+A collaborative effort could be more comprehensive.
+Therefore: *Contributions are very welcome*.
+
+Links
+-----
+
+- `pyfca <https://github.com/pyfca/pyfca>`_: 
+
+- `implications <http://rolandpuntaier.blogspot.co.at/2015/06/implications.html>`_: Blog of mine related to this one. 
+
+- http://en.wikipedia.org/wiki/Formal_concept_analysis
+
+- http://www.upriss.org.uk/fca/fcaalgorithms.html
+
+- Some papers and books I read back then
+
+    - Formale Begriffsanalyse, Mathematische Grundlagen
+    - Applied Lattice Theory: Formal Concept Analysis
+    - Algorithmen zur Begriffsanalyse und ihre Anwendung bei Softwarebibliotheken
+    - Fast Concept Analysis
+    - A Fast Algorithm for Building the Hasse Diagram of a Galois Lattice
+    - Building concept (Galois) lattices from parts: generalization of the incremental methods
+    - Towards scalable divide-and-conquer methods for computing concepts and implications
+    - A generic scheme for the design of efficient on-line algorithms for lattices
+    - Lattice duality: The origin of probability and entropy
+
+
+

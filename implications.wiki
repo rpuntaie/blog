@@ -1,0 +1,55 @@
+Implication(FCA)
+
+In [[Formal_concept_analysis|formal concept analysis]] (FCA) and [[Closure_operator|closure system]] 
+attributes are analyzed via their (simultaneous) occurrences (= objects). The implicational analysis 
+deals with [[Algorithm|altorithms]] to find a minimal set of rules, 
+by which attributes can be inferred from others (implications).
+
+== Definition <ref name="implications">Implications by Ganter and Stumme [http://www.math.tu-dresden.de/~ganter/cl03/stumme/chapter5.pdf]</ref> ==
+
+A pair of sets <math>(U,V)</math> is an ''implication''.
+<math>U \subseteq A</math> and <math>V\subseteq A</math>. U is the ''premise''
+and V is the ''conclusion''.  <math>A</math> stands for attributes.
+
+A set W ''respects'' <math>U\rightarrow V</math>, 
+if <math>U\nsubseteq W \:\text{or}\: V\subseteq W</math>. 
+
+== Implications in a Concept Lattice <ref name="implications"/> ==
+
+<math>U\rightarrow V</math> ''holds in'' a concept lattice, if every intent respects it.
+This is true if 
+
+# iff <math>U' \subseteq V'</math>.
+
+# iff <math>V\subseteq U''</math>. 
+
+An implication <math>U\rightarrow V</math> follows semantically from a set L of implications,
+if each subset of <math>A</math> respecting L also respects <math>U\rightarrow V</math>. 
+L is ''closed'', if it contains all implications that follow from L. 
+
+A set L of implications that hold in a context is called ''sound''. It is called
+''complete'' if every implications that holds in the context follows from L.
+L is ''non-redundant'' if implications that follow from L are not in L.
+
+If L is a set of implications, then 
+<math>\{X\subseteq A | X\; \text{respects}\; L\}</math> is a [[Closure_operator|closure system]].
+
+== Implication Basis <ref name="implications"/> ==
+
+Let <math>X \;\mapsto \;X''</math> be a [[Closure_operator|closure operator]]
+then ''P'' is ''pseudo-closed'' if 
+
+# <math>P \;\neq \;P''</math>
+# <math>Q\subset P \implies Q''\subseteq P</math>
+
+The set <math>\{P \mapsto P'' | P \;\text{pseudo-closed} \}</math> is ''sound'', ''complete'' and ''non-redundant''.
+It is called ''Duquenne-Guiges-Basis'' (D-G-basis) or ''Stem basis''.
+
+There cannot be a implication basis with less implications than the Duquenne-Guiges-Basis, but 
+one can choose implications that are simpler regarding <math>\sum |U| |V|</math>.
+Such implications are <math>U\rightarrow V</math> with <math>V\neq \emptyset</math> and <math>U\cap V = \emptyset</math>
+<ref>Endliche Hüllensysteme und ihre Implikationenbasen (Finite hull systems and their implications) [http://www.emis.de/journals/SLC/wpapers/s49koenig.pdf]</ref>.
+
+== References ==
+{{reflist}}
+

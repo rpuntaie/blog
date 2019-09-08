@@ -1,0 +1,618 @@
+.. vim: syntax=rst
+
+.. http://rolandpuntaier.blogspot.com/2015/12/waf-build-system.html
+
+Waf build system
+================
+
+.. {why}
+.. general consideration about build tools:
+.. - which parameters are exclusive, which ones additive (/reference:xxx additive, /target:xxx exclusive)
+.. - which parameters have input files as parameters (/win32icon:iconfile)
+.. - make or use certain parts as separate libraries, like the sh package for execution
+
+I've blogged about 
+`scons <http://rolandpuntaier.blogspot.co.at/2015/01/scons.html>`_ in January of this year.
+This autumn I gave *waf* another try, because I wanted to get rid of the python2 dependency,
+and I found out that *waf* supported almost everything I needed. I missed support for *WiX Toolset*
+and I wanted *waf* to handle localization satellite assemblies.
+To integrate these tools myself was a good exercise to get aqcuainted with the *waf* sources,
+which is also the purpose of this blog.
+
+After skimming through the `wafbook`_ I dived into the
+sources to get an idea how it works.  When trying it, I had troubles with the
+file system. As with *scons* it is not easy to move files around arbitrarily.
+It was, though, easier to solve with *waf* than with *scons*. Altogether the
+``wscript``'s turned out cleaner than the ``SConscript``'s.
+
+
+My Test Project
+---------------
+
+The test project is similar to that of scons:
+
+- C code is generated from a SimpleTemplate file (stpl) using `bottle <http://bottlepy.org/docs/dev/index.html>`_.
+- A python wrapper is created using `cffi <https://cffi.readthedocs.org/en/latest/>`_
+- A C# wrapper is created
+- which is used in a C# based GUI
+
+I've added it to the *waf* ``playground`` folder and created a pull request, which was accepted.
+It's the ``stpl_c_py_cs_satellite_wix`` folder.
+
+With *waf* you can create one **waf** script file containing all of waf. You can
+then check this waf script into your source code control system.
+So the build system becomes part of your sources,
+i.e. you don't depend so much on the further development of the *waf* project
+or whether your pull requests are accepted or not.
+
+.. code:: sh
+
+    python waf-light --tools=resx,satellite_assembly,wix
+
+The test project builds with the generated **waf** script
+on a normal ``cmd`` prompt. ``Developer Command Prompt for VS2015`` 
+initializes the console for ``x86``, while *waf* defaults to ``x86_64``,
+leading to a clash of ``x86 libcmt`` with ``x86_64`` code. 
+So let *waf* do the initialization.
+
+`MSys2 <https://msys2.github.io/>`_ shell on Windows works, too.
+With ``scons`` there were problems, because ``scons`` uses the the shell
+to run the compilers and ``csc`` cannot handle file names with forward slashes.
+
+On Linux the project compiles as well, with `Mono <http://www.mono-project.com/>`_ 
+covering the .NET part.
+To run the test there you need to help `ld <http://man7.org/linux/man-pages/man8/ld.so.8.html>`_
+find ``libfuni.so`` via environment variables:
+
+.. code:: sh
+
+  LD_LIBRARY_PATH=$PWD/../build/api/: PATH=$PATH:$LD_LIBRARY_PATH waf configure build test --stubs
+
+Files
+-----
+
+Let's start with files::
+
+    ├── build
+    │   ├── api
+    │   └── gui
+    └── src
+        ├── api
+        │   └── wscript_build
+        ├── build.py
+        ├── gui
+        │   └── wscript_build
+        └── wscript
+
+You will run **waf** from the ``src`` folder.
+
+.. code:: sh
+
+    waf configure build
+
+In the ``wscript``, files can be given as strings or nodes (``Nodes.py``). 
+
+Node (Node.py)::
+
+    abspath relpath path_from bld_dir bldpath srcpath change_ext chmod delete
+    find_dir find_node search_node find_or_declare find_resource get_bld
+    get_bld_sig get_src suffix height is_bld is_child_of is_src listdir make_node
+    mkdir mkfile read write ant_glob ant_iter 
+
+    parent children ctx
+
+String paths can be relative to ``wscript(_build)`` in the source tree.
+They are converted to nodes using ``TaskGen.to_nodes()``. 
+It uses ``find_resource()``, and this first uses ``find_node()`` to look in the source tree and then
+``search_node()`` for generated files in the build tree.
+``find_node()`` finds the file only, if it exists on the file system.
+``search_node()`` finds declared-only nodes, too. 
+
+.. Note:: If you have a file as part of a compiler option, then this file must be relative to ``build``,
+    because that's where the compilers will run.
+
+Generated files don't exist on disk until a later phase, when an actual compiler was run.
+If you wanted to have a generated file in the source tree, how do you do?
+``ctx.path.get_src().find_or_declare()`` will not declare a node in the source tree,
+``make_node()`` will, but ``find_node()`` will not find it, so all dependencies will fail.
+The work around is to actually create a temporary empty file on disk, so
+``find_node()`` can find it. You can use ``make_node().write('')`` to create an empty file
+during the ``wscript`` execution.
+
+.. code:: python
+    
+    from waflib.Node import Node
+    root =Node('',None)
+    toppath = os.path.expanduser('~/tmp/waftest')
+    top = root.make_node(toppath)
+    top.abspath()
+    nod = top.make_node('notondisk')
+    assert not os.path.exists(nod.abspath())
+    #but find_node will not find it either
+    assert None == top.find_node('notondisk')
+    #search_node will find it
+    assert top.search_node('notondisk')
+    nod.write('')
+    assert os.path.exists(nod.abspath())
+    assert top.find_node('notondisk')
+
+
+Contexts
+--------
+
+In ``wscript`` you have a function per *waf* command line command, 
+like ``configure()``, ``build()``, ... or ``yourownone()``.
+You specify their sequence of execution in the command line: ``waf configure build yourownone``.
+If no command line command is given, the default is *build*.
+
+``yourownone`` will get a basic context
+
+- Context (Context.py)::
+
+    cmd_and_log end_msg exec_command execute fatal finalize load
+    load_special_tools msg post_recurse pre_recurse recurse start_msg to_log 
+
+    cmd variant
+
+But the major commands (``build``, ``install``, ..) will have their special context 
+(created via the module function ``create_context()``).
+
+These contexts have special functions that help you define the 
+``task_gen`` object, which then creates the task object in its ``post()`` method.
+
+    ``load()`` is for loading (the command from) tools, 
+    ``recurse()`` for doing the command in the ``wscript`` of subfolders.
+
+The ``options``, ``configure``, ``build``, ``clean``, ``install`` commands get
+these contexts as parameters:
+
+- OptionsContext (Options.py)::
+
+    add_option add_option_group execute get_option_group jobs parse_args 
+
+- ConfigurationContext (Configure.py)::
+
+    err_handler eval_rules execute get_env init_dirs load post_recurse prepare_env set_env setenv store 
+
+- BuildContext (Build.py)::
+
+    add_group add_manual_dependency add_post_fun add_pre_fun add_to_group compile
+    declare_chain execute execute_build get_all_task_gen get_build_iterator
+    get_env get_group get_group_idx get_group_name get_targets get_tasks_group
+    get_tgen_by_name get_variant_dir hash_env_vars init_dirs install_as
+    install_files launch_node load_envs post_build post_group pre_build
+    progress_line restore rule set_env set_group setup store symlink_as total 
+
+    env variant_dir (depending on) variant
+
+- CleanContext (Build.py)::
+
+    clean execute
+
+- InstallContext (Build.py)::
+
+    copy_fun do_install do_link install_as install_files run_task_now symlink_as 
+
+
+``BuildContext`` is of course the important one. 
+
+It has a variant-specific environment (``env``) of type ConfigSet (ConfigSet.py)::
+
+    append_unique append_value prepend_value derive detach get_flat get_merged_dict keys revert stash load store update 
+
+The build context's important functions,
+like ``program``, ``shlib``, ``stlib``, ``objects`` will be provided by the tools loaded,
+and in this fashion
+
+.. code:: python
+
+    @conf
+    def program(bld, *k, **kw):
+        set_features(kw, 'program')
+        return bld(*k, **kw)
+
+
+The last line is ``BuildContext::__call__()``, which therefore is the important starting point.
+``BuildContext::__call__()`` takes either a ``rule`` parameter or a ``features`` parameter.
+
+Rules
+.....
+
+``rule`` can either be 
+
+- a command like ``touch tst.txt``, but normally with macros that are expanded
+  in ``compile_fun() (Task.py)``, and executed via python ``subprocess``, by
+  default and luckily without using ``shell``.
+
+- or a python function
+
+Features
+........
+
+The ``__call__()`` parameters will be saved in an intermediate class ``task_gen (TaskGen.py)``.
+This can be equipped with additional functions by tools, when they are loaded.
+
+Tools represented by a ``feature`` string, can change the ``task_gen`` class by adding methods before or after existing methods,
+especially ``process_rule`` and ``process_source``. 
+You activate these functions by providing the ``features`` parameter in the
+``ctx.__call__()`` method, instead of the ``rule`` parameter.
+
+
+Execution
+---------
+
+Here a very shortened sequence of running **waf**
+for the important ``build`` command, i.e. ``BuildContext.execute()``:
+
+We start in ``Scripting.py``::
+
+    waf_entry_point 
+        run_commands
+            parse_options 
+            run_command
+                ctx = create_context(cmd_name)
+                ctx.execute()
+                    recurse
+                        exec/call
+                    execute_build
+                        compile
+                            get_build_iterator
+                                post_group
+                                    tskgen.post
+                                        process_rule
+                                            create_task
+                                        process_source
+                                            create_task
+                            Parallel.start
+
+
+- Via ``ctx.execute()`` either ``configure``'s execute or ``build``'s execute, and so on, is run.
+
+- ``ctx.recurse`` will run ``wscript.build()/wscript_build``,
+  which will create and put the ``task_gen`` objects into the current group.
+  ``bld.add_group()`` in ``wscript`` makes a new group.
+  Groups run sequentially.
+
+- ``execute_build{compile{get_build_iterator{post_group()}}}`` 
+  will call the ``task_gen`` object's ``post()`` method, which creates the
+  tasks, which are returned in the iterator and run by a ``Parallel
+  (Runner.py)`` object. ``post_group()`` takes into account the ``--targets=``
+  command line parameter.
+
+- ``Taskgen.task_gen.post()`` will sort ``feature`` functions (``process_rule
+  process_source`` and those added by tools) as was specified via the 
+  ``Taskgen.before`` and ``Taskgen.after`` decorators. Use ``waf --zones=task_gen`` to see.
+
+- ``process_rule`` will create a task (``create_task(name)``), if a ``rule`` was specified. 
+
+- else ``process_source`` will find the rule via ``tast_gen.mappings``, which
+  is filled via the ``extensions() (TaskGen.py)`` decorator.  The decorated
+  function must then call ``create_task('taskname')``. In this case you must
+  somewhere have ``class taskname(Task):...``, or you use ``task_factory()
+  (TaskGen.py)``, as is done in in the ``ctx.__call__()`` scenario and via
+  ``declare_chain() (TaskGen.py)``.  ``task_factory()`` uses Python's
+  ``type()`` function to dynamically create the class derived from Task.
+
+Variants
+........
+
+You use ``ctx.setenv('somevariant')`` in ``wscript``'s ``configure`` to define
+the environment for more variants.  To do the variant via command line you need
+to subclass the according context and give it a name to use in the command
+line.
+
+From the `wafbook`_:
+
+.. code:: python
+
+    from waflib.Build import BuildContext
+    class debug(BuildContext):
+            cmd = 'debug'
+            variant = 'debug'
+
+But how is that associated with the ``wscript``'s ``build()`` function?
+``ctx.recurse()`` uses ``ctx.fun``, not ``ctx.cmd``, and that is still ``build``.
+
+Write a Tool
+------------
+
+When you write a tool, you can either 
+
+- inject methods into task_gen::
+
+    @feature('a_tool')
+    @after_method('process_source')
+    def somefun(tskgen):...
+
+- use the ``extension`` decorator::
+
+    @extension('.rb')
+    def process(self, node):
+        return self.create_task('run_ruby', node)
+
+    class run_ruby(Task.Task):
+        run_str = '${RUBY} ${RBFLAGS} -I ${SRC[0].parent.abspath()} ${SRC}'
+
+  A manually derived task has normally a ``run_str`` or ``run()`` overridden.
+  You can also provide ``scan`` for implicit dependency scanning and ``vars``
+  to influence ``tsk.signature()`` (calculated per task and depending on all
+  that determines whether this task must be executed again).
+
+- use ``declare_chain()``::
+
+    TaskGen.declare_chain(name = 'erlc',
+        rule      = '${ERLC} ${ERLC_FLAGS} ${SRC[0].abspath()} -o ${TGT[0].name}',
+        ext_in    = '.erl',
+        ext_out   = '.beam')
+
+The tool is loaded as a module, which means its body is executed.
+The build setup is normally done in the body itself.
+If you have a command function in the tool module, normally ``options`` and/or ``configure``, 
+it will be executed, when ``load()`` is called. 
+In this cases call ``ctx.load()`` for each of these command functions.
+
+Summary
+-------
+
+Here the selection of the *waf* source code vocabulary::
+
+    Node
+        find_node()
+        find_resource()
+        find_or_declare()
+        make_node()
+        mkdir()
+        write()
+
+        ctx
+
+    Context
+        setenv()
+        load()
+        add_group()
+        __call__()
+        program()
+        shlib()
+        stlib()
+
+        cmd_and_log()
+        exec_command()
+
+        cmd env variant
+
+    ConfigSet
+        append_value()
+        append_unique()
+        prepend_value()
+
+    task_gen
+        post()
+            process_rule()
+            process_source()
+    extension
+    declare_chain
+    before
+    after
+
+    Task
+        run()
+        run_str
+        vars
+        scan()
+
+
+
+.. unpublished
+
+.. {cmd fun}
+
+``README.txt`` shows how a ``waf`` file is created. 
+You copy the ``waf`` file to your project.
+This makes the build system part of the project.
+The build system is no more an external dependence.
+
+In the project there is a main ``wscript`` file.
+``wscript`` is a python file containing one parameter functions (``fun``).
+The parameter will generally be of type ``Context`` (short ``ctx``).
+The command parameter of ``waf`` (``cmd``) is normally equal 
+to the name of the function in ``wscript`` (``fun``).
+
+``waf`` provides special contexts, for the relevant build steps
+
++-----------+---------------------------------------------------------------------+
+| ``fun``   | ``Context``                                                         |
++===========+=====================================================================+
+| options   | ``OptionsContext``, an ``optparse``-derived class. (short: ``opt``) |
++-----------+---------------------------------------------------------------------+
+| configure | ``ConfigurationContext`` (short: ``cnf``),                          |
++-----------+---------------------------------------------------------------------+
+| build     | ``BuildContext`` (short: ``bld``)                                   |
++-----------+---------------------------------------------------------------------+
+| install   | ``BuildContext`` (short: ``bld``)                                   |
++-----------+---------------------------------------------------------------------+
+
+There are more, but these three are the most important ones.
+The context has three important string fields:
+
+- ``cmd``: when calling waf, this is used to find the context
+- ``fun``: this is the according function in the main wscript
+- ``variant``: it specifies, which configuration to use
+
+For a new context-cmd-fun association derive from one of the existing context classes:
+
+.. code:: python
+
+    from waflib.Build import BuildContext
+    class abc(BuildContext):
+            cmd = "installcheck"
+            fun = "installcheck"
+
+``options(opt)`` and ``configure(cnf)`` will only be in the main ``wscript``,
+while ``build(bld)`` should be distributed to subfolders for larger projects:
+``wscript_build``. 
+The function in the main ``wscript``
+uses ``ctx.recurse(<folder>)`` to delegate to these ``wscript_build``.
+
+configure
+---------
+
+``configure``  takes
+
+    - top
+    - out
+    - APPNAME (optional)
+    - VERSION (optional)
+
+from the main ``wscript``.
+``configure`` adds parameters to ``cnf.env``,
+which will be available in ``bld.env``.
+``cnf.setenv(variantname)`` makes a environment for ``variantname``.
+``cnf.env`` and ``bld.env`` consider the current ``variantname``.
+
+With ``import`` `waf_variants`_ and a ``variants`` list in ``wscript``
+
+- x_variant commandline arguments are created
+  - for x in {configure, build, clean, install, uninstall} and
+  - for variant in ``variants``.
+- an x command line argument alone is expanded to all x_variant's 
+- the associated x function context contains :py:const:`variant`
+- for ``configure`` ``setenv(variant)`` has already been done
+
+Variant strings can use the `/` path separator to produce an according output tree.
+
+.. TODO waf_variant should be normalized with waf's remote
+
+.. continue here
+
+.. {task_gen, Task}
+
+The ``fun``'s in ``wscript`` are there to 
+provide data for the according context,
+then ``ctx.execute()`` works with it.
+For the build command this is split into
+
+- pre_build: in ``wscript`` add functions with ``add_pre_fun``
+- compile: compiles all, or as wanted by the ``--targets`` option
+
+  - find dependencies::
+
+        | tasks = get_build_iterator()
+        |    Task.set_file_constraints(tasks)
+        |    Task.set_precedence_constraints(tasks)
+
+  - compile using a parallel ``Runner``
+
+- post_build: in ``wscript`` add functions with ``add_post_fun``
+
+.. code:: python
+
+	def disp(ctx):
+		node = ctx.bldnode.ant_glob('asmtest*', remove=False)[0]
+		ctx.exec_command('%s' % node.abspath(), shell=False)
+	bld.add_post_fun(disp)
+
+``opt``, ``cnf`` and ``bld`` provide most needed functionality:
+
+- With ``ctx.load()`` in ``option()``, ``configure()``,...
+  the according function of a tool is imported, 
+  e.g. ``opt.load('compiler_c')``. 
+- ``opt.add_option()``
+- ``bld(*k, **kw)`` is the general way to create a ``Task.Task``
+  via an intermediate ``TaskGen.tasks_gen`` (tgen) object.
+- ``bld.program``, ``bld.stlib``, ``bld.shlib``, ... 
+  all call ``bld()``. They are added to ``cnf`` and ``bld``
+  when doing ``load(<tool>)`` in ``configure()``
+  (Grep for the``@conf`` decorator).
+- with ``bld.add_group()`` one can group the building steps
+
+.. {decorators}
+
+- ``TaskGen.taskgen_method`` associate ``func(tgen)`` to ``tgen``
+- ``TaskGen.feature("feat")`` associate ``func(tgen)`` functions to a feature string (``TaskGen.feats``)
+- ``TaskGen.before("meth")`` and ``TaskGen.after("meth")`` orders functions (``TaskGen.task_gen.prec``).
+- ``TaskGen.extension`` registers an extension function (``TaskGen.task_gen.mappings``)
+
+  .. code:: python
+
+		from waflib import Task
+		class mytask(Task.Task): #! registered via the name in Task.classes and used in create_task()
+			run_str = 'cp ${SRC} ${TGT}'
+		@extension('.moo')
+		def create_maa_file(self, node):
+			self.create_task('mytask', node, node.change_ext('.maa'))
+		def build(bld):
+			bld(source='foo.moo')
+
+  The same is also done with ``bld.declare_chain()``, if an output extension is further processed.
+
+.. {building}
+
+One creates ``TaskGen.task_gen`` via the ``bld`` context, no unnamed parameters:
+
+.. code:: python
+
+    bld(rule=funx,source=y,target=z)
+    bld(rule="cp ${SRC} ${TGT}",source=y,target=z)
+    bld(features="x",source=y,target=z)
+
+``rule`` can also be a list that mixes string commands with functions taking a task.
+
+.. code:: python
+
+   def fun(tsk):
+       tsk.inputs
+       tsk.outputs
+       tsk.env
+       tsk.get_cwd() #in build folder
+       tsk.generator.path
+       tsk.generator.bld #context
+       #tsk.generator.<all parameters provided via bld() and the process_xxx functions>
+
+There are functions per feature. For the default feature "*"::
+
+  process_rule
+  process_sources
+
+Else specify via ``bld(features="xx",...)``.
+The ``subst`` feature has ``process_subst`` before the above ones.
+
+.. code:: python
+
+    bld(features="subst",source='test.py',target='test.py',is_copy=True,install_path=None)
+
+There is also a ``subst`` task:
+
+.. code:: python
+
+    @TaskGen.extension('.txt','.rst')
+    def cptgt(tgen,node):
+        target = node.change_ext(node.suffix())
+        tgen.create_task('subst',node,target,is_copy=True)
+
+Many tool files add features and often an alias function like ``bld.program``.
+
+.. {testing}
+
+``waf_unit_test``
+
+.. {copy files to destination folder}
+
+
+task_gen and Task
+Targets can be patterns and ``Task`` objects.?
+
+c.py -> ccroot
+gcc.py -> ccroot
+compiler_c -> ccroot
+
+cfg_cross_gnu.py
+
+def configure(cnf):
+    #gcc needed for gcc_common_flags(conf)
+    cnf.load('gcc cfg_cross_gnu') #cfg_cross_gnu fix to overwrite gcc with cross tool
+    cnf.xcheck_host()
+
+
+.. _`wafbook`: https://waf.io/book/
+.. _`waf_variants`: https://gist.github.com/rpuntaie/2bddfb5d7b77db26415ee14371289971
+

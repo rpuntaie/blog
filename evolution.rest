@@ -1,0 +1,1233 @@
+.. vim: syntax=rst
+
+.. https://rolandpuntaier.blogspot.com/2019/01/evolution.html
+
+#########
+Evolution
+#########
+
+The *dynamics* is essential for understanding a variable.
+
+- natural evolution
+- brain
+- science
+- technology
+- culture
+- ...
+
+have a common feature: information, i.e. **variables and their values**.
+
+A general evolving system can be described with the methods of physics
+by matching these quantities
+
++----------+--------------------------------------------------+
+| Physics  | General System                                   |
++==========+==================================================+
+| space    | values of variable                               |
++----------+--------------------------------------------------+
+| time     | selections                                       |
++----------+--------------------------------------------------+
+| action   | information (selections * values)                |
++----------+--------------------------------------------------+
+| energy   | information/time                                 |
++----------+--------------------------------------------------+
+| momenta  | simultaneous components of selection             |
++----------+--------------------------------------------------+
+| mass     | hidden components of selections                  |
++----------+--------------------------------------------------+
+
+Introduction
+============
+
+The `information`_ blog placed the variable as basic element of `evolution`_
+
+A variable is
+
+1) values
+2) an exclusive selection of one of the values
+
+The two elements cannot be split because
+
+- selection is needed to create the values
+- the values are needed to allow selection
+
+.. admonition:: energy = information/time
+
+   The values are information, the selection is a time step.
+   So information/time characterizes a selection. 
+   Further down this is identified with mechanical energy.
+
+How do we know the other values that were excluded by one selection?
+We don't, unless we continue to observe. 
+In the observation time the physical variable
+gets mapped to an image variable in the brain, the model of the physical variable.
+For that the physical variable must repeat.
+One selection physically implies the excluded values, 
+but the physical variable can cease to exist before we can find out.
+
+.. admonition:: Information in our brain
+
+    We need to know the variable, i.e. the alternative values.
+
+    - When learning, i.e. acquiring new information, we need to know the alternatives, then we understand something.
+    - When we know the alternatives, then we can describe our choices and choose.
+
+    A selection process in our brain is in many ways the same as the selection process of natural evolution.
+    A sophisticated device or a work of art can be created by both: by a person or by nature.
+
+Our memory of variables that occurred before, has created a structure in our mind
+
+- a value space with a `topology`_ or
+- values with a `probability`_
+
+Our memory is a map of reality,
+that contains some real truth, valid for a limited time.
+
+We tend to see the values as *static*,
+but only through the selections (the *dynamic* part of a variable)
+we can and need to verify that the values belong to the variable, 
+or that the variable is still the same.
+
+Different names are in use with basically the same meaning as the variable/value pair:
+
+- *set/element* in mathematics
+
+- *mutations/selection* in biological evolution
+
+- *tries/non-errors* in searching
+
+- *random variable/event* in statistics
+
+- *supply/demand* in economics
+
+- *choice/choosing* in our brain
+
+- *class/instance* in programming
+
+- *system/state*
+
+.. admonition:: Intelligence
+
+    A system that can create new structures, new concepts,... can be called intelligent:
+
+    - People that can create new concepts
+    - An economy that creates new devices
+    - Nature that creates new organisms
+    - ...
+
+    A concept is understood as in the `FCA`_ blog.
+    It is basically a value in a hierarchy of values.
+    Such static structure corresponds to a hierarchy of interactions and time scales,
+    as we well see further down.
+
+Dynamic variables that have an interaction are best described together.
+They form a *dynamic system* with related times. 
+Here system alone shall mean a dynamic system.
+
+Two systems that do not interact, follow separate and independent evolutions.
+They have *independent selections*, i.e. *independent times*.
+
+One interaction corresponds to one time.
+The compartmentalization into systems depends on the type of interaction one considers.
+
+A *system* consists of sub-systems, which we also call *particles*, because they form part of the system.
+
+Instead of the value of a system, one normally says the *state* of the system.
+For a particle, instead of value of a particle, one normally says *coordinates* of the particle,
+*point* of the particle, or *state* of the particle.
+A coordinate is a static/representational variable or value,
+representing a *component* of the particle's state.
+
+The minimal number of coordinates is the `dimension`_, also called *degrees of freedom*.
+Dimension derives from Latin and means measure. We mean not the measure, but the number of measures.
+
+- A particle moving in a circle has one dimension, even if described by three `cartesian`_ coordinates.
+
+- N particles can be considered separately or in a flat way with `3N` space coordinates,
+  which in our general sense here can be considered as one big particle.
+
+The choice of representation must suit the kind of interaction.
+
+.. admonition:: dynamics vs kinematics
+
+   Just to look at the selection without the source would correspond to kinematics.
+   In order not to split a system where it is most connected, I use dynamic, 
+   of greek origin meaning force. 
+   (We get mired in word play.)
+
+.. admonition:: system vs particle vs thread
+
+   From their etymology: *Variable* is something that can change.
+   So it will change. It will evolve. *Evolution* is the change.
+
+   More variables can be linked together and have a common evolution.
+   E.g.: Matter of a *physical particle* links the x, y, z variables with time.
+
+   This can be generalized.
+   More *representational variables* whose evolution is linked,
+   we'll call a **particle** of the system in a general sense.
+
+   This meaning of *particle* includes the particles in physics,
+   but also every situation where a selection (time step) has more components
+   linked together to form a part of the (evolution of the) system.
+
+   One (dynamic) variable can be specified with more (`orthogonal`_) *representational variables*.
+   Example: Number and unit form a quantity. The number is further decomposed into digits.
+
+   In computer science and our brain a *thread* (of thought) represents one time axis.
+
+   *Representational variables* arise from the fact that one physical selection can be
+   decomposed in the brain to more mental selections. Then the mental selections
+   need to be synchronized to simulate a physical selection.
+   The over-specification in the brain is reduced to the physical reality by differential equations:
+   The different observable changes `dx_i`,
+   which are different mental times in the brain,
+   are reduced to one physical time.
+
+   One time is motivated by a common interaction and common evolution.
+
+.. admonition:: Random variable
+
+   `Random`_ variables are not considered here.
+   They are static variables that follow from
+   summarizing over values of (many) independent (possibly dynamic) variables.
+   The values of random variables are not ordered by time steps.
+
+Mechanics
+=========
+
+Let's try to construct a link from selections to mechanics.
+
+
+.. admonition:: d
+
+   With `d` we mean a `finite`_ and *discrete* change, but small, 
+   in need to be compared to something as small to get a graspable number.
+   Without resorting to infinitesimals,
+   the `exterior derivative`_ `d` produces functions
+   that map a vector (physical quantity) to a number:
+   
+   .. math::
+   
+       dQ = ∂_i Q dx_i \\
+       dQ v^j∂_j = v^j ∂_i Q dx_i ∂_j = v_j ∂_i Q δ^i_j = v_i ∂_i Q ∈ ℝ
+
+Time
+----
+
+.. admonition:: What is time?
+
+    Since I first got in contact with basic physics like `x=vt`,
+    I was at unease with time as something physical,
+    because it can only be observed via changes.
+
+We will understand `t` as a count of the changes, i.e. the count of selection steps.
+Without changes, `t` does not count.
+
+One Time = One Energy
+~~~~~~~~~~~~~~~~~~~~~
+
+One selection of a state of a particle is represented by one or more *simultaneous* selections of coordinates.
+Physical time is not defined by the coordinates, but by the selection of the state of the particle.
+
+.. math::
+
+   dτ = dI/E
+
+Locally
+
+- time `τ` just counts the selections: `dτ=1`
+- the state change `dI` is just `dI=1`.
+- and the **energy** `E` is also `E=1`
+
+When comparing to some global coordinates, `E` is the inverse of the time step.
+The constant energy `E` stands for a *homogenous* time,
+meaning constant time steps `dt`.
+
+.. math::
+
+   dt = 1/E
+
+**Information** counts *time steps* (= *selection steps*).
+
+One time line defines an independent particle.
+The variable is `information`_ of which
+a selection is the time step in which the `information`_ is reduced to 0.
+In other words, a point in time defines one value, i.e. one selection, of a variable.
+A closed system does not lose energy, but selections go from variable to variable,
+until all values of all variables have been cycled through.
+In a closed system the reduction to 0 
+is simultaneous (within the same time step)
+with the creation of one or `more`_ other variables with same information.
+Or we have an increase of selection speed, i.e. decrease of time step width.
+
+.. math::
+
+   I = ∫dI = ∫Edt = ET
+
+The cycle time `T` should be seen as derived: `T=I/E`.
+For a closed system, i.e. without interaction, `I`, `E` and `T` are constant.
+
+.. admonition:: Power
+
+   `Power`_ is a quantity for systems that are not closed
+
+   .. math::
+
+       P = \frac{dE}{dt} = \frac{d^2 I} {dt^2}
+
+One local `τ` value joins the values of the coordinates (representational variables) of the particle to one point.
+Time creates a `topology`_.
+
+The memory of more particles creates a `topological space`_.
+The values of this space are not values of any specific particle.
+
+The simultaneous coordinate changes `dx_i` of a particle `x` at time step `dτ` are the **momenta** `ẋ_i`.
+
+Momenta must change in direction to produce a *cycle* with respect to an underlying topological space
+in order for the particle to have `finite`_ information.
+Thus an `inertial frame`_, a non-accelerating observation frame, is local,
+like a `tangent space`_ at a point of a `manifold`_.
+The infinite version is a mental extrapolation and does not physically exist.
+This also means that time and energy and thus information are local quantities.
+
+.. admonition:: Symmetry
+
+   If `ẋ` is a constant, it means that it is independent of the `x` variable.
+   This meaning can be implied by `Newton first law`_.
+
+   More generally if a value of a variable does not change with the value of another variable (symmetry), 
+   then the variables are independent (`Noether`_).
+
+
+.. admonition:: Reversibility
+
+   A system that does not loose information is reversible.
+   Physically reversibility is also local.
+   A completely reversible system would not interact and thus not loose any information.
+   But such a system could never be observed.
+   Supposing the information of the whole universe is preserved,
+   then, due to its `expansion`_, the density of information decreases.
+   The reason or consequence is, that subsystems interact, i.e. loose energy.
+
+Since one `dτ` always has `dx_i` and `dẋ_i` in parallel, the element of information is `dI=dẋ_i dx_i`.
+Locally `dI=dτ=dχ=dτ \times dχ/dτ=1`.
+
+.. math::
+   
+   E = dI/dt = Σ_i ∫dẋ_i dx_i/dt = Σ_i ∫ẋ_i dẋ_i = Σ_i ẋ_i^2/2 + V(x_i)= ẋ²/2 + V(x)
+
+The `potential energy`_ `V(x)` can be chosen. `0` is a good choice.
+But the freedom can be used fruitfully to summarize interactions when concentrating on a subsystem.
+
+.. admonition:: Metric
+
+   The simultaneous changes create a `metric`_ on the space.
+   Nearby time values mean nearby space values and nearby momenta values.
+   Our physical `topological space`_ has locally an `euclidian metric`_ `δ_{ij}`: 
+   `dI=dx^i dẋ_i dt=δ_{ji} dx^i dẋ^j`.
+   This makes `cartesian`_ coordinates a natural choice for physics.
+   A `manifold`_ locally is `euclidian`_.
+   With `generalized coordinates`_ the metric is converted to produce a `cartesian`_ `volume element`_
+   in order to keep quantities like energy comparable.
+
+
+.. admonition:: Kinds of Energy
+
+   In general systems we will also have to use different kinds of information, 
+   if we summarize the detailed selections to macroscopic variables of relevance to the question at hand.
+   
+   A physical particle approximately moves along `cartesian`_ coordinates with uniform speed (`Newton first law`_),
+   making `cartesian`_ coordinates a natural choice for this classical `reference frame`. 
+   Only rarely corrections from `general relativity`_  are needed.
+   A `topological space`_, which locally resembles a `euclidean space`_ is called a `manifold`_.
+   
+   Physical *Momentum* and *energy* are defined in `cartesian`_ coordinates.
+   When a system is described with other `coordinates`_, one
+   
+   - first transforms to cartesian
+   - then uses the cartesian formula 
+   
+   For a particle moving uniformly and circularly just,
+   `φ` of `polar`_ coordinates `(φ,r)` is a good choice of coordinates.
+   Lagrangian and Hamiltonian are equal, because there is no potential energy.
+   
+   - We could do `L=H=∬dωdφ=∫ ω d ω=ω²/2`, where `∫dφ=∫_0^1 ω d t=ω-0`
+   - And momentum would be `∂_ωL=ω=\dot φ`.
+   
+   But that does not fit to the topology of the physical space, which locally has a `euclidian metric`_.
+   Therefore we need to convert to `cartesian`_ coordinates first.
+   
+   - `L=H=∬dpdx=m∫rωrdφ=mr²ω²/2`
+   - The linear moment is `p=mẋ=m(ṙφ+rω)=mrω`.
+     The moment along `ω` is `angular momentum`_ `∂_ωL=mr²ω`, 
+     which is conserved.
+
+
+Via `dI = ∂_i I dx^i` the momenta `ẋ_i = \frac{∂I}{∂x_i}` are linked to the minimal step along `x_i`.
+With a local `∂I=1`:
+
+.. math::
+
+   ẋ_i = \frac{1}{∂x_i}
+  
+Here a *particle is defined by one time*, i.e. also one energy.
+It is not restricted to one physical body, but can include more or many physical bodies.
+One can be interested only in some of the many coordinates.
+In this setup `potential energy`_ makes representational sense
+without compromising the idea that time is change and
+that energy is the inverse of a global time step, i.e. the comparison to some global change.
+
+.. _`potential_hides`:
+
+Let's focus on just one coordinate `y=x_i` and its change `ẋ=ẋ_i`.
+Then we split the energy into
+
+- the energy `K(ẏ)=ẏ²/2` of the coordinate `y`, the `kinetic energy`_, and
+- the energy of all the other coordinates, the `potential energy`_ `V`.
+  `V` normally would be a function of all the `ẋ_i`,
+  but since we don't look at any `(x_i,ẋ_i)≠(y,ẏ)`,
+  we make `V` a function of `y`: `V(y)`.
+  So the *potential energy* accounts for changes we cannot see or decided to neglect.
+
+Because `E(ẏ,y)=K(ẏ)+V(y)` of the particle is constant, 
+a change of `K(ẏ)` is compensated by an according opposite change of `V(y)`:
+`ΔK=-ΔV`. 
+
+Time steps `Δt` are change steps:
+
+.. math::
+
+   ΔK & = Δt \frac{ d K}{ d t} & = Δt \frac{ d K}{ d ẏ} ÿ & = Δt ẏ ÿ               & = Δy ÿ \\
+   ΔV & = Δt \frac{ d V}{ d t} & = Δt \frac{ d V}{ d y} ẏ & = Δy \frac{ d V}{ d y} & = Δy F \\
+
+   F  & = -\frac{ d V}{ d y} = ÿ 
+
+Vice versa, starting from the latter (`Newton second law`_), one can derive
+
+.. math::
+
+    K = -V = ∫Fdy = ∫ÿdy = ∫ẏdẏ = ẏ²/2
+
+Note, though, that  `Newton had no kinetic energy concept`_.
+
+Local *simultaneity* produces causality.
+`Newton third law`_:
+The **force** `F` and change of momentum `ÿ` mutually cause each other.
+The selection is mutual and represents a local time `dτ`,
+which associates it with an energy `E=1/dτ`, the cost of the selection.
+After the selection the system is in a new state, allowing new selections.
+Selection after selection produces a causal chain: the time evolution.
+*Interaction* is more general concept, but in its elementary manifestation
+synonymous to selection, and better depicting this mutuality.
+
+
+More Times = More Energies
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Every interaction motivates a *new time = new energy*.
+
+Lower systems (subsystems) become the particles of higher level systems.
+There is a hierarchy of systems, like the nodes in an `fca`_ lattice.
+
+Lower and higher refers to dependence and is relative to a specific system.
+
+- Molecules depend on atoms: 
+
+  - The inner life of the atom is the lower system.
+  - The interactions between atoms in the molecule form a higher system.
+    The atoms become the particles of the molecule.
+
+- Life on earth depends on the sun. Regarding life on earth
+  the sun is a part(icle) to the evolution of life on earth.
+  
+  - The sun is the subsystem.
+  - Interactions with life on earth are the higher system.
+
+Lower level systems need to live longer to allow higher level systems to form.
+
+The **lower system** has two kinds of energies:
+
+- **Internal energy** of the system.
+- **Component of energy** that quantifies the interaction
+  of the subsystem as particle within the higher system.
+
+The interaction is also called interface with the subsystem
+or role of the subsystem.
+
+The hierarchy might be built on a **common space**. 
+The system hierarchy is the topology making the common space to a `topological space`_.
+All particles have coordinates from this topological space, but can have additional coordinates, too.
+
+The states of a particle only are a (small) subset of the common space.
+The common space is not `infinite`_ other than as an extrapolation of mind.
+
+The whole hierarchy is limited downward as well as upward,
+because physically there can only be finite information.
+This means that 
+
+- there exists an information quantum and
+- there are only a `finite`_ number of quanta in the whole system.
+  
+In physics `Planck constant`_ `ħ` is an information quantum.
+
+Global Time
+~~~~~~~~~~~
+
+A common **global time** `t` is a coordinate of the common space.
+It is a mental tool to describe the interactions in the system hierarchy.
+It does not physically exist as a specific change of the system.
+
+The global time 
+
+- must have a higher frequency then all internal subsystem times
+- will inherently have an error
+- must be regularly synchronized with each subsystem through a common event, just like normal clocks
+
+.. admonition:: Our everyday global time 
+
+  - used to be derived from the earth's rotation
+  - now it comes from an atomic clock using the Cs atom
+  - and soon it will come from a `nuclear clock`_
+
+The inner time tick of a particle is represented by the inner energy of the particle.
+
+.. math::
+
+   dt_1 & = \frac{1}{E_1} \\
+   dt_2 & = \frac{1}{E_2}
+
+The proper times are independent and need to be transformed to each other.
+For physics, the `Lorentz transformation`_ is used.
+
+When transforming from a global time `t` to a local time: 
+
+- Changes that seem *simultanous* globally,
+  don't need to be actually simultaneous, i.e. belong to the local clock of a particle.
+
+- Changes that globally happen one after another,
+  do not need to represent subsequent steps of the local clock of a particle.
+  The time could be reversed locally with respect a global time order.
+  
+Transformation from a local particle time (= `causality`_)
+to a global time keeps causality of a particle intact, though.
+This means that no particle can move faster than the speed of light.
+
+More dimensions of a common space
+allows for different ways a subsystem can cycle through its values.
+This gives the subsystem an additional coordinate: `spin`_.
+
+An interaction can be expressed as a `field`_.
+A field stands for additional variables
+that the time of the particle fixes to more or less defined values,
+as it does with space values.
+The sharing of a common space is a kind of interaction between particles, already,
+and can by described by a field, too.
+Different interactions mean different fields. 
+
+If there is interaction between the levels of the hierarchy,
+this can be described with a generalization of `thermodynamics`_.
+The lower system's inner life can be quite secluded, though.
+The energy normally considered is about what's going on in the current level only.
+So we don't include `mc²` of the raw material used by a power plant,
+but only the part that interacts, like the falling water instead of all the waters `mc²`.
+
+Mass=Energy
+-----------
+
+A mass `m` can be seen as hidden selections synchronized with an observable selection step `dτ=1`.
+
+Inner selections of lower particles count as mass for higher particle and slow things down.
+Every level has it's own *speed limit* for interactions.
+
+A common `topological space`_ can have effects similar to 
+the `Lorentz transformation`_ in the physical spacetime `manifold`_,
+if there is an *energy limit* `c` (=information speed=minimal δτ).
+
+There are no hidden selections on the lowest level.
+`c` is values per time and we assume it constant.
+`mc` are the selections in `dt=1`.
+The information step is `values * selections`.
+Energy is information per time:
+
+.. math::
+
+   dI/dt = (dt c)(mc/dt) = mc²
+
+The components of the selections, the momenta, are not constant.
+
+.. math::
+
+   dI = ∂_μ I dx^μ \\
+   p_μ = ∂I/∂x_μ \\
+   p_0 = E/c \\
+   dx^μ dx_μ / dt = p_0^2-p² = m²c² \\
+
+If the low system moves as particle in the higher system, 
+the low level selections need to decrease to keep the constant `m²c²`.
+From the high level system this can be seen as mass increase of the  particles by `γ`:
+
+.. math::
+
+   p_0^2 - p² = m²c² \\
+   γ²m²c² - γ²m²ṡ² = m²c² \\
+   γ = \frac{1}{\sqrt{1-\frac{ṡ²}{c²}}}
+
+For a particle moving with `c=1`:
+`1/ds=m=E=1/dt`. 
+Time resolution is equal to space resolution, because all that `t` counts are `s` steps.
+A particle that can move with `c` has no hidden selections, no rest mass,
+and is therefore a lowest level (fundamental) particle.
+For slower particles the relativistic momentum 
+`(E/c,p)=(1/cdt,1/ds)`
+has length equal rest mass `mc²=m`, the hidden selections.
+
+.. math::
+
+   \frac{1}{cdt} - \frac{1}{ds} = m
+
+From the higher level the `dt` steps appear smaller and the `ds` steps larger, 
+which `contravariantly`_ (in global units) means `time dilation`_ and `length contraction`_.
+
+.. admonition:: Planck Constant and Units
+
+   Planck discovered that action is quantized, when describing the `black body radiaton`_.
+   Having found such basic constants of nature, he used them for `natural units`_.
+   The unit of information in `Planck units`_  is `h/2π = ħ = 1`,
+   energy becomes mass or the inverse of time `E=mc²=ħω → m=2π/dt` and 
+   momentum the inverse of space `p=ħk → p=2π/dx`.
+
+Lagrangian and Action
+---------------------
+
+How to know that two changes are simultaneous, that is, are due to one selection?
+We need to start by assuming that every somehow atomic change at a point in time is independent.
+We should not be biased and rather think, we know nothing yet.
+This is the principle of `maximum entropy`_ or, better, of maximum **information**.
+So we first think of *every coordinate as an independent dynamic variable*.
+
+`L(x_i,ẋ_i)` shall count changes as independent if we don't know better.
+Depending on what changes, `L` can depend on 
+
+- one or more variables `x_i` and 
+- changes of different order thereof (`ẋ_i, ẍ_i,...`)
+
+Known independent changes must be multiplied, e.g. `dx_i` and `dẋ_i`.
+Simultaneous changes are counted separately.
+
+With a direct global time dependence of `L`,
+external influences are synchronized into the system.
+But we assume no global `t` dependence.
+
+With `y_k = (x_1,ẋ_1,x_2,ẋ_2,...)`.
+
+At one point in time:
+
+.. math::
+
+   L = ∫dL = ∫∂_k L dy^k = ∫ L_k dy^k 
+
+- `L_k dy^k = ∂L/∂ẋ_i dẋ^i` counts the visible information per time step.
+ 
+  `∂L/∂ẋ_i` are called **momenta** `p_i`.
+
+  This change sums to **kinetic energy**:
+  `K=dI/dt=d∬mdxdẋ/dt=∫mẋdẋ=mẋ²/2`.
+  The squaring comes from seeing `x` and `ẋ` as changing independently.
+
+- `L_k dy^k = ∂L/∂x_i dx^i` accounts for interactions with particles
+  taken out of direct calculations by associating `L` with `x` instead
+  (see `above <potential_hides>`__).
+  But considering that information travels with `c`,
+  the result of the interaction is detached from those particles by time and space.
+  So one counts the information received at `x`.
+ 
+  `∂L/∂x_i` are called **forces** `F_i`, force particles in quantum mechanics.
+  
+  `x` is said to change due to an interaction or **force** `F`:
+  Accumulated force is **work**:
+  `W = ∫F d x`.
+  
+.. math::
+
+   L = K+W = K-V
+
+Finally, accumulation over time gives the total number of changes, called `action`_.
+
+.. math::
+
+   S = ∫_0^T Ldt
+
+Now `calculus of variations`_ is used to optimize away the double counting, by minimizing `S=∫Ldt`.
+This is called `principle of least action`_:
+*The values of a particle evolve along a line of least action.*
+Demanding this to be minimal means that `symmetry breaking`_ should be minimal,
+which means that the actual information in the particle should be minimal.
+
+Varying the trajectory `δx` with fixed endpoints and demanding `δS/δx = 0`,
+produces the *second order* `Euler-Lagrange`_ equation:
+
+.. math::
+
+    δS = ∫dt ∂_{x}Lδx+∂_{ẋ}Lδẋ = ∫dtδx(∂_{x}L-\frac{d}{dt}∂_{ẋ}L) = 0 \\
+    \frac{∂L}{∂x}-\frac{d}{dt}\frac{∂L}{∂ẋ}=0
+
+
+With force `F=∂_x L` and momentum `p=∂_ẋ L` 
+the Euler-Lagrange equation is a generalization of Newton's
+
+.. math::
+
+   F-\dot{p}=0
+
+.. admonition:: Euler-Lagrange without external time.
+
+    `ẋ` is a selection of `x` and if information is conserved
+    then `δx=δẋ`. So we have `∂_{x}L-∂_{ẋ}L=0`.
+    But since `ẋ` is compared to a global time (quotient `dx/dt`),
+    we have to undo this when comparing inside the system.
+    That is the reason for the `\frac{d}{dt}\frac{∂L}{∂ẋ}` instead of `∂_{ẋ}L`.
+
+A particle's evolution along this trajectory is called `on-shell`_.
+Due to an inherent synchronization error between particles,
+*off-shell* paths are also possible (`virtual particle`_).
+
+To create the action with the Lagrangian, we have maximized our information about the system, 
+i.e we have tried to make no assumptions (`maximum entropy`_).
+And through `calculus of variations`_ we have minimized the information in the system (`principle of least action`_).
+
+Generalized Coordinates
+~~~~~~~~~~~~~~~~~~~~~~~
+
+How things change can sometimes be complicated, because of constraints imposed on variables.
+One can get rid of the constraints in these two `equivalent`_ ways
+
+- by adding new variables (`lagrange multipliers`_)
+- by transforming to new variables (`generalized coordinates`_).
+
+The new variable in the latter case are often named differently:
+
+- `q` instead of `x`
+- `p` instead of `mẋ`.
+
+- `F=∂L/∂q` is the `generalized force`_ component accounting for interactions associated with `q`.
+- `p=∂L/∂\dot{q}` is the **momentum** component accounting for the change along `\dot{q}`.
+- ...
+
+`p=\frac{∂L}{∂\dot{q}}` is the `conjugate momentum`_.
+See also `canonical transformations`_.
+
+The `principle of least action`_ demands a minimal `finite`_ number of total changes.
+
+`t` counts forever, but the number of values of the system must be finite.
+Thus the values must repeat over time. Or the particle dies before it comes to repetition.
+
+Every cycle produces the same number of values for each coordinate.
+The values describe a closed curve in the `phase space`_ parametrized with `t`.
+If `F=0` in the `Euler-Lagrange`_ equation `F-\dot{p}=0`, then `q` is `cyclic`_ by itself.
+So either there is interaction or `q` itself is cyclic.
+Suitably chosen `generalized coordinates`_ can make `F=∂L/∂q=\dot{p}=0`.
+This codes the interaction in the curvature.
+
+Hamiltonian
+~~~~~~~~~~~
+
+Since we assume `∂L/∂t=0`, by the first integral of the Euler-Lagrange equation, the `Beltrami identity`_,
+we can introduce a constant `H` (`Hamiltonian`_), which is **energy**.
+
+.. math::
+
+   Σ_i\dot{q}_i p_i - L = H 
+
+This relation between `Lagrangian and Hamiltonian`_ is a `Legendre transformation`_.
+
+The first order `Hamilton equations`_ 
+
+.. math::
+
+    \frac{∂H}{∂q} = -ṗ \\
+    \frac{∂H}{∂p} = \dot{q}
+
+are equivalent to the second order `Euler-Lagrange`_.
+
+From
+
+.. math::
+
+   \frac{ d S}{ d t}=Σ_i\frac{∂S}{∂q_i}\dot{q}_i+\frac{∂S}{∂t}=Σ_i p_i\dot{q}_i-H=L
+
+follow the `Hamilton-Jacobi`_ equations
+
+.. math::
+
+    \frac{∂S}{∂t}&=-H \\
+    \frac{∂S}{∂q_i}&=p_i
+
+- Of course, the global derivative of `S` gives the Lagrangian `L`.
+  According to our interpretation of `L`, it counts changes separately.
+
+- The partial derivative of `S` with time gives `-H`:
+  *The Hamiltonian counts simultaneous changes as 1 change*.
+
+The `Hamilton equations`_ give the corresponding simultaneous `conjugate change`_.
+Force `-∂H/∂q` is simultaneous with its result, the change of momentum (**impulse** `d p = F d t`).
+The *Hamiltonian* `H` does not accumulate work `W=∫∂_q L dq = ∫Fdq` separately, but L does.
+If `F` is `conservative`_, one can associate a `potential energy`_ with each `q`:
+`V(q)=-W(q)=-∫Fdq`. 
+
+.. math::
+
+     L=K+W=K-V \\
+     H=K+V
+
+`I = ∫-∂S/∂t d t = ∫H d t = H∫dt = HT` gives the total number of steps (= time steps), 
+i.e. the **total information** of the system.
+
+.. math::
+
+   H = \frac{I}{T}
+
+If the total information is fix, then a smaller time period means higher energy.
+
+A constant `H` is associated with every phase point `H(q,p)` at all times.
+`H(q,p)` does not change along the trajectory, the `Hamiltonian flow`_ `X_H=(∂H/∂p,-∂H/∂q)` does.
+Time is replaced by `H` as any field `F` can be time-derived by forming the `Poisson bracket`_:
+
+.. math::
+    \frac{dF}{dt} &= \frac{∂F}{∂q} \dot{q} + \frac{∂F}{∂p} \dot{p} = \\
+                  &= \frac{∂F}{∂q} \frac{∂H}{∂p} - \frac{∂F}{∂p}\frac{∂H}{∂q}
+                  &= \{F,H\}
+
+A more intuitive description is with the `two-form`_ `ω=dq_i^dp_i` as information element.
+`ω(\cdot,X_H)` becomes a `one-form`_ that produces the total derivative 
+along the trajectory of time (time derivative).
+The total derivative is the inverse of the integral, that summed up the time steps = the information steps.
+
+Structural Evolution
+====================
+
+`Maximum entropy`_, to get to the double-counting Lagrangian, 
+and `principle of least action`_, to find the Hamiltonian,
+can be used for general dynamic systems like economy or biological evolution or the brain.
+
+It is not only a method to describe a system, it is also how a system evolves in its complexity.
+
+- Information is added: Variables and/or values are created
+  (creative phase, `supply`_)
+
+  Added information is used to
+
+  - increase the number of values per variable
+
+      - increase range, variability
+      - increase redundancy, parallelizing: 
+        more copies of a stable subsystem (= particle) with independent further evolution
+
+  - increase the number of variables by
+
+      - increasing interactions types:
+
+        - between smaller subsystem instead of big systems
+
+        - synthesizing, by combining values of existing variables
+
+- Information is removed: Variables and/or values are reduced again 
+  (selective phase, `competition`_).
+
+  Here the opposite happens:
+
+  - number of values of variables are reduced
+
+      - reduced range, variability
+      - reduced redundancy: less copies of subsystems
+
+  - number of variables are reduced by
+
+    - reducing interaction types: 
+    
+      - Encapsulation (maximal cohesion, minimal coupling):
+        Selecting big units needs less information, than selecting many little units.
+
+      - Abstraction of reusable variables, orthogonally in order to need less interaction,
+
+Considering `I` generalized momentum, the `action angle`_ `w=νt+β`,
+with cycle frequency `ν=2π/T`,
+becomes generalized position replacing time `t`, as that changes from system to system.
+Action angle `w` correspond to `phase`_ in a circular motion.
+`Action and angle variable`_ `(I,w)` are the `canonical variables`_.
+
+Adding and then removing energy from a system is also called `annealing`_.
+It can also be described as `oscillation`_ of energy between the system and its environment.
+
+The cycles in `canonical variables`_ are related to observable variables `q_k` via `fourier series`_
+
+.. math::
+
+  q_k = \sum \cdots \sum A^k_{I_1, I_2, \ldots, I_N} e^{i2\pi I_1 w_1}  \cdots e^{i2\pi I_N w_N}
+
+Adding information `I` (action) means an inward energy flow
+that more or less keeps the existing cycles of subsystems.
+It rather adds values or produces new variables: `T ΔS` (see `Action vs Entropy`_).
+
+Constant energy keeps a system in a constant cycle, up to quantization resolution.
+Through `annealing`_, system and subsystems become more complex.
+`Annealing`_ creates new environments for subsystems.
+
+The amount of energy in a system is independent from goal or no-goal.
+A goal for a system is ultimately linked to survival for the sake of survival,
+which is controlled by the environment.
+Those systems that did not survive do not exist any more.
+What is system and what is environment is relative.
+One can swap the names.
+
+An individual change is *random*, but with selection mechanisms in place,
+subsystems change in a more or less sophisticated or intelligent way,
+because that is how they were selected by the environment to still exist.
+
+Through selections, over time, subsystems change.
+Basically they become new subsystems.
+In quantum mechanics this is described with `creation and annihilation`_
+of particles, i.e. of subsystems of the system.
+
+After a change the role in the higher level
+
+- can be taken over by the new particle or
+- can be taken over by another particle of the same kind,
+  which means the change was de-selected
+
+A de-selection is for a specific interaction,
+which does not necessarily mean
+that the changed subsystem ceases to exist for other interactions.
+The subsystem can continue to interact in another context.
+
+The system change is *evolutionary*, 
+if the changes are due the changes of subsystems
+that keep the system alive.
+For this either 
+
+- the subsystem change keeps the role more or less functional
+
+- or the system has alternatives
+
+.. admonition:: evolution vs revolution
+
+    If a system dies, this is a *revolutionary* (= destructive) change.
+    The subsystems continue to exist and will form a new system.
+
+    For a mutal dependence, what is the subsystem, 
+    is a question of perspective:
+
+    - A company is a subsystem of a person's live
+    - The person is a subsystem seen from the company
+
+    Consequently a revolutionary change on one side can be seen
+    as an evolutionary step from the other side.
+    E.g. the French Revolution destroyed the social order of the time.
+    But from the people's perspective it was an evolutionary step.
+    Revolution is also an evolution.
+
+There normally exist more annealings (oscillations) in parallel.
+These oscillations can be sorted by their period time.
+The longer periods constitute *stable structure* upon which higher frequency oscillations can build.
+
+An interacting (non-closed) system has energy
+
+- input
+- output
+- `storage`_ = input + output (one of them negative)
+
+With constant input and output, 
+removing energy from one subsystem means providing it for another subsystem.
+
+The amount of energy exchanged within one period of an oscillation must be within a more or less narrow range,
+depending on the available internal storage.
+
+- Adding too much energy per time may destroy the system instead of supporting a creative phase.
+- Removing too much energy per time may also destroy the system instead of producing optimizations.
+
+The acceptable range can be considerably widened by the storing capability of the system.
+
+Only a fluctuating energy supply will make systems able to survive such fluctuations.
+The system will have adapted its storage.
+It will have acquired knowledge about its environment.
+It can predict or simulate the environment.
+
+The input, output and storage are per interaction, i.e. per oscillation.
+
+For an animal metabolism
+
+- inputs: different kinds of food, oxygen
+- outputs: faeces, moving, temperature
+- storage: glycogen, fat
+
+Due to the storage the energy input and output don't need to be simultaneous
+but can alternate within periods of limited range.
+
+Balance between input and output keeps a system in a cycle, as if a closed system.
+
+To produce *structural evolution* of a system as opposed of just making it cycle faster,
+subsystems need to die and be replaced by others, which we also named revolutionary changes.
+Therefore the energy supply or starvation needs to regularly 
+*exceed the limits of survival* for some subsystems to produce structural changes.
+
+Evolution is trial-and-error or better: 
+*trial and non-error* or *trial-and-testing*.
+Another name for this is simply *searching*.
+*Annealing* is a random search algorithm
+for the most stable, i.e. long living, subsystems.
+
+A stable minimum 
+
+- is long living thus can become
+- foundation for higher level structures.
+
+The physical world in this way has produced and still produces gradually more complex, hierarchical structures:
+
+- asteroids, planets, star systems, galaxies, ...
+- particle, atom, molecule, ... 
+- `prokaryote`_, `eukaryote`_,...
+- hand tools, machines, computers,...
+- simple concepts, complex concepts
+- ...
+
+.. admonition:: Model vs. real system
+
+   The variables involved are embedded in a structure, whose evolution one wants to describe.
+   A description is a mapping (a `model`_) of the actual evolution, 
+   but simplifications are needed and follow their own mental evolution.
+
+   When summarizing all the dynamics of a gas volume `V` with `nN_A` molecules
+   with two `intensive variables`_ temperature `T` and pressure `p`,
+   then this is not only a process of mind.
+   Also nature makes decisions (= selections) based on such variables.
+   For instance the pressure can make a wall burst.
+ 
+   Sometimes nature uses variables of as little information as one bit, i.e. yes/no.
+   Situations, where very small variables count, are normally unstable balances.
+ 
+   With models one often chooses to leave out certain information, 
+   because it is not of importance, not interacting anyway in a situation to describe.
+
+   Nature also has information that is hidden, is not involved in an interacion,
+   is `internal`_, like the energy in the mass.
+
+Action vs Entropy
+=================
+
+On a repeated event, the number of occurrences `O_i` of value `i` is additional information,
+which, by normalization to 1, makes up probability `p_i = \frac{O_i}{\sum O_i}`.
+The information reduces to `I=-\sum p_i \log p_i`, also called `entropy`_ `S`.
+
+The same way probability `p_i` can be associated to the values of a column in a multi-column table (`relation`_), 
+i.e. by summing all table entries for that value divided by the total number of entries in the table.
+In a general context we can think of the table as comprising all the selection steps of an interaction.
+The entropy summarizes the table entries relevant for the specific interaction.
+
+In thermodynamics the `partition function`_ summarizes based on kinetic energy.
+`T` is the result of the kinetic energy of the particles by `T=\frac{m ẋ^2}{2 k}`, 
+based on the most probable `thermal velocity`_.
+
+In `E=TS`, the temperature `T` is separate because of its practical importance:
+A temperature difference `ΔT` decides on whether energy flows or not.
+`T=∂E/∂S` is `a generalized force`_ corresponding to `F=-∂V/∂x` from mechanics.
+
+Entropy is `S=k\log Ω`, where `Ω` counts all microstates, each equally probable:
+`p_i=1/Ω`.
+
+So
+
+.. math::
+
+   Ω=e^\frac{E}{kT}=e^\frac{2E}{mẋ^2}=e^\frac{S}{k}
+
+Here `E` is in units of kinetic energy of the particles and `S` in units of k.
+With another unit the number of microstates would be different.
+This is like using bits or bytes.
+So one could replace `S/k` with `A/ħ`.
+The latter represents the actual resolution of nature,
+while the former maps temperature to the particle's kinetic energy, which is of macroscopic nature.
+
+In thermodynamics `S/k` is the information of relevance,
+because the rest does not take part in the interaction.
+In that sense entropy `S` is the action of thermodynamics.
+
+.. math::
+
+    A/ħ ↔ S/k
+
+The unit of action is `[A]=Js`, which we said so far is information, but `[S]=J/K`.
+If we summarize the details of selection, we need to introduce different units also for information.
+
+- Equilibrium thermodynamics summarizes the microscopic selections per time, i.e. time, via temperature or its inverse, `β <beta>`_.
+  Seeing `β` as "new time" we have the correspondence.
+- The `Boltzmann equation`_ has time in the `p`'s. The `H` in the `H-theorem`_ can be seen as action via 
+  `d r d p= d r d t d p/d t=F d r d t=Tdt`.
+  `H` is `related`_ to `S` in equilibrium.
+
+A relation between action and entropy is given in these papers:
+
+- `The concept of entropy. Relation between action and entropy`_
+- `A holographic map of action onto entropy`_
+
+
+.. _`oscillation`: https://en.wikipedia.org/wiki/Oscillation
+.. _`kinetic energy`: https://en.wikipedia.org/wiki/Kinetic_energy
+.. _`potential energy`: https://en.wikipedia.org/wiki/Potential_energy
+.. _`force`: https://en.wikipedia.org/wiki/Force
+.. _`support`: https://en.wikipedia.org/wiki/Support_(mathematics)
+.. _`thermal velocity`: https://en.wikipedia.org/wiki/Thermal_velocity
+.. _`thermodynamics`: https://en.wikipedia.org/wiki/Thermodynamics
+.. _`energy-momentum`: https://en.wikipedia.org/wiki/Stress%E2%80%93energy_tensor
+.. _`Lorentz`: http://hyperphysics.phy-astr.gsu.edu/hbase/Relativ/vec4.html
+.. _`Einstein-field-equation`: https://en.wikipedia.org/wiki/Einstein_field_equations
+.. _`finite`: http://rolandpuntaier.blogspot.co.at/2017/04/infinity.html
+.. _`infinite`: http://rolandpuntaier.blogspot.co.at/2017/04/infinity.html
+.. _`infinity`: http://rolandpuntaier.blogspot.co.at/2017/04/infinity.html
+.. _`spacetime`: https://en.wikipedia.org/wiki/Quantum_spacetime
+.. _`generalized coordinates`: https://en.wikipedia.org/wiki/Generalized_coordinates
+.. _`action`: https://en.wikipedia.org/wiki/Action_(physics)
+.. _`action angles`: https://en.wikipedia.org/wiki/Action-angle_coordinates
+.. _`least action`: https://en.wikipedia.org/wiki/Action_(physics)
+.. _`Hamilton-Jacobi`: https://en.wikipedia.org/wiki/Hamilton%E2%80%93Jacobi_equation
+.. _`Lagrangian`: https://en.wikipedia.org/wiki/Lagrangian_mechanics
+.. _`Euler-Lagrange`: https://en.wikipedia.org/wiki/Euler%E2%80%93Lagrange_equation
+.. _`operators`: http://hyperphysics.phy-astr.gsu.edu/hbase/quantum/qmoper.html
+.. _`Schrödinger`: https://en.wikipedia.org/wiki/Schr%C3%B6dinger_equation
+.. _`quantum field theory`: https://en.wikipedia.org/wiki/Quantum_field_theory
+.. _`fields`: https://physics.stackexchange.com/questions/176941/how-many-quantum-fields-are-there
+.. _`path integral`: https://en.wikipedia.org/wiki/Path_integral_formulation
+.. _`compared`: https://en.wikipedia.org/wiki/Relation_between_Schr%C3%B6dinger%27s_equation_and_the_path_integral_formulation_of_quantum_mechanics
+.. _`Higgs`: https://en.wikipedia.org/wiki/Higgs_boson
+.. _`Lagrangian and Hamiltonian`: https://www.quora.com/What-is-the-difference-between-a-Lagrangian-and-a-Hamiltonian
+.. _`Physical meaning`: https://physics.stackexchange.com/questions/41138/what-is-the-physical-meaning-of-the-action-in-lagrangian-mechanics
+.. _`Legendre transformation`: https://en.wikipedia.org/wiki/Legendre_transformation
+.. _`canonical transformations`: https://en.wikipedia.org/wiki/Canonical_transformation
+.. _`canonical variables`: https://en.wikipedia.org/wiki/Canonical_coordinates
+.. _`Hamilton's principle`: https://en.wikipedia.org/wiki/Hamilton%27s_principle
+.. _`relates`: https://arxiv.org/pdf/1311.0813.pdf
+.. _`conservative`: https://en.wikipedia.org/wiki/Conservative_force
+.. _`complete set of commuting operators`: https://en.wikipedia.org/wiki/Complete_set_of_commuting_observables
+.. _`intensive variables`: https://en.wikipedia.org/wiki/Intensive_and_extensive_properties
+.. _`entropy`: https://en.wikipedia.org/wiki/Entropy_(information_theory)
+.. _`partition function`: https://en.wikipedia.org/wiki/Partition_function_(statistical_mechanics)
+.. _`a generalized force`: https://en.wikipedia.org/wiki/Thermodynamic_potential#The_fundamental_equations
+.. _`Planck units`: https://en.wikipedia.org/wiki/Boltzmann_constant#Planck_units
+.. _`time`: https://en.wikipedia.org/wiki/Time_in_physics
+.. _`standard model`: https://en.wikipedia.org/wiki/Standard_Model
+.. _`particles`: https://en.wikipedia.org/wiki/List_of_particles
+.. _`fermions`: https://en.wikipedia.org/wiki/Fermion
+.. _`bosons`: https://en.wikipedia.org/wiki/Boson
+.. _`inner product`: https://en.wikipedia.org/wiki/Inner_product_space
+.. _`energy`: https://en.wikipedia.org/wiki/Energy
+.. _`momentum`: https://en.wikipedia.org/wiki/Momentum
+.. _`black body radiaton`: https://en.wikipedia.org/wiki/Black_body_radiaton
+.. _`lagrange multipliers`: https://en.wikipedia.org/wiki/Lagrange_multiplier
+.. _`conjugate momentum`: https://en.wikipedia.org/wiki/Hamiltonian_mechanics#As_a_reformulation_of_Lagrangian_mechanics
+.. _`conjugate change`: https://en.wikipedia.org/wiki/Hamiltonian_mechanics
+.. _`equivalent`: https://physics.stackexchange.com/questions/72501/lagrange-multipliers-versus-generalized-coordinates
+.. _`cyclic`: https://en.wikipedia.org/wiki/Lagrangian_mechanics#Cyclic_coordinates_and_conserved_momenta
+.. _`relation`: https://en.wikipedia.org/wiki/Relation_(database)
+.. _`variables`: `information`_
+.. _`information`: http://rolandpuntaier.blogspot.com/2015/03/what-is-information.html
+.. _`coordinates`: https://en.wikipedia.org/wiki/Coordinate_system
+.. _`dimension`: https://en.wikipedia.org/wiki/Dimension
+.. _`field`: https://en.wikipedia.org/wiki/Field_(physics)
+.. _`relativity theory`: https://en.wikipedia.org/wiki/Theory_of_relativity
+.. _`special relativity`: https://en.wikipedia.org/wiki/Special_relativity
+.. _`general relativity`: https://en.wikipedia.org/wiki/General_relativity
+.. _`suitable coordinates`: https://en.wikipedia.org/wiki/Coordinate_conditions
+.. _`H-theorem`: https://en.wikipedia.org/wiki/H-theorem#Boltzmann's_H_theorem
+.. _`Boltzmann equation`: https://en.wikipedia.org/wiki/Boltzmann_equation
+.. _`related`: https://physics.stackexchange.com/questions/376717/is-there-a-mathematical-relationship-between-time-and-entropy
+.. _`The concept of entropy. Relation between action and entropy`: http://www.icmp.lviv.ua/journal/zbirnyk.44/001/art01.pdf
+.. _`A holographic map of action onto entropy`: https://arxiv.org/pdf/1112.4353.pdf
+.. _`beta`: https://en.wikipedia.org/wiki/Thermodynamic_beta
+.. _`manifold`: https://en.wikipedia.org/wiki/Manifold
+.. _`Newton had no kinetic energy concept`: https://physics.stackexchange.com/questions/132754/how-was-the-formula-for-kinetic-energy-found-and-who-found-it
+.. _`complex`: http://rolandpuntaier.blogspot.co.at/2017/04/complex-inner-product.html
+.. _`principle of least action`: https://en.wikipedia.org/wiki/Action_(physics)#Euler%E2%80%93Lagrange_equations_for_the_action_integral
+.. _`gives the Hamiltonian`: https://en.wikipedia.org/wiki/Hamilton%E2%80%93Jacobi_equation#Action_and_Hamilton's_functions
+.. _`calculus of variations`: https://en.wikipedia.org/wiki/Calculus_of_variations
+.. _`Hamiltonian`: https://en.wikipedia.org/wiki/Hamiltonian_mechanics
+.. _`Beltrami identity`: https://en.wikipedia.org/wiki/Beltrami_identity
+.. _`polar`: https://en.wikipedia.org/wiki/Polar_coordinate_system
+.. _`harmonic oscillator`: https://en.wikipedia.org/wiki/Harmonic_oscillator
+.. _`on-shell`: https://en.wikipedia.org/wiki/On_shell_and_off_shell
+.. _`virtual particle`: https://en.wikipedia.org/wiki/Virtual_particle
+.. _`generalized force`: https://en.wikipedia.org/wiki/Generalized_forces
+.. _`creation and annihilation`: https://en.wikipedia.org/wiki/Creation_and_annihilation_operators
+.. _`Newton first law`: https://en.wikipedia.org/wiki/Newton%27s_laws_of_motion
+.. _`Newton second law`: https://en.wikipedia.org/wiki/Newton%27s_laws_of_motion
+.. _`Newton third law`: https://en.wikipedia.org/wiki/Newton%27s_laws_of_motion
+.. _`coordinate system`: https://en.wikipedia.org/wiki/Coordinate_system
+.. _`reference frame`: https://en.wikipedia.org/wiki/Frame_of_reference
+.. _`angular momentum`: https://en.wikipedia.org/wiki/Angular_momentum
+.. _`hook's law`: https://en.wikipedia.org/wiki/Hooke%27s_law
+.. _`vector change`: https://en.wikipedia.org/wiki/Exterior_algebra
+.. _`Hamiltonian flow`: https://en.wikipedia.org/wiki/Hamiltonian_vector_field
+.. _`volume`: https://en.wikipedia.org/wiki/Symplectic_vector_space#Volume_form
+.. _`random`: https://en.wikipedia.org/wiki/Random_variable
+.. _`ordered`: https://en.wikipedia.org/wiki/Order_theory
+.. _`metric`: https://en.wikipedia.org/wiki/Metric_(mathematics)
+.. _`exterior derivative`: https://en.wikipedia.org/wiki/Exterior_derivative
+.. _`A`: https://en.wikipedia.org/wiki/Mathematical_descriptions_of_the_electromagnetic_field#Differential_forms_approach
+.. _`length contraction`: https://en.wikipedia.org/wiki/Length_contraction
+.. _`fundamental theorem of calculus`: https://en.wikipedia.org/wiki/Fundamental_theorem_of_calculus
+.. _`wedge product`: https://en.wikipedia.org/wiki/Exterior_algebra
+.. _`statistics`: https://www.quora.com/What-is-the-difference-between-Maxwell-Boltzmann-Bose-Einstein-and-Fermi-Dirac-statistics-and-when-do-they-apply
+.. _`nuclear clock`: https://phys.org/news/2018-04-en-route-optical-nuclear-clock.html
+.. _`lorentz transformation`: https://en.wikipedia.org/wiki/Derivations_of_the_Lorentz_transformations
+.. _`inertial frame`: https://en.wikipedia.org/wiki/Inertial_frame_of_reference
+.. _`contravariantly`: https://en.wikipedia.org/wiki/Covariance_and_contravariance_of_vectors#Use_in_tensor_analysis
+.. _`pancherel theorem`: https://en.wikipedia.org/wiki/Plancherel_theorem
+.. _`fca`: http://rolandpuntaier.blogspot.com/2015/06/fca.html
+.. _`topological space`: https://en.wikipedia.org/wiki/Topological_space
+.. _`euclidean space`: https://en.wikipedia.org/wiki/Euclidean_space
+.. _`What is simultaneous`: https://en.wikipedia.org/wiki/Relativity_of_simultaneity
+.. _`spin-statistics theorem`: https://en.wikipedia.org/wiki/Spin%E2%80%93statistics_theorem
+.. _`spin`: https://en.wikipedia.org/wiki/Spin_(physics)
+.. _`state`: https://en.wikipedia.org/wiki/Quantum_state
+.. _`coupled`: https://en.wikipedia.org/wiki/Electromagnetic_wave_equation#Solutions_to_the_homogeneous_electromagnetic_wave_equation
+.. _`placherel theorem`: https://en.wikipedia.org/wiki/Plancherel_theorem
+.. _`the vector potentials`: https://arxiv.org/pdf/1303.5619.pdf
+.. _`pt-symmetry`: https://arxiv.org/pdf/quant-ph/0501052.pdf
+.. _`boundary conditions`: https://www.quora.com/What-makes-quantum-mechanics-quantized
+.. _`Noether`: https://en.wikipedia.org/wiki/Noether%27s_theorem
+.. _`symmetry breaking`: https://en.wikipedia.org/wiki/Symmetry_breaking
+.. _`unitarity`: https://en.wikipedia.org/wiki/Unitarity_(physics)
+.. _`accounts for the cycling`: https://www.researchgate.net/post/Why_do_you_need_imaginary_numbers_to_describe_Quantum_Mechanics2
+.. _`orthogonal`: https://en.wikipedia.org/wiki/Orthogonality
+.. _`euclidian metric`: http://mathworld.wolfram.com/EuclideanMetric.html
+.. _`euclidian`: https://en.wikipedia.org/wiki/Topological_manifold#Formal_definition
+.. _`volume element`: https://en.wikipedia.org/wiki/Volume_form#Riemannian_volume_form
+.. _`one-form`: https://en.wikipedia.org/wiki/One-form
+.. _`two-form`: https://en.wikipedia.org/wiki/Differential_form
+.. _`frame of reference`: https://en.wikipedia.org/wiki/Frame_of_reference
+.. _`annealing`: https://en.wikipedia.org/wiki/Simulated_annealing
+.. _`eukaryote`: https://en.wikipedia.org/wiki/Eukaryote
+.. _`prokaryote`: https://en.wikipedia.org/wiki/Eukaryote
+.. _`model`: https://en.wikipedia.org/wiki/Mathematical_model
+.. _`expansion`: https://en.wikipedia.org/wiki/Accelerating_expansion_of_the_universe
+.. _`cartesian`: https://en.wikipedia.org/wiki/Cartesian_coordinate_system
+.. _`topology`: https://en.wikipedia.org/wiki/Topology
+.. _`probability`: https://en.wikipedia.org/wiki/Probability
+.. _`tangent space`: https://en.wikipedia.org/wiki/Tangent_space
+.. _`Planck constant`: https://en.wikipedia.org/wiki/Planck_constant
+.. _`time dilation`: https://en.wikipedia.org/wiki/Time_dilation
+.. _`length contraction`: https://en.wikipedia.org/wiki/Length_contraction
+.. _`maximum entropy`: https://en.wikipedia.org/wiki/Principle_of_maximum_entropy
+.. _`phase space`: https://en.wikipedia.org/wiki/Phase_space
+.. _`Hamilton equations`: https://en.wikipedia.org/wiki/Hamiltonian_mechanics
+.. _`Poisson bracket`: https://en.wikipedia.org/wiki/Poisson_bracket
+.. _`natural units`: https://en.wikipedia.org/wiki/Natural_units
+.. _`competition`: https://en.wikipedia.org/wiki/Competition_(biology)
+.. _`supply`: https://en.wikipedia.org/wiki/Supply_(economics)
+.. _`Action and angle variable`: https://en.wikipedia.org/wiki/Action-angle_coordinates
+.. _`action angle`: https://en.wikipedia.org/wiki/Adiabatic_invariant#Classical_mechanics_%E2%80%93_action_variables
+.. _`fourier series`: https://en.wikipedia.org/wiki/Fourier_series
+.. _`storage`: https://en.wikipedia.org/wiki/Energy_storage
+.. _`more`: https://en.wikipedia.org/wiki/Quantum_entanglement
+.. _`Power`: https://en.wikipedia.org/wiki/Power_(physics)
+.. _`causality`: https://en.wikipedia.org/wiki/Causality_(physics)#Causality_in_physics
+.. _`internal`: https://en.wikipedia.org/wiki/Internal_energy
+.. _`phase`: https://en.wikipedia.org/wiki/Phase_(waves)

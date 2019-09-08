@@ -1,0 +1,564 @@
+.. vim: syntax=rst
+
+.. http://rolandpuntaier.blogspot.com/2015/07/implications.html
+
+This blog is a continuation of the `FCA blog <http://rolandpuntaier.blogspot.com/2015/06/fca.html>`_.
+I actually mused over this in Summer 2004, but wanted to recap for myself
+and share some `source code <https://github.com/pyfca/pyfca>`_.
+
+The article I read back then was 
+`Endliche Hüllensysteme und ihre Implikationenbasen <http://www.emis.de/journals/SLC/wpapers/s49koenig.pdf>`_
+(Finite hull systems and their implications). I summarize this article here, since I didn't find an 
+english version online.
+
+In short, a `context <https://en.wikipedia.org/wiki/Formal_concept_analysis#Contexts_and_concepts>`_ is constructed,
+where rows are subsets of attributes ''A'', i.e. elements of the `power set <https://en.wikipedia.org/wiki/Power_set>`_,
+and columns are `implications <https://en.wikipedia.org/wiki/Implication(FCA)>`_ between subsets and 
+the `incidence <https://en.wikipedia.org/wiki/Formal_concept_analysis#Contexts_and_concepts>`_
+is given by *respects* (`\vdash`), `H=\{2^A,2^A\times2^A,\vdash\}`.
+This context is simplified, by applying the `Armstrong rules <https://en.wikipedia.org/wiki/Armstrong axioms>`_,
+to form a non-redundant, complete, reduced context, named `B`.
+Then an algorithm is presented, which takes the intents of 
+some `context <https://en.wikipedia.org/wiki/Formal_concept_analysis#Contexts_and_concepts>`_
+and recursively constructs the *respected* implications using `B`
+and afterwards uses the 3rd `Armstrong rule <http://en.wikipedia.org/wiki/Armstrong's_axioms>`_ to
+find an easy set of implications, i.e. not necessarily minimal,
+but easier than the `Duquenne-Guiges-Basis <https://en.wikipedia.org/wiki/Implication%28FCA%29#Implication_Basis>`_.
+
+Definitions
+-----------
+
+- `U\rightarrow V`: an `implication <https://en.wikipedia.org/wiki/Implication(FCA)>`_ is a pair `(U,V)`, `U \subseteq M` and `V\subseteq M`
+  `U` is **premiss** and `V` **conclusion**.
+- `W \vdash {U \rightarrow V}`: A set W respects `(U,V)`, if `U\nsubseteq W \:\text{or}\: V\subseteq W`. One also says: `(U,V)` holds for `W`.
+- If `V\subseteq U` the implication is called *trivial*.
+
+An intelligent system repeatedly gets sets of elements (attributes) as
+input (objects) and associates these elements. Implications are the result
+of many such sets.
+
+- A `concept lattice <http://en.wikipedia.org/wiki/Formal_concept_analysis>`_ `C` respects `(U,V)`, iff `U' \subseteq V'`.
+- `(U,V)` holds in `C`, iff `V\subseteq U''`
+
+Implications can be composed
+to give new implications. The minimal set of implications that
+produce all other implications is called an **implication basis**.
+
+A minimal implication basis is given by the `Duquenne-Guiges-Basis <https://en.wikipedia.org/wiki/Implication%28FCA%29#Implication_Basis>`_ 
+(*stem basis*), 
+which consists of all **pseudo-contents**:
+
+Let `X \;\mapsto \;X''` be a
+`closure operation <http://en.wikipedia.org/wiki/Closure_operator>`_,
+then `P` is **pseudo-closed** if 
+
+- `P \;\neq \;P''`
+- `Q\subset P \implies Q''\subseteq P`
+
+There cannot be a implication basis with less implications,
+than the *Duquenne-Guiges-Basis*, but 
+one can choose implications that are easier 
+(with low `\sum |U| |V|`, `U\rightarrow V` with `V\neq \emptyset` and `U\cap V = \emptyset`).
+
+Construction of `H`
+----------------------------
+
+`H=\{2^A,2^A\times2^A,\vdash\}` is a context
+and the according concepts `C(H)=\{(O,A)\}` are
+subsets (= objects of `H`) that respect a set of implications (= attributes `H`).
+
+The basic implications (`\Rightarrow`) respected by this context `C` (`\models`)
+are given by the 
+`Armstrong Axioms <http://en.wikipedia.org/wiki/Armstrong's_axioms>`_:
+
+.. math:: 
+
+    \begin{align}
+    \emptyset & \Rightarrow \{U\rightarrow U\} &\:(A1)\\
+    \{U\rightarrow V\} & \Rightarrow \{UW\rightarrow U\} &\:(A2)\\
+    \{U\rightarrow V, VW \rightarrow Z\} & \Rightarrow \{UW\rightarrow Z\} &\:(A3)\\
+    \end{align}
+
+
+Some derived ones are (`\equiv` is `\Rightarrow` in both directions):
+
+.. math::
+
+    \{U\rightarrow V\} & \equiv \{U\rightarrow UV\} &\:(A4)\\
+    \{U\rightarrow V, U \rightarrow W\} & \equiv \{U\rightarrow VW\} &\:(A5)\\
+    \{U\rightarrow V\} & \equiv \{W\rightarrow V | U\subseteq W\} &\:(A6)\\
+    \{U\rightarrow V, UVW \rightarrow Z\} & \equiv \{U\rightarrow V, UW\rightarrow Z\} &\:(A7)\\
+
+.. note:: Notation: `UV` means `U\cup V` and `Ui` means `U\cup\{i\}`
+
+`H` can be constructed inductively. 
+The sequence of the attributes is of no importance when
+constructing the power set.
+
+.. note:: In [1]_ `\{\star\}` named the new attribute in the step `n` and `\{\star\star\}` in the step `n+1`.
+    Here I name them `i` and `j` and `\star` becomes a wild card meaning whatever element in a previous step.
+
+In the following `i` means a new attribute.
+Because of A4:`\{X\rightarrow Y\} & \equiv \{X\rightarrow XY\}` 
+only implications with sets `U\subseteq V` are included,
+therefore `Ui \rightarrow V` is not there.
+
+- `H_o = 1`, because 
+  `\emptyset \vdash \emptyset\rightarrow\emptyset`.
+- `L_o = 0`, because 
+  `\emptyset \nvdash \emptyset\rightarrow\{i\}`.
+
+.. math::
+
+    H_{n+1} = 
+    \begin{matrix}
+    \vdash \: & \: U\rightarrow V \: & \: 
+    U \rightarrow Vi\: & \: 
+    Ui \rightarrow Vi \\
+    X & H_n & L_n & 1  \\
+    Xi & H_n & H_n & H_n \\
+    \end{matrix}
+
+- `(2,\star)` implications hold with `Xi=X\cup\{i\}`,
+  because `X` respects `U\rightarrow V` at location `(1,1)`.
+- The `L` in `(1,2)` is discussed below
+- The `1` in `(1,3)` is 
+  because `Ui\nsubseteq X` makes the implication hold.
+
+`L_{n+1}` is part of `H_{n+2}`, which adds another
+element `j`.
+
+.. math::
+
+    L_{n+1} = 
+    \begin{matrix}
+    \vdash \:&\: U\rightarrow Vy \:&\:
+    U \rightarrow Vij  \:&\:
+    Ui \rightarrow Vij \\
+    X&L_n & L_n & 1   \\
+    Xi&L_n & L_n & L_n \\
+    \end{matrix}
+
+- The columns of `L_{n+1}` are those of `H_{n+1}` 
+  augmented by `j` at the conlusion side.
+- The rows are the same as in `H_{n+1}`.
+- As `i`, so is `j` not in `X` and we can
+  distribute `L` to all but `(1,3)`,
+  where `Ui \nsubseteq X` makes it hold.
+
+Construction of `B`
+----------------------------
+
+Because of A5 (`\{U\rightarrow V, U \rightarrow W\} & \equiv \{U\rightarrow VW\}`)
+we can reduce `H` to implications of the shape 
+`U\rightarrow U\cup\{i\}`, abbreviated `U\rightarrow i` (thus `Ui\rightarrow j` means
+`U\cup\{i\}\rightarrow U\cup\{i,j\}`.
+
+In the following `\star` names the extra element on the right of a previous recursion step,
+whichever that was.
+
+`B` is in analogy to `H` horizontally subdivided by three event:
+
+- no new element `i`, ie some other `\star` of a previous step is on the right.
+- with `i` on right side
+- with `i` on both sides: the extra element on the right is any `\star` of a previous step.
+
+.. math::
+    B_{1} = \begin{matrix} 0 \\ 1 \\ \end{matrix}\:\:\:\:\:\:
+    A_{1} = \begin{matrix} 0 & 1 \\ 0 & 0 \\ \end{matrix}
+
+.. math::
+    B_{n+1} = 
+    \begin{matrix}
+    \vdash \: & \: U\rightarrow \star \: & \: 
+    U \rightarrow i\: & \: 
+    Ui \rightarrow \star\\
+    X & B_n & A_n & 1  \\
+    Xi & B_n & 1 & B_n \\
+    \end{matrix}
+
+- `(1,3)`: `Ui \nsubseteq X`, so it holds.
+- `(2,2)`: `Xi \vdash U \rightarrow i`.
+  If `U\nsubseteq X`, so is `Ui\nsubseteq Xi`, ie it holds; same for `\subseteq`.
+- `(1,1)\Rightarrow (2,1),(2,3)`: 
+  `X\vdash U\rightarrow \star \equiv Xi\vdash U\rightarrow \star \equiv Xi\vdash Ui\rightarrow \star`
+- `(1,2)`: see below
+
+`A_{n+1}` is part of `B_{n+2}`, which adds another
+element `j` on the right side.
+The new element of step `n` (`i`) can be on the left side or not, hence the horizontal partitioning.
+
+.. math::
+
+    A_{n+1} = 
+    \begin{matrix}
+    \vdash \:&\: U\rightarrow j \:&\:
+    Ui \rightarrow j \\
+    X & A_n & 1   \\
+    Xi &A_n & A_n \\
+    \end{matrix}
+
+The implications (columns) in `B` are 
+`reduced <http://en.wikipedia.org/wiki/Formal_concept_analysis#reduced>`_.
+The rows are reduced apart from the last line, which is always full.
+
+Application to Find Implications for a Context
+----------------------------------------------
+
+`H`, `L`, `B`, `A` (`=X`) are used to find 
+the implication basis and the intents.
+
+We recursively construct the composed context `K\circ X` defined by `X(K(g))`,
+g is object of `K`.
+
+Every attribute of `K(g) = g'` gets a position. This position says whether the attribute is there or not there
+- column after the *if* in the following formulas.
+So every `g'` is coded by a binary number. 
+This is `\lambda:2^M \mapsto \{0,1\}^n` in [1]_.
+
+The first two lines for `(g_{[n]})^{H_{n}}` show the according implication coding.
+This is `\kappa: (U\mapsto V) \mapsto \{0,1,2\}^n` with `2 = i\in U`, `1 = i\in V` and `U\cap V=\emptyset` in [1]_.
+So every binary attribute coding becomes a ternary implication coding. 
+
+For `n=1`
+
+.. math::
+    (g_{[1]})^{H_{1}}= \begin{array}{cl}
+    1,0,1 \\ 1,1,1 \end{array}\:&\:
+    (g_{[1]})^{L_{1}}= \begin{array}{cl}
+    0,0,1 & \textrm{if }g_{1}=0\\
+    0,0,0 & \textrm{if }g_{1}=1\end{array}
+
+For `n>1`
+
+.. math::
+
+    (g_{[n]})^{H_{n}}=\begin{array}{ll}
+    0\: & \: 1\: & \: 2 \\
+    U\rightarrow V \: & \: 
+    U \rightarrow Vi\: & \: 
+    Ui \rightarrow Vi \\
+    (g_{[n-1]})^{H_{n-1}}\:&\:
+    (g_{[n-1]})^{L_{n-1}}\:&\:
+    1^{3^{n-1}} & \textrm{if }g_{n}=0\\
+    (g_{[n-1]})^{H_{n-1}}\:&\:
+    (g_{[n-1]})^{H_{n-1}}\:&\:
+    (g_{[n-1]})^{H_{n-1}} & \textrm{if }g_{n}=1\end{array}
+
+
+.. math::
+
+    (g_{[n]})^{L_{n}}= \begin{array}{ll}
+    (g_{[n-1]})^{L_{n-1}}\:&\:
+    (g_{[n-1]})^{L_{n-1}}\:&\:
+    1^{3^{n-1}} & \textrm{if }g_{n}=0\\
+    (g_{[n-1]})^{L_{n-1}}\:&\:
+    (g_{[n-1]})^{L_{n-1}}\:&\:
+    (g_{[n-1]})^{L_{n-1}} & \textrm{if }g_{n}=1\end{array}
+
+The recursive construct with coding `1 = x\in V < 2 = x\in U`
+shows that the column position, interpreted as ternary number, codes the implication.
+If the incidence at the column position is 1, then `g'` respects this implication:
+`\{g'\}^{H_n}` is `indicator function <https://en.wikipedia.org/wiki/Indicator_function>`_ 
+for the respected implications.
+
+The coding will also place a larger `V` before a smaller one when going from
+right to left.  This way one can filter out implications with already
+encountered same left side.
+
+The `U\cup V` will be closed.
+If there is no implication for a left side, this is a closed intent, too.
+
+.. note:: Python Implementation
+
+    Python's arbitrary precission integers is used for coding.
+    An attribute's position is the bit position of the integer.
+    Every object is thus an integer. A context is a list of integers.
+
+    In here higher bits are more left; in the [1]_ they are more right;
+    the horizontal order is inverted.
+
+
+.. code:: python
+
+    def UV_H(Hg,gw):
+        """
+        Return implications UV respecting g.
+        gw = g width
+        Hg = H(g), g is the binary coding of the attribute set
+        UV = all non-trivial (!V⊂U) implications U->V with UuV closed; in ternary coding (1=V,2=U)
+        K = all closed sets
+        """
+        lefts = set()
+        K = set()
+        UV = set()
+        p = Hwidth(gw)
+        pp = 2**p
+        while p:
+            pp = pp>>1
+            p = p-1
+            if Hg&pp:
+                y = istr(p,3,gw)
+                yy = y.replace('1','0')
+                is02 = y.find('1') == -1 #y∈{0,2}^n
+                if is02:
+                    K.add(y)
+                elif yy not in lefts:
+                    lefts.add(yy)
+                    UV.add(y)
+        return (UV,K)
+
+Now we do the analogue procedure with the `B` context.
+In `B` the implications are of the shape `U\rightarrow U\cup\{x\}`,
+so we need to specify `U` and the one binary position of x.
+This implication coding can be derived from the column position recursively (see below).
+
+For `n=1`:
+
+.. math::
+    (g_{[1]})^{B_{1}}= \begin{array}{cl}
+    0 \\ 1 \end{array}\:&\:
+    (g_{[1]})^{A_{1}}= \begin{array}{cl}
+    0 & 1 & \textrm{if }g_{1}=0\\
+    0 &0 & \textrm{if }g_{1}=1\end{array}
+
+For `n>1`:
+
+.. math::
+
+    (g_{[n]})^{B_{n}}= \begin{array}{c}
+    U \rightarrow \star \: & \: 
+    U \rightarrow i \: & \: 
+    Ui \rightarrow \star\\
+    (g_{[n-1]})^{B_{n-1}}\:&\:
+    (g_{[n-1]})^{A_{n-1}}\:&\:
+    1^{(n-1)2^{n-2}}\:&\:
+    \textrm{if }g_{n}=0\\
+    (g_{[n-1]})^{B_{n-1}}\:&\:
+    1^{2^{n-1}}\:&\:
+    (g_{[n-1]})^{B_{n-1}}\:&\:
+    \textrm{if }g_{n}=1\end{array}
+
+.. math::
+
+    (g_{[n]})^{A_{n}}=\begin{array}{c}
+    U \rightarrow j \:&\:
+    Ui \rightarrow j \\
+    (g_{[n-1]})^{A_{n-1}}\:&\:
+    1^{2^{n-1}}\:&\:
+    \textrm{if }g_{n}=0\\
+    (g_{[n-1]})^{A_{n-1}}\:&\:
+    (g_{[n-1]})^{A_{n-1}}\:&\:
+    \textrm{if }g_{n}=1\end{array}
+
+
+The following Python returns the implication coding for a column `t`.
+
+.. code:: python
+
+    Awidth = lambda n: 2**n
+    Bwidth = lambda n:n*2**(n-1)
+    def A012(t,i):
+        if i<0:
+            return ""
+        nA = Awidth(i)
+        if t < nA:
+            return "0"+A012(t,i-1)
+        else:
+            return "2"+A012(t-nA,i-1)
+    def B012(t,i):
+        """
+        Constructs ternary implication coding (0=not there, 2=U, 1=V)
+        t is B column position
+        i = |M|-1 to 0
+        """
+        if not i:
+            return "1"
+        nA = Awidth(i)
+        nB = Bwidth(i)
+        nBB = nB + nA
+        if t < nB:
+            return "0"+B012(t,i-1)
+        elif t < nBB:
+            return "1"+A012(t-nB,i-1)
+        else:
+            return "2"+B012(t-nBB,i-1)
+
+
+The positions of the 1's in the `B` row for a given `g`
+yield the implications. Here the python source code:
+
+.. code:: python
+
+    def UV_B(Bg,gw):
+        """
+        returns the implications UV based on B
+        Bg = B(g), g∈2^M
+        gw = |M|, M is the set of all attributes
+        """
+        UV = []
+        p = Bwidth(gw)
+        pp = 2**p
+        while p:
+            pp = pp>>1
+            p = p-1
+            if Bg&pp:
+                uv = B012(p,gw-1)
+                UV.append(uv)
+        return UV
+
+To get the implications that hold in a context `K`, i.e. for intent 1 and intent 2 and ...,
+we &-combine (multiply) the `B` rows for intent 1 and intent 2 and ...
+
+.. note:: See `pyfca <https://github.com/pyfca/pyfca>`_ for the full and possibly updated source code.
+
+Constructing a Basis
+--------------------
+
+The implications that result via `B` can be pruned by
+
+- first finding the minimal antichain
+
+- then applying the 3rd Armstrong 
+
+The minimal Antichain
+---------------------
+
+The 1-position (j) in the ternary coding is called significant component.
+`L_j` are all implications with the same significant component. 
+
+The implications `U\rightarrow j` constructed in this way via `K\circ B` are 
+`ordered lexicographically <https://en.wikipedia.org/wiki/Lexicographical_order>`_ based on `0\le 1 \le 2`.
+
+They are also ordered with the `product order <https://en.wikipedia.org/wiki/Product_order>`_,
+which is a `partial order <https://en.wikipedia.org/wiki/Partially_ordered_set>`_, and it 
+depicts the containment hierarchy of the `U` side. We want to find
+the smallest `U` of every chain in `L_j`.
+This `\min L_j` is an `antichain <https://en.wikipedia.org/wiki/Antichain>`_ and so is `L=\bigcup\min L_j`.
+
+The ``UV_B`` above changed to return this minimal antichain:
+
+.. code:: python
+
+    def v_Us_B(Bg,gw):
+        """
+        returns the implications {v:Us} based on B
+        v is the significant component
+        Bg = B(g), g∈2^M
+        gw = |M|, M is the set of all attributes
+        """
+        v_Us = defaultdict(list)
+        p = Bwidth(gw)
+        pp = 2**p
+        while p:
+            pp = pp>>1
+            p = p-1
+            if Bg&pp:
+                uv = B012(p,gw-1)
+                #lets find minima regarding product order
+                #{v:[Umin1,Umin2,...]}
+                v = uv.find('1')#v=significant
+                u = uv[:v]+'0'+uv[v+1:]
+                u = int(u.replace('2','1'),2)
+                Umin_s = self[gw-v-1]#bit position from right
+                it = [i for i,U in enumerate(Umin_s) if U&u==u]
+                for i in reversed(it):
+                    del Umin_s[i]
+                else:
+                    Umin_s.append(u)
+        return v_Us
+
+
+The Basis
+---------
+
+In the construction of the minimal antichain the 2nd Armstrong rule has been used,
+but there is still redundancy due to the 3rd Armstrong rule
+`\{U\rightarrow V, VW \rightarrow Z\} & \Rightarrow \{UW\rightarrow Z\}`.
+
+A component-wise operation is created to represent the 3rd Armstrong rule for the 0,1,2-coding
+
+- `U\circ VW\Rightarrow UW`: `0\circ 0 = 0` and `2\circ 0 = 0\circ 2 = 2\circ 2 = 2`
+  This is a binary ``or`` operation.
+- `V\circ VW\Rightarrow UW`, no `V` in `UW`: `1\circ 2 = 2\circ 1 = 0`.
+- `Z\Rightarrow Z`, `V\cap Z=\emptyset`: `1\circ 0 = 0\circ 1 = 1`
+- `L_i\circ L_j=\{x\circ y|x\in L_i, y\in L_j, i\neq j\}`
+
+Note that it is required that, with `X\rightarrow x` and `Y\rightarrow y`,
+`x\in Y` xor `y\in X` to make this the 3rd Armstrong rule.
+
+This is implemented in python as
+
+.. code:: python
+
+    #u1,u2 code the attribute sets via the bits of an integer
+    #v1,v2 are bit indices
+    #u1->v1, vv1 = 2**v1
+    #u2->v2, vv2 = 2**v2
+    if vv2&u1 and not vv1&u2:
+        return (v1,[(u1|u2)&~vv2])
+    elif vv1&u2 and not vv2&u1:
+        return (v2,[(u1|u2)&~vv1])
+
+The properties of `\circ` are: 
+
+- `x\circ y = y\circ x`
+- `x \neq x\circ y \neq y`
+- If `x \le_n y`, then `x\circ y \le_n y`, `\le_n` is the product order
+- If `x\circ y\in L_i`, then `x\in L_i` or `y\in L_i` (note: `L_i` not `\min L_i`)
+- If there exits `x\circ y=z\in L`, then there exist `\tilde{x},\tilde{y}\in L` with `\tilde{x}\circ\tilde{y}=z`
+
+The objective is to find `Y\subseteq L`, 
+of which the repeated application of `\circ` produces `L`: `\bar{Y}=L`.
+
+`\bar{Y}` is defined as 
+
+- `Y^2 = Y\circ Y`
+- `Y^{n+1} = Y^n\cup\{z\in L|z=x\circ y, x\in Y^n, y\in Y\cup Y^n\}`
+  This means that of `Y^n\circ(Y^n\cup Y)` only elements in `L` are added at each step.
+  But the algorithm below can cope with `Y^n` getting bigger than L.
+- `\bigcirc{Y} = \bigcup_{n\geq 2}{Y^n}`
+- `\bar{Y} = Y\cup\bigcirc{Y}`
+
+One starts with `Y_0=L\ (L\circ L)`, i.e. all those elements of `L` that are not
+results of an application of the 3rd Armstrong rule.
+As long as `\bar{Y}_n \neq L`, we add `z\in L\ \bar{Y}_n` to `Y_n`.
+`Y_n\cup \{z\}` cannot generate elements of `Y_0`, but it can  generate elements of `Z_n = Y_n\ Y_0`.
+Therefore we do `Y_{n+1} = Y_0 \cup (Z_n\ (\bigcirc(Y_n\cup z)))\cup z`, i.e. we also remove elements,
+but only those that can be generated together with `z`, hence `\bar{Y}_n \subset \bar{Y}_{n+1}`.
+
+.. note:: The formula `Y_{n+1} = Y_0 \cup (Z_n\ (\bigcirc(Y_n\cup z)))\cup\{z\}` in [1]_ lets you
+    think, that only the current `z` can generate itself. 
+    But actually other `z\in Z_n` could generate themselves.
+    `Z_n\ (\bigcirc(Y_n\cup z))` could remove elements other than `z` that are needed
+    for the generation of elements in `Y_n`, thus making `Y_n \not\subset Y_{n+1}`.
+    Still the latter is postulated in [1]_. There is a comment, though, 
+    that states, one should use *disjunct* union. This is interpreted as:
+    don't remove elements of `Z_n`, where the current `z` is not involved in the generation.
+
+Here ist the python code for that:
+
+.. code:: python
+
+    def basis_minomega(self):
+        L = self
+        Y = L - (L*L)
+        while True:
+            Ybar = Y + ~Y
+            take = L - Ybar
+            if not len(take):
+                return Y
+            else:
+                z = next(take.flatten())
+                Yzgen = Y**z #generate with z involved
+                Y = (Y - Yzgen) + z 
+
+
+.. note:: This algorithm can generate a basis that is smaller regarding `\omega(UV)=\sum |U| |V|`,
+    but not necessarily in count compared to the Duquenne-Guiges-Basis.
+
+.. [1] 
+
+    `Endliche Hüllensysteme und ihre Implikationenbasen <http://www.emis.de/journals/SLC/wpapers/s49koenig.pdf>`_ by Roman König.
+
+

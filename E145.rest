@@ -1,0 +1,613 @@
+.. vim: syntax=rst
+
+.. http://rolandpuntaier.blogspot.com/2015/02/lenovo-e145-with-archlinux.html
+
+.. {E145}
+
+Lenovo E145 with Archlinux
+==========================
+
+Because of the purportedly long battery live I recently 
+purchased the Lenove E145 notebook as an occasional travel companion.
+I replaced the 500Gb HDD with a Crucial M550 SSD.
+
+Archlinux Installation
+----------------------
+
+Download archlinux iso.
+
+Copy it to a USB stick
+
+.. code:: 
+
+     sudo dd bs=4M if=/media/sw/linux/archlinux-2015.02.01-dual.iso of=/dev/sdc && sync
+
+Boot with the USB stick. 
+
+Then create the partitions:
+
+.. code:: 
+
+    gdisk /dev/sda
+
+- 34-2047 bios boot (ef02)
+- +4G linux swap (8200)
+- rest linux filesystem (8300)
+
+Make file system.
+
+.. code:: 
+
+    mkswap /dev/sda2
+    swapon /dev/sda2
+    mkfs.ext4 /dev/sda3
+
+.. note::
+
+    Check for TRIM capability.
+
+    .. code:: 
+
+        hdparm -I /dev/sda | grep TRIM
+
+    Positive. One should later on regularly do
+
+    .. code:: 
+
+        fstrim /
+
+
+The archlinux base system
+
+.. code::
+
+    mount /dev/sda3 /mnt
+    pacstrap /mnt base base-devel
+    genfstab -p /mnt >> /mnt/etc/fstab
+    arch-chroot /mnt
+
+with basic Configure
+
+.. code::
+
+     echo E145 > /etc/hostname
+     hwclock --systohc --utc
+     ln -sf /usr/share/zoneinfo/Europe/Vienna /etc/localtime
+     #Uncomment the needed locales in /etc/locale.gen
+     locale-gen
+     echo LANG=en_US.UTF8 > /etc/locale.conf
+     #
+     #this has escape where capslock was
+     #/usr/share/kbd/keymaps/i386/qwerty/myus.map.gz
+     cat >> /etc/vconsole.conf << "EOF
+     KEYMAP=myus 
+     FONT=lat2-14
+     EOF
+
+
+Replacing ``keyboard`` with ``sd-vconsole`` in the HOOKS list produced strange glyphs in XTerm.
+I had to revert it later.
+
+.. code::
+
+     mkinitcpio -p linux #ignore the warnings
+     passwd
+
+Install grub and reboot
+
+.. code::
+
+    pacman -S grub
+    #in /etc/default/grub: GRUB_CMDLINE_LINUX_DEFAULT="quiet resume=swap_partition"
+    grub-install --target=i386-pc --recheck /dev/sda
+    grub-mkconfig -o /boot/grub/grub.cfg
+    exit
+    umount -R /mnt
+    reboot
+    
+
+Add user
+
+.. code::
+
+    useradd -m -g users -G audio,lp,optical,storage,video,wheel,games,power,scanner -s /bin/bash <user>
+    passwd <user>
+
+Check hardware and kernel modules:
+
+.. code::
+
+    lspci
+    lspci -k
+    lsmod
+
+E145 ``lspci``::
+
+    00:00.0 Host bridge: Advanced Micro Devices, Inc. [AMD] Family 16h Processor Root Complex
+    00:01.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Kabini [Radeon HD 8240 / R3 Series]
+    00:01.1 Audio device: Advanced Micro Devices, Inc. [AMD/ATI] Kabini HDMI/DP Audio
+    00:02.0 Host bridge: Advanced Micro Devices, Inc. [AMD] Family 16h Processor Function 0
+    00:02.2 PCI bridge: Advanced Micro Devices, Inc. [AMD] Family 16h Processor Functions 5:1
+    00:02.3 PCI bridge: Advanced Micro Devices, Inc. [AMD] Family 16h Processor Functions 5:1
+    00:02.5 PCI bridge: Advanced Micro Devices, Inc. [AMD] Family 16h Processor Functions 5:1
+    00:10.0 USB controller: Advanced Micro Devices, Inc. [AMD] FCH USB XHCI Controller (rev 01)
+    00:11.0 SATA controller: Advanced Micro Devices, Inc. [AMD] FCH SATA Controller [AHCI mode]
+    00:12.0 USB controller: Advanced Micro Devices, Inc. [AMD] FCH USB OHCI Controller (rev 39)
+    00:12.2 USB controller: Advanced Micro Devices, Inc. [AMD] FCH USB EHCI Controller (rev 39)
+    00:13.0 USB controller: Advanced Micro Devices, Inc. [AMD] FCH USB OHCI Controller (rev 39)
+    00:13.2 USB controller: Advanced Micro Devices, Inc. [AMD] FCH USB EHCI Controller (rev 39)
+    00:14.0 SMBus: Advanced Micro Devices, Inc. [AMD] FCH SMBus Controller (rev 3a)
+    00:14.2 Audio device: Advanced Micro Devices, Inc. [AMD] FCH Azalia Controller (rev 02)
+    00:14.3 ISA bridge: Advanced Micro Devices, Inc. [AMD] FCH LPC Bridge (rev 11)
+    00:18.0 Host bridge: Advanced Micro Devices, Inc. [AMD] Family 16h Processor Function 0
+    00:18.1 Host bridge: Advanced Micro Devices, Inc. [AMD] Family 16h Processor Function 1
+    00:18.2 Host bridge: Advanced Micro Devices, Inc. [AMD] Family 16h Processor Function 2
+    00:18.3 Host bridge: Advanced Micro Devices, Inc. [AMD] Family 16h Processor Function 3
+    00:18.4 Host bridge: Advanced Micro Devices, Inc. [AMD] Family 16h Processor Function 4
+    00:18.5 Host bridge: Advanced Micro Devices, Inc. [AMD] Family 16h Processor Function 5
+    01:00.0 Network controller: Broadcom Corporation BCM43142 802.11b/g/n (rev 01)
+    03:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller (rev 07)
+    04:00.0 Unassigned class [ff00]: Realtek Semiconductor Co., Ltd. RTS5229 PCI Express Card Reader (rev 01)
+
+Install yaourt from AUR using the Archlinux Build System (ABS):
+
+.. code::
+
+    pacman -S abs
+    #download yaourt 1.5 from AUR
+    cd ~/abs/yaourt
+    makepkg -s 
+    pacman -U yaourt-1.5-1-any.pkg.tar.xz
+
+Other utilities:
+
+.. code::
+
+    pacman -S gvim, sudo, git
+
+
+Network
+-------
+
+Ethernet works straight away.
+
+Wireless
+++++++++
+
+I had read that there are problems with ``broadcom-wl-dkms``, but so far it worked for me:
+
+.. code::
+
+    yaourt -S broadcom-wl-dkms
+    depmod -a
+    modprobe wl
+
+/etc/modprobe.d/broadcom-wl-dkms.conf::
+
+    blacklist b43
+    blacklist b43legacy
+    blacklist ssb
+    blacklist bcm43xx
+    blacklist brcm80211
+    blacklist brcmfmac
+    blacklist brcmsmac
+    blacklist bcma
+
+/etc/systemd/system/network.service::
+
+    [Unit]
+    Description=Network Connectivity
+    Wants=network.target
+    Before=network.target
+    BindTo=sys-subsystem-net-devices-enp3s0.device
+    After=sys-subsystem-net-devices-enp3s0.device
+
+    [Service]
+    Type=oneshot
+    RemainAfterExit=yes
+    ExecStart=ip link set dev enp3s0 up
+    ExecStart=ip addr add <ip address>/24 broadcast + dev enp3s0
+    ExecStart=ip route add default via 192.168.1.1 dev enp3s0
+    ExecStop=ip addr flush dev enp3s0 
+    ExecStop=ip link set dev enp3s0 down
+
+    [Install]
+    WantedBy=multi-user.target
+
+I use netctl and made a static setup for ethernet and a dynamic for wireless.
+
+/etc/netctl/sen::
+
+    Description='static ethernet connection'
+    Interface=enp3s0
+    Connection=ethernet
+    IP=static
+    Address=('192.168.1.107/24')
+    Gateway='192.168.1.1'
+    DNS=('192.168.1.1')
+    ExcludeAuto=no
+
+/etc/netctl/dwl::
+
+    Description='dhcp wireless home'
+    Interface=wlp1s0
+    Connection=wireless
+    Security=wpa
+    IP=dhcp
+    ESSID='whateveryouressid'
+    Key='whateveryourpassphrase'
+
+
+``wifi-menu -o`` can be used to scan for wifi and to generate a profile.
+
+Audio
+-----
+
+.. {alsa}
+
+.. code::
+
+    pacman -S alsa-utils
+    pacman -S mplayer
+    pacman -S pavucontrol
+
+``Alsa`` configuration files: `/usr/share/alsa/alsa.conf` includes `/etc/asound.conf` and `~/.asoundrc`.
+
+Commands for testing
+
+.. code::
+
+    #check loaded kernel modules
+    lsmod | grep snd 
+    #check indices
+    cat /proc/asound/modules 
+    #cards, devices, ...
+    cat /proc/asound/cards 
+    aplay -l
+    aplay -L
+    arecord -l
+    arecord -L
+    
+    #testing
+    arecord -r 48000 test.wav
+    aplay test.wav
+
+and the alsa configuration file:
+
+/etc/asound.conf::
+
+    pcm.dmixed {
+        ipc_key 1025
+        type dmix
+        slave.pcm "hw:1,0"
+    }
+
+    #one called "dsnooped" for capturing 
+    pcm.dsnooped {
+        ipc_key 1027
+        type dsnoop
+        slave.pcm "hw:1,0"
+    }
+
+    #and this is the real magic
+    pcm.asymed {
+        type asym
+        playback.pcm "dmixed"
+        capture.pcm "dsnooped"
+    }
+
+    #a quick plug plugin for above device to do the converting magic
+    pcm.pasymed {
+        type plug
+        slave.pcm "asymed"
+    }
+
+    pcm.!default {
+        type plug
+        slave.pcm "asymed"
+    }
+
+    defaults.ctl.!card 1;
+
+    #a ctl device to keep xmms happy
+    ctl.pasymed {
+        type hw
+        card 1
+        device 0
+    }
+
+    #for aoss:
+    pcm.dsp0 {
+        type plug
+        slave.pcm "asymed"
+    }
+
+    ctl.mixer0 {
+        type hw
+        card 1
+        device 0
+    }
+
+    pcm.jackplug {
+        type plug
+        slave { pcm "jack" }
+    }
+
+    pcm.jack {
+        type jack
+        playback_ports {
+            0 alsa_pcm:playback_1
+            1 alsa_pcm:playback_2
+        }
+        capture_ports {
+            0 alsa_pcm:capture_1
+            1 alsa_pcm:capture_2
+        }
+    }
+
+
+Somewhere I had found that ``position_fix`` would help for the crackling microphone.
+
+/etc/modprobe.d/audio_powersave.conf::
+
+    options snd_hda_intel model=thinkpad position_fix=3 power_save=1
+
+It maybe helps a little bit, but the actual way to tackle this is via ``alsamixer``,
+F4, capture to maximum and the other two bars down to zero.
+
+
+Video
+-----
+
+.. code::
+
+    pacman -S xorg-server 
+    pacman -S xorg-init 
+    pacman -S xorg-utils
+    pacman -S xorg-xmodmap #because I have .Xmodmap file
+    
+    #video
+    pacman -S xf86-video-ati
+
+
+Mouse
+-----
+
+.. code::
+
+    #mouse pad
+    pacman -S xf86-input-synaptics
+
+Window Manager
+--------------
+
+I use xmonad, but the choices are many ...
+
+.. code::
+
+    pacman -S xmonad 
+    pacman -S xmonad-contrib
+
+Special Keys
+------------
+
+The special keys of the E145 are turned on by default. 
+So you have to press `Fn` to get to the Fx keys. 
+Enter BIOS at boot and set them to ``legacy`` to have F1 through F12 directly.
+
+The special keys are then available via ``Fn+Fx``.
+They don't work out of the box, but are mapped to X events already.
+These X events can be mapped to commands via ``xbindkeys``.
+
+.. code::
+
+    pacman -S xbindkeys
+
+~/.xbindkeysrc::
+
+    "amixer -D pulse sset Master 5%+"
+        XF86AudioRaiseVolume
+
+    "amixer -D pulse sset Master 5%-"
+        XF86AudioLowerVolume
+
+    "amixer -D pulse set Master toggle"
+        XF86AudioMute
+
+    "amixer -D pulse set Capture toggle"
+        XF86AudioMicMute
+
+    "echo `cat /sys/class/backlight/radeon_bl0/brightness` -10 | bc | sudo tee /sys/class/backlight/radeon_bl0/brightness > /dev/null"
+        XF86MonBrightnessDown
+
+    "echo `cat /sys/class/backlight/radeon_bl0/brightness` +10 | bc | sudo tee /sys/class/backlight/radeon_bl0/brightness > /dev/null"
+        XF86MonBrightnessUp
+
+    #not mapped
+    #XF86Display , XF86AudioNext , XF86AudioPlay , XF86AudioPrev , XF86WebCam , XF86WLAN
+
+
+Use ``xbindkeys -v`` for testing. ``xbindkeys`` is started via ``~/.xinitrc``::
+
+    if [ -d /etc/X11/xinit/xinitrc.d ]; then
+      for f in /etc/X11/xinit/xinitrc.d/*; do
+        [ -x "$f" ] && . "$f"
+      done
+      unset f
+    fi
+    setxkbmap -option terminate:ctrl_alt_bksp
+    xsetroot -cursor_name left_ptr
+    xmodmap ~/.Xmodmap
+    xbindkeys
+    exec xmonad
+
+.. note::
+
+    ``Xbacklight`` didn't work and trying all the other tools would have meant
+    learning about all of them and investigating problems for all of them, 
+    so in the above .xbindkeysrc I went for directly writing to ``/sys/.../brightness``. 
+    To overcome the ``permission denied`` I did
+
+    .. code::
+
+        visudo
+        #add line: <myuser> ALL=NOPASSWD:/usr/bin/tee,/sys/class/backlight/radeon_bl0/brightness
+    
+Fan
+---
+
+When I had turned on the E145 for the first time, I was disappointed about the fan noise.
+The fan started very frequently.
+Luckily this can be solved using the ``fancontrol`` service.
+
+.. code:: 
+
+    pacman -S lm_sensors
+    sensors
+    cat /sys/class/hwmon/hwmon0/device/temp1_input
+
+/etc/modprobe.d/fancontrol.conf::
+
+    options thinkpad_acpi fan_control=1
+
+The fancontrol configuration file can be generated by ``pwmconfig``.
+I edited it afterwards to these values:
+
+/etc/fancontrol::
+
+    INTERVAL=10
+    DEVPATH=hwmon0=devices/platform/thinkpad_hwmon
+    DEVNAME=hwmon0=thinkpad
+    FCTEMPS=hwmon0/device/pwm1=hwmon0/device/temp1_input
+    FCFANS= hwmon0/device/pwm1=hwmon0/device/fan1_input
+    MINTEMP=hwmon0/device/pwm1=70
+    MAXTEMP=hwmon0/device/pwm1=100
+    MINPWM=hwmon0/device/pwm1=30
+    MAXPWM=hwmon0/device/pwm1=255
+    MINSTART=hwmon0/device/pwm1=40
+    MINSTOP=hwmon0/device/pwm1=30
+
+
+.. code:: 
+
+    systemctl enable fancontrol
+    systemctl start fancontrol
+
+Fancontrol stops after returning from sleep, i.e. after having had the lid closed.
+The following helps
+
+/etc/systemd/system/sleep.target.wants/onsleep.service::
+
+    [Unit]
+    Description=sleep hook
+    Before=sleep.target
+    StopWhenUnneeded=yes
+
+    [Service]
+    Type=oneshot
+    RemainAfterExit=yes
+    ExecStop=-/usr/bin/systemctl restart fancontrol
+
+    [Install]
+    WantedBy=sleep.target
+
+I didn't find out how to produce a hysteresis,
+i.e. how to avoid that the fan starts so often and only 
+runs for a second or two. 
+It should run until a considerably lower temperature is reached
+and than stay quite for some time.
+This `version <https://github.com/KastB/fancontrol>`_ 
+says it can do better.
+
+Battery on command line. 
+------------------------
+
+.. code::
+
+    pacman -S acpi
+    acpi
+
+I use Oh-my-zsh and there I tweaked the ``kiwi`` theme.
+
+~/.oh-my-zsh/themes/my.zsh-theme::
+
+    PROMPT='%{$fg_bold[green]%}┌[%{$fg_bold[cyan]%}%D %T%{$fg_bold[green]%}]-(%{$fg_bold[white]%}%2~%{$fg_bold[green]%})-$(git_prompt_info)$(svn_prompt_info)$(battery_pct_prompt)
+    └> % %{$reset_color%}'
+
+    ZSH_THEME_GIT_PROMPT_PREFIX="[%{$reset_color%}%{$fg[white]%}git:%{$fg_bold[white]%}"
+    ZSH_THEME_GIT_PROMPT_SUFFIX="%{$fg_bold[green]%}]-"
+
+    ZSH_THEME_SVN_PROMPT_PREFIX="[%{$reset_color%}%{$fg[white]%}svn:%{$fg_bold[white]%}/"
+    ZSH_THEME_SVN_PROMPT_SUFFIX="%{$fg_bold[green]%}]-"
+
+~/.zshrc::
+
+    export ZSH=$HOME/.oh-my-zsh
+    export EDITOR=vim
+    test -r ~/.profile && source ~/.profile
+    bindkey -v
+
+    #my = kiwish changed to %D %T
+    export ZSH_THEME="my"
+    eval `dircolors ~/.dircolors`
+    plugins=(battery git mercurial vi-mode)
+    source $ZSH/oh-my-zsh.sh
+
+.. note::
+   
+    ``The battery installed is not supported by this system and will not charge.
+    Please replace the battery with the correct lenovo battery for this system.
+    Press the ESC key to continue.``
+
+    On my model this message appeared on startup after a few boots.
+    First I thought it was a wrong warning, but it turned out,
+    the battery was completely discharged: the notebook went black.
+    I removed and reattached the battery and plugged in the notebook and
+    luckily the message didn't appear any more.
+    
+
+Suspend
+-------
+
+Suspend to mem works (``mem > /sys/power/state``).
+When closing the lid this state is automatically entered.
+
+Hibernate did not work for me. 
+
+The ``resume`` kernel option
+
+    GRUB_CMDLINE_LINUX_DEFAULT="quiet resume=70d8aac3-344d-434d-b607-e48447692734"
+
+did not help here. The GUID is my swap partition.
+
+I stopped investigating regarding this, because the default sleep is just fine for me.
+
+.. {wl}
+
+20150501
+--------
+
+Loading wl fails.
+
+    yaourt -S broadcom-wl-dkms
+
+fails to for 3.19.2-1-ARCH.
+
+Downgrading:
+pacman -U linux-3.18.6-1-x86_64.pkg.tar.xz linux-headers-3.18.6-1-x86_64.pkg.tar.xz
+
+20160514
+--------
+
+After::
+
+    pacman -Syu
+
+and reinstalling ``broadcom-wl-dkms`` I got an error for::
+
+    sudo netctl start swl
+
+It worked after pressing the ``WLAN`` symbol, although I didn map XF86WLAN.
+But I experienced several freezes, so I uninstalled and installed the older
+version of broadcom-wl-dkms.
+

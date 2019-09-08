@@ -1,0 +1,237 @@
+.. vim: syntax=rst
+
+.. http://rolandpuntaier.blogspot.com/2016/08/geometric-algebra_21.html
+
+.. {geometric algebra}
+
+The basic building block of information is a `variable`_.  
+Let `M` be the number of values (objects,elements) (extent) in one variable
+and `N` the number of values in another variable.
+This could be the number of unit lengths on the sides of a rectangle,
+but it could also be the number of different values in a column of a database table.
+A joint selection will have `MN` values to choose from, i.e. the extent of the joint variable is `MN`.
+That is the origin of multiplication. It is applied to rectangles in elementary school,
+but in physics education (i.e. description of the world) 
+we later on encounter products of various kinds, like `s=vt` and `p=mv` and so on
+(`s`, `t`, `m`, `v`, `p` being extents of variables).
+The idea that allows us to do this is the abstract notion of `information`_, 
+and, specifically regarding multiplication, 
+of the number of possibilities to jointly fix values of more variables.
+If `s` is the extent (length) of a line swept by a point and `t` is the extent
+of another line swept by the pointer on a clock, then `v=s/t` is a (reduced, relational) extent,
+that needs to be multiplied again by `t` to regain the original extent `s`.
+Physicists quite creatively introduce many helper variables of such kind
+and work with them using the rules of `algebra`_ of numbers. 
+Over the history they reached certain obstacles
+that necessitated the addition of new numbers, of which the most unintuitive one is the addition
+of the imaginary numbers. But they are used all over physics. So to understand the complex numbers
+is crucial in order to understand the modern description of nature.
+
+.. note:: Geometric algebra is a conceptually more intuitive approach to complex numbers and quaternions.
+
+When one does not want to specify the number of combination of jointly fixing more variables,
+but only fix them to create a context, one uses `vectors`_. 
+
+.. The number of combinations is given by the unit blocks in a n-dimensional
+   rectangle (rectangle/cube/...) of which the vector is a diagonal.
+
+In an n dimensional space two vectors still only define a plane.
+The possible combinations swept by the vectors is the area of the parallelogram
+enclosed by the vectors. Let's reduce this to the ``multiplication - area of rectangle`` analogy
+by decomposing the vectors into orthogonal components along (`\parallel`) and vertical (`\bot`) 
+to an arbitrary direction in the same plane.
+
+.. math::
+
+    (a_{\parallel}+a_{\bot})(b_{\parallel}+b_{\bot}) = a_{\parallel}b_{\bot}+a_{\bot}b_{\parallel} = 
+    a_{\parallel}b_{\bot}-b_{\parallel}a_{\bot} 
+
+- The components in the same direction don't enclose any area and are 0 therefore
+
+- The last step shows that the two area terms have opposite direction. 
+  If we take `\parallel` first in both cases, i.e. give the area the same direction, then
+  `-1` encodes the direction. 
+
+- Opposite direction is needed to make the product 0, if both `a` and `b` have the same direction,
+  because in this case they would not enclose any area.
+
+Isn't this the best analogy to the product of the sides of a rectangle? It is, but 
+with the difference that `a` and `b` here are not perpendicular. 
+When `a` and `b` point in the same direction, the product becomes 0.
+So this product contains both, the rectangle product *and*  the relative direction,
+more specifically
+`a_{\parallel}b_{\bot}-b_{\parallel}a_{\bot} = ab(\cos\theta_a\sin\theta_b-\cos\theta_b\sin\theta_a)= |a||b|\sin(\theta_b-\theta_a)`.
+This shows the anticommutativity of this product.
+
+For two variables (area and relative direction) one needs two other variables to maintain the information.
+Therefore this outer product (`a\wedge b`) is accompanied by an inner product (or dot product)
+`a_{\parallel}b_{\parallel}+a_{\bot}b_{\bot} = ab(\cos\theta_a\cos\theta_b+\sin\theta_a\sin\theta_b)= |a||b|\cos(\theta_b-\theta_a)`.
+
+.. note:: The outer product corresponds to the cross product usually taught at school. But look for duality for more.
+
+Only both of these two complementary products determine `|a||b|` *and* `\theta`.
+The *geometric product* is the combination of these products
+and serves as natural extension of the rectangle product to vectors
+and as such it is written without symbol. It results in a (scalar + area): 
+
+- Parallel components are multiplied and added to give a scalar. 
+- Vertical components are multiplied and subtracted to give a directed area.
+
+So for two vectors we have
+
+.. math::
+
+    ab=a\cdot b + a\wedge b = \frac{1}{2}(ab + ba) + \frac{1}{2}(ab - ba)
+
+The outer product makes a new kind of magnitude (area is different than length) 
+and therefore points to a new direction 
+not part of the other n variables forming the basis of an n-dimensional vector space. 
+In general the vector space is extended by
+outer products of 2, 3, ..., n vectors, called bivector, trivector or generally grade k vectors
+or k blades.
+
+Also a scalar is include, because it is linked via the scalar multiplication 
+and it results from the inner product.
+
+There are `\binom{n}{k}` different k-vectors.
+For example  in 3D-space there are `3=\binom{3}{2}` plane direction and thus bivectors.
+
+There is only one n-vector, as there is only one scalar. Therefore this is called a *pseudoscalar*.
+
+The scalar and the k-vectors from grade 1 to grade n make up all we need to describe a fixation
+of a set of variables and their relative orientations. This is called a *multivector*.
+Vector is for the combination of base variables.
+And multivector also includes the derived variables, i.e. the outer products.
+Because we have the 0, a base variable is also a vector and a vector is also a multivector.
+
+Algebraic closure, i.e. having the result again in the same set, is important, because 
+we can reuse the same operations or algorithms over again. 
+Normally this is at the cost of losing information.
+It is an *abstraction* of information. This information then needs to be 
+stored outside, which normally means less storage space, though.
+E.g. a number without a unit still needs to be made sense of via the 
+separately stored units. It is tedious to carry along units in all calculations.
+
+In geometric algebra closure is achieved via keeping the different results in a multivector,
+which stores the number for each grade separately.
+So for n base variables we have `2^n` component variables of the multivector (`2^n` numbers)
+(E.g. 3D it is 8: `\alpha`, `a`, `b`, `c`, `a\wedge b`, `a\wedge c`, `b\wedge c`, `a\wedge b\wedge c`).
+To assert this closure we need to define how two general multivectors multiply
+and for that we still need to specify how to multiply grade combinations `A_r B_s`,
+not just two vectors. This can be done by reducing vectors to orthonormal components whose
+geometric product is `e_i e_j=\delta_{ij}+(1-\delta_{ij})e_i\wedge e_j`, i.e. we have
+either a scalar 1 or the wedge product. The result of `A_r B_s` depends on which `e_i` each combination 
+of the `\binom{n}{s}` and `\binom{n}{r}` components have 
+in common and thus annihilate. Those who do not annihilate augment the dimension of the wedge product.
+
+We can also use the following formula only valid for vector times r-vector, but which can be repeatedly applied.
+
+
+.. math::
+
+    aA_r = a\cdot A_r + a\wedge A_r = \frac{1}{2}(aA_r-(-1)^r A_r a) + \frac{1}{2}(aA_r+(-1)^r A_r a) \\
+
+Here the dot part reduces the grade by one 
+
+.. math::
+
+    a\cdot A_r=a\cdot\bigwedge a_k = \sum (-1)^{k+1}a\cdot a_k\bigwedge_{i\neq k}a_i
+
+and the wedge part increases it by one.
+
+Application
+-----------
+
+The pseudoscalar unit `I` comprises all base vectors. `I^2` is -1 for n=2,3
+and in general it transforms a r-vector into a (n-r)-vector. 
+This is called a duality transformation. In 3D it can be used to go from a blade to the
+vector normal to the plane, which is the traditional cross product (`v_1\times v_2 = -I(v_1\wedge v_2)`)
+
+For n=2: `e_1 I = e_1(e_1 e_2)=e_2` and `I e_1 = (e_1 e_2)e_1 = -e_2`.
+`I=e_1e_2` is the imaginary unit. It makes one dimension into two dimensions: `e_1(a+bI)= ae_1+be_2`.
+
+For n=3: `e_2 e_3 = i`, `e_1 e_3=j`, `e_1 e_2=k` result in the quaternions with `i^2=j^2=k^2=ijk=-1`.
+
+Reflection on a plane of unit normal vector `n_\bot`: 
+`-n_\bot an_\bot=-n_\bot(a_\parallel n_\parallel+a_\bot n_\bot)n_\bot=-n_\bot(a_\parallel I + a_\bot)=a_\parallel n_\parallel - a_\bot n_\bot`
+
+Rotation by `2\theta` is a composition of two reflections: `mnanm=RaR^\dagger`.
+With `(n\wedge m)^2=(nm - n\cdot m)(n\cdot m - mn)=-\sin^2\theta` we have
+
+.. math::
+
+    R=nm=n\cdot m + n\wedge m = \cos\theta - \frac{m\wedge n}{\sin\theta}\sin\theta=e^{-B\theta}
+
+If unit vector `a` should be rotated to unit vector `b`, let `n` be the unit vector between `a` and `b`:
+
+.. math::
+
+    a' = bnanb=RaR^\dagger\\
+    R = bn = b\frac{a+b}{|a+b|}=\frac{1+ba}{\sqrt{2(1+a\cdot b)}}\\
+
+These are just elementary applications to demonstrate the usefulness of geometric algebra.
+See [1]_ and [2]_ for a more comprehensive account.
+
+Software
+--------
+
+There is a python `simpy implementation`_ with a good documentation.
+Since Simpy version 1.0 it is separately on `github`_.
+`bookGA`_ is a succinct book on geometric algebra.
+
+Here an example:
+
+.. code:: python
+
+    import sys
+
+    from sympy import symbols,sin,cos,sqrt
+    from galgebra.ga import Ga
+
+    (o3d,ex,ey,ez) = Ga.build('e*x|y|z',g=[1,1,1])
+
+    (r,th,phi,alpha,beta,gamma) = symbols('r theta phi alpha beta gamma',real=True)
+    (x_a,y_a,z_a,x_b,y_b,z_b,ab_mag,th_ab) = symbols('x_a y_a z_a x_b y_b z_b ab_mag theta_ab',real=True)
+
+    I = ex^ey^ez
+
+    a = o3d.mv('a','vector')
+    b = o3d.mv('b','vector')
+    c = o3d.mv('c','vector')
+    ab = a-b
+
+    ab_norm = ab/ab_mag
+
+    R_ab = cos(th_ab/2) +I*ab_norm*cos(th_ab/2)
+    R_ab_rev = R_ab.rev()
+
+    e__ab_x = R_ab * ex * R_ab_rev
+    e__ab_y = R_ab * ey * R_ab_rev
+    e__ab_z = R_ab * ez * R_ab_rev
+
+    R_phi = cos(phi/2)-(ex^ey)*sin(phi/2)
+    R_phi_rev = R_phi.rev()
+
+    e_phi = (R_phi * ey * R_phi.rev())
+
+    R_th = cos(th/2)+I*e_phi*sin(th/2)
+    R_th_rev = R_th.rev()
+
+    e_r = (R_th*R_phi*ex*R_phi_rev*R_th_rev).trigsimp()
+    #cos(phi)*cos(theta)*e_x + sin(phi)*cos(theta)*e_y + sin(theta)*e_z
+    e_th = (R_th*R_phi*ez*R_phi_rev*R_th_rev).trigsimp()
+    #-sin(theta)*cos(phi)*e_x - sin(phi)*sin(theta)*e_y + cos(theta)*e_z
+    e_phi = e_phi.trigsimp()
+    #-sin(phi)*e_x + cos(phi)*e_y
+
+
+.. _`vectors`: http://rolandpuntaier.blogspot.co.at/2015/01/linear-coordinate-transformation-and.html
+.. _`algebra`: http://rolandpuntaier.blogspot.co.at/2015/01/complex-numbers.html
+.. _`information`: variable_
+.. _`variable`: http://rolandpuntaier.blogspot.co.at/2015/03/what-is-information.html
+.. _`simpy implementation`: http://docs.sympy.org/0.7.6/modules/galgebra/ga.html
+.. _`github`: https://github.com/brombo/galgebra
+.. _`bookGA`: https://github.com/brombo/galgebra/blob/master/doc/bookGA.pdf
+
+.. [1] New Foundations of Classical Mechanics, David Hestenes
+.. [2] Geometric Algebra for Physicists, C.J.L.Doran and A.N.Lasenby

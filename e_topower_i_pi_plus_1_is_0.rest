@@ -1,0 +1,215 @@
+.. vim: syntax=rst
+
+.. http://rolandpuntaier.blogspot.co.at/2015/01/complex-numbers.html
+
+.. {complex number}
+
+(Complex) Numbers
+-----------------
+
+This is partly from my time as a teacher, when I made an 
+*automatic exercise correcting, course building site* 
+called `mamchecker <https://github.com/mamchecker/mamchecker>`_ 
+based on google appengine.
+
+I go through the different number sets in a not so standard way and
+conclude with the complex numbers, which have always been fascinating to me,
+because somehow enigmatic, not obvious, and then because useful and a good
+example of mathematical thinking.
+
+-----------------------------------------------------
+
+**Natural Numbers** (`\mathbb{N}`) by themselves are a great abstraction. 
+Forget about all qualities but the "how many", the *cardinality*.
+
+Then, do we add apples or do we take them away? So the sign
+was invented and the **Integers** (`\mathbb{Z}`). We write ``-2``,
+but since this linear direction is a concept by itself,
+we should write `2(-)`, that is 2 times `(-)`, like we write
+`2 m` or `2 g`. And when we want to say three things (how many,
+add or remove, what quantity), then we could write `2(-)g`.
+We could also give `(-)` a name like `s` for *subtract* (remove) and then
+we should also have `a` for *add*. But to have special signs (`-`, `+`),
+not a letters, is a lot better. So these signs make 
+the *add* and *subtract* operations part of the natural numbers, 
+making them integers and operations. Instead of `2(-)` we write `-2`, but we should
+still think of it as two times subtracting.
+`+3-2` is a sequence of such operations, we could emphasize this by writing `+3,-2`.
+
+The same reasoning we can do with `*` (multiplying) and its opposite `/` (dividing).
+`*2` and `/2` are elements of the *rationals* (`\mathbb{Q}`). `*3/2*5` is a
+sequence of such operations (`*3,/2,*5`).  Most computer programs don't
+understand `*3/2*5` unless the initial `*` or `/` is omitted.  For `+` and `-` they do
+understand.
+
+Addition and subtraction are two elements of a set, i.e. of something we can
+pick one exclusively at a time. I normally call such a thing a **variable** and
+the pick a **value**.  This variable is often called after one value:
+*Addition* = `\{+,-\}`.  Same for *Multiplication* = `\{*,/\}`.
+
+When combining addition and multiplication in a sequence, we have also introduced 
+a convention: multiplication before addition.
+This operator precedence rule allows us to write `2*3+2*4` in one expression
+instead of `a=2*3,b=2*4,a+b`.
+
+To put multiplication first was a good choice. We have had multiplication above
+when we wrote `2(-)` to emphasize what `-2` means.  There is something very
+basic about **multiplication**: Whenever there are two variables, that have
+nothing in common, that we can pick from independently, that are
+**orthogonal**, we simple pick values independently and place them one after
+the other. When we count the possibilities of combined picks we get `|A|*|B|`,
+where `||` is the cardinality, the information content.  This is why we write
+`ab` for the area of an `a\times b` rectangle and why physicists combine all
+kinds of variables via multiplication.  These variables are extensive meaning
+any value of it is a set. E.g. the length of a rectanble side is the set of all
+its points or of all its unit stretches. I also call such variables quantities here.
+
+Next come the **irrational numbers** (`\mathbb{I}`). For example no sequence of
+multiplication and division with natural numbers will produce the diagonal from
+the edge of a square (incommensurable, `\sqrt{2}`), but one can get as close as
+wanted.  This is how they are defined: An irrational is an infinite sequence of
+rationals.  In this sense **infinity** is an irrational.
+
+Irrationals and rationals make up the **real numbers** (`\mathbb{R}`).
+    
+Several times numbers were augmented with new information. The same we do with 
+to the real numbers to get to the **complex numbers**.
+In a real number we have the number, multiplication operation (`*`, `/`)
+and the linear direction (`+`, `-`). 
+We normally first determine the quantity by comparing to a unit
+(multiply e.g. meters) and then optionally add it (to 0 on default).
+
+There is another concept, which we can introduce: **orthogonality**. This
+"variable" contains `1` (normally omitted) for same direction and `i` for
+*orthogonal* or turned by right angle `\pi/2`, counterclockwise by convention.
+Turning a second time gives `i*i = -1`.  This solves `x^2+1=0`, starting from
+which normally `i` is actually introduced. 
+`2ia` is `2a` and orthogonal to the direction of `a`. 
+
+`i` is called imaginary unit and `\mathbb{R}\times \{i\}` are called **imaginary
+numbers**.  Along this reasoning one should have called them **orthogonal
+numbers**. By addition they are independent/orthogonal to the real numbers.  
+Together with the real numbers they make the **complex numbers** (`\mathbb{C}`)
+Orthogonal means that all combinations are possible, which corresponds to a
+2-dimensional (2D) plane, the **complex plane** or **Gauss number
+plane**.
+
+    `z = (a,b) = a + ib \in \mathbb{C}`
+
+- a = Re(z) is the real part
+- b = Im(z) is the imaginary part
+
+These numbers are like 2D-vectors: 2 orthogonal directions that can be added independently.
+
+There are three representations
+
+- `z = a+ib`, i.e. via the components or
+- `z = r(\cos\varphi + i\sin\varphi)` via modulus `r` and argument `\varphi`
+  (angle, phase) in radiants.
+
+Note that, by the trigonometric addition formulas, multiplication adds the
+angles, i.e. multiplication leads to addition.  This gives a hint that there
+could be a representation that has the angle in the exponent.  Developing
+`\sin` and `\cos` into a Taylor series and comparing with the `e^x` series
+leads to the **Euler Formula**:
+
+.. math::
+
+    e^{i\varphi}=\cos\varphi + i \sin\varphi
+
+
+- `z=re^{i\varphi}` is the third way to represent complex numbers.
+
+    - `\varphi = arg(z)` is the argument (phase) of z. 
+    - `arg(yz)=arg(y)+arg(z)`
+    - `arg(\frac{y}{z})=arg(y)-arg(z)`
+
+About `\sin` and `\cos` we know that the period is `2\pi`, therefore this is
+true for `e^{i\varphi}`.  The nth root divides the period up to `2n\pi` to
+below `2\pi` and so we have `n` different roots.
+
+.. math::
+
+    z^{1/n}=r^{1/n}e^{i(\varphi/n+2k\pi/n)}
+
+More generally: 
+
+   In `\mathbb{C}` every polynomial of degree n has exactly n roots
+   (**fundamental theorem of algebra**), if one counts the multiplicity 
+   of roots. `\mathbb{C}` therefore is called **algebraically closed**.
+
+This means that not only `x^2`, but every polynomial maps the whole
+`\mathbb{C}` to the whole of `\mathbb{C}`. This closedness is important.
+All operations are reversible. One can calculate freely.
+
+`\bar{z}=re^{-i\varphi}=a-ib` is the complex conjugate of z.
+`\bar{(z^n)}=\bar{z}^n`.  We know that there are two orthogonals. We've chosen
+`i` to be one of them, so `-i` is the other.
+
+`y\bar{z}` combines in itself *dot* product
+(`Re(y\bar{z})=|y||z|\cos\Delta\varphi`) and *cross* product
+(`Im(y\bar{z})=|y||z|\sin\Delta\varphi`). *dot* and *cross* are two aspects of
+orthogonality (=combinability). *dot* being 0 means there is no dependence,
+which is saying all combinations are possible, which means the combined
+variable is of maximum cardinality (area, *cross*), i.e. a rectangle.  The
+**conjugate** is important, because it produces the delta angle between `y` and
+`z`. Angle again is another, i.e. third way of expressing dependence.
+With `y\bar{z}` *dot*, *cross* and *angle* are beautifully combined.
+
+`|z| = \sqrt{z\bar{z}} = \sqrt{a^2+b^2} = r` is the absolute value (modulus) of
+`z`.  Here the imaginary part, the *cross* has gone, because there is no area
+in between.  And why the `\sqrt{}`? Multiplication brought us to the combined
+variable, but in this limit case of 0 angle any independent other variable 
+has gone and thus we go back to the the length, the cardinality, the information 
+of `z` alone. 
+
+Why is the pythagorean theorem in there.  To understand this we need to
+understand the fundamentals of the pythagorean theorem. There are two
+orthogonal variables involved.  Let's name their units `j` and `k` instead of
+`1` and `i` (m and s for length and time,...).  `z=z_1j+z_2k` is one value of the
+combined variable. The very fundamental *dot* of `y` and `z` reduces
+to the **dot** between `j` and `k` via `y\cdot
+z=(y_1j+y_2k)\cdot(z_1j+z_2k)=y_1z_1j\cdot j+y_2z_2k\cdot k+y_1z_2j\cdot
+k+y_2z_1k\cdot j`.  Now `j` and `k` are orthogonal, so `j\cdot k=k\cdot j=0`,
+`j` and `j` are the same, thus `j\cdot j=1`.  Same with `k\cdot k = 1`.  What
+we get is `y\cdot z=y_1z_1+y_2z_2`, which is the pythagorean theorem if `y=z`. 
+
+*number* times *unit* is a special team: the quantity and the quality.  It is
+also called a vector space.  If the number is complex, it is a vector space
+over complex numbers. A vector can also subsume independent quantities, making
+it of dimension n > 1.  A complex number z already has orthogonality. In a 2D
+vector space of units `j` and `k` it should be `ij=k`, because there is no
+other dimension. Actually something like this is done with `quaternions
+<http://en.wikipedia.org/wiki/Quaternion>`_.  But for a general 2D vector space
+each component with `\mathbb{C}` becomes 2D itself.  So a nD vector space over
+`\mathbb{C}` becomes kind of 2nD dimensional.  What `\mathbb{C}` does is to
+allow specifying: can be added or cannot be added.  This is comparable to a
+boolean.
+
+To get the orthogonality, the *dot*, of two elements of such a 2D space over
+`\mathbb{C}` we do `(uj+vk)\cdot(yj+zk)=u\cdot y + v\cdot z=u\bar{y}+v\bar{z}`,
+i.e. we take the conjugates. We need because we know there is orthogonality in
+a complex number and we've seen above how to deal with it. In general with
+`r,s\in\mathbb{C}^n` the orthogonality is the real part of `r\cdot s=\sum{r_i\bar{s_i}}`.
+
+-----------------------------------------------------
+
+Now, do we need the complex numbers? Yes. 
+The main reason is that orthogonality is a very important concept
+and so complex numbers find application in many fields.
+They make notation and calculation so much easier.
+
+One essential point is the comparison of two quantities regarding addability.
+If they are parallel they are addable, if they are orthogonal, they are not.
+To this end paramters that have influence on addability,
+can be mapped to an angle (phase), which with Euler's notation
+of complex numbers, become a parallel (addable) and a orthogonal (not addable) part.
+
+Examples: 
+
+- The time `t` of a vibration becomes `\varphi=\frac{2\pi}{T}t` or 
+  
+- the `t`, `x` positions of a wave become `\varphi=\frac{2\pi}{\lambda}x+\frac{2\pi}{T}t`. 
+
+`Re(Ae^{i\varphi})` then represents the addable amplitude.
+

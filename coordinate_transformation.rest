@@ -1,0 +1,238 @@
+.. vim: syntax=rst
+
+.. http://rolandpuntaier.blogspot.com/2015/01/linear-coordinate-transformation-and.html
+
+.. todo: check against this view (ℝ=R)
+   A vector `v` can be mapped to an number (value of ℝ), let's say 1.
+   Independent vectors `v_i` map to values in independent ℝ's.
+   We can specify `v` with components `v=v^iv_i` in the n-dimensional vector space.
+   The contravariant `v^i` constitute a map: `v_i→v`.
+   With `v` represented as 1, `v_i` is the inverse of `v^i`.
+   - Making the covariant parts `v_i` (lower index) division's denominator/divisor (vectors ∈ tangent space).
+   - Makes the contravariant parts `v^i` (upper index) maps from `v_i` to `v` by multiplication factors (1-forms ∈ cotangent space).
+   `v^i` corresond to `dx^i` and `v_i` correspond to `\frac{∂}{∂x_i}` in differential geometry, which fits to the said.
+   In coordinate transformations the targets can be upper indices (contravariant nature) or lower indices (covariant nature) or both.
+   Target indices stay, while source indices get contracted with the inverse index of the source by Einstein summation.
+   Lower index is the inverse index of the upper index and vice versa (See `Raising and lowering indices`_).
+   .. _`Raising and lowering indices`: https://en.wikipedia.org/wiki/Raising_and_lowering_indices
+   
+
+This is an example I made as a teacher. The idea was 
+to take the vector and matrix away from the usual application in space
+to something more everyday: the kitchen.
+It is a humorous application of mathematical thinking to baking cakes.
+It touches the essentials of *Linear algebra*, without getting too formal.
+
+It can also be found on my *automatic exercise correcting, course building
+site* called `mamchecker <https://github.com/mamchecker/mamchecker>`_ based on
+google appengine. But here I have extended the idea a little bit.
+
+Vectors, Tensors and Matrices in the Kitchen
+============================================
+
+Vectors
+-------
+
+Let's talk about the ingredients of a cake, like eggs.
+
+Eggs is a *variable*. We can take one egg, or two eggs, or three eggs,...
+The values are *exclusive*. We cannot take two eggs and three eggs for the same cake.
+    
+    variable = set of exclusive values in a context
+
+Three eggs. Three is the number. Egg gives meaning to the number. Egg is the unit.
+Eggs is a *coordinate system* (CS), that gives meaning to the numbers.
+
+Three is the *contravariant* part. Egg, the unit, is the *covariant* part, of eggs.
+Note that we could take another unit, like sixpacks of eggs. Then the covariant part
+is bigger, but the contravariant part becomes smaller. This is already a coordinate
+transformation.
+
+0.5 kg of flour. Another ingredient, another variable.
+
+One variable is also called one-dimensional (1D) space. Two variables,
+from which we can choose independently, make up a two-dimensional space (2D), and so on. 
+
+Why introduce another word dimension and not just continue with variables?
+Actually, it's just to stick a little with conventional usage.
+Dimensions and variables are the same here. 
+
+A set of values from one or more variables is called a *vector*
+
+- if these values can be added independently, i.e. eggs with eggs, ... 
+
+- and if they can be multiplied with numbers. I we add twice the same vector `v` we should  be able
+  to say `2v`. Then all *components* of the vector are multiplied by 2.  
+
+The cake ingredients are a vector space over the real numbers `\mathbb{R}`.
+
+Eggs, Flour, Butter, Sugar, ... they are not exclusive when baking a cake.
+Then they are not values of a variable, they are just a set.
+Let `i` be any of them and `C` be a cake. `C^i` is the contravariant
+number value to the covariant unit `C_i`. `i` is the index that
+indicates, which ingredient. 
+
+.. math::
+
+    C = C^i C_i = \sum C^i C_i
+
+`\sum`: If there are two same indices, then these are summed by Einstein's convention.
+
+This is like writing 'Ten Eggs and one unit of flour and ...`.
+
+If we do that a lot, it becomes tiresome. We tend to make a table then. If we always
+make the same table, we remember the positions of eggs and flour, ... (position coding) 
+and only write the numbers. A vector, though, is not just the numbers. It is the
+real thing, the cake recipe, in this example.
+
+dot product
+-----------
+
+Eggs have nothing in common with flour, well, at least if we don't dig too deep,
+because they surely have carbon atoms in common. But for our kitchen thinking
+they have nothing in common. In mathematics this is *orthogonal*.
+
+There is an operation between two vectors, that tells about how much they have in common:
+the *inner product* or *dot product* or *skalar product*. It's result is a scalar, i.e. a number.
+One denotes it by a dot in between, or by `<Egg|Flour>`.
+`<Egg|Egg>=1`, because they have all in common. `<Egg|Flour>=0`, because they have nothing in common
+(orthogonal).
+
+In a cake recipe the units of ingredients are all orthogonal to each other: `C_i\cdot C_j = 0`, if `j \neq j`.
+I used the dot notation here. They are also of unit 1, which makes them *orthonormal*.
+
+The ingredients are the basis of the cake. The unit ingredients are the orthonormal *basis vectors*.
+
+Though convenient it is not a necessity that the basis vectors have nothing in common, i.e. are orthogonal. 
+
+For an example let's move from the ingredients of cakes (ingredient vector space)
+to the cake vector space. Every cake is a unit to sell or bring to a party. 
+And every cake is an ingredient vector, an independent choice from more variables.
+Cake A and cake B surely have ingredients in common.
+So these unit vectors in the cake vector space are not orthogonal to each other.
+The dot product is not 0.
+
+.. math::
+    
+    A^i A_i\cdot B^j B_j = A^i B^i \neq 0
+
+All the terms with `i\neq j` are 0, because of the orthonormal basis.
+So they have been dropped after the first `=`. Then we have the usual formula for the dot product.
+
+If `A_i\cdot B_j` were not 0 for `i\neq j`, we would have a `A_i\cdot B_j`, called curvature tensor. 
+As you can see it results from vectors, but cannot be added any more. 
+That is the reason for the different name.
+
+Coordinate Transformation
+-------------------------
+
+A vector in the cake vector space - How many of each kind of cake? Let's call it
+a cake assortment - can be transformed to the ingredient vector space by
+multiplying with a matrix.  Every *matrix column* is the recipe of one kind of
+cake. The columns are the *basis vectors* of the cake space.
+By multiplying the assortment vector with the transformation matrix, we do
+a linear combination of the cake vectors.
+
+.. math::
+
+    A = A^j A_j = A^j C^i_j C_i = C^i C_i
+
+The transformation matrix `C^i_j` says how much of the `i` ingredient cake `j` needs. 
+`j` is the lower index and is a column.
+`i` is the upper index and it is a row. `C_i` is Egg, Flour, ...
+`A^j` is the amount of cake `A_j` in the assortment `A`. With `A_j` and `C_i` implicit,
+the transformation is: 
+
+.. math::
+
+    C^i = C^i_j A^j
+
+The summation over the `j` index
+is the matrix multiplication. It results in a number in each row
+telling about the total amount of one ingredient, like eggs.
+
+On a matrix *row* there is an amount of an ingredient, like egg, for every kind of cake.
+This is the dot product `<egg|cake_j>`. In general, if we transform from a CS
+with basis vectors `A_j` to a CS with basis vectors `C_i` the transformation matrix is `C_i\cdot A_j`,
+`j` being the columns.
+
+.. math::
+
+    A = A^j A_j = A^j <C_i|A_j> C_i
+
+Inverse
+-------
+
+If the number of `i'\text{s}` and the number of `j'\text{s}` are equal
+it is possible to find `A^j` from `C^i`, the number of each kind of cake in the assortment,
+from the total amount of ingredients used.
+
+In this example, though, the cake space and ingredient space do normally not 
+have the same number of variables (number of variables = dimension). 
+If we can have 10 ingredients and
+3 kinds of cakes. Then the transformation matrix is 10x3 (10 rows, 3 columns).
+Such a `m\times n` matrix with `m\neq n` cannot be inverted, 
+i.e. one cannot infer from the ingredients how many of each kind of cake are baked. 
+Said differently: Not for every combination of ingredients there
+is a combination of cakes, which needs exactly this amount of ingredients.
+
+.. note::
+
+    A non-square matrix can be pseudo-inverted, though: Moore-Penrose Pseudoinverse. 
+    For this example multiplying an ingredient vector with the pseudo-inverse 
+    would produce a cake vector, which minimizes unused quantities of ingredients
+    (Method of Least Squares) or makes best use of the ingredients (Maximum Entropy Method).
+
+If we change from one vector space to another with same dimensions, 
+then we can get back to the starting one by multiplying with the *inverse matrix* (`A^{-1}`).
+`A^{-1}` matrix multiplied by `A` gives the identity matrix `I`.
+Calculating the inverse means solving a *system of linear equations*.
+
+.. math::
+
+    A\cdot x &= y \\
+    A^{-1}A\cdot x &= A^{-1}y \\
+    I x &= A^{-1}y \\
+    x &= A^{-1}y
+
+In order for the inverse to exist, in addition to being square, the
+columns/rows of the matrix must be *linearly independent*.  If not, then that
+is like effectively being in a smaller matrix (*rank of matrix*). For the
+cake example this means that every kind of cake must have a different combination of
+ingredients, which is some extra information that distinguishes it from the
+others and that can be used to code something.
+
+.. note::
+
+    A square matrix can be inverted, if columns (rows) cannot be expressed as
+    linear combination of the others, i.e. the rank of the matrix is equal to
+    its dimension.
+
+One can calculate the inverse of a square Matrix by:
+
+- leaving out the `ij` cross and calculate the determinant = Minor `M_{ij}`
+- change the sign, if `i+j` is odd
+- transpose, i.e. mirror at the main diagonal 
+  (compare below: `ij` for `A` and `ji` for `M`)
+- divide everything by the determinant
+
+Short:
+
+.. math::
+
+    (A^{-1})_{ij} = \frac{1}{det(A)}(-1)^{i+j} M_{ji}
+
+
+Inverse of a *2x2 Matrix*:
+
+    `M_{ij}` is the diagonally opposite number.  Because of the
+    transposing the numbers left bottom and right top (secondary diagonal) stay
+    where they are, but the sign changes.  At the main diagonal the numbers get
+    swapped, but since `i+j` is even the sign does not change.
+
+    - Main diagonal `\rightarrow` swap, keep sign
+    - Secondary diagonal `\rightarrow` no swap, change sign
+
+There are algorithms, though, that are more efficient to calculate the inverse.
+And, of course, we use a computer program to do such calculations.
+

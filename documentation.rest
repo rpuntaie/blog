@@ -1,0 +1,509 @@
+.. vim: syntax=rst
+
+.. http://rolandpuntaier.blogspot.co.at/2018/01/software-documentation.html
+
+Software Project Documentation
+==============================
+
+I want to motivate the use of **pure text** for the central technical 
+documents of a software project.
+
+Many companies use `DOCX`_, but this is no good for the technical 
+developer folks. I have investigated and tested a way to use `RST`_ 
+and still have a final `DOCX`_, in addition to HTML and PDF,
+in case the client/company insists on it. See `dcx.py`_.
+
+Summary
+-------
+
+- Minimize resource usage.
+
+- Simplify `system development`_ to short *design-testing* cycles.
+
+- Planning = Simulation. Simulate *design-testing* cycles.
+
+- Requirements are interfaces. Make them minimal.
+
+- Requirements external to the team are in the `SRS`_
+  else in the `SDD`_. 
+
+- Phrase requirements as tests, or code them as unit tests.
+
+- Generate final documents from smaller units.
+
+- Mix human language with computer language to reduce redundancy and increase cohesion.
+
+- The raw format of documentation should be pure text. Use `RST`_.
+
+- Use HTML (or PDF) as final format, not `DOCX`_ or `ODT`_.
+
+The Principles
+--------------
+
+Documentation in a project is written communication to be preferred over oral.
+
+Documentation is not the goal per se but the means to the project's goal.
+
+These general principles apply also to documentation:
+
+- A system develops by *mutation and selection* or *creation and selection* (= evolution). 
+  The selection is the verification or testing by the environment.
+
+- `Maximize cohesion and minimize coupling`_. The amount of coupling is a metric of locality
+  and should be reflected in the documentation artefacts. Coupling and cohesion are synonyms.
+
+- A system is developed by a *divide and conquer* approach.
+  Units are characterized by a separate evolution. There is a hierarchy of units.
+
+  - Units have requirements (purpose, coupling, interface) to the system they are part of.
+  - Units can be and must be tested separately (unit tests).
+  - Units have an internal complexity larger than the interface.
+
+- Minimize *redundancy*, i.e. don't repeat yourself. To this purpose:
+
+  - Develop concepts (units) and words for these concepts, i.e. a language specific to the system.
+  - Make paragraphs (units) that have only one aspect.
+  - Give every paragraph an `URI`_.
+  - Link concepts and paragraphs by using the words or `URI`_'s.
+
+  `URI`_'s, for efficiency, must be accessible by a direct jump 
+  (via mouse click or a keyboard shortcut).
+
+The latter three follow from **minimize resource usage**:
+memory and time of the computer and the developers.
+
+Evolution
+---------
+
+Evolution governs all dynamical systems: our brain, teams, ...
+
+The basic step in evolution is to *select an element from a set*,
+which translates to *fix a value of a variable*.
+The set or variable needs to be created. So there is *creation* and *selection*.
+
+The values of a variable are its type. Type, in a certain aspect, is synonymous
+to variable.  But due to the (often unmotivated) reuse of the same set of
+values for different variables, one needs a way to reference these values by a
+different name, which is *type*.
+
+Variables are the elements of information processing,
+which also mathematics deals with in the foundational frameworks of
+`set theory`_, `type theory`_ and `category theory`_.
+
+Variables and types are the essential elements of a human languages and of
+programming languages, be it `procedural`_, `OOP`_ or `functional`_.
+
+:modelling: A hierarchy of variables of the actual system 
+  is mapped to a hierarchy of variables in a (programming) language,
+  normally with simplifications.
+
+Of the `system development`_ lifecycle I subsume *planning*, *analysis* and
+*implementation* in the *design process*. As an important separate part there
+is the testing (stabilization). *Design-testing* are the cycles of evolution.
+One can also call it *Trial and Error*.
+
+:design: = creation. create variables, units, concerns, interactions, ... 
+:test: = selection. select (yes/no) and improve.
+
+*Design* and *Testing* repeats in a layered way, until reaching a stable software,
+everybody is content with.
+
+The *Design* and *Testing* is parallelized to team members as soon as the major
+units have been identified. There is no individual *designer* or *architect*,
+because that would serialize and thus slow down the evolution.
+
+There can be a `quality manager`_ to streamline methodology and communication.
+
+It is important, that everyone can make proposals. The `quality manager`_
+needs to instantiate channels to facilitate that.
+
+Planning
+--------
+
+Planning is evolution in the mind. 
+Planning (far ahead) is *simulation*.
+
+Constructing variables in the mind is less
+effort than constructing the real variables like hardware units.
+Simulation becomes more important with the probability that designs will be dumped, if the testing fails,
+and with the difference in effort between real construction and simulation.
+Physical constructions should be well planned and simulated.
+The real design and testing is best delayed as long as possible.
+
+The mind is not powerful enough to simulate complex systems.
+But it works with the help of computers.
+
+With software, simulation is not necessarily so important, because 
+SW elements often follow directly form concepts of the mind 
+without extra effort like procurement and physical treatment. 
+But if other OS components (executables, libraries) and
+communication to other programmers and teams are involved,
+the effort immediately rises. 
+To minimize this effort, one simulates such interface components (`mock`_, `stub`_).
+The mocks are made at an early stage and are preferably make a part of the requirements 
+(Test-driven development = `TDD`_).
+
+A single developer should also mock the bigger ones of his own interface components,
+
+- to have a consistent `TDD`_ approach,
+  where developer assignment is transparent
+
+- to allow parallelizing through reassignment of subunits
+
+The Documents
+-------------
+
+**The raw format of documentation should be pure text.**
+
+Documentation that accompanies and coordinates the development of software 
+(or generally system) from requirements to testing,
+is intricately interwoven with the software, not just in one direction. 
+
+- There should be no tool barrier between the source code and the documentation.
+
+- Formatting has no importance and especially during development you should not
+  be concerned about it (Separation of Concern = `SoC`_).
+
+.. note:: Software/System
+
+  *Software* can be replaced by *System*, because non-software systems
+  can also be described by source code in a domain specific language
+  and it is a good approach to do so, instead of using a GUI-only software package.
+
+A coarse hierarchy of units is mapped to teams, a finer one to individual developers,
+which then produce the finest granulation of units.
+
+Documentation is especially important as a means of coordination between 
+teams and individuals. These are the 
+
+- Software Requirement Specifications (`SRS`_). 
+
+The requirements come from the environment (= context), i.e. the bigger system.
+
+A system is described by the
+
+- Software Design Description (`SDD`_). The result of the design is an *architecture*.
+
+So `SRS`_ and `SDD`_ are linked, but 
+
+- only **requirements external to the team** are in the `SRS`_.
+- internal requirements are part of the `SDD`_.
+
+*Tests* accompany all units throughout the hierarchy.
+
+For cohesion, 
+
+- unit tests are part of the `SDD`_,
+- the requirement tests are part of the `SRS`_. 
+
+Actually it is convenient to immediately 
+**phrase requirements as tests or code them as unit tests** (`TDD`_).
+
+Since there are more `aspects of testing`_, a test team will have a
+
+- `Test Plan`_
+
+that can reference `SRS`_ and `SDD`_ tests, and thus avoid producing redundancy,
+but will have additional tests, too.
+
+We see that the hierarchy of units is not mapped to a hierarchy of documents,
+at least not in the same granularity. But this actually breaks the cohesion.
+
+- Separating documentation from source code produces more links, i.e. more `URI`_'s are necessary.
+  The natural ordering is that of the units.
+
+By **generating final documents from smaller units**, one can have both,
+cohesion by aspect (`SRS`_, `SDD`_, `Test Plan`_) and cohesion by units.
+
+Initiating the Development Process
+----------------------------------
+
+The `SRS`_ is an interface document between teams:
+
+- the development team
+- an outside entity 
+
+It is essential input for the development. It should therefore be an integral
+part of the documentation of the development process. 
+Therefore the final version of the
+
+- `SRS`_ should be written by a member of the development team.
+
+- Both parties will negotiate and will agree on a final version and will
+  also agree on future reviews.
+
+The content of the `SRS`_
+
+- does not describe the system to be developed, but its
+  context, the way of its operation, its usage in the bigger system.
+  In case documentation about the bigger system is available (e.g. if internal),
+  a link will do.
+
+- The requirement paragraphs must 
+
+  - address a well confined unit (of the interface to the bigger system)
+  - be verifiable
+  - be referenceable via a hyperlink `URI`_
+
+    The `URI`_ is important, because during development decisions
+    will need to be justified by a reference to the `SRS`_ entry.
+
+:Design: In the `SRS`_ the context (bigger system) must be
+  *analyzed*, i.e. split into a suitable parts and concerns 
+  and written in paragraphs of single concern (implemented)
+
+:Test: Verify that they can be *tested* and easily *maintained*. 
+  Phrase requirements as tests. 
+
+- As an interface document the SRS must satisfy the *minimal coupling* principle,
+  i.e. it must be minimal.
+
+  Requirement paragraphs should link to other documents that support the 
+  requirement, as a measure to ensure that *no unnecessary requirements* are specified.
+
+  Optional things are not in requirement paragraphs but in surrounding text.
+
+  Every small requirement change late in the development can entail a huge effort,
+  if it means changing a complex system, since that will need a long time to stabilize again.
+
+  It is often easier to change requirements in case of obstacles encountered
+  during development. But if the `SRS`_ is kept minimal, one can normally do without.
+
+- The `SRS`_ must be open for changes, if at an early stage of the system and 
+  thus not yet thought through in detail.
+  In this case the `SRS`_ will be modified during the development process.
+  The coordinating development team member
+  will agree on the changes with the outside entity in `SRS`_ reviews.
+
+Development
+-----------
+
+Often the approach is to model in a human language first
+and then "translate" that to a computer language, i.e. implement it.
+
+But specifying variables and relations is what computer languages are good in and made for.
+So many parts can be coded in a computer language right away at the component level.
+`Higher language generations`_ can be made very readable.
+
+It is a good idea to mix human language with computer language to
+
+- minimize redundancy
+- maximize cohesion, independent of whether human or computer language is used
+
+There are two approaches to do this:
+
+- embed computer language in human language (`literate programming`_)
+
+- embed human language in computer language (`documentation generators`_)
+
+The second approach is more popular.
+The reason is, that computer languages allow quite well to split conceptual things
+from implementation details. Files that contain variables and values
+of the model can also contain additional human language in comments.
+Such files can be
+
+- used directly by the compiler 
+
+- parsed for parts to be incorporated in the documentation
+
+To incorporate code comments in the documentation in a selective fashion,
+it is good
+
+- to use a light markup text, like `RST`_
+
+- to script one's own way to extract those parts from the source code files
+
+  The available `documentation generators`_ tend to be targeted to specific applications,
+  like creating an API reference, and thus are not flexible enough to exploit 
+  the full potential of the principle approach.
+
+
+Light Markup
+------------
+
+The advantages of `light markup`_ formats: 
+
+- It allows mixing source code with documentation for better cohesion and less redundancy.
+
+- It can be easily learned, because it restricts itself to *essential elements*.
+
+- The elements are of conceptual nature (header, list item, ) not actual formatting.
+  The formatting is done when creating the final document. This makes it easier
+  to *keep a consistent formatting* when more people work on the documentation.
+
+- As text, it is *perfect for version control systems*.
+  One can commit documentation changes together with the according source code changes.
+  It is easy to review documentation changes.
+  It allows to keep outdated information without lying around and messing up.
+
+- It is easier to *generate parts of the documentation* with scripts from source
+  code or source code comments
+
+- It is easier to *extract data* from the documentation, like which items link to which other ones,
+  especially if the team agrees on facilitating conventions.
+
+- It can be edited with a *text editor*, i.e. the same tool developers work with all the time.
+
+- It is accessible to *grep*.
+
+- `Ctags`_ can be used to jump around while editing.
+
+- It is very readable as source and can be translated to *several final formats*, e.g.
+  
+  - HTML, most importantly
+  - PDF (pandoc, sphinx)
+  - ODT, DOCX (pandoc)
+
+RST
+~~~
+
+There are many `light markup`_ formats. 
+But especially restructuredText (`RST`_)
+
+- has rich format support (e.g. table formats)
+- is extensible
+- is best for python scripting
+- has a very good tooling support
+
+  - `Pandoc`_ (to HTML, PDF, DOCX, ...)
+  - `Sphinx`_ (to HTML, PDF)
+  - `Docutils`_
+    This is used by sphinx, but allows for own scripts,
+    and has separate rst2html script.
+  - `Ctags`_ support to jump around while editing
+
+http://rst.ninjs.org can be used to play with `RST`_.
+Here a `cheatsheet`_.
+
+Dealing with Company Tradition
+------------------------------
+
+Unfortunately companies often bury information 
+
+- by not using pure text
+- or by using text that needs special tools (like over-formatted XML).
+
+At three of the companies I worked for, they used MS Office for documentation,
+at one they used Lotus Notes. 
+
+The problems I see are the following:
+
+- They are too detached from the other text project artefacts.
+- They don't have the idea of an `URI`_ for every resource.
+- Thus they cannot be linked well via hyperlinks.
+- They are not suitable for a version control system: diffs do not work well.
+- A proprietary format is no good for the company's precious information.
+  The information gets locked.
+  Even it being standardized does not change that, because the adoption 
+  by the developer community is reluctant and thus independent tools are rare.
+- `DOCX`_ or `ODT`_ is not easily accessible to scripting, because libraries are rare and
+  also because `DOCX is XML`_ that mixes formatting with content. HTML with CSS
+  and XML with XSLTs (e.g. `Docbook`_) separate better and are more accessible to
+  scripts, but less suitable for direct editing, because too formal and 
+  needing more learning.
+
+Thanks to `Pandoc`_ and `Sphinx`_ it is possible to use text as the documentation
+source and still fulfill the company's requirement for `DOCX`_.
+
+Providing DOCX from RST
+-----------------------
+
+HTML is the normal target of `light markup`_ formats. It is also best for the `URI`_ 
+principle. Nevertheless it is also possible to generate `DOCX`_.
+
+For the conversion from `RST`_ to `DOCX`_ currently the best tool is `Pandoc`_,
+`Pandoc`_ only takes pure `RST`_ and does not know 
+about the `Sphinx`_ role extensions like ``:ref:``.
+For that, one would need a `sphinx-docxbuilder`_.
+
+I have investigated and tested a way to use `RST`_ 
+and still have a final `DOCX`_ output, in addition to HTML and PDF.
+`dcx.py` is used as a support script.
+
+- Don't use `Sphinx`_ specific roles, like ``:ref:``. 
+
+- ``:math:`` is supported well. It is not a `Sphinx`_ extension.
+
+- Top level files use extension ``.rest``.
+  Included files use extension ``.rst`` (``.. include: somefile.rst``)
+
+- Make paragraphs with target ID this way::
+
+    .. _`targetid`:
+
+    :targetid:
+
+      Text follows here.
+
+  ``targetid`` is lower case, because docutils converts targets to lower case.
+
+- As the link differs between HTML and DOCX,
+  use replacement `substitutions`_ (``|targetid|``) as links.
+
+  A ``_links_docx.rst`` file with entries::
+
+    .. |targetid| replace:: `targetid <file.docx#targetid>`_
+
+  and a ``_links_sphinx.rst`` with::
+  
+    .. |targetid| replace:: :ref:`targetid <file.html#targetid>`
+
+  will define the substitutions separately.
+
+- Above headers there can be some unique target ID::
+  
+    .. _`secondminutedate`:
+
+  Links using ``|secondminutedate|`` will replace the header for the target.
+
+- Substitutions cannot be in included files, until the Pandoc `include`_ bug is corrected.
+  For the ``_links_docx.rst`` this helps::
+
+    cat file.rest _links_docx.rst | sed -e's/.. include:: _links_sphinx.rst//g' | pandoc -f rst -t docx -o file.docx
+
+  The last line of a top level ``.rest`` file must be::
+
+    ``.. include:: _links_sphinx.rst``
+
+  For image substitutions to work place the ``.. |xxx| image:: xxx.jpg`` into the top level ``.rest`` file.
+
+
+For an illustrative implementation of these guidelines see `dcx.py`_.
+
+.. _`Sphinx`: http://www.sphinx-doc.org/en/stable/
+.. _`RST`: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html
+.. _`DOCX`: https://www.loc.gov/preservation/digital/formats/fdd/fdd000397.shtml
+.. _`Docbook`: https://github.com/docbook/
+.. _`DOCX is XML`: http://www.ecma-international.org/publications/standards/Ecma-376.htm
+.. _`Ctags`: https://github.com/universal-ctags/ctags/blob/master/parsers/rst.c
+.. _`Pandoc`: https://pandoc.org/
+.. _`Docutils`: http://docutils.sourceforge.net/
+.. _`light markup`: https://en.wikipedia.org/wiki/Lightweight_markup_language
+.. _`sphinx-docxbuilder`: https://github.com/guiyomh/sphinx-docxbuilder
+.. _`cheatsheet`: https://github.com/ralsina/rst-cheatsheet/blob/master/rst-cheatsheet.rst
+.. _`substitutions`: http://docutils.sourceforge.net/docs/ref/rst/directives.html#replacement-text
+.. _`include`: https://github.com/jgm/pandoc/issues/4160
+.. _`SRS`: https://en.wikipedia.org/wiki/Software_requirements_specification
+.. _`higher language generations`: https://en.wikipedia.org/wiki/Programming_language_generations
+.. _`literate programming`: https://en.wikipedia.org/wiki/Literate_programming
+.. _`documentation generators`: https://en.wikipedia.org/wiki/Comparison_of_documentation_generators
+.. _`URI`: https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
+.. _`Maximize cohesion and minimize coupling`: https://en.wikipedia.org/wiki/Cohesion_(computer_science)
+.. _`system development`: https://en.wikipedia.org/wiki/Systems_development_life_cycle
+.. _`design`: https://en.wikipedia.org/wiki/Software_design
+.. _`SDD`: https://en.wikipedia.org/wiki/Software_design_description
+.. _`ODT`: https://www.loc.gov/preservation/digital/formats/fdd/fdd000428.shtml
+.. _`aspects of testing`: https://en.wikipedia.org/wiki/Software_performance_testing
+.. _`Test Plan`: https://en.wikipedia.org/wiki/Test_plan
+.. _`type theory`: https://en.wikipedia.org/wiki/Type_theory
+.. _`set theory`: https://en.wikipedia.org/wiki/Set_theory
+.. _`category theory`: https://en.wikipedia.org/wiki/Category_theory
+.. _`OOP`: https://en.wikipedia.org/wiki/Object-oriented_programming
+.. _`functional`: https://en.wikipedia.org/wiki/Functional_programming
+.. _`procedural`: https://en.wikipedia.org/wiki/Procedural_programming
+.. _`SoC`: https://en.wikipedia.org/wiki/Separation_of_concerns
+.. _`TDD`: https://en.wikipedia.org/wiki/Test-driven_development
+.. _`dcx.py`: https://github.com/rpuntaie/rstdoc/blob/master/rstdoc/dcx.py
+.. _`mock`: https://en.wikipedia.org/wiki/Mock_object
+.. _`stub`: https://en.wikipedia.org/wiki/Test_stub
+.. _`quality manager`: https://en.wikipedia.org/wiki/Quality_management

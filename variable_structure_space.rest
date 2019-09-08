@@ -1,0 +1,176 @@
+.. vim: syntax=rst
+
+.. http://rolandpuntaier.blogspot.co.at/2017/02/from-variable-to-structure.html
+
+.. {variable space}
+
+==========================
+From Variable to Structure
+==========================
+
+Variable is the name I have given to the basic building block of `information`_
+in that previous blog. *Variable* and *value* can often be identified with
+*set* and *element*, concepts ubiquitous in mathematics.  This makes it obvious
+that mathematics is all about information. How could it not be so!
+
+The most basic step in information processing is:
+
+- *Exclusive selection* of a *value* from a *variable*.
+
+.. admonition:: Exclusiveness
+
+    For a information processor the **exclusiveness** of values of the variable 
+    mapped internally results from the actual exclusiveness of the real variable 
+    by approximating the information content of the latter.
+    Instead of having the `\{\text{yes},\text{no}\}` choice (variable) for every element,
+    i.e. `I=n`, we can do with `I=\log n` such bits. That saves memory.
+
+
+Sets in mathematics can be a together of anything. 
+One can combine them and intersect them.
+There are subsets and power sets. 
+The elements must be distinguishable, though.
+So there is the basic idea of selection in the set. 
+But it is often not made fundamental enough. 
+The variable/value idea gives a motivation to the language of sets.
+
+In `FCA`_ one starts with sets of intents shared by a set of objects (extent).
+But the set is formed by selecting an intent in or out, i.e. by a binary selection.
+Then subsets are formed by intersection (which means union of extents).
+
+Variables do not exist alone or outside any context.
+A variables is the consequence of selections.
+Every selections asks for a criterion, which comes from other variables
+(unless we are looking at the `uncertainty principle`_ in `quantum mechanics`_). 
+
+There is an *identity* that links certain variables,
+A very specific triangle is such an *identity*: It links the lengths of its sides. 
+The sides of different triangles are not linked. 
+In `FCA` an object from an extent is such an *identity*.
+
+A `function`_ is such an *identity*. 
+This is an idea upon which the mathematics of `quantum mechanics` is based,
+and it allows to reconcile `infinity`_ with `quantum`_.
+The identity is the particle and it is expressed as function.
+
+*Subsets* will arise via such dependencies as described in `FCA`_.
+They are also a means to do selections in steps, 
+and these steps do not need to complete (`infinity`_).
+
+One can also simply combine separate selection processes by some criteria
+and thus introduce subsets that are distinguishable, but possibly overlapping.
+In `FCA`_ the overlapping parts of an intent become a separate *intent*. 
+
+.. admonition:: Context
+
+    Exclusiveness depends on the **context**.  In `FCA`_ there is a `context`_
+    concept. It combines those elements that occur together into objects.
+    Objects (extent) that share elements (intent) form an (extent,intent)-node.
+    Such a node can be viewed as a different and more specific context concept of a variable:
+    Combined with the values of a variable, this node give rise to new nodes: 
+    ``{context}x{values of variable}``.  
+    More generally every `Cartesian product`_ gives rise to variables.
+    Subsets of the Cartesian product are also called `relations`_.
+
+The lattice has the nodes as it's elements.
+Each node is a dual view on a set of intents or extents.
+In mathematics one embraces more often the `topology`_ view, 
+but it is basically the same thing, just that one looks at all atomic
+elements and adds on top of it a set hierarchy.  This additional set hierarchy
+is a *topological structure* on the set.
+
+A set with additional structure, like a `topology`_, is a `space`_.
+*Space*/*point* corresponds to *variable*/*value*. 
+
+With the topology, *variable*/*value* can also be *topology*/*set in topology*.
+In the lattice view this corresponds to *lattice*/*node*.  The topology `T`
+consists of many variables, determined by the context, as described above.
+
+.. admonition:: Topological vs. programming structure
+
+    `Topology`_ and `FCA`_ form a set *structure*, which is a set hierarchy, 
+    which is a hierarchy of variables.
+    
+    Although more general, this notion also applies to programming. In the programming
+    language C, ``struct`` names a set of variables.
+    An important difference is the "variable" in C and other programming languages
+    is only the bits that allow to choose a value of the
+    actual variable. The actual variable is specified outside the program, in the
+    documentation or by implicit knowledge of the programmer.
+
+Extensive Variable
+------------------
+
+There is an important difference between 
+
+1) a variable, whose values are atomic by nature
+
+2) a variable, whose values are sets, i.e. variables themselves.
+
+The *first* is a point space. A topology gives a point space a way
+to distinguish points (`separation axioms`_, `infinity`_) and a sense of
+distance between points (`metric`_).
+
+The *second* kind is no variable any more, if one value is contained in the
+other (`chain`_ in a `partial order`_), because the exclusiveness has gone.
+But if the sets are exclusive and form a `Cartesian product`_ with some other
+variable(s), then they form a "variable of variables" kind of variable. 
+
+If the value is a variable it is an `extensive value`_ of an `extensive variable`_. 
+Only such values motivate certain operations:
+
+- `addition`_ 
+
+- `multiplication`_:  If two such extensive values
+  (= if the values of two such variables) form a Cartesian product.
+  A Cartesian product requires `orthogonality`_. 
+  The more general concept of the `wedge`_ product
+  has non-orthogonality included.
+
+- `inner product`_ as degree of non-orthogonality
+
+The fact that often only the size of extensive values is mentioned (by some
+measure: count, length, area, volume, weight,...) should not let forget that by
+nature it is nevertheless a set.
+
+To summarize:
+The *variable* and the selection of *values* is physical. It occurs in the real
+world.  It occurs in the computer and in our brain, because they are part of
+the real world.  Still, the latter two's purpose is to predict the outside
+world and thus that world needs to be simulated.  For that purpose internal
+variables are *mapped* to the outer real world variables.  More variables form
+a *structure*, in the mathematical and in the programming sense.  Structures
+can be reused by mapping some of their variables, e.g. input and output
+variables (`indirection`_).  There are also variables and structures that arise from saving
+memory or processing time.  *Extensive values* are themselves variables even if
+only represented by their size via a number.
+
+.. _`information`: http://rolandpuntaier.blogspot.com/2015/03/what-is-information.html
+.. _`FCA`: http://rolandpuntaier.blogspot.com/2015/06/fca.html
+.. _`infinity`: http://rolandpuntaier.blogspot.com/2017/04/infinity.html
+.. _`extensive variable`: http://rolandpuntaier.blogspot.com/2017/04/measure.html
+.. _`context`: https://en.wikipedia.org/wiki/Formal_concept_analysis#Contexts_and_concepts
+.. _`lattice`: https://en.wikipedia.org/wiki/Lattice_(order)
+.. _`space`: https://en.wikipedia.org/wiki/Space_(mathematics)
+.. _`topology`: https://en.wikipedia.org/wiki/Topology#Concepts
+.. _`function`: https://en.wikipedia.org/wiki/Function_(mathematics)
+
+.. _`indirection`: https://en.wikipedia.org/wiki/Indirection
+
+.. _`quantum mechanics`: https://en.wikipedia.org/wiki/Quantum_mechanics
+
+.. _`relations`: https://en.wikipedia.org/wiki/Finitary_relation
+.. _`separation axioms`: https://en.wikipedia.org/wiki/Separation_axiom
+.. _`metric`: https://en.wikipedia.org/wiki/Metric_(mathematics)#Definition
+.. _`partial order`: https://en.wikipedia.org/wiki/Partially_ordered_set
+.. _`chain`: https://en.wikipedia.org/wiki/Total_order#Chains
+.. _`Cartesian product`: https://en.wikipedia.org/wiki/Cartesian_product
+.. _`extensive value`: https://en.wikipedia.org/wiki/Intensive_and_extensive_properties
+.. _`addition`: https://en.wikipedia.org/wiki/Addition
+.. _`multiplication`: https://en.wikipedia.org/wiki/Multiplication
+.. _`orthogonality`: https://en.wikipedia.org/wiki/Orthogonality
+.. _`wedge`: https://en.wikipedia.org/wiki/Exterior_algebra
+.. _`inner product`: https://en.wikipedia.org/wiki/Inner_product_space
+
+.. _`quantum`: https://en.wikipedia.org/wiki/Quantum
+.. _`uncertainty principle`: https://en.wikipedia.org/wiki/Uncertainty_principle

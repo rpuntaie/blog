@@ -1,0 +1,131 @@
+.. vim: syntax=rst
+
+.. http://rolandpuntaier.blogspot.co.at/2016/10/natural-information.html
+
+.. {natural information}
+
+I want to compare the number of combinations of n bits:
+
+.. math::
+    
+    2^n
+
+with growing processes, like with accruing of capital with annual compounding
+
+.. math::
+
+    (1+\frac{i}{100})^n
+
+or the especially interesting natural growing
+
+.. math::
+
+    e^x = \lim_{n->\infty}(1+\frac{1}{n})^{nx} = \lim_{m->\infty}(1+\frac{x}{m})^m
+
+
+Mathematics describes reality. So the similar formulas should have similar, though abstracted, realities:
+This similarity can be found in the context of information_.
+
+.. note:: I often use the variable - value pair. Value, though, has the connotation of additiveness.
+  This is not implied in my usage, but also not excluded.
+  Variable - state, or variable - element would be alternatives.
+
+The key to compare them is to understand **information** in the shape of bits as a growing process.
+
+The bit values are identifiable, have a real existence in the computer. 
+Every bit variable in a set of bits is also identifiable. 
+Let's not name the bit variables and bit values, though, but instead only look at the size of distinguishable bit value patterns.
+Every bit increases this size by `1` times what is there already. 
+Let's denote this aspect of the bit by `(1+1)` to emphasize that an additional `1`
+is added to the one there already. The parentheses make this an operator,
+an element of the number set `\mathbb Q`, 
+the set where the number also includes the multiplication operation, thus making it an operator.
+The operator's effect is to duplicate the distinguishable multitude.
+`n` repeated applications of `(1+1)` produces a multitude of size 
+
+.. math::
+
+    (1+1)^n = 2^n
+
+Every new bit is *compounded* to the existing combinations.
+
+The entry in this multitude is used to represent a real value in a real variable of size `C < 2^n`.
+The information measure for a real variable, when dealing with bits, is the
+number of bits `n=\log_2 C` needed to create the multitude of size `C`.
+This measure arises from the wish to create a multitude, using bit variables,
+that can be mapped to the values of the real variable.
+The real information is the size of the actual variable we map to.
+
+.. note:: If we start from a *number of variables*, the *exponential function* gives the *number of value combinations*.
+  If we start from a *number of values*, the *logarithm* gives the *number of variables* needed to represent it.
+
+For **interest calculation** we look at an amount of money (the `1`), which is deposited in the bank with interest `i`.
+After `n` years the `1` has grown to 
+
+.. math::
+
+    (1+i/100)^n = q^n
+    
+`q` is not `2`, normally just a little above `1`. 
+The corresponding "information" measure in a financial context of interest `i` would be the number of years,
+or whatever unit of *compounding* period one chooses to use.
+
+The essential difference with respect to bit information is that what is added is a *fraction* of what is there.
+But then, fraction is actually just a matter of units.
+
+The units of living organisms are cells and the ultimate units in the real world are the quantum particles.
+Both of them are small compared to the things around us. And with such small units one can also *compound* 
+arbitrarily (infinitely) often:
+
+.. math::
+
+    \lim_{m->\infty}(1+\frac{x}{m})^m = \lim_{n->\infty}(1+\frac{1}{n})^{nx} = e^x
+
+In the first equality we see that, given a certain growth, varying the *compounding steps*
+amounts to varying the *growth rate*. 
+
+.. note:: Actually in the financial world the real compounding takes place in very small steps, just that the bank
+  forwards them to the customer in larger units of time for several reasons.
+
+`x` is the information in the **natural information** unit `nat <https://en.wikipedia.org/wiki/Nat_(unit)>`_.
+Basically we split up the size of the variable to infinitely many infinitely small fractional variables, 
+whose size are just a very little bit larger than `1`.
+
+What is special about `e^x` is that its change is also `e^x`.
+It is a consequence of the infinite amount of compounding steps and that `\infty-1=\infty`:
+
+.. math::
+
+    \frac{de^x}{dx} = \infty(1+\frac{x}{\infty})^{\infty-1}\frac{1}{\infty} = (1+\frac{x}{\infty})^\infty = e^x
+
+So to summarize: 
+
+- The actual information is the size of the real variable.
+- The logarithm `x=\log_b C` arises from the view of this size by combinations of constituent or representative variables like 
+  bits (`b=2`), years (`b=q`), trits (`b=3`), nats (`b=e`), digits (`b=10`); cells, atoms, quantum particles, ...
+
+This change of perspective is done very often in physics. We can think of it whenever we see an exponential function or a logarithm in a formula.
+
+In programming the size of a program can also be measured
+
+- by the number of variables (assumed independent by a good design, and only those, which actually contain information, i.e. assume more than one value)
+
+  This is a relevant measure for design and reviewing of source code.
+
+- the number of value combinations throughout the lifetime of the program
+
+  This is a relevant measure when testing a program.
+
+.. note::
+
+    Following these thoughts helps to feel at ease with the two ways to view information:
+
+    - the number of representational variables (information measure)
+
+    - the number of values (states) of the actual variable 
+
+
+.. _information: http://rolandpuntaier.blogspot.com/2015/03/what-is-information.html
+
+
+    
