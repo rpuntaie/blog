@@ -12,6 +12,13 @@ Economy as Dynamic System
 In `Evolution of dynamic systems`_ economics is mentioned as an example
 and here this is elaborated on qualitatively.
 
+This comparison of economics to physics is to show,
+that it is possible to constructed economical conditions
+that make formula's of simple physical systems fit.
+
+This is to corroborate,
+that physical formulas are general enough
+to be applicable to all evolutionary systems.
 
 Dynamic System
 ==============
@@ -428,11 +435,9 @@ assuming an average constant price `m`.
 
 .. note:: In words
 
-    With constant price `m` the structural growth is quadratic.
+    With constant price `m` and constant improvement of products `ẋ_i` the structural growth is quadratic.
 
 A constant `m` is true for prices and wages, `considering inflation`_.
-
-Further comparison of economics to physics:
 
 `Hamilton-Jacobi`_ equations:
 
