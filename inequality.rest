@@ -405,7 +405,25 @@ where one or a few decide over others.
 But also with `workplace democracy`_ inequality still can creep in.
 
 A sense of fairness for `distributive justice`_ or equality
-is part of our `emotions`_ and of society's `ethical values`_.
+is part of our `emotions`_.
+The majority of society should be able to agree on it
+as a common `ethical value`_,
+unless they agree to be treated badly,
+which would mean that the majority lacks self-esteem.
+Mass lack of self-esteem can happen and maybe is actually the case
+due to an authoritarian educational system with a central figure (the teacher)
+dominating the first quarter of our lives,
+with continuation in the work place.
+
+.. admonition:: ethical values
+
+    Legacy ethics is in many ways mislead.
+    Values can have religious reasons,
+    or be supported simply out of tradition.
+    Even if well thought through, who is to decide, what is right or wrong?
+    One better keeps out of value discussions without relevance.
+    And especially one needs to refrain from
+    from discriminating based on values in interactions where those values have no importance.
 
 Fairness is local to a cooperation, because it is associated with **information**.
 One needs to **demand information** to be able to judge fairness.
@@ -845,7 +863,7 @@ as it does not separate ownership from cooperation.
    - internlly via the `bylaws`_
 
    The whole cooperation lattice on the other hand
-   is a network of shared `ethical values`_,
+   is a network having fairness as common ethical value,
    legally implemented via an `umbrella organization`_.
 
 .. _`r_bylaws`:
@@ -1372,7 +1390,7 @@ instead of only through taxes and `redistribution`_.
 .. _`microeconomy`: https://en.wikipedia.org/wiki/Microeconomics
 .. _`macroeconomy`: https://en.wikipedia.org/wiki/Macroeconomics
 .. _`selection`: https://en.wikipedia.org/wiki/Natural_selection
-.. _`ethical values`: https://en.wikipedia.org/wiki/Value_(ethics)
+.. _`ethical value`: https://en.wikipedia.org/wiki/Value_(ethics)
 .. _`evolution`: https://en.wikipedia.org/wiki/Evolution
 .. _`regulations`: https://en.wikipedia.org/wiki/Regulated_market
 .. _`marginal`: https://en.wikipedia.org/wiki/Marginal_concepts
