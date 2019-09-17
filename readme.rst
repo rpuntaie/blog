@@ -2,11 +2,12 @@
 Blog Miscellaneous
 ******************
 
-These blog entries are published at http://rolandpuntaier.blogspot.com.
+These blog entries are also published at http://rolandpuntaier.blogspot.com,
+but possibly not up-to-date.
 
-Not all of them are short entries like in a log book,
+Some blogs are not short entries like in a log book,
 but rather try to give a comprehensive picture
-of my thoughts on a topic at the time of interest.
+of my thoughts on the topic at the time of interest.
 
 It is all mixed up:
 

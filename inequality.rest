@@ -12,7 +12,7 @@ Economic Inequality
 The `economy blog`_ makes economy an example of a dynamic system,
 that works according the laws of evolution: creation and selection.
 
-The major purpose of economy as a whole is 
+The major purpose of economy as a whole is
 
 - to produce resources (creation)
 - to distribute resources (selection)
@@ -61,7 +61,7 @@ Pursuit of one's `self-interest`_ has no meaning without choice.
 
 - *First* an alternative economic network needs to be offered,
   with either
-  
+
   - shared ownership or
   - `transaction`_-like, but
   - without employment relations and
@@ -90,7 +90,7 @@ that uses a lot of mathematics based on `economic models`_.
 
 Rational economic models do not contradict the fact,
 that economy is also built on emotions,
-a feature of the human animal 
+a feature of the human animal
 acquired through `biological evolution`_.
 We use to contrast emotions with rationality,
 but emotions are the rationality of a far longer evolutionary history.
@@ -100,7 +100,7 @@ that evolved over `biological evolution`_,
 and are averaged by the `Maslow pyramid`_.
 
 Emotions are the psychological and physiological algorithms
-developed by biological evolution 
+developed by biological evolution
 to safeguard various kinds of resources.
 These algorithms are encoded in the human genome.
 
@@ -129,7 +129,7 @@ Emotions can be `contagious`_. We have `empathy`_.
 
 Emotions `co-evolved`_, e.g.
 a social anxiety, like stage fright, possibly co-evolved
-with the envy at someone who plays important and 
+with the envy at someone who plays important and
 demands an unjustified bigger share of limited resources.
 
 Group emotions are in our genes,
@@ -140,7 +140,7 @@ decreased the gene-holder's chances to survive.
 It is still `selection`_ on the individual via `inclusive fitness`_
 rather than `selection of groups`_.
 
-Group emotions constitute a macroeconomic view, 
+Group emotions constitute a macroeconomic view,
 which considers the importance of the group.
 That they evolved shows their usefulness and
 advices us not to base the economy purely on `egoistic`_ motives.
@@ -159,12 +159,12 @@ There are also emotional differences between humans:
 
 As a result we can classify two `stereotypes`_
 
-- those who are interested in things (more `introvert`_) and 
+- those who are interested in things (more `introvert`_) and
 - those who are interested in people (more `extrovert`_)
 
 with every shade in between.
 
-The extrovert will likely 
+The extrovert will likely
 
 - pay attention to what the others want, think or believe and
 - behave accordingly
@@ -174,7 +174,7 @@ The extrovert will likely
 
 because he evolutionarily got his resources indirectly.
 
-The introvert will 
+The introvert will
 
 - spend less time in `social grooming`_,
 - because his time is consumed with learning new things.
@@ -186,7 +186,7 @@ The introvert will
 Human emotional peculiarities were shaped in the long
 `prehistory`_ of small groups more then in the short written `history`_.
 We still feel well in teams that model such **natural companies**.
-They put each member at ease with mutual appreciation for 
+They put each member at ease with mutual appreciation for
 
 - the help in acquiring and
 - fairly distributing resources
@@ -208,7 +208,7 @@ Economic exchange goes through the (address, `role`_) tuples of a company.
 The company plays external roles in the economy
 independent of who provides its function, i.e. the internal roles.
 
-The `entity`_ 
+The `entity`_
 
 - makes contracts and
 - is legally responsible for them,
@@ -222,8 +222,8 @@ as a separate unit.
 - not making everybody liable for the actions of the others (`limited liability`_)
 - guaranteeing fair distribution between `partners`_ or owners
 
-but are mostly abused for exploitation 
-of the inherited capability 
+but are mostly abused for exploitation
+of the inherited capability
 to form a natural company
 and achieve great things by working together.
 
@@ -250,11 +250,11 @@ Marriage can be regarded as such a claim, too.
 
 Because of the importance of property in human history,
 society has developed special protection for it.
-An owner can therefore sit back and 
+An owner can therefore sit back and
 do without constant emotional stress to defend his claim.
 
 When people started to rely on farming,
-land became an essential resource 
+land became an essential resource
 and thus people claimed ownership on land.
 Farmers were raided, though,
 and fell prey to `protection rackets`_.
@@ -273,7 +273,7 @@ technically complex systems, like computer HW and SW, cars, robots, ...
 Consequently the important resources of today and the future are companies,
 the cooperation of people.
 
-To improve distribution of wealth 
+To improve distribution of wealth
 one must aim at a fair distribution of company ownership.
 
 To own `shares`_ of other companies is possible,
@@ -293,11 +293,20 @@ and is a legal unfairness.
 .. admonition:: Maximizing Profit
 
    In principle, there is nothing wrong with `profit maximization`_.
-   The problem is only the employment role,
-   because it does not allow to take the best deals while in employment.
+   Partners expect each other to work together towards this goal.
+   So do shareholders.
+
+   The problem are the employees,
+   as they do not help each other to maximize their profit.
+   Even the opposite:
+   There is a pressure on wages to increase the profit of the owners.
+
    By law, the employee is controlled by the employer.
-   Because the majority of people are employees and thus cannot take part in the game,
-   employment is a problem.
+   Because the majority of people are employees and cannot take part in the profit maximization,
+   employment produces inequality.
+
+   To improve their lives, i.e. maximize their profit, 
+   employees need to become owners of their work, of their cooperation.
 
 The idea that work is a product like any other, that you can buy,
 might be OK for `physics work`_,
@@ -310,7 +319,7 @@ and `artificial intelligence`_.
 If those who own the cooperation get all the profit,
 instead of those cooperating,
 this creates an unbelievable inequality.
-It has done so already and will do more so in the future 
+It has done so already and will do more so in the future
 by orders of magnitude
 unless the employment relation is avoided.
 
@@ -320,12 +329,12 @@ the `productivity`_ of slavery is high
 (slave = little cost = little input, but high value output).
 But overall the productivity is low,
 because only a few do actual work,
-while the others live on managing 
+while the others live on managing
 the actual value produced by the few working,
 independent of whether `public float`_ or majority `stock`_ holders
 or direct owner.
 
-- With `public float`_ small shareholders waste time 
+- With `public float`_ small shareholders waste time
   gathering information about the company they hold a few shares of or they
   delegate to `bullshit-jobs`_ in `managed`_ `funds`_.
 
@@ -336,19 +345,23 @@ and does not have a million thoughts in every instant.
 So he spends the money only according to his very limited mind,
 thus curbing economic evolution.
 
-He creates `bullshit-jobs`_ 
+A super rich person creates `bullshit-jobs`_
 in the `finance industry`_, `management hierarchy`_
 and `legal industry`_
 to report to his bottleneck mind,
 which makes the overall `productivity`_ small again.
+
+The super rich is not at fault though.
+Those who played along, without caring for fairness, are at fault.
+They renounced potentially much higher income to make somebody rich.
 
 It is not a goal of the many, the economy,
 to be productive for an owner.
 This is only the goal of the few rich.
 The goal of the economy as a whole is
 to spread freedom to let choose according to individual `needs`_ and `interests`_.
-For this, people need to have their own money
-and not be the lackey of some owner.
+For this, people need to be owners themselves,
+and not be the lackey of some super rich owner.
 
 .. admonition:: Freedom
 
@@ -360,21 +373,21 @@ and not be the lackey of some owner.
 
    Freedom needs both:
 
-   - `free will`_ and 
+   - `free will`_ and
    - `freedom of choice`_.
 
-   It is `extortion`_, if `economic value`_ 
+   It is `extortion`_, if `economic value`_
    cannot be obtained by `free will`_,
    but only under an employer's `commands`_.
 
-   Then the employee does not get 
+   Then the employee does not get
    its fair share of the actual `value of a company`_
    and thus renounces `freedom of choice`_.
 
    One has effectively become a slave, if one has no alternatives
    that make a difference in the pursuit of one's `self-interest`_.
 
-   Concentration of wealth is a *vicious circle* that 
+   Concentration of wealth is a *vicious circle* that
    sucks away freedom from the majority.
 
 Importance of Fairness
@@ -415,11 +428,17 @@ that can design and commit to a social structure
 other than `alpha, beta, omega`_,
 also because `communication`_ has become more flexible.
 
-To overcome a subjective feeling of fairness 
+To overcome a subjective feeling of fairness
 one needs to compromise on a metric.
 As is common with measuring, as hard as one tries,
 there will always be an error.
 Accordingly there will never be perfect fairness.
+
+.. admonition:: Fairness Control
+
+    Every company needs to have a **fairness control system** in place.
+    This means opening up information about resource distribution.
+    Without such system, one must not work for the company, but compete with it.
 
 The sum of everybody demanding fairness in their local contexts (`microeconomy`_),
 produces more equality, also globally (`macroeconomy`_), e.g. in a country.
@@ -464,7 +483,7 @@ and `frame`_ the public via `mass media`_.
 In a democracy,
 why aren't their any politicians that promise to end `inequality`_?
 There are, but only when `inequality`_ reaches a critical level for a critical mass.
-This is then a revolution, which operates outside the laws, 
+This is then a revolution, which operates outside the laws,
 and is a threat to life of many and thus the ultimate resort.
 History shows, when a critical `inequality`_ has been reached,
 
@@ -504,12 +523,12 @@ produces a minimal linear `inequality`_ growth `\text{MLD}=ln(r+1)t`,
 where MLD is `mean log deviation`_ as `inequality metric`_.
 
 Best would be `r=0`.
-Then the price of labour meets the profit of the company 
+Then the price of labour meets the profit of the company
 and `inequality`_ does not rise.
 This is the case when those working together also own their cooperation.
 Because the exploiting separate owner role is gone.
 
-The above `r` is for one company. 
+The above `r` is for one company.
 Between companies inequality can still increase.
 But then work force would move to the profitable business
 to level it again.
@@ -541,7 +560,7 @@ instead of according to the profit in the product market.
 - Price of labor (wage) does not reflect profit.
 
 Without a say in the company via ownership, wages can basically only be influenced via `strikes`_.
-The owner has more possibilities in an `imperfect competition`_, 
+The owner has more possibilities in an `imperfect competition`_,
 the simplest being to `increase the price`_, which has the extra profit,
 that the ensuing `inflation`_ is not immediately reflected in the `wages`_.
 
@@ -564,15 +583,15 @@ that the ensuing `inflation`_ is not immediately reflected in the `wages`_.
 
   | ... equal in dignity and rights.
   | ... should act towards one another in a spirit of brotherhood.
-  | ... right to life, liberty and security of person 
+  | ... right to life, liberty and security of person
   | ... right to own property
   | No one shall be subject to ... degrading treatment ...
 
-- Employment is not an evolutionary context. Employees cannot decide 
+- Employment is not an evolutionary context. Employees cannot decide
 
   - what to offer (what work to do)
   - for what price (what pay)
-  
+
   There would need to be an internal market with free decision making.
   Market encapsulations do make sense, because they reduce the `selection cost`_.
 
@@ -601,12 +620,12 @@ The `owner`_ role protects him against such losses.
    A power hierarchy leads to
 
    - `intra-group`_ competition for higher and more profitable roles or
-   - power-based instead of knowledge-based decisions 
+   - power-based instead of knowledge-based decisions
 
    This is `occupational stress`_ to tech people.
 
    If the tech people own their cooperation, the resulting `meritocracy`_
-   produces a better feedback 
+   produces a better feedback
 
    - not only via resources, but also
    - via mutual appreciation, resulting in better `self-esteem`_
@@ -622,12 +641,12 @@ Laws are historically grown rules
 which mix the goals and ideas of many but especially rich people.
 As such they are neither moral nor immoral, but amoral.
 
-In our context `immoral`_ is 
+In our context `immoral`_ is
 
 - unequal profit
 - subordination
 
-It is immoral to own the cooperation of people, 
+It is immoral to own the cooperation of people,
 *Those cooperating hold a share of the cooperation*, simply by logic.
 Employment is immoral.
 
@@ -666,11 +685,11 @@ A slave becomes a respectable person, an economic `entity`_ instead of a economi
 
 - if his will counts
 - if he can make economic decisions beyond taking/changing jobs a few times in live
-- and can get most of his needs satisfied 
-- with light out-of-interest work investments 
+- and can get most of his needs satisfied
+- with light out-of-interest work investments
 - leaving enough time for work investment in the area of interest
 
-Jurisdictions do not prevent a slave from becoming an 
+Jurisdictions do not prevent a slave from becoming an
 independent economic entity
 
 - to organize with others on the same level
@@ -685,17 +704,22 @@ to which the unaware make themselves available,
 thus producing an unfair and immoral market
 and removing opportunities for fair cooperation.
 
+Basically, the one who does not own is a slave.
+One must own what one depends on, specifically one's cooperation.
+If the owner is someone else,
+one depends on that person and is a slave of that person.
+
 Jurisdictions should abandon the concept of employment
 and `employment contracts`_ altogether.
 Instead of checking for `employment misclassification`_
-they should distinguish between 
+they should distinguish between
 
 - transaction-like interaction with `independant contractor`_ or
 - sharedly owned cooperation
 
 By `regulations`_ one would have an immediate impact.
 
-Jurisdictions do not demand equality, 
+Jurisdictions do not demand equality,
 but they do also not forbid it.
 
 `Social security`_ providing a `basic income`_ through `redistribution`_
@@ -751,7 +775,7 @@ People need to register as an economic `entity`_ (`sole proprietors`_ or sole-me
 - to avoid employment and
 - to be independent from any specific cooperation
 
-These entities then cooperate with others and own these cooperations 
+These entities then cooperate with others and own these cooperations
 directly or indirectly through intermediate cooperations.
 
 The resulting structure corresponds to a mathematical `lattice`_.
@@ -759,9 +783,9 @@ The resulting structure corresponds to a mathematical `lattice`_.
 .. admonition:: Cooperation `Lattice`_
 
     In `formal concept analysis`_ (FCA) terms a cooperation is a concept node.
-    People constitute the FCA intent of a cooperation. 
+    People constitute the FCA intent of a cooperation.
 
-    The cooperation nodes form a `partial order`_: 
+    The cooperation nodes form a `partial order`_:
 
     - up (owners)
     - down (owned).
@@ -780,13 +804,13 @@ The resulting structure corresponds to a mathematical `lattice`_.
 .. _`r_inversion`:
 
 A cooperation lattice is an **inversion of traditional company-employee relationship**:
-Instead of companies having employees, 
+Instead of companies having employees,
 the people own the cooperations in which they work.
 In this sense the cooperation is like a `shell company`_.
 
 .. _`r_node_size`:
 
-To allow flat m-to-n communication, 
+To allow flat m-to-n communication,
 the size of a node should not be bigger than about 10.
 Above that separate `entities`_ should be formed.
 
@@ -795,10 +819,10 @@ Above that separate `entities`_ should be formed.
 The `legal entity`_ one chooses is important regarding distribution justice.
 
 - Cooperation must lead to *ownership shares*
-- *that stay* with those cooperating and 
+- *that stay* with those cooperating and
 - *not have employment-only roles*.
 
-The `cooperative`_ fits best 
+The `cooperative`_ fits best
 
 - for the cooperation lattice as a whole and also
 - for the cooperation nodes
@@ -820,7 +844,7 @@ as it does not separate ownership from cooperation.
    - externally via the `articles of association`_
    - internlly via the `bylaws`_
 
-   The whole cooperation lattice on the other hand 
+   The whole cooperation lattice on the other hand
    is a network of shared `ethical values`_,
    legally implemented via an `umbrella organization`_.
 
@@ -872,7 +896,7 @@ to ease common processes.
 Technical infrastructure on the other
 is done by nodes within the lattice.
 
-Nodes do also care to 
+Nodes do also care to
 recruit new lattice members from outside the cooperation lattice.
 
 .. _`r_advertisement`:
@@ -882,16 +906,16 @@ All the values, processes and statistics are public.
 
 If statistics show that the average net income of people in the cooperation lattice
 are higher than according work in employment,
-this motivates still employees to become 
+this motivates still employees to become
 
-- independent economic entities and 
+- independent economic entities and
 - join the cooperation lattice
 
 .. _`r_governance`:
 
 **Written**:
-General `governance`_ and `operations`_ are guided by 
-written rules, instructions and data: 
+General `governance`_ and `operations`_ are guided by
+written rules, instructions and data:
 `constitution`_, `bylaw`_, `operations manual`_, `SOPs`_, `open data`_, ...
 
 **Transparent**:
@@ -920,12 +944,12 @@ The person with the most information decides in case no agreement can be found.
 
 **Coordination**:
 For a project with many nodes a designated `architect`_ node `coordinates`_.
-This role is not power concentration, 
+This role is not power concentration,
 but just one of the upper nodes of the project node representing the big project.
 Shared ownership protects against power abuse.
 
 **Verification**:
-Regular internal `audits`_ verify that 
+Regular internal `audits`_ verify that
 the written documents (including `accounting`_) describe reality in the domain of their validity.
 
 Employment test, like the `20-factor test`_, within the cooperation lattice
@@ -935,7 +959,7 @@ and not based on minor, transaction-like contributions.
 
 .. _`r_transactions`:
 
-Nodes do `transactions`_ (sell/buy products/services) 
+Nodes do `transactions`_ (sell/buy products/services)
 with other nodes within the cooperation lattice or the market.
 
 .. _`r_ownership`:
@@ -993,7 +1017,7 @@ the node functions as distribution channel,
 as other nodes take over tasks of different kind
 
 - marketing
-- support 
+- support
 - maintenance
 
 .. _`r_existing_markets`:
@@ -1014,7 +1038,7 @@ More small cooperations produce a better distribution than few large companies.
 .. admonition:: Evolution via alternatives
 
    Alternatives do not necessarily need to replace other forms.
-   Today there are 
+   Today there are
 
    - biological species unchanged since millions of years
    - societies one could place hundreds of years in the past
@@ -1023,7 +1047,7 @@ Financing
 =========
 
 Many tech cooperations do not need much more than a computer
-and that should stay with the personal entity and not be owned by a 
+and that should stay with the personal entity and not be owned by a
 cooperation entity.
 The cooperation entity only needs to own what is needed
 to fulfill its function.
@@ -1048,7 +1072,7 @@ as they cannot be sold as one entity.
 Funding via selling shares would give a way ownership.
 But ownership should stay with those cooperating.
 
-After some time in an ownership network, 
+After some time in an ownership network,
 nodes that one contributed to and one thus sharedly owns
 should produce enough profit not to depend on external financing any more.
 
@@ -1056,7 +1080,7 @@ Continuity
 ==========
 
 The tension in the company-employee relationship produces `employment turnover`_
-which produces discontinuity 
+which produces discontinuity
 
 - of individual development
 - of product evolution
@@ -1076,7 +1100,7 @@ If one changes company there is a high chance
 
 In a technological advanced economy,
 complex systems are built and maintained.
-This demands continuity to develop actual improvements of components 
+This demands continuity to develop actual improvements of components
 instead of random alterations from every new employee working on it.
 Even a new approach is better done by someone that has experienced all the shortcomings.
 
@@ -1116,7 +1140,7 @@ The reason is the educational system:
 
 Danger of Hype Product
 ======================
-  
+
 A tech product with almost full `market coverage`_
 
 - on the one hand is good, as a `standardization`_,

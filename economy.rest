@@ -367,35 +367,72 @@ Structural Evolution
 
 Structural evolution produces higher level resources
 through improvements on top of longer living lower level resources.
+
+*Improvement* refers to the satisfaction of the needs of (some) humans,
+i.e. better quality, more convenient.
+Ultimately this means getting *needs* satisfied with 
+
+- less effort =
+- less interaction =
+- less energy =
+- less money =
+- less economy
+
+.. note::
+
+    The purpose of more advanced economic structures is
+    to reduce the (local, personal) economy.
+
 Every `invention`_ `x_i` (usage of new resource) 
 can be considered an **evolution time** step
 in the `metaspace`_ of product types.
 Every invention is a `paradigm shift`_ 
 that changes `x={x_i}` and `p={p_i}`.
 
-`d x` is the addition of a resource `x_i` and 
-`d p` are the transactions for `i`: `p_i`.
+- `d x` is the addition of a resource `x_i` and 
+- `d p` are the transactions for `i`: `p_i`.
 
 `d x` and `d p` are independent:
 
 - `d x` is structural: adding variable
-- `d p` is dynamic: selecting values of the new variable
+- `d p` is dynamic: selecting values (products) of the new variable (product type)
+
+This meta-view is different from above,
+as it considers the change to new products,
+i.e. new structure,
+instead of the change of owners of existing products.
 
 The valuing `I` is local.
-If a product `i` has more potential at the side (`x+x_i=x+Δx`) of customer `c`,
-than given by the market price, 
-transactions `i` start to make up `ṗ_i`:  `(I_c(x)-I_c(x+Δx))/Δx = F_i = ṗ_i = m_i ẍ_i`.
+If a product `i` 
 
-The value element `d p d x` is `activation value`_.
-The total value is:
+- is more convenient for a customer `c`
+- has less physical potential at `x+x_i=x+Δx` at `c`
+
+transactions of `i` (`p_i`) will change, making up `ṗ_i`:  `(I_c(x)-I_c(x+Δx))/Δx = F_i = ṗ_i = m_i ẍ_i`.
+
+The valuation element `d p d x` is `activation value`_.
+The total valuation is:
 
 .. math::
 
    I(x,p) =  ∬ d p d x
 
-This entails an average growth `H = I/T = m v^2 / 2` in time `T`,
-assuming an average constant `m`,
-which is true for prices and wages `only considering inflation`_.
+This brings us to the physical formula of
+
+- energy flow =
+- economic change =
+- growth (structural, positive or negative)
+
+The average structural growth `H = I/T = m v^2 / 2` in time `T`,
+assuming an average constant price `m`.
+
+.. note:: In words
+
+    With constant price `m` the structural growth is quadratic.
+
+A constant `m` is true for prices and wages, `considering inflation`_.
+
+Further comparison of economics to physics:
 
 `Hamilton-Jacobi`_ equations:
 
@@ -541,7 +578,7 @@ With constant cycle frequency `ω` we have `w(t) = ωt`.
 .. _`demand function`: https://en.wikipedia.org/wiki/Inverse_demand_function
 .. _`price elasticity`: https://en.wikipedia.org/wiki/Price_elasticity_of_demand
 .. _`strategic`: https://en.wikipedia.org/wiki/Aggregative_game
-.. _`only considering inflation`: https://en.wikipedia.org/wiki/Real_wages
+.. _`considering inflation`: https://en.wikipedia.org/wiki/Real_wages
 .. _`activation value`: https://en.wikipedia.org/wiki/Activation_energy
 .. _`phase`: https://en.wikipedia.org/wiki/Phase_(waves)
 .. _`angular velocity`: https://en.wikipedia.org/wiki/Angular_velocity
