@@ -9,7 +9,7 @@ Formal Concept Analysis
 My Motivation
 -------------
 
-A had my first contact with 
+I had my first contact with 
 `Formal Concept Analysis (FCA) <http://en.wikipedia.org/wiki/Formal_concept_analysis>`_
 in Summer 2004.  At the time I did some experiments in python, which I want to share here.
 Later on I became too busy again with work and other projects.
