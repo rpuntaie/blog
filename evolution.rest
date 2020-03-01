@@ -418,8 +418,12 @@ The selection is mutual and represents a local time `dτ`,
 which associates it with an energy `E=1/dτ`, the cost of the selection.
 After the selection the system is in a new state, allowing new selections.
 Selection after selection produces a causal chain: the time evolution.
-*Interaction* is more general concept, but in its elementary manifestation
-synonymous to selection, and better depicting this mutuality.
+
+*Interaction* is better depicting this mutuality.
+Interaction is a more general concept, but in its elementary manifestation
+synonymous to selection.
+``F`` forms an interaction consisting of change of selection speed per ``Δy``.
+``∫Fdy`` is the gained selection speed (energy).
 
 
 More Times = More Energies
@@ -641,13 +645,12 @@ At one point in time:
   But considering that information travels with `c`,
   the result of the interaction is detached from those particles by time and space.
   So one counts the information received at `x`.
- 
+
   `∂L/∂x_i` are called **forces** `F_i`, force particles in quantum mechanics.
-  
-  `x` is said to change due to an interaction or **force** `F`:
-  Accumulated force is **work**:
+
+  Accumulated interaction per `x` or **force** `F` is **work**:
   `W = ∫F d x`.
-  
+
 .. math::
 
    L = K+W = K-V
@@ -1055,8 +1058,9 @@ In that sense entropy `S` is the action of thermodynamics.
 
     A/ħ ↔ S/k
 
-The unit of action is `[A]=Js`, which we said so far is information, but `[S]=J/K`.
-If we summarize the details of selection, we need to introduce different units also for information.
+The unit of action is `[A]=Js`, which we said is information.
+Entropy's unit `[S]=J/K` is also information, but of a specific encapsulation level, i.e. that between molecules/atoms.
+For every selection layer we need to introduce different units for information.
 
 - Equilibrium thermodynamics summarizes the microscopic selections per time, i.e. time, via temperature or its inverse, `β <beta>`_.
   Seeing `β` as "new time" we have the correspondence.
@@ -1068,6 +1072,31 @@ A relation between action and entropy is given in these papers:
 
 - `The concept of entropy. Relation between action and entropy`_
 - `A holographic map of action onto entropy`_
+
+
+Maxwell Demon
+=============
+
+The `Landauer limit`_ `kTln2` of energy consumption of a selection from a variable of 2 elements (bit)
+assumes processing via atoms/molecules.
+It does not apply if comparing different layers.
+
+A `Maxwell demon`__ consumes as much energy as it produces if it processes on the same layer.
+But if the processing happens on a lower layer, it can produce energy.
+This is how dynamic structures form.
+
+- The biological cell is a Maxwell demon, letting high energy molecules in and low energy molecules out.
+- Animals and plants are biological Maxwell demons of a higher biological layer,
+  letting good food in and excretes waists.
+- An entrepreneur is economical Maxwell demon, letting good workers in and firing bad workers.
+- ...
+
+But one can have a `landauer limit`_ for every layer.
+So the quantum `landauer limit`_'s `-kTtr(ρ lnρ)` depend on `ρ`
+and are different units than the classical mechanics `landauer limit`_ `kTln2`.
+Also `T=∂E/∂S` is of a different unit in quantum mechanics than in higher layer systems.
+The lowest limit is an absolute limit, though.
+
 
 
 .. _`oscillation`: https://en.wikipedia.org/wiki/Oscillation
@@ -1231,3 +1260,5 @@ A relation between action and entropy is given in these papers:
 .. _`causality`: https://en.wikipedia.org/wiki/Causality_(physics)#Causality_in_physics
 .. _`internal`: https://en.wikipedia.org/wiki/Internal_energy
 .. _`phase`: https://en.wikipedia.org/wiki/Phase_(waves)
+.. _`landauer limit`: https://en.wikipedia.org/wiki/Landauer%27s_principle
+.. _`Maxwell demon`: https://en.wikipedia.org/wiki/Maxwell%27s_demon
