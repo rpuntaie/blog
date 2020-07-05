@@ -114,17 +114,17 @@ blocks of everything: They are information.
 *Value* and *variable* are quite ubiquitous and thus appropriate for
 something as fundamental as information.  
 
-.. TODO: extensive variables.
-
 .. In statistics a variable corresonds to the *sample space*.
+   *Events* are subsets of the sample space.
+   σ-algebra is the set of all *events*.
+   Probability is associated to events.
+   This applies for extensive variables.
 
-.. *Events* are subsets of the sample space. 
-.. σ-algebra is the set of all *events*.
+.. In type theory *type-term* corresponds to *variable-value*
 
-.. Probability is associated to events.
-
-.. This applies for extensive variables.
-
+.. As selection happen due to other selections (function),
+   one can see function application as *value*.
+   Function-(function application) = variable-value.
 
 Let's get quantitative: What is the smallest amount, we can choose from? The answer: 2.
 The important aspect quantitatively is only the size of the variable, also called cardinality.

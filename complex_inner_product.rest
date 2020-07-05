@@ -10,17 +10,17 @@
 Complex Inner Product
 =====================
 
-Along the line of `information`_, `variable`_ and `measure`_, 
-there are two products that make sense on `extensive values`_. 
+Along the line of `information`_, `variable`_ and `measure`_,
+there are two products that make sense on `extensive values`_.
 Each such value can be regarded as a variable of elements.
 
 - The `exterior product`_ makes sense as a measure of the amount of element
-  combinations.  This corresponds to the normal multiplication in `ℝ`.  
+  combinations.  This corresponds to the normal multiplication in `ℝ`.
 
 - The `dot product`_ is the complement to the `exterior product`_.
 
 First the `complex numbers`_ are `revisited`_,
-then the actually more fundamental `dot product`_  and `exterior product`_ 
+then the actually more fundamental `dot product`_  and `exterior product`_
 are motivated via the `projection`_ of a `vector`_
 and at last the complex `inner product`_ is considered.
 
@@ -35,49 +35,52 @@ The `real numbers`_ allow to compare only two `extensive values`_ of the same ki
     \frac{v_2}{v_1} ∈ ℝ
 
 In a `vector space`_ of any dimension, two subspaces
-`V_1` and `V_2` span a plane of `(v_1,v_2)` combinations 
+`V_1` and `V_2` span a plane of `(v_1,v_2)` combinations
 (`v_1 ∈ V_1` and `v_2 ∈ V_2`).  In this plane two vectors can have the same
 direction or be `orthogonal`_ or something in between.  To express this, in
-addition to the size ratio we need an angle (the word *direction* builds on *angle*, too). 
+addition to the size ratio we need an angle (the word *direction* builds on *angle*, too).
 Or we can make a model of reality where the `v_1` direction is placed in the `1` axis
 (the real axis) and `v_2/v_1` has
 
 - one component in the `1` axis and
-- one component that is orthogonal to the `1` axis, by convention turned counterclockwise. 
-  
-This orthogonal axis is nothing esoteric: 
+- one component that is orthogonal to the `1` axis, by convention turned counterclockwise.
+
+This orthogonal axis is nothing esoteric:
 it only expresses that there is a component of `v_2` *not pointing* to
-the direction of `v_1`, i.e. *not adding* to `v_1`.  
+the direction of `v_1`, i.e. *not adding* to `v_1`.
 By naming the orthogonal direction `i` (imaginary unit)
 we keep addition separate.
+
+.. note:: Only two dimensions are assumed here.
+  In 3 dimensions there would be more orthogonal directions.
 
 Next
 
 .. math::
-    
+
     z = \frac{v_2}{v_1} = \frac{|v_2|}{|v_1|}(a+bi) = r(a+bi) ∈ ℂ
 
 with `a^2+b^2=1`, is a way to keep *direction change* and *size ratio* separate.
 
 As with real numbers we can think of the fraction `\frac{v_2}{v_1}` as the definition
 of the `complex numbers`_ in the sense that the complex number depicts the relation
-between `v_2` and `v_1`, or better, the operation that makes `v_1` to `v_2`. 
+between `v_2` and `v_1`, or better, the operation that makes `v_1` to `v_2`.
 
-One can express any *real world* `v_1` and `v_2` by ratios with some unit `e`: 
+One can express any *real world* `v_1` and `v_2` by ratios with some unit `e`:
 
-- `v_1=z_1e` and `v_2=z_2e`. 
-  
-This way `z_1` and `z_2` stand for `v_1` and `v_2` in an analogous way as 
+- `v_1=z_1e` and `v_2=z_2e`.
+
+This way `z_1` and `z_2` stand for `v_1` and `v_2` in an analogous way as
 `real numbers`_ do stand for quantities not compared to others of different kind (not addable).
 
 Multiplying a `v_1` by `z` produces `v_2`, i.e. it also produces a rotation.
 Another `z` will start from the last state. Specifically, if `z=i`, reapplying it yields `ii=-1`,
 because in a plain, orthogonal to orthogonal is the opposite direction.
 
-Real ratio `r` and angle are related to the complex number `z` via 
+Real ratio `r` and angle are related to the complex number `z` via
 
 .. math::
-    
+
     z = r (\cos φ + i \sin φ)
 
 To reverses the `z` operation we take the inverse of `z`:
@@ -95,20 +98,20 @@ To get an intuitive understanding of why we can also write
 
     z = e^{iφ}
 
-we can 
+we can
 
 - think that by *multiplying* `z` the phase is *added* and by *deviding* the phase is *subtracted*
 
-- grow towards the direction of `z` from `1` by infinite infinitesimal changes 
+- grow towards the direction of `z` from `1` by infinite infinitesimal changes
 
   .. math::
 
        (\cos\frac{φ}{∞}+i\sin\frac{φ}{∞})^∞ = (1+\frac{iφ}{∞})^∞ = e^{iφ}
 
-- derive `z = r (\cos φ + i \sin φ)` by `φ` 
+- derive `z = r (\cos φ + i \sin φ)` by `φ`
 
   .. math::
-        
+
         \frac{∂ z}{∂φ} = i z
 
   and see that the solution of the differential equation is `z=e^{iφ}`
@@ -117,22 +120,22 @@ we can
 .. admonition:: numbers vs geometric algebra
 
    If we had given `1` a more concrete `dimension`_ `e_1` and had named the unit of the
-   orthogonal dimension `e_2`, then with `I = e_1 e_2 = e_1 ⋅ e_2 + e_1 ∧ e_2 = e_1 ∧ e_2` 
-   we would have got `e_1 I = - I e_1 = e_2`.  
+   orthogonal dimension `e_2`, then with `I = e_1 e_2 = e_1 ⋅ e_2 + e_1 ∧ e_2 = e_1 ∧ e_2`
+   we would have got `e_1 I = - I e_1 = e_2`.
    This is the `geometric algebra`_ approach, which does not abstract the unit:
    Then `I=e_1e_2` is different from a `J=u_1u_2`. `Iu_1` doesn't have any meaning.
-   For (complex) numbers, on the other hand, we store separately, what they refer to, 
+   For (complex) numbers, on the other hand, we store separately, what they refer to,
    i.e. whether we can add or multiply two of them or not.
 
 
 `z_1\bar{z_2}=r_1r_2(\cos(φ_1-φ_2)+i\sin(φ_1-φ_2))` is the area (`r_1r_2`) projected onto the `1`
-and the `i` axis respectively: 
+and the `i` axis respectively:
 
 - all on `i` means `φ_1=φ_2+π/2`, i.e. different kind, fully combinable, combination of elements = enclosed area
 
 - all on `1` means `φ_1=φ_2`, i.e. same kind, not combinable, zero enclosed area
 
-For a `z` alone, 
+For a `z` alone,
 
 - `i r \sin φ` gives the projection onto `i` orthogonal to `1`,
   i.e. the part of `z` combinable with `1`, but not addable to `1` (enclosed area, `exterior product`_)
@@ -149,9 +152,9 @@ Dot Product
 I take a step back and assume there is no `dot product`_ yet.
 
 A `measure`_ function `μ` is additive for the union of disjoint subsets of its
-support variable. With this addition one or more such variables form a 
-`vector space`_.  So a vector space is like a bunch of `extensive variables`_, 
-that are more or less `orthogonal`_ and added separately for each variable.
+support variable.
+With this addition one or more such variables form a `vector space`_.
+So a vector space is like a bunch of `extensive variables`_ added separately for each variable.
 
 Two `extensive values`_ `v_1` and `v_2` are considered `orthogonal`_,
 if the mutual `σ-algebras`_ form all possible combinations.
@@ -165,12 +168,12 @@ if the mutual `σ-algebras`_ form all possible combinations.
 
 .. admonition:: Orthogonality with probability
 
-  Two variables `V_1` and `V_2` are independent, if `P_{12}(σ_1∪σ_2) = P_1(σ_1)P_2(σ_2)` 
+  Two variables `V_1` and `V_2` are independent, if `P_{12}(σ_1∪σ_2) = P_1(σ_1)P_2(σ_2)`
   (`product measure`_), `σ_1⊂V_1`, `σ_2⊂V_2`.
   Let `t_i∈T_i` name the experiments for `V_i`: `x_i=x_i(t_i)`.
-  The `PDF`_ is then `p_i(x_i) = |x_i^{-1}(x_i)| / |T_i|`. 
+  The `PDF`_ is then ` p_i(x_i) = |x_i^{-1}(x_i)| / |T_i| `.
 
-  Every `t_1` combines with every `t_2`. `|T_1| |T_2|` is the size
+  Every `t_1` combines with every `t_2`. ` |T_1| |T_2| ` is the size
   of the rectangle in the product experiment space.
   `p_1(x_1)p_2(x_2)∈[0,1]` is a fraction of that rectangle.
 
@@ -189,8 +192,8 @@ The `product measure`_ `|v_1||v_2|` corresponds to the enclosed area.
   neighborhoods along the other variable `v_2` (the other direction).
 
   We can make all `linear combination`_ of steps in either direction
-  to reach all possible points in the rectangle spanned 
-  by the two orthogonal variables. 
+  to reach all possible points in the rectangle spanned
+  by the two orthogonal variables.
 
 Two non-orthogonal vectors that lead away from a *starting point* `can be`_
 decomposed into parallel and orthogonal set components via a `projection`_.
@@ -201,15 +204,15 @@ decomposed into parallel and orthogonal set components via a `projection`_.
   by removing the green balls.
 
 - The `projection`_ `\mathcal{P}_{12}` from `v_1` onto `v_2` `defines`_ the `dot product`_ via
-  `\mathcal{P}_{12}v_1v_2 = μ(\mathcal{P}_{12}Σ_1×Σ_2)`. 
+  `\mathcal{P}_{12}v_1v_2 = μ(\mathcal{P}_{12}Σ_1×Σ_2)`.
 
 - The `projection`_ `\mathcal{I}-\mathcal{P}_{12}` from `v_1` orthogonal to `v_2` defines the `exterior product`_
   via `(\mathcal{I}-\mathcal{P}_{12})v_1v_2 = μ((\mathcal{I}-\mathcal{P}_{12})Σ_1×Σ_2)`
 
-Only with the dot product defined one can use `Gram-Schmidt orthonormalisation`_.
+Only with the dot product defined, one can use `Gram-Schmidt orthonormalisation`_.
 
 Due to additivity a vector component `a_1` can be expressed by a number `a^1`
-and a unit vector `e_1`: `a_1 = a^1e_1`. 
+and a unit vector `e_1`: `a_1 = a^1e_1`.
 
 A general vector is a `linear combination`_ of the unit vectors.
 
@@ -232,31 +235,43 @@ and `e_1∧e_1=e_2∧e_2=0` for same direction, then one can handle the operatio
 which is normally done, but which lets one easily forget about their complementarity.
 The geometric product can then be expressed as `ab=a·b+a∧b`.
 
-The `exterior product`_ is quite intuitive via the area. And it makes also 
+The `exterior product`_ is quite intuitive via the area. And it makes also
 sense that `e_1∧e_2=-e_2∧e_1`, because then it gives the enclosed area
 when multiplying two general vectors `a` and `b`.
 
 But why is the `dot product`_ a `scalar`_?
 
-- The multiplication is over the same value 
+- The multiplication is over the same value
   and when a `σ_1∈Σ_1` is chosen, we have no further freedom to choose it again.
   So `e_1e_1 = \mathcal{P}_{12}e_1e_1 = μ(σ_1)μ(σ_1)=1` is a mere number.
 
 - It can be used to define a `norm`_ `∥a∥=√{aa}`, the measure we talked about so far.
   Because `∥e_1∥=1` the square follows from the `bilinearity`_.
 
-- The dot product with the unit vector gives the `projection`_ (`v_1 · e_2 = \mathcal{P}_{12}(v_1)`)
+- The dot product with the unit vector gives the `projection`_ (`v_1^2 = v_1 · e_2 = \mathcal{P}_{12}(v_1)`)
   and we can write `(v_1 · e_2)e_2 = v_1^2e_2`,
   so `v_1^2=v_1e_2` better be a `scalar`_.
   The norm can also be seen as projection `∥a∥=a·e_a=√{aa}`.
 
-- Adding `extensive values`_ of different kind (`c=a+b`) we 
+- Adding `extensive values`_ of different kind (`c=a+b`) we
   get the `Pythagorean theorem`_ from the `dot product`_: `|c|^2=c·c=(a+b)·(a+b)=a^2+b^2`
 
-In `geometric algebra`_, for 2D, the `exterior product`_ behaves like
-a scalar: it is called a *pseudoscalar*: 
-`dot product`_ and `exterior product`_ are mutually complementary and 
+In `geometric algebra`_, for 2D, the `exterior product`_ behaves like a scalar,
+because there is no further degree of freedom to choose from.
+It is called a *pseudoscalar*:
+`dot product`_ and `exterior product`_ are mutually complementary and
 in the `complex numbers`_ they are combined to one scalar.
+
+One can understand the dot product as wedge product with the `orthogonal complement`_ (`hodge star`_):
+`v_1 · v_2 = *(v_1^v_2*)`.
+As occurrences of values of `v_2` are motivated via values of `v_2*`,
+the extent of `v_2*` is the same as that of `v_2`.
+`v_1^v_2*` is a *pseudoscalar*.
+Mapping it to a scalar produces `det(v_1^v_2*)`, which coincides with the normal dot product.
+
+.. _`hodge star`: https://en.wikipedia.org/wiki/Hodge_star_operator#Formal_definition_for_k-vectors
+.. _`orthogonal complement`: https://en.wikipedia.org/wiki/Orthogonal_complement
+
 
 The Complex Inner Product
 -------------------------
@@ -273,10 +288,10 @@ A *complex vector* `v` consisting of `n` complex numbers is isomorphic to a real
 because the real and imaginary parts are added independently.
 
 The inner product of two complex vectors defined as `<v_1|v_2> = v_1·v_2 = Σ\bar{v_1^k}v_2^k`,
-accounts only for `4n` combinations 
+accounts only for `4n` combinations
 (`2n` dot combinations: `n` {1,1}, `n` {i,i}; and  `2n` wedge combinations {1,i}),
 and not for the `2n 2n = 4n^2` possible dot and wedge products between the components.
-When keeping dot and wedge separate, with `e_k·e_l=0` for `k≠l` it actually accounts for all 
+When keeping dot and wedge separate, with `e_k·e_l=0` for `k≠l` it actually accounts for all
 dot combinations (`2n+2n(2n-1)=4n^2`).
 Even with `e_k∧e_k=0`, though, it misses `2n(2n-1)-2n=4n^2-4n=4n(n-1)` of the wedge combinations.
 
@@ -302,8 +317,8 @@ The approximation works best with orthonormal function components instead of val
     Σ_{nm}<ψ_n(x)|ψ_m(x')> → δ_{mn}(x-x')
 
 This condition combines orthonormality `<ψ_n|ψ_m> = δ_{mn}` with completeness `Σ_n<ψ_n(x)|ψ_n(x')> → δ(x-x')`.
-The latter is the ability to approximate all functions in the `L^2` sense. 
-`δ(x-x')` represents a point `x` in the `L^2` sense. 
+The latter is the ability to approximate all functions in the `L^2` sense.
+`δ(x-x')` represents a point `x` in the `L^2` sense.
 
 .. math::
 
@@ -314,26 +329,26 @@ of `\bar{ψ_n}(x)ψ_m(x)` vanish through summation over the range of `x`.
 
 .. admonition:: Quantum Mechanics
 
-  A particle is an identity defined by its selection of values from a variable. 
+  A particle is an identity defined by its selection of values from a variable.
 
   In `quantum mechanics`_ this selection is inherently imprecise.
   A selection is an finite interval of the infinitely close, infinitely precise values
   generated by our mind. An `x∈ℝ` is replaced by a bell shaped function
   whose foremost purpose is to introduce the **imprecision** that is inherent to
-  the atomic scale. Note, that this imprecision motivates also to approximate 
+  the atomic scale. Note, that this imprecision motivates also to approximate
   physical (differential) equations.
 
-  The bell shaped function `ψ(x)` describes a state 
-  that holds together a neighborhood around a special `x` 
+  The bell shaped function `ψ(x)` describes a state
+  that holds together a neighborhood around a special `x`
   i.e. a state is one imprecise value of a variable.
 
-  The development of the state (in time) is derived from 
+  The development of the state (in time) is derived from
   the current localized state with differential operators.
   One shifts one's attention from the values of the state function to the derivatives.
   Every one of these derivatives is an independent variable and together they make a vector space.
-  A `linear differential operator`_ can now be described 
+  A `linear differential operator`_ can now be described
   as a matrix linearly combining components of such a vector of derivatives.
-  Via `eigenvalue`_ equations an operator gives rise to 
+  Via `eigenvalue`_ equations an operator gives rise to
   `orthogonal functions`_ best suited to approximate the state function
   through their `superposition`_. I.e. instead of the vector of derivatives `(ψ', ψ'', ψ''',..)`
   we can now use the vector of orthogonal `eigenfunctions`_ `(ψ_1, ψ_2, ψ_3,...)`
@@ -342,16 +357,16 @@ of `\bar{ψ_n}(x)ψ_m(x)` vanish through summation over the range of `x`.
   With orthonormal `eigenfunctions`_ as basis the state becomes a vector
   and the according operator is a diagonal matrix of the eigenvalues.
   An arbitrary operator is a non-diagonal matrix.
-  
-  For `∂_x` the eigenfunctions are `e^ikx` and the eigenvalues are `ik`. 
-  Multiplying with `-iħ` we get a real eigenvalue with physical content: 
-  the `De Broglie impulse`_ `p=ħk=h/λ`. 
-  `∂_t` similarly leads to eigenfunctions `e^{iωt}` with eigenvalues `iω`, 
+
+  For `∂_x` the eigenfunctions are `e^ikx` and the eigenvalues are `ik`.
+  Multiplying with `-iħ` we get a real eigenvalue with physical content:
+  the `De Broglie impulse`_ `p=ħk=h/λ`.
+  `∂_t` similarly leads to eigenfunctions `e^{iωt}` with eigenvalues `iω`,
   but made real and physical through `-iħ∂_t`: `E=ħω=hν=h/T`.
 
   Classical `p^2/2m=H` becomes the `Schrödinger equation`_ `-\frac{ħ^2}{2m}Δ_xψ=∂_tψ`.
   But `classical mechanics`_ is a macrosopic theory.
-  It is better to start from the relativistically corrected wave equation `(Δ_t/c^2-Δ_x+(mc/ħ)^2)ψ=0` 
+  It is better to start from the relativistically corrected wave equation `(Δ_t/c^2-Δ_x+(mc/ħ)^2)ψ=0`
   (`Klein-Gordon equation`_) and `approximate`_ to first order `∂_t`.
   Making also `Δ_x` first order `∂_x` yields the `Dirac equation`_.
 
@@ -370,20 +385,20 @@ of `\bar{ψ_n}(x)ψ_m(x)` vanish through summation over the range of `x`.
   are independent, if `P_{12}=P_1P_2`. This means that the variables
   combine to span a 2D space. Such a space is modeled with the complex number.
   With complex `P_1` and `P_2` they don't need to coincide with the axes,
-  but can point in any directions. Their enclosed angle 
-  can be from right angle (orthogonal = completely independent) 
+  but can point in any directions. Their enclosed angle
+  can be from right angle (orthogonal = completely independent)
   to zero (same direction = same variable).
-  These complex probabilities are still the usual probabilities via their length (amplitude). 
+  These complex probabilities are still the usual probabilities via their length (amplitude).
   The normalization is done on the product space, though, because
   the objective is to describe the relation between two states,
-  whether independent or exclusive. 
+  whether independent or exclusive.
   The latter is the one variable probability: `∫\bar{φ}φdx=1`.
 
   The probability can be `ensemble interpreted`_, but practically
   follow from the equations of quantum mechanics,
   like the `Schrödinger equation`_.
 
-The function values of `ψ(x)` in `quantum mechanics`_ are `probability amplitudes`_, 
+The function values of `ψ(x)` in `quantum mechanics`_ are `probability amplitudes`_,
 a probability with direction coded as complex number and normally changing
 along `x`.  The values of two functions `φ` and `ψ` have a relative direction
 and also this changes along `x`.  Generally the summation of
@@ -395,21 +410,21 @@ is determined by the operator `Q`, because `<φ|φ>=1` by itself.
 - A *real* `expectation value`_ `<Q>` means `\bar{<Q>}=<Q> \equiv <φ|Qφ>=<Qφ|φ>`,
   i.e. each state can be projected onto the other with same result.
   With orthonormal `Q` eigenfunctions this can be expressed as `<φ|q_n><q_n|φ>=\bar{q^n}q^n`.
-  `Q` is called `hermitian`_. 
+  `Q` is called `hermitian`_.
 - `<Q>=0 \equiv <φ|Qφ>=<Qφ|φ>=0`. `Q` produces an orthogonal `|ψ>=Q|φ>`.
   Because of the `spectral theorem`_, there is an approximation
   for any such `|ψ>=|q_n><q_n|ψ>`.
 - An *imaginary* `<Q>` mean `\bar{<Q>}=-<Q> \equiv <φ|Qφ>=<-Qφ|φ>`. `Q` is `antihermitian`_.
   `ψ=Q|φ>` is not compatible with `|φ>`. In this case `i` or `-i` makes `Q`
-  compatible again (e.g. `ħ∂_x→-iħ∂_x`). 
-  
+  compatible again (e.g. `ħ∂_x→-iħ∂_x`).
+
 In the `Heisenberg picture`_ states are fixed and operators are functions.
 One works with operators instead of state functions.
 The product of two operators `AB` generally results
 in a complex expectation value `<AB>` fully or partially imaginary.
 The imaginary part, the summation of the wedge parts of the function values,
 can be extracted with the `commutator`_ `<[A,B]>/2i`.
-This imaginary part's expectation value is the `joint uncertainty`_  
+This imaginary part's expectation value is the `joint uncertainty`_
 
 
 `ΔA^2ΔB^2=<(A-<A>)^2><(B-<B>)^2>=≥<[A,B]/2i>^2`
