@@ -1,5 +1,4 @@
-.. :series: Watch Me Learn
-   :topic: Haskell
+.. https://rolandpuntaier.blogspot.com/2020/07/watch-me-learn-haskell.html
 
 **********************
 Watch Me Learn Haskell
@@ -10,7 +9,8 @@ and, keen for a new adventure, I delved into it.
 
 The community provides great help for newcomers:
 
-- `Typeclassopedia`_ `OOP_vs_type_classes`_ `Monads_as_computation`_ `Lists_and_strings`_ `FFI`_ (`wiki`_)
+- `brief`_ `Typeclassopedia`_ `OOP_vs_type_classes`_
+  `Monads_as_computation`_ `Lists_and_strings`_ `FFI`_ (`wiki`_)
 - `tutorial`_ `syntax`_ `haskell2010`_ `do`_ (`onlinereport`_)
 - `user_guide`_
 - `reference`_
@@ -26,6 +26,8 @@ The community provides great help for newcomers:
 - `riptutorial`_
 - `extensions`_
 - `rosetta code`_
+
+- `Write Yourself a Scheme in 48 Hours`_
 
 
 .. {theory}
@@ -1075,7 +1077,7 @@ Here some common ones from the `GHC extension`_ list:
 
 
 There is no OOP in Haskell?
----------------------------
+===========================
 
 In Haskell:
 
@@ -1127,6 +1129,21 @@ Extensions:
 Then there is template meta-programming with `TemplateHaskell`_,
 to create Haskell code on the fly, like a C macro.
 
+Epilogue
+========
+
+To program functionally,
+in data and code,
+try to express yourself with
+
+- pattern matching functions
+- that don't change but copy
+- currying
+- pointless
+- recursion
+
+It is a path with problems, too, and their solutions, an evolutionary branch of programming.
+
 
 .. _`GHC extension`: https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html
 .. _`GADTs`: https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#extension-GADTs
@@ -1169,6 +1186,7 @@ to create Haskell code on the fly, like a C macro.
 .. _`Monads_as_computation`: https://wiki.haskell.org/Monads_as_computation
 .. _`Lists_and_strings`: https://wiki.haskell.org/Cookbook/Lists_and_strings
 .. _`wiki`: https://wiki.haskell.org/Haskell
+.. _`brief`: https://wiki.haskell.org/A_brief_introduction_to_Haskell
 .. _`WIWIKWLH`: http://dev.stephendiehl.com/hask/index.html
 .. _`haskell-by-types`: https://www.holger-peters.de/haskell-by-types.html
 .. _`syntax`: https://www.haskell.org/onlinereport/syntax-iso.html
@@ -1202,3 +1220,5 @@ to create Haskell code on the fly, like a C macro.
 .. _`category theory`: https://wiki.haskell.org/Category_theory
 .. _`category`: https://en.wikibooks.org/wiki/Haskell/Category_theory
 .. _`F-algebra`: https://en.wikipedia.org/wiki/F-algebra
+
+.. _`Write Yourself a Scheme in 48 Hours`: https://en.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours
