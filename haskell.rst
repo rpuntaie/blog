@@ -9,23 +9,38 @@ and, keen for a new adventure, I delved into it.
 
 The community provides great help for newcomers:
 
-- `brief`_ `Typeclassopedia`_ `OOP_vs_type_classes`_
-  `Monads_as_computation`_ `Lists_and_strings`_ `FFI`_ (`wiki`_)
-- `tutorial`_ `syntax`_ `haskell2010`_ `do`_ (`onlinereport`_)
+- `brief`_
+  `Typeclassopedia`_
+  `OOP_vs_type_classes`_
+  `from C`_
+  `Monads_as_computation`_
+  `Lists_and_strings`_
+  `FFI`_
+  (`wiki`_)
+- `tutorial`_
+  `syntax`_
+  `haskell2010`_
+  `do`_
+  (`onlinereport`_)
+- `How to write a Haskell program`_
 - `user_guide`_
 - `reference`_
-- `Truth_values`_, `arrows`_ (`wikibooks`_)
+- `Truth_values`_
+  `arrows`_
+  (`wikibooks`_)
 - `learnyouahaskell`_
 - `realworldhaskell`_
 - `schoolofhaskell`_
 - `WIWIKWLH`_
 - `learnxinyminutes`_
 - `Awesome Haskell`_
+- `types`_
 - `haskell-by-types`_
 - `cheatsheet`_
 - `riptutorial`_
 - `extensions`_
 - `rosetta code`_
+
 
 - `Write Yourself a Scheme in 48 Hours`_
 
@@ -111,7 +126,25 @@ If you omit it, Haskell will normally make a choice for you.
     :}
     v
 
-A real *variable hierarchy* will be mapped to a *type hierarchy*.
+When you program you map a real *variable hierarchy* to a *type hierarchy*.
+
+- In C-like languages the type describes a memory area (plus methods in OOP).
+  A variable is an instance of such a type, i.e. a memory location with a specific address.
+  Assignment is placing a value (a bit combination) to the memory area.
+  The name identifies the typed memory area, the variable.
+  This is static typing.
+- In Python or R, the name identifies a value.
+  The name is a variable in the sense
+  that it can address different values of whatever type.
+  The type associated with a name can change during run time.
+  Assignment is basically naming.
+  This is also called dynamic typing.
+  If there are typing problems,
+  this is only found during runtime (`duck typing`_).
+
+Functional languages are also statically or `dynamically`_ typed.
+Haskell is statically typed,
+Scheme and Clojure are `dynamically`_ typed.
 
 .. {variable function}
 
@@ -122,6 +155,10 @@ Variable vs Function
 Value occurrences are a *function* of values from other variables.
 
 *Variable-value* thus becomes *function-(function application)*.
+*function application* is the selection of the value.
+This is the smallest building block of *computing*.
+Computing consists of (execution of) functions,
+i.e. the mapping from variable to variable.
 
 All *values* of variables do occur (are *exhaustive*).
 The function `f` is all the couples `f=\{(v,w)|v\in V \land w\in W \land \text{unique}(w)\}`.
@@ -140,11 +177,10 @@ In Haskell this is:
   f 2
   f 0 -- Exception: ... : Non-exhaustive patterns in function f
 
-
 Variables are more fundamental than functions, because you need to have choice first.
 The function maps this choice, the independent variable(s), to the target variable.
 
-The function does not completely defining the target variable, if not `surjective`_.
+The function does not completely define the target variable, if not `surjective`_.
 If not surjective the target variable might arise from more functions.
 The target variable would thus motivate a variable of functions towards it.
 
@@ -163,29 +199,31 @@ Programming is about choosing, about the values.
 
 `Category theory`_ avoids the complexity by not looking at internals:
 A well defined *object* gets mapped to another object or itself (``id``) by a *morphism*.
-*Morphisms* need to be composable associatively (= a path uniquely defines the target object).
+*Morphisms* need to be composable associatively (a path uniquely defines the target object).
 
-I used *variable* instead of *set* to emphasizing
-that the important quantity is the choice the variable allows (the value).
+I use *variable* instead of *set* to emphasizing
+that the important quantity is the exclusive choice the variable allows (the value).
 
 In Haskell the choice is done by a ``data`` construction.
 There can be more data constructors for one type.
-This allows to use different memory layout within one type,
+This allows to use different data layout within one type,
 while still being statically type checked (`ADT`_).
 
 The *object* in `Category theory`_ could be the *value* or the *variable*.
-The former would be dynamic typing, the latter is static typing.
-There are `dynamically`_ typed functional languages,
-but *Haskell is statically typed.*
-The Haskell arrow ``->`` maps from type to type.
-There is also an `Arrow`_ class that models a *morphism*.
+The former is a dynamic variable (immutable), the latter is static variable (mutable).
+The Haskell types are static, but the variables are dynamic.
+
+In Haskell the ``=`` is a mapping rather than an assignment.
+Every application *generates* a new variable.
+Every generated value is associated with new memory allocation.
+To avoid that in critical code, Haskell also has mutable types.
 
 Function composition
 --------------------
 
 Haskell allows to compose functions without mentioning the arguments.
 This is called `pointfree`_ style, as values in mathematics are often called points.
-No argument values = no points.
+No argument values means no points.
 Ironically the usual composition operator is the point ``(.)``.
 
   .. code-block:: haskell
@@ -197,7 +235,25 @@ Ironically the usual composition operator is the point ``(.)``.
     sc x = (sin x)**2 + (cos x)**2
 
 `pointfree`_ is only shorter, if the return value is forwarded to the next function.
-For other situations there are `special function compositions`_.
+For other situations there are other function compositions.
+
+Transformation to pointfree is called *η-reduction* in general `lambda calculus`_.
+
+Functions composing other function are called higher order functions.
+Higher order functions combine (compose) functions to new functions
+without the need to mention the variables.
+In general a function can be seen as variable combinator.
+In a higher order function the values of the variables are functions.
+
+In Haskell a lot of effort goes into the design of function combinators
+(`Monad`_, `Kleisli`_, `Arrow`_, ...) to allow the elegant `pointfree`_ style.
+
+The fundamental building block of computing is function application (selection),
+but immediately next in importance is how to compose them in a widely applicable way.
+
+Wide application means good abstraction. Abstraction is compression.
+Compression means coping with less resources, less space, less time, less code, less energy.
+So effort is well spent, if it allows describing something in a more compressed way.
 
 Functional Programming
 ----------------------
@@ -219,7 +275,8 @@ In our example,
 a kitchen would be input and a kitchen with an open drawer would be output.
 
 An output becomes a new input to another function.
-This function composition produces a time sequence, a thread of execution.
+This function composition produces a time sequence,
+a natural thread of execution.
 If there were more cooks (more threads),
 they would all develop their own kitchens.
 No coordination needed, which makes things a lot easier.
@@ -237,9 +294,12 @@ Most people are first introduced to languages that favor an imperative style.
   Some languages call functions more appropriately "procedure" or "subroutine".
 
 - *Functions* in functional programming languages don't *change* anything.
-  They only map values to other values. They are mathematical functions.
-
-Haskell tries hard to make you think *purely* functionally.
+  They only map values to other values. They are mathematical functions,
+  also called pure functions.
+  Such function can be replaced by its value (`referential transparency`_).
+  Functional style is more than pure functions,
+  it is to focus on functions, pass functions around, instead of data,
+  or compose functions to new functions.
 
 .. {syntax}
 
@@ -284,6 +344,14 @@ There are different types of applications:
 - *application* of constructor
 - *application* of constraint
 
+Due to currying application can take place at every space,
+not just when all parameters but the last are available.
+Parentheses might be needed.
+
+The actual application can only take place when an actual value is provided,
+not when the compiler sees a mapping.
+Performing the mapping is called *β-reduction*.
+
 A *constructor* constructs a type.
 It is like a function signature without implementation,
 that can be applied to actual argument values, though.
@@ -307,15 +375,13 @@ If the ``rhs`` introduces new variables,
 the application of a function is the application of context.
 
 **Currying**: ``fun`` application is like walking along a path between variables.
-A (partial) walk on the path,
+A (partial) walk on the path (a section),
 i.e. partial application, produces a function,
 that walks the rest of the path.
 
 ``flip`` or infix notation allows to *curry* also on the second argument.
 
 Many functions in Haskell are of higher orders.
-Higher order functions combine functions to new functions
-without the need to mention the variables.
 
 In:
 
@@ -378,16 +444,8 @@ In Haskell a lot of typing is done via function signatures:
 
 .. code-block:: haskell
 
-  fun:: AClass a => a -> a  -- AClass is class contraint
-  fun:: (AClass ab, BClass ab) => ab -> Int  -- Int is a type
-
-``AClass`` is a class.
-``Int`` is a type, grouping of class constraints done separately.
-``(AClass a, BClass b)`` could also have been grouped separately to a type.
-
-  .. code-block:: haskell
-
     :{
+    data ABType = ABType
     class AClass a where
       afun:: a -> a
     class BClass b where
@@ -402,6 +460,35 @@ In Haskell a lot of typing is done via function signatures:
 
 - ``id`` is the Haskell function for *identity*
 - Type and class names must start with capital letter.
+
+``ABType`` is a type constrained to two classes:
+
+::
+
+    fun:: ABType -> Int
+
+is equivalent to::
+
+    fun:: (AClass ab, BClass ab) => ab -> Int  -- Int is a type
+
+Actually using ``(AClass a, BClass b) =>`` would need the `FlexibleContexts`_ extension.
+
+``Int`` is a type that is constraint to these (type) classes::
+
+  :info Int
+  type Int :: *
+  data Int = GHC.Types.I# GHC.Prim.Int#
+          -- Defined in ‘GHC.Types’
+  instance Eq Int -- Defined in ‘GHC.Classes’
+  instance Ord Int -- Defined in ‘GHC.Classes’
+  instance Enum Int -- Defined in ‘GHC.Enum’
+  instance Num Int -- Defined in ‘GHC.Num’
+  instance Real Int -- Defined in ‘GHC.Real’
+  instance Show Int -- Defined in ‘GHC.Show’
+  instance Read Int -- Defined in ‘GHC.Read’
+  instance Bounded Int -- Defined in ‘GHC.Enum’
+  instance Integral Int -- Defined in ‘GHC.Real’
+
 
 .. {keywords}
 
@@ -595,7 +682,7 @@ There can be a ``where`` at the end of the guards:
 Patterns are built of::
 
   _
-  (Constructor _) -- brackets is a good idea!
+  (Constructor _) -- Parentheses is a good idea!
   n@(Constructor _) -- rhs uses n
   [a]
   (x:xs)
@@ -653,7 +740,7 @@ or
 
 - ``fun a b`` or ``a `fun` b`` or ``(fop) a b`` or ``a fop b``.
   To name functions with symbols (``fop``) is normal in Haskell.
-- ``fun $ pat`` avoids brackets by reducing fixity to 0 (see ``:info $``)
+- ``fun $ pat`` avoids parentheses by reducing fixity to 0 (see ``:info $``)
 - ``fun $! pat`` evaluates ``pat`` before applying ``fun``
 
 Fixity of an operation is set with ``infixl|infixr|infix <fixity> <fop>``.
@@ -679,7 +766,7 @@ Some other operators:
 - ``:`` prepend element in a list (``1:[2]``)
 - ``|`` is a *guard*, used in declarations and list comprehensions
 - ``..`` generates a sequence of values based on a partial sequence
-- ``.`` module.sub-module or, with spaces, combines functions
+- ``.`` module.sub-module or, with spaces, composes functions
 
 .. code-block:: haskell
 
@@ -705,15 +792,16 @@ Further, code can contain:
 
   do {statements}
 
-``alternatives`` use ``->`` instead of ``=``.
-``statements`` use ``<-`` and can use ``=`` only in an optional ``where``.
+- Only `if-then-else`_ has expressions.
+- `case`_ ``alternatives`` are maps that use ``->`` instead of ``=``.
+- ``statements`` use ``<-``, if at all, and can use ``=`` only in an optional ``where``.
 
-``do`` is syntactic sugar for a ``Monad`` binding operator (``>>=``),
+``do`` is syntactic sugar for a `Monad`_ binding operator (``>>=``),
 which forwards output of the function in the previous line
 to the input of the function in the next line,
 to allow imperative style fragments.
 It is not imperative, though, but function composition.
-Function composition is Haskell's way to call a sequence of functions,
+Function composition is Haskell's way of a sequence,
 intermitted with ``let`` or ``where``
 for cases in which not the full output is needed as input.
 `Monad`_ is detailed further down.
@@ -807,6 +895,12 @@ Here some example usages for Prelude classes:
   -- -> Just 3
   (+) <$> Just 1 <*> Just 2
   -- -> Just 3
+
+Since functions are passed around in Haskell,
+type classes have functions that accept functions as arguments
+and apply them to the data.
+This result in classes (Functor, Applicative, Monad, ...)
+that you don't see among the interfaces of data oriented languages.
 
 The full usage intention behind a class cannot be read from the function signature.
 Additional *laws* (see `Typeclassopedia`_)
@@ -917,7 +1011,7 @@ In:
 
   (>>=) :: Monad m => m a -> (a -> m b) -> m b
 
-- ``m`` is a constructor of a type that is instance of the ``Monad`` class
+- ``m`` is a constructor of a type that is instance of the `Monad`_ class
 - ``m a`` is NOT a constructor application but a pattern matching to extract ``m`` and ``a``
 - ``a -> m b`` is a pattern against a function with target ``m b``. Let's call it ``k``.
 - ``>>=`` needs to map to what ``k`` maps to, i.e. apply ``k a``.
@@ -927,8 +1021,8 @@ In a `do`
 
 - ``a <- exp [args]; nextexp`` stands for ``exp >>= (\a -> nextexp)``
 - ``exp [args]`` constructs a value that would be pattern matched using ``m a``
-- ``>>=`` combines ``a <- exp [args]`` to the next expression
-- ``>>`` combines ``exp; nextexp``
+- ``>>=`` composes ``a <- exp [args]`` with the next expression
+- ``>>`` composes ``exp; nextexp``
 
 .. code-block:: haskell
 
@@ -1054,7 +1148,7 @@ Here some common ones from the `GHC extension`_ list:
 
 - `OverloadedStrings`_: When using Data.Text instead of String
 - `FlexibleInstances`_: nested types in head of instance
-- `FlexibleContexts`_: class context not restricted to ``class Cls a => ...``
+- `FlexibleContexts`_: class context of kind ``class (Cls1 a, Cls2 a) => ...``
 - `AllowAmbiguousTypes`_: let call decide and not ambiguity checker
 - `ViewPatterns`_: include function result in pattern match
 - `PaternSynonym`_: e.g. ``pattern NoBlending = #{const SDL_BLENDMODE_NONE} :: CInt``
@@ -1076,20 +1170,28 @@ Here some common ones from the `GHC extension`_ list:
 `24 GHC Extensions`_ gives alternative examples to some extensions.
 
 
-There is no OOP in Haskell?
-===========================
+Haskell has no Sequence, Loop, OOP
+==================================
 
-In Haskell:
+Object-oriented programming (OOP)
+gives different data a common interface to be passed to functions.
+In Haskell, interfaces are called (type) classes and
+they give different data a common way
+to inject (e.g. ``liftM``) and compose functions on it (e.g. ``>>=``).
 
-- ``class`` is the interface for OOP.
-  ``class`` functions get constrained to the class in one go.
-  There is also individual constraining per function.
-  The whole class can get constrained as well.
-  ``=> ConstraintToClass`` is called context.
+Haskell is about composing functions:
+
+- sequences are replaced with function compositions
+- loops are replaced with recursive function compositions
+- `if-then-else`_ and `case`_ could be functions
+
+Compared to OOP in Haskell:
+
+- type ``class`` is what interface is in OOP.
 
   ``class`` can also have function implementations (default implementations).
 
-- ``data`` or ``newtype`` is the object type.
+- ``data`` or ``newtype`` is the object type called class in OOP.
 
   - They can have more constructors and recursive constructors
 
@@ -1098,12 +1200,12 @@ In Haskell:
     - other data types (corresponds to OOP inheritance)
     - functions (runtime polymorphism in OOP)
 
-- An ``instance`` declaration links a ``data`` declaration with a ``class`` declaration.
+- An ``instance`` constrains a ``data`` type to a ``class``.
 
-Note the shift of meaning with respect to OOP:
+Note the shift of meaning of ``class`` and ``instance`` respect to OOP:
 
-- OOP: interface - class - instance in memory
-- Haskell: class - instance of class (implementation) - construction in memory
+- OOP: interface - class - constructor to memory
+- Haskell: class - instance,  data - constructor to memory
 
 Pattern matching is a way to associate code to ``data`` without an ``instance`` declaration.
 
@@ -1132,17 +1234,15 @@ to create Haskell code on the fly, like a C macro.
 Epilogue
 ========
 
-To program functionally,
-in data and code,
-try to express yourself with
+So to program functionally you make
 
 - pattern matching functions
-- that don't change but copy
+- recursion in code and data
 - currying
-- pointless
-- recursion
+- (pointless) combination/composition of functions
 
-It is a path with problems, too, and their solutions, an evolutionary branch of programming.
+You design function combinators not data combinators.
+
 
 
 .. _`GHC extension`: https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html
@@ -1203,14 +1303,17 @@ It is a path with problems, too, and their solutions, an evolutionary branch of 
 .. _`learnyouahaskell`: http://learnyouahaskell.com
 .. _`reference`: https://downloads.haskell.org/~ghc/6.12.2/docs/html/libraries/base-4.2.0.1/index.html
 .. _`FFI`: https://wiki.haskell.org/FFI_Introduction
-.. _`realworldhaskell`: http://book.realworldhaskell.org/read/interfacing-with-c-the-ffi.html
+.. _`realworldhaskell`: http://book.realworldhaskell.org/read/
 .. _`cheatsheet`: https://raw.githubusercontent.com/m4dc4p/cheatsheet/master/CheatSheet.lhs
 .. _`riptutorial`: https://riptutorial.com/haskell/example/20142/lazy-patterns
 .. _`extensions`: https://ocharles.org.uk/pages/2014-12-01-24-days-of-ghc-extensions.html
 .. _`ADT`: http://wiki.haskell.org/Algebraic_data_type
 .. _`dynamically`: https://en.wikipedia.org/wiki/Comparison_of_functional_programming_languages
 .. _`arrow`: https://wiki.haskell.org/Arrow_tutorial
-.. _`special function compositions`: https://www.schoolofhaskell.com/user/Lkey/kleisli
+.. _`Kleisli`: https://www.schoolofhaskell.com/user/Lkey/kleisli
+
+.. _`if-then-else`: https://wiki.haskell.org/If-then-else
+.. _`case`: https://wiki.haskell.org/Case
 
 .. _`surjective`: `injective`_
 .. _`injective`: https://en.wikipedia.org/wiki/Bijection,_injection_and_surjection
@@ -1222,3 +1325,9 @@ It is a path with problems, too, and their solutions, an evolutionary branch of 
 .. _`F-algebra`: https://en.wikipedia.org/wiki/F-algebra
 
 .. _`Write Yourself a Scheme in 48 Hours`: https://en.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours
+.. _`How to write a Haskell program`: https://wiki.haskell.org/How_to_write_a_Haskell_program
+.. _`types`: https://downloads.haskell.org/~ghc/latest/docs/html/libraries/index.html
+.. _`duck typing`: https://en.wikipedia.org/wiki/Duck_typing
+.. _`from C`: https://wiki.haskell.org/Haskell_Tutorial_for_C_Programmers
+.. _`referential transparency`: https://en.wikipedia.org/wiki/Referential_transparency
+.. _`lambda calculus`: https://en.wikipedia.org/wiki/Lambda_calculus
