@@ -345,7 +345,7 @@ There are different types of applications:
 - *application* of constraint
 
 Due to currying application can take place at every space,
-not just when all parameters but the last are available.
+not just when all arguments but the last are available.
 Parentheses might be needed.
 
 The actual application can only take place when an actual value is provided,
@@ -380,8 +380,6 @@ i.e. partial application, produces a function,
 that walks the rest of the path.
 
 ``flip`` or infix notation allows to *curry* also on the second argument.
-
-Many functions in Haskell are of higher orders.
 
 In:
 
@@ -519,7 +517,7 @@ Keyword meaning:
 - ``type Key = Int``
   creates a type synonym for the user, which is not seen by the compiler
 - ``class <Aclass> <params> where``
-  is a container of function signatures
+  is a container of function signatures (and possibly default implementations)
 - ``instance <Aclass> <atype> where``
   declares an implementation of a ``class`` for a type.
   Implementation can be done automatically using ``deriving``.
@@ -546,21 +544,21 @@ Constructors ``Walk, Run`` map to a type (``Move``).
 Literals have a type.
 Haskell can infer the function signature.
 
-Note the difference between type (``data,newtype,type``) and constraint (``class,instance``):
+Note the difference between type (``data,newtype,type``) and constraint (``class, instance``):
 
 - type (``Move`` here) is directly used in the signature
 - ``p`` is constrained to class ``Num``,
   which is more general, than using type ``Int`` or ``Double``.
 
-Constructors can be parametrized:
+Fields or the type are positional arguments to the constructors:
 
 .. code-block:: haskell
 
     data Person = Person String Int deriving (Show)
     let guy = Person "Buddy" 44
 
-The parameters (fields) can be named,
-but actually it is *naming the accessor function*.
+Alternatively fields can be named.
+The name is also *accessor function*.
 
 .. code-block:: haskell
 
@@ -573,6 +571,8 @@ but actually it is *naming the accessor function*.
     -- -> Person {nickname = "Jo", age = 34}
 
 ``data`` with one constructor and more fields is called a *record*.
+
+The data type can be parametrized:
 
 .. http://learnyouahaskell.com/making-our-own-types-and-typeclasses
 
@@ -797,9 +797,9 @@ Further, code can contain:
 - ``statements`` use ``<-``, if at all, and can use ``=`` only in an optional ``where``.
 
 ``do`` is syntactic sugar for a `Monad`_ binding operator (``>>=``),
-which forwards output of the function in the previous line
+which forwards output of the function of one line
 to the input of the function in the next line,
-to allow imperative style fragments.
+to allow `imperative style fragments`_.
 It is not imperative, though, but function composition.
 Function composition is Haskell's way of a sequence,
 intermitted with ``let`` or ``where``
@@ -992,7 +992,7 @@ Monad
 
 A monad constructs and forwards context.
 
-In a functional programming language context is built via the parameters of contained functions.
+In a functional programming language context is built via the arguments of contained functions.
 
 .. code-block:: haskell
 
@@ -1242,7 +1242,11 @@ So to program functionally you make
 - (pointless) combination/composition of functions
 
 You design function combinators not data combinators.
+You create function channels by decompose and compose arguments between functions.
+You do `lambda calculus`_.
 
+Haskell implicitly injects a vocabulary:
+No need for fully qualified names if the meaning is obvious from the context.
 
 
 .. _`GHC extension`: https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html
@@ -1311,6 +1315,7 @@ You design function combinators not data combinators.
 .. _`dynamically`: https://en.wikipedia.org/wiki/Comparison_of_functional_programming_languages
 .. _`arrow`: https://wiki.haskell.org/Arrow_tutorial
 .. _`Kleisli`: https://www.schoolofhaskell.com/user/Lkey/kleisli
+.. _`imperative style fragments`: https://wiki.haskell.org/IO_inside
 
 .. _`if-then-else`: https://wiki.haskell.org/If-then-else
 .. _`case`: https://wiki.haskell.org/Case
