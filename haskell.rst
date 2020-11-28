@@ -990,9 +990,26 @@ that processes input: a parser.
 Monad
 -----
 
-A monad constructs and forwards context.
+Lazy means that functions are not evaluated until needed.
+You can't do side effects with laziness,
+because a function is not evaluated unless used.
+How to use a side effect, if it is outside the scope?
 
-In a functional programming language context is built via the arguments of contained functions.
+Haskell determines the order of evaluation of functions by the arguments.
+A monad is an additional argument standing for the outside
+that is forwarded from function output to the next function's input
+to make the calls sequential.
+
+The necessity to order evaluation comes from the (outside) context.
+A monad forwards the (outside) context.
+
+In a functional programming language
+context is accumulated by recursive nesting.
+Returned values from previous functions are forwarded
+to enclosed following function.
+This way a time sequence can be created.
+This way the Monad can compose a program of actions without evaluating them
+and still assure a sequence when actually evaluated later on.
 
 .. code-block:: haskell
 
@@ -1230,6 +1247,17 @@ Extensions:
 
 Then there is template meta-programming with `TemplateHaskell`_,
 to create Haskell code on the fly, like a C macro.
+
+Locality
+========
+
+Module is Haskell's containment structure and namespace.
+
+Runtime locality is created by function combinators (`Monad`_).
+
+Data locality is created by nested data types.
+Every data type is one nesting.
+The same data type can be used recursively.
 
 Epilogue
 ========
