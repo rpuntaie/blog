@@ -435,7 +435,13 @@ assuming an average constant price `m`.
 
 .. note:: In words
 
-    With constant price `m` and constant improvement of products `ẋ_i` the structural growth is quadratic.
+    With constant price `m` and constant improvement of products `ẋ_i`
+    the structural growth is quadratic.
+
+.. note:: Lower level
+
+    When counting with units of a lower level
+    one use the exponential `e^{𝕁dpdx}`
 
 A constant `m` is true for prices and wages, `considering inflation`_.
 

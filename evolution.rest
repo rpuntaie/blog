@@ -534,7 +534,7 @@ this can be described with a generalization of `thermodynamics`_.
 The lower system's inner life can be quite secluded, though.
 The energy normally considered is about what's going on in the current level only.
 So we don't include `mc²` of the raw material used by a power plant,
-but only the part that interacts, like the falling water instead of all the waters `mc²`.
+but only the part that interacts, like the falling water instead of all the water's `mc²`.
 
 Mass=Energy
 -----------
