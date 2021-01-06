@@ -1,0 +1,1463 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<title>Function Concept: From Lattice To Computing</title>
+<style type="text/css">
+
+/*
+   The rst file is in a separate project currently called "AL".
+*/
+
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+.subscript {
+  vertical-align: sub;
+  font-size: smaller }
+
+.superscript {
+  vertical-align: super;
+  font-size: smaller }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left, table.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right, table.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+div.align-right {
+  text-align: inherit }
+
+.align-top    {
+  vertical-align: top }
+
+.align-middle {
+  vertical-align: middle }
+
+.align-bottom {
+  vertical-align: bottom }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; }
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<style type="text/css">
+
+.formula {
+	text-align: center;
+	font-family: "Droid Serif", "DejaVu Serif", "STIX", serif;
+	margin: 1.2em 0;
+}
+span.formula {
+	white-space: nowrap;
+}
+div.formula {
+	padding: 0.5ex;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+a.eqnumber {
+	display: inline-block;
+	float: right;
+	clear: right;
+	font-weight: bold;
+}
+span.unknown {
+	color: #800000;
+}
+span.ignored, span.arraydef {
+	display: none;
+}
+.formula i {
+	letter-spacing: 0.1ex;
+}
+
+.align-left, .align-l {
+	text-align: left;
+}
+.align-right, .align-r {
+	text-align: right;
+}
+.align-center, .align-c {
+	text-align: center;
+}
+
+span.overline, span.bar {
+	text-decoration: overline;
+}
+.fraction, .fullfraction {
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+}
+.fraction .fraction {
+	font-size: 80%;
+	line-height: 100%;
+}
+span.numerator {
+	display: block;
+}
+span.denominator {
+	display: block;
+	padding: 0ex;
+	border-top: thin solid;
+}
+sup.numerator, sup.unit {
+	font-size: 70%;
+	vertical-align: 80%;
+}
+sub.denominator, sub.unit {
+	font-size: 70%;
+	vertical-align: -20%;
+}
+span.sqrt {
+	display: inline-block;
+	vertical-align: middle;
+	padding: 0.1ex;
+}
+sup.root {
+	font-size: 70%;
+	position: relative;
+	left: 1.4ex;
+}
+span.radical {
+	display: inline-block;
+	padding: 0ex;
+	font-size: 150%;
+	vertical-align: top;
+}
+span.root {
+	display: inline-block;
+	border-top: thin solid;
+	padding: 0ex;
+	vertical-align: middle;
+}
+span.symbol {
+	line-height: 125%;
+	font-size: 125%;
+}
+span.bigsymbol {
+	line-height: 150%;
+	font-size: 150%;
+}
+span.largesymbol {
+	font-size: 175%;
+}
+span.hugesymbol {
+	font-size: 200%;
+}
+span.scripts {
+	display: inline-table;
+	vertical-align: middle;
+}
+.script {
+	display: table-row;
+	text-align: left;
+	line-height: 150%;
+}
+span.limits {
+	display: inline-table;
+	vertical-align: middle;
+}
+.limit {
+	display: table-row;
+	line-height: 99%;
+}
+sup.limit, sub.limit {
+	line-height: 100%;
+}
+span.symbolover {
+	display: inline-block;
+	text-align: center;
+	position: relative;
+	float: right;
+	right: 100%;
+	bottom: 0.5em;
+	width: 0px;
+}
+span.withsymbol {
+	display: inline-block;
+}
+span.symbolunder {
+	display: inline-block;
+	text-align: center;
+	position: relative;
+	float: right;
+	right: 80%;
+	top: 0.3em;
+	width: 0px;
+}
+
+span.array, span.bracketcases, span.binomial, span.environment {
+	display: inline-table;
+	text-align: center;
+	border-collapse: collapse;
+	margin: 0em;
+	vertical-align: middle;
+}
+span.arrayrow, span.binomrow {
+	display: table-row;
+	padding: 0ex;
+	border: 0ex;
+}
+span.arraycell, span.bracket, span.case, span.binomcell, span.environmentcell {
+	display: table-cell;
+	padding: 0ex 0.2ex;
+	line-height: 99%;
+	border: 0ex;
+}
+span.binom {
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 80%;
+}
+span.binomstack {
+	display: block;
+	padding: 0em;
+}
+
+span.overbrace {
+	border-top: 2pt solid;
+}
+span.underbrace {
+	border-bottom: 2pt solid;
+}
+
+span.stackrel {
+	display: inline-block;
+	text-align: center;
+}
+span.upstackrel {
+	display: block;
+	padding: 0em;
+	font-size: 80%;
+	line-height: 64%;
+	position: relative;
+	top: 0.15em;
+
+}
+span.downstackrel {
+	display: block;
+	vertical-align: bottom;
+	padding: 0em;
+}
+
+span.mathsf, span.textsf {
+	font-style: normal;
+	font-family: sans-serif;
+}
+span.mathrm, span.textrm {
+	font-style: normal;
+	font-family: serif;
+}
+span.text, span.textnormal {
+	font-style: normal;
+}
+span.textipa {
+	color: #008080;
+}
+span.fraktur {
+	font-family: "Lucida Blackletter", eufm10, blackletter;
+}
+span.blackboard {
+	font-family: Blackboard, msbm10, serif;
+}
+span.scriptfont {
+	font-family: "Monotype Corsiva", "Apple Chancery", "URW Chancery L", cursive;
+	font-style: italic;
+}
+
+span.colorbox {
+	display: inline-block;
+	padding: 5px;
+}
+span.fbox {
+	display: inline-block;
+	border: thin solid black;
+	padding: 2px;
+}
+span.boxed, span.framebox {
+	display: inline-block;
+	border: thin solid black;
+	padding: 5px;
+}
+
+
+</style>
+</head>
+<body>
+<div class="document" id="function-concept-from-lattice-to-computing">
+<span id="pad"></span>
+
+<div class="section" id="pad-summary">
+<h1>Summary</h1>
+<p>This is a continuation of the blogs</p>
+<ul>
+<li><p class="first"><a class="reference external" href="http://rolandpuntaier.blogspot.com/2015/03/what-is-information.html">Information</a> (2015)</p>
+<p>The basic concept of mathematics/physics is not the set,
+but the variable consisting of exclusive values (<em>variable/value</em>).
+Mathematics/physics is about <a class="reference external" href="http://rolandpuntaier.blogspot.com/2015/03/what-is-information.html">information</a> encoding/processing and
+the variable is the smallest entity containing/conveying information.
+A set consists of variables, normally bits (&quot;there&quot; or &quot;not there&quot;).</p>
+</li>
+<li><p class="first">Formal Concept Analysis <a class="reference external" href="http://rolandpuntaier.blogspot.com/2015/06/fca.html">FCA</a> (2015)</p>
+<p>Concepts in <a class="reference external" href="http://rolandpuntaier.blogspot.com/2015/06/fca.html">FCA</a> are a dual <a class="reference external" href="https://en.wikipedia.org/wiki/Topology#Topologies_on_sets">topology</a>,
+once using extent (objects, locations), once using intent (attributes, values).
+There is a <a class="reference external" href="https://en.wikipedia.org/wiki/Galois_connection">Galois connection</a> between them.
+Intent and extent together form nodes arranged in a concept <a class="reference external" href="https://en.wikipedia.org/wiki/Lattice_(order)">lattice</a>.</p>
+</li>
+<li><p class="first"><a class="reference external" href="https://rolandpuntaier.blogspot.com/2019/01/evolution.html">Evolution</a> (2019)</p>
+<p>In the <a class="reference external" href="https://rolandpuntaier.blogspot.com/2019/01/evolution.html">evolution</a> blog a system consists of subsystems (of variables).
+Energy is the rate of information processing (value selections): <span class="formula"><i>E</i> = Δ<i>I</i> ⁄ Δ<i>t</i></span>.
+The variable is the smallest entity having energy.
+Systems are layered. Every layer has its own energy unit.
+A subsystem has inner energy.
+All dynamical systems (natural evolution, economics, society, brain, computing, ...)
+can be described this way.</p>
+</li>
+</ul>
+<p>In this blog, the formation of structure to save information
+leads to functions and function applications (computing)
+according <a class="reference external" href="https://en.wikipedia.org/wiki/Lambda_calculus">lambda calculus</a>.
+When describing a concept lattice with functions (higher concepts),
+a function/variable is an uplink, a value a downlink (data, attribute).</p>
+<p>Statistically a function can be described as multivariate probability distribution.
+The probability distribution describes how often the function occurs,
+i.e. how much information is saved by the separation of structure into a separate function.
+The probability distribution is the view (distance)
+from the function/variable to the usage locations.
+The dual view is that from a location to the functions,
+which is Bayes Theorem <span class="formula"><i>p</i>(<i>x</i>)<i>p</i>(<i>x</i>|<i>y</i>) = <i>p</i>(<i>y</i>)<i>p</i>(<i>y</i>|<i>x</i>)</span>.</p>
+<p>This blog also expounds using physical language,
+because every dynamic system is basically a computer.
+Physics has a language applicable to all dynamic systems.
+Dynamic systems produce functional structures
+just like software developers produce functions.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>high = concrete or abstract</p>
+<p>Concept lattices traditionally have the abstract nodes further up.
+Uplinks are links to more abstract nodes and downlinks the opposite.</p>
+<p class="last">Normally though more concrete concepts are referred to as higher (e.g. OSI layers).
+The context hopefully makes it clear what is meant.</p>
+</div>
+</div>
+<div class="section" id="pad-computing">
+<h1>Computing</h1>
+<div class="section" id="pad-concept-lattice">
+<h2>Concept Lattice</h2>
+<p>From a power set, variables arise via (co-)incidence produced by inputs (objects, location).
+In <tt class="docutils literal">{ <span class="pre">{{1},{I</span> <span class="pre">walk}},{{2},{I</span> run}} }</tt>,</p>
+<ul class="simple">
+<li><tt class="docutils literal">I</tt> is the invariant</li>
+<li>that produces the variable consisting of the values <tt class="docutils literal">{walk run}</tt></li>
+</ul>
+<p><tt class="docutils literal">I</tt> creates a local choice: the variable.
+<tt class="docutils literal">I</tt> is by itself a value, but the change to the next value is slower.</p>
+<p>Slower variables</p>
+<ul class="simple">
+<li>channel the selections to local variables</li>
+<li>are a context to local variables</li>
+</ul>
+<p><tt class="docutils literal">run</tt> and <tt class="docutils literal">walk</tt> exclude each other.
+In formal concept analysis (<a class="reference external" href="http://rolandpuntaier.blogspot.com/2015/06/fca.html">FCA</a>) this exclusion is not yet there.
+A context in FCA is the incidence table, i.e. a binary there/not there, of</p>
+<ul class="simple">
+<li>objects (extent), normally as rows, and</li>
+<li>attributes (intent), normally as columns</li>
+</ul>
+<p>One does a union of objects to intersect attributes of.
+This results is a lattice of concepts,
+where the binary variables of the incidence
+results in larger variables, i.e. where more values exclude each other.</p>
+<p>The incidence table maps attributes to objects (<span class="formula"><i>A</i>’ = <i>O</i></span>)
+and objects to attributes <span class="formula"><i>O</i>’ = <i>A</i></span>.
+<span class="formula"><i>A</i>’’</span> is called a <em>closure</em>.</p>
+<p>A concept consists of</p>
+<ul class="simple">
+<li>objects (extent) sharing the</li>
+<li>same attributes (intent).</li>
+</ul>
+<p>The concepts in the lattice have a partial order
+produced by containment.</p>
+<p>More abstract concepts are</p>
+<ul class="simple">
+<li>larger by extent (usage)</li>
+<li>but smaller by intent (attributes)</li>
+</ul>
+<p>than more concrete concepts.</p>
+<p>The two orders are said to be dual.
+The extent marks importance and is used here.</p>
+<p>In FCA more abstract concepts are drawn further up.</p>
+<ul class="simple">
+<li>A node above figures as value (join)</li>
+<li>A node below figure as location (meet)</li>
+</ul>
+<p>This is against other fields, like the OSI layers in computer networking,
+where simpler concepts are drawn further down and said to be low level.
+The order people are used is that of space complexity,
+i.e. number of variables, not the number of usages (extent).</p>
+<p>So here higher means more concrete, further up,
+and lower means more abstract, or further down.
+<tt class="docutils literal">{{1 <span class="pre">2},{I}}</span> &lt; <span class="pre">{{1},{I</span> walk}</tt>, because <tt class="docutils literal"><span class="pre">{I}⊂{I</span> walk}</tt>.
+<tt class="docutils literal"><span class="pre">{{1},{I</span> walk}}</tt> and <tt class="docutils literal"><span class="pre">{{2},{I</span> run}}</tt> cannot be compared.</p>
+<p>One can cut away the most abstract part (filter)
+or the most concrete part (ideal) and still have a lattice.</p>
+<p>Every downlink is motivated by an uplink and vice versa.</p>
+<ul class="simple">
+<li>One downlink meeting with more uplinks is a variable with attributes as values
+(uplinks are also called attributes).
+Different values produce different locations (more concrete objects).</li>
+<li>Dually, one uplink joining with more downlinks is a variable with locations as values.
+This makes the locations the attributes and the attribute the location
+(understanding by location the focus of attention).</li>
+</ul>
+<p>The concept lattice uncovers variables.</p>
+<div class="figure" id="pvariable">
+<img alt="variable.png" id="id1" src="variable.png" style="width: 40%;" />
+<p class="caption"><a class="reference external" href="#pvariable">Figure 1</a>: The variable maps values to locations.</p>
+</div>
+<p>Before starting to describe a concept,
+one must be able to distinguish values,
+like seeing color instead of just degrees of black and white,
+or seeing &quot;color green&quot; separate from &quot;position here&quot;.</p>
+<p>Excluding values are variables already in the real system.
+A processor can detect a variable via an exclusiveness in a common context,
+i.e. a common parent node in the concept lattice.</p>
+<p>Exhaustiveness of a variable refers only to the available data.</p>
+<p>In the FCA there is no information/freedom like there is no freedom in an image.
+The freedom arises when a thread follows the links between nodes.
+Every local context of the thread opens a variable (way to continue the path).</p>
+<dl class="docutils">
+<dt>uplinks are AND-links</dt>
+<dd>Further Down, more concrete concepts combine further up concepts, i.e. link upward.</dd>
+<dt>downlinks are OR-links:</dt>
+<dd>Further up, more abstract concepts link down to alternative more concrete locations where they occur.</dd>
+</dl>
+<p>The OR is exclusive by location and time.
+OR-links form a variable in the sense, that
+location represents the focus of a thread:</p>
+<ul class="simple">
+<li>selection of a value/location by one thread represents one time</li>
+<li>selection of a different value/location represents a different time</li>
+</ul>
+</div>
+<div class="section" id="pad-function-lattice">
+<h2>Function Lattice</h2>
+<p>One can express the concept lattice as lattice of sub-lattices, if one has</p>
+<ul class="simple">
+<li>intersection of sub-lattices (abstraction)</li>
+<li>union of sub-lattices (application)</li>
+</ul>
+<p>Structure becomes a value, to be recognised as a location (value).</p>
+<p>The common structure can be separated
+by introducing variables with values representing the change between locations
+(abstraction).</p>
+<p>The locations where the same structure is used is re-created by application.
+In the application variables are united with the values.
+This turns out to overlap with <a class="reference external" href="https://en.wikipedia.org/wiki/Lambda_calculus">lambda calculus</a>.</p>
+<div class="formula">
+<i>N</i> = (<i>λ</i><i>x</i>.<i>M</i>)<i>V</i>
+</div>
+<ul class="simple">
+<li>M is abstraction of N</li>
+<li>N is application of M</li>
+</ul>
+<p>The variable is added to the left (right-associative).
+This way existing applications of N stay as is: NW=(λx.M)W</p>
+<ul class="simple">
+<li>application is left-associative</li>
+<li>abstraction is right-associative</li>
+</ul>
+<p>A function is a structure that meets values of one or more variables to produce locations:
+each value combination one location.</p>
+<p>A variable alone is a special case of a function:
+A variable is a function that maps its values to locations.
+A variable is a coordinate function.
+A function is coordinate system.</p>
+<p>Dual view:</p>
+<ul class="simple">
+<li>function maps a value to a new locations</li>
+<li>value maps a function to a new locations</li>
+</ul>
+<p>The function encodes the information of the (full) cycle of values,
+normally of several variables.
+A function that keeps only one argument variable <em>is</em> a variable,
+i.e. the other variables represent the function.</p>
+<p>In programming the actual coding how to reach a location is done in function.
+The function can be called covariant, i.e. representing the complexity.
+The values are then the contravariant parts.
+In physics the unit is the covariant part,
+while the number value (magnitude) is the contravariant part,
+to reach a location.</p>
+<p>A function application unites (=AND's) variables with values to form locations by</p>
+<ul class="simple">
+<li>position, mapping ordered parts to ordered parts (matrix method)</li>
+<li>name, mapping concept to concept containing the same name</li>
+<li>pointing name (address)</li>
+</ul>
+<p>In a computer with constant clock rate,
+the time for a selection depends on the structure
+that channels the clock's selections.</p>
+<p>A variable is motivated by an invariant (called symmetry in physics),
+which hints to a slower variable, of which the invariant is one value.
+The invariant marks a fixation to a more or less temporary location,
+which focuses the clock (the energy) to the local values.
+A variable reduces clock cycles (energy consumption).</p>
+<p>Functions are a way to organize selections.</p>
+<ul class="simple">
+<li>Abstraction is compression.
+Less information needs less selection, i.e. less energy</li>
+<li>Application is (re)creation (synthesis).</li>
+</ul>
+<p>In the concept lattice, the number of variables increase downward.
+Every variable adds information.</p>
+<p>If the information of a variable does not overlap with that of other variables,
+it is <em>orthogonal</em>.</p>
+<p><span class="formula"><i>n</i></span> orthogonal variables, with <span class="formula"><i>v</i></span> values each (<span class="formula">log<i>v</i></span> information),
+create <span class="formula"><i>v</i><sup><i>n</i></sup></span> combinations (<span class="formula"><i>n</i>log<i>v</i></span> information).
+Such variables of same kind are a method of abstraction.
+Not all value combinations are actually used.
+They are <em>channel</em> variables that can accommodate all kind of information.
+Channel variables allow a general intermediate description with</p>
+<ul class="simple">
+<li>encoding to it and</li>
+<li>decoding from it</li>
+</ul>
+<p>Selections in more concrete layers take longer, if details need to be considered.
+If details are of no relevance (encapsulated),
+then the selection rate can also be the base rate (c).</p>
+<p>A description with more concrete concepts can be seen as domain specific language (<em>DSL</em>).
+A DSL can be embedded in a general purpose language via a library.</p>
+<p>Channel variables can also be introduced in a concrete layer
+to create a multitude of value combinations of e.g. digits or letters,
+mappable to concrete concepts.</p>
+<p>Such names are used in traditional programming languages
+(via numbers for indices and names for identifiers),
+in continuation of the language our social brain has developed during evolution.</p>
+<p>The names can be translated to other types of links,
+including matrix operations in simulated neural networks.</p>
+<p>The time to the next location is the link cost.
+It is a measure of distance of the location (represented by a value)
+to the variable or function.
+The time can be coded as probability.</p>
+<p>The link cost depends on</p>
+<ul class="simple">
+<li>kind (position, name, pointer)</li>
+<li>parallel channels (parallel physically (wires, nerves), sequentially by bus)</li>
+<li>sequential steps (path consisting of uplinks and downlinks)</li>
+</ul>
+<p>A register machine basically uses a pointing name.
+The memory address is the name.
+The link cost (access time) can still vary:
+Some variables are in registers, some in cache, some in RAM.</p>
+<p>Neural tissue is highly parallel.
+Simulation of neural networks
+is parallel to a certain extent
+because matrix computations are parallel via SIMD instructions.</p>
+</div>
+<div class="section" id="pad-fca-and-nn">
+<h2>FCA and NN</h2>
+<p>AI normally refers to information processing not completely controlled by humans.
+In traditional programs the freedom of self-adaptation
+lies in the value of predetermined variables
+and the use of pre-written functions.
+AI adds the capability to create autonomously its own concepts (subsystems).
+The level of AI is determined by how abstract and general
+the concepts become.</p>
+<p>Both FCA and NN</p>
+<ul class="simple">
+<li>have algorithms that create a lattice,
+which contains containments, which produces sub-orders
+and finally higher lattices that use functions.</li>
+<li>have as input things that go together, the data.</li>
+<li>allow to automate the ordering and reuse of information,
+to find a shorter description to meet the training goals (the environment).</li>
+</ul>
+<p>FCA creates the lattice from below, on demand, starting with zero links,
+while NN creates the lattice from above, i.e. full connection,
+and reduces the connection via weight pruning
+after training with a lot of data.</p>
+<p>In FCA you need as much input (extent)
+as much intent (features, variables) you want to store.
+In NN you need a lot of more data
+to prune all unneeded links.</p>
+<p>In NN nodes are layered.
+NN starts with an array architecture.
+Given an array of channel variables as input,
+i.e. input with a lot of unused data,
+NN can be used to filter out the fetures of interest.</p>
+<p>In FCA the lattice is organized by containment.
+This can be described by NN layers with clustered weights over more layers.</p>
+<p>In an FCA lattice the nodes combine values
+with AND (<span class="formula">⋅</span>) links from above and
+with OR (<span class="formula"> + </span>) links further downward,
+but not so much in layers as in NN,
+where layer <span class="formula"><i>i</i></span> follows from layer <span class="formula"><i>k</i></span> via <span class="formula"><i>xⁱ</i> = <i>wᵢₖf</i>(<i>xᵏ</i>) + <i>bᵢ</i></span>.
+With the activation function <span class="formula"><i>f</i></span>, neuron <span class="formula"><i>i</i></span> becomes a binary variable.
+The weights <span class="formula"><i>wᵢₖ</i></span> decide on the sources <span class="formula"><i>xᵏ</i></span>,
+and the bias <span class="formula"><i>bᵢ</i></span> decide on the coding of <span class="formula"><i>xᵢ</i></span>
+to make FCA-like AND uplinks for the <span class="formula"><i>xᵢ</i></span> node.</p>
+<p>FCA does not provide fast algorithms with hardware support,
+but FCA can be subsumed by NN.
+FCA can guide the choice of NN architecture.</p>
+</div>
+<div class="section" id="pad-function-as-multivariate-probability-distribution">
+<h2>Function as Multivariate Probability Distribution</h2>
+<p>General channel variables have general channel functions.
+This generalization reduces the dimensionality and
+allows a statistical treatment of variables.</p>
+<p>Information makes sense only for a variable/function.
+Information is the number of the values/locations excluding each other in time.</p>
+<p>As a value by itself has no information,
+the code length is that of the variable it belongs to.</p>
+<p>Code length is the number of unit variables (normally bits)
+whose combinations of values produce the same number of values.</p>
+<p>The function combines/encodes more locations/values.
+Depending on the encoding of the function
+the frequency of values will change.
+Still, the total code length for every value is that of the variable,
+i.e. <span class="formula"><i>I</i> =  − Σ<i>p</i><sub><i>i</i></sub><i>log</i>(<i>p</i><sub><i>i</i></sub>)</span>.</p>
+<p>Every occurrence gets the same energy by making the code for rare values longer:
+<span class="formula"> − (log<i>p</i><sub><i>i</i></sub>) ⁄ Δ<i>t</i><sub><i>i</i></sub> = Δ<i>I</i> ⁄ Δ<i>t</i> = <i>E</i></span>, where <span class="formula">Δ<i>t</i><sub><i>i</i></sub> = <i>N</i>Δ<i>t</i> ⁄ <i>N</i><sub><i>i</i></sub></span>.
+The longer code for rare values can be seen as the distance
+of the locations of application from the function.</p>
+<p>Probability represents a view from a function to the locations of application.
+At the locations of application
+generally more values of different variables are united with the function
+to produce the application.</p>
+<p>The function's value combinations represent locations.</p>
+<p>The function calls lead to a multivariate probability distribution
+by summing the locations/values along some other variables into a count
+representing the function's time.
+Fixing the values for some variables of a function (currying),
+the probabilities for the free variables is a cut through the total probability distribution.</p>
+<p>In a concept lattice without memory limits there would be no need for a probability,
+because the address length would correspond to the code length resulting from the probability value.
+But with limited memory the probability is the function's view to the locations.
+The variable combination is the coordinate system of the function.
+A value combination (i.e. the application) allows to infer the location.</p>
+<p>A multivariate probability distribution is a statistical view for a coded function.
+Probability theory derives the distribution from the coded function.
+Statistics derives the distribution from data.
+They are connected via Bayes Theorem <span class="formula"><i>p</i>(<i>x</i>)<i>p</i>(<i>x</i>|<i>y</i>) = <i>p</i>(<i>y</i>)<i>p</i>(<i>y</i>|<i>x</i>)</span>.</p>
+<p>The multivariate probability distribution represents one time and one particle
+because the value combinations are exclusive.
+If called by parallel threads the same function
+produces a separated probability distribution per thread.</p>
+<p>The particle will be most likely where the probability is highest,
+but it will also occasionally be where the probability is lowest.
+The probability is the result of summing over hidden variables,
+basically all variables around the location of function application.</p>
+<p>If all hidden variables were included, each value combination would be equally likely,
+because all frequencies would be the same.
+The frequency would be that of the processor that runs with a constant clock.</p>
+<p>Without the hidden variables the frequency is that of the calls.
+This frequency is associated to the function, i.e. to the whole probability distribution,
+and not to single value combinations (locations).
+It does not matter where the particle is located:
+the energy (information/time) is always the same or made the same by <a class="reference external" href="https://en.wikipedia.org/wiki/Entropy_encoding">entropy encoding</a>.</p>
+<p>Equal probabilities corresponds
+to a good choice of function or a balanced coding (like balanced tree),
+i.e. a good choice of coordinate system.
+Equal probabilities is information maximization (<a class="reference external" href="https://en.wikipedia.org/wiki/Principle_of_maximum_entropy">principle of maximum entropy</a>).
+Maximum entropy corresponds to well distributed energy.</p>
+</div>
+</div>
+<div class="section" id="pad-language">
+<h1>Language</h1>
+<div class="section" id="id2">
+<h2>Language</h2>
+<p>A processor needs a way to address its concepts.
+There are several ways to address concepts.
+Addresses are concepts themselves.</p>
+<p>The animal brain has neurons and synapses as low level language.
+This network is connected with the world through senses
+and it is enough to intelligently interact with it.
+Still, the human animal has further developed a more concrete language
+on top of it to better work together.</p>
+<p>The human language hierarchy is</p>
+<ul class="simple">
+<li>byte-phoneme-glyph</li>
+<li>names</li>
+<li>addresses</li>
+<li>concepts</li>
+<li>...</li>
+</ul>
+<p>Names are the smallest part of an address.
+A name selects a value from an internal variable.
+A number can be a name.</p>
+<p>The concept lattice needs a language to exist.
+A description of structure with a language <em>is</em> the concept lattice.</p>
+<p>The same concepts can be expressed using different languages</p>
+<ul class="simple">
+<li>bus addresses in a register machine</li>
+<li>synaptic paths in the brain</li>
+<li>weights in a neural network (NN)</li>
+</ul>
+<p>One needs conversion <em>to and from</em> the internal language,
+to allow to transfer a system from one processor to another.</p>
+<p>A small low level, abstract vocabulary can be used
+to build higher level, more concrete, concepts.</p>
+<p>Concept libraries are identifiable and are negotiated
+to settle on a common vocabulary for communication.</p>
+</div>
+<div class="section" id="pad-basic-language">
+<h2>Basic language</h2>
+<p>It took natural evolution several hundred millions of years
+to reach our level of intelligence.
+The brains had to develop along.
+It is also a question of hardware.</p>
+<p>Our proofed abstract language from mathematics
+and the principal understanding of what learning is
+(basically information compression)
+will show us a shortcut.</p>
+<p>Humans have developed an abstract language already.
+Humans can divide-and-conquer vertically and
+train modules to use their abstract language to describe more concrete things.</p>
+<p>With programming languages the programmer still needs to think
+of how to write the functions.
+The experience and abstractions developed over generations
+provides developers with abstract concept
+allowing them to describe all kind of system.</p>
+<p>Software modules are trained modules.
+The testing was their training.
+Pre-trained FCA or NN represent also such a module, a high level concept.</p>
+<p>More FCAs can be combined with AND and OR like any other values.
+Higher level concepts form a higher level language.
+To really understand and merge the concepts and possibly form other concepts
+that lead to a shorter description,
+the high level concepts need to be described with a common low level language.
+Then they can be compared and merged.</p>
+<p>It takes quite an effort to realize that two mathematical theories are equivalent,
+e.g. <a class="reference external" href="https://en.wikipedia.org/wiki/Curry%E2%80%93Howard_correspondence">Curry-Howard correspondence</a>.
+One needs to find a common way to describe them, a common language.
+This is why mathematics develops a more and more abstract base language.
+A common base language avoids that it happens too often,
+that people spend their life developing a theory to realize it was there already.</p>
+<p>To do a similar job,
+an AI also needs to have the high level concepts in a common low level language.
+It is not only AND and OR, but also which value out of which variable,
+and how they are encoded into bits.</p>
+<p>For example to allow an FCA to reorganize functions of a program,
+it needs to have a common description of them, e.g. via their machine code.</p>
+</div>
+<div class="section" id="pad-turing-complete">
+<h2>Turing-complete</h2>
+<p>A dynamic system needs information and time.
+A computer needs memory and clock.
+The more clocks, the more subsystems.</p>
+<p>Where is the clock in the <a class="reference external" href="https://en.wikipedia.org/wiki/Turing_machine">Turing machine</a>?
+It is the function, which can consist of sub-functions.
+A Turing machine has energy (information/time).
+A function has energy (information/time).</p>
+<p>To define the function as a map from all domain values to all codomain values
+in one time step is never reality.
+It is an abstraction of a subsystem with the time unit equal to the cycle time.
+When comparing more subsystems a common time needs to be used,
+which brings energy into play.</p>
+<p>A Turing-complete language needs to map to creation and reduction of subsystems
+i.e. mutation and selection.
+This way information flows.
+For actual creation and selection time is needed: a thread.</p>
+<p>The minimal <a class="reference external" href="https://en.wikipedia.org/wiki/SKI_combinator_calculus">SKI</a> or rather SK is Turing-complete.
+SK corresponds to <a class="reference external" href="https://en.wikipedia.org/wiki/SKI_combinator_calculus#Boolean_logic">boolean</a>  AND (creation) and OR (selection).
+<a class="reference external" href="https://en.wikipedia.org/wiki/Iota_and_Jot">iota</a> (ι) is another minimal Turing-complete language.</p>
+<p>What a Turing-complete language can actually do depends on the amount of memory.
+How fast it can do it depends on the system's clock.</p>
+</div>
+</div>
+<div class="section" id="pad-information-and-energy">
+<h1>Information and Energy</h1>
+<div class="section" id="pad-variable">
+<h2>Variable</h2>
+<p>Mathematics is about information processing.
+Its foundation must hold information.</p>
+<p>A variable is a set of values that are</p>
+<ul class="simple">
+<li>exclusive (one value at a time)</li>
+<li>exhaustive (all values get their turn)</li>
+</ul>
+<p>A bit is the smallest possible variable.</p>
+<p>The variable is the foundation of mathematics.
+A set in the conventional sense can be a variable,
+if finite and an exclusive choice is added (<span class="formula"> ∈ </span>).</p>
+<p>A set where intersection and union is possible is not a variable,
+it is rather a collection of parallel bit variables.
+The power set of all combinations is a variable (with 2^N values),
+if a combination of values is seen as its value.</p>
+<p>The information of a variable is the number of bits
+to produce the same number of values.</p>
+<div class="formula">
+<i>I</i> = log₂<i>N</i>
+</div>
+<p>A variable has information.
+A value has no information.</p>
+<p>For a variable to persist in time the values must be selected in a cycle.
+When values are reselected the cycle is repeated.
+The cycle of selections of values is the variable.
+The cycle information is the variable information.</p>
+<p>All objects moving in a physical space were observed to cycle at some scale.</p>
+</div>
+<div class="section" id="pad-infinity">
+<h2>Infinity</h2>
+<p>Infinite/non-cycling variables do not exist
+other than as a counting cycle/loop with deferred stop
+in an information processor.</p>
+<p>An information processor is a dynamical system.
+All dynamic systems consist of cycles.
+The human mind is an example.</p>
+<p>Mind or processor shall mean a general information processor, including computers.</p>
+<p>A counter normally uses a hierarchical containment of loops
+producing different values that are combinations of values of lower variables,
+whose rate of change differs in a systematic way e.g. by position
+of e.g. digits, letters, phonemes, ...</p>
+<p>A counter mimics a general dynamic system with subsystems.
+A counter with a deferred stop
+is also a deferred amount of information processed.</p>
+<p>One can nest counters.
+<span class="formula">ℝ</span> is a nesting of two counters: size and precision.
+A <span class="formula">2 ∈ ℝ</span> has an infinite counter on the precision axis the same way as every irrational number.
+A value of <span class="formula">ℝ</span> is an algorithm, a counter, a higher concept.
+A value of <span class="formula">ℕ</span>, <span class="formula">ℤ</span> or <span class="formula">ℚ</span> is not algorithmic.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/IEEE_754">IEEE754</a> fixes the two stop conditions by fixing the information
+in fraction and exponent (precision and size) for hardware.
+In <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_arbitrary-precision_arithmetic_software">arbitrary precision software</a> one is more flexible:
+one can defer fixing the stop conditions to the point where actually used.</p>
+</div>
+<div class="section" id="pad-probability">
+<h2>Probability</h2>
+<p>Probability counts time (times of occurrences).</p>
+<div class="formula">
+<i>N</i> ~ 1 ⁄ Δ<i>t</i> ~ 1 ⁄ <i>p</i>
+</div>
+<p>The normalization of probability to 1 for one variable
+is a comparison of time units.</p>
+<p>Information is associated with the variable not the value.
+With just one variable type of <span class="formula"><i>C</i></span> equally frequent values,
+its information is <span class="formula">1</span>, just like it would be for the bit,
+but the unit is different,
+with the factor <span class="formula">log₂<i>C</i></span> as unit conversion.</p>
+<p>If values have their own time
+and if it is squashed to the time unit of the variable,
+then the (average) information or entropy of the variable is</p>
+<div class="formula">
+<i>I</i> =  − Σ<i>p</i><sub><i>i</i></sub>log<i>p</i><sub><i>i</i></sub>
+</div>
+<p>Note that this has included</p>
+<ul class="simple">
+<li>time via <span class="formula"><i>p</i><sub><i>i</i></sub></span> and</li>
+<li>space via <span class="formula">log<i>p</i><sub><i>i</i></sub></span> (information)</li>
+</ul>
+<p>This is information per time, which is energy.
+But the time unit is that of the variable.
+A variable with same number of values and same distribution,
+but high frequency cannot be distinguished from one with low frequency.
+Locally this is also not needed.</p>
+<p>Two variables with independent times have probability <span class="formula"><i>p</i>₁₂ = <i>p</i>₁<i>p</i>₂</span>.
+This corresponds to a transition to the smaller of the two time units.
+The information becomes additive, which makes the energy additive.</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence">Kullback-Leibler-divergence</a> compares two probabilities on the same variable,
+one derived from data, one from theory (as seen from the function).
+The <a class="reference external" href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence">Kullback-Leibler-divergence</a> is the difference in information (code length)
+between theory and observation.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>information = entropy</p>
+<p>Information describes both,</p>
+<ul class="simple">
+<li>what can be known (the alternatives, entropy, the variable) and</li>
+<li>and what is known (the value).</li>
+</ul>
+<p class="last">A system that does not change or has no alternatives has no information.
+A value alone has no information.
+The alternatives are the information.</p>
+</div>
+</div>
+<div class="section" id="pad-energy-information-time">
+<h2>Energy = Information / Time</h2>
+<p>Information alone entails time,
+because the values (selections) need time.
+Without values no variable and thus no information.</p>
+<div class="formula">
+<i>E</i> = <i>I</i>
+</div>
+<p>A time step is a selection (value).
+Time does not exist between selections
+in the absence of another selection to provide a clock.
+When there is another selection to compare to,
+one gets a unit to compare to.</p>
+<p>Energy is the comparison of information with another information.
+Time is the unit of information.
+Energy is information expressed in the unit of time.</p>
+<p>With fixed information step <span class="formula"><i>h</i></span> time and energy are inversely proportional:</p>
+<div class="formula">
+Δ<i>E</i> = <i>h</i> ⁄ Δ<i>t</i>
+</div>
+<p>This is like with any physical quantity:
+unit and number value are inversely proportional.</p>
+<p>Energy is the differential view on information,
+and information is the integral view on energy.</p>
+<div class="formula">
+<i>E</i> = <span class="fraction"><span class="ignored">(</span><span class="numerator"><i>dI</i></span><span class="ignored">)/(</span><span class="denominator"><i>dt</i></span><span class="ignored">)</span></span>
+</div>
+<p>One always compares information with information.
+Time is a variable and thus information, too.</p>
+</div>
+<div class="section" id="pad-layers">
+<h2>Layers</h2>
+<p>Interaction have their own time on a higher layer.
+In the power <span class="formula"><i>P</i> = <i>dE</i> ⁄ <i>d</i><i>τ</i> = <i>kd</i>²<i>I</i> ⁄ <i>dt</i>²</span>, the <span class="formula"><i>τ</i></span> is the time of the higher layer
+and <span class="formula"><i>E</i></span> and <span class="formula"><i>t</i></span> are the inner energy and time of the subsystem.
+<span class="formula"><i>P</i></span> by itself is also an energy, but on the next higher layer.
+When using the same time unit, then every layer adds a power of time rate</p>
+<ul class="simple">
+<li>one layer (variable): <span class="formula"><i>E</i> ~ <i>ν</i></span></li>
+<li>two layer <span class="formula"><i>K</i> ~ <i>v</i><sup>2</sup></span></li>
+<li>three layers <span class="formula"><i>B</i> ~ <i>ν</i><sup>3</sup></span> (Planck law)</li>
+</ul>
+<p>With according parallel independent processes,
+the expressions shift to the exponent.</p>
+<p>In thermodynamics, temperature <span class="formula"><i>T</i></span> is a unit of energy</p>
+<div class="formula">
+Δ<i>E</i> = <i>T</i>Δ<i>S</i> = <span class="fraction"><span class="ignored">(</span><span class="numerator">∂<i>E</i></span><span class="ignored">)/(</span><span class="denominator">∂<i>S</i></span><span class="ignored">)</span></span>Δ<i>S</i>
+</div>
+<p>i.e. one splits the information into two layers, but keeps one time
+(the motion of particles gives the base clock for thermodynamic processes).</p>
+<p>Temperature more generally is the energy (information flow) between subsystems.
+The subsystems change because of the gain or loss of information.</p>
+<p>If the system as a whole looses energy
+certain structures settle in and stay for a longer time.
+This <em>structural cooling</em> reduces the dimension (number of variables),
+which reduces the information and frees it to the surrounding
+(e.g. <a class="reference external" href="https://en.wikipedia.org/wiki/Exergonic_reaction">exergonic reaction</a>).</p>
+</div>
+<div class="section" id="pad-one-time-more-variables">
+<h2>One Time - More Variables</h2>
+<p>The variable implies time, but</p>
+<ul class="simple">
+<li>more variables in the observer system</li>
+<li>can be one variable with one time in the observed system</li>
+</ul>
+<p>A coordinate system in mind might split a variable into more,
+which in reality are simultaneous.
+In mind the variables can be processed separately,
+but if a description of reality is aimed at,
+it needs to consider that the real variable consists of value combination.</p>
+<p>A general transformation between systems can be
+described by the <a class="reference external" href="https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant">Jacobian</a> <span class="formula"><i>J</i>₂₁</span>,
+where the combination of variables of system <span class="formula">1</span> and <span class="formula">2</span> form a 2D matrix.
+One can expand the variables to values and work with a 3D matrix,
+but the other way around introduces functions that code structure.
+The matrix elements are impulses,
+which, if zero, describe an invariant.</p>
+<p>Functions can be non-linear,
+but non-linearity can also be described by more linearly coupled systems:</p>
+<div class="formula">
+<i>n</i> = <i>J</i><sub><i>n</i>(<i>n</i> − 1)</sub>...<i>J</i><sub>32</sub><i>J</i><sub>21</sub>1
+</div>
+<p>A <span class="formula"><i>J</i><sub><i>ji</i></sub></span> corresponds to a layer of a Neural Network (NN).</p>
+<p>Time comes into play when describing all the system variables' rates
+relative to a third one's rate.
+The third variable is arbitrary and the mapping
+to the independent clocking of selections
+of system variables is necessarily imprecise.</p>
+<p>The <span class="formula">Δ<i>t</i></span> of the observer clock is external, but assumed constant,
+while the information is inherent to the system.
+Energy conservation for a closed system
+says that the <em>information of the system is conserved</em>.
+A closed system is only locally closed, though.
+Non-closed cycles loose or gain information per time, i.e. energy.</p>
+<p>An invariant binds variables and makes their values to value combinations.</p>
+<p>A mind normally has an internal clock.
+What is invariant to its internal clock matters
+when describing the external system's information with the internal.
+What is invariant to the internal clock is one value combination.
+The according variables become dependent.</p>
+<p>Formation of dependent variables is a reduction of dimensions.</p>
+<p>The relation of the values in the value combinations can be described with functions.</p>
+<p>A function is a reused subsystem (invariant sub-concept-lattice)
+to create dependence between variables.
+A variable itself is a special function.
+The variable is the smallest fixation:
+just one invariant that all values share.
+A value is what is different at a location of function application.</p>
+<p>A subsystem of dependent variables with one time
+is called <em>particle</em> in physics and <em>thread</em> in computing.</p>
+<p>The order of selection produces a distance.
+Since a variable needs to cycle,
+the first value needs to follow the last one.
+One variable (dimension 1) cannot create a cycle.
+Two variables form a minimal particle or thread.</p>
+<p>Interaction between (processing of) particles form a higher layer,
+and need additional variables there.
+Three dimensions are minimal to have separate times (parallel processing).
+The actual number of dimensions is very dependent on the system.</p>
+<p>Independent particles have independent</p>
+<ul class="simple">
+<li>information <span class="formula"><i>I</i></span></li>
+<li>time <span class="formula"><i>t</i></span></li>
+<li>energy <span class="formula"><i>E</i></span></li>
+</ul>
+<p>at every layer.</p>
+<p>In a layered system, containment channels
+energy of a thread/particle</p>
+<ul class="simple">
+<li>to spread into lower particles (<span class="formula">log</span>) or</li>
+<li>to accumulate from lower particles (<span class="formula">exp</span>)</li>
+</ul>
+</div>
+<div class="section" id="pad-channel-variable">
+<h2>Channel Variable</h2>
+<p>Flexible variables for general usage are called <em>channel variables</em> in this blog.</p>
+<p>Examples of channel variables are the pixels of a screen or the receptors on the retina.</p>
+<p>The information capacity per time of the channels
+needs to be higher than the actual information sent per time.
+The quotient <span class="formula">Δ<i>I</i> ⁄ Δ<i>t</i></span> matters: <span class="formula">Δ<i>I</i><sub><i>s</i></sub> ⁄ Δ<i>t</i><sub><i>s</i></sub> &gt; Δ<i>I</i><sub><i>c</i></sub> ⁄ Δ<i>t</i><sub><i>c</i></sub></span>.
+Information per time is energy <span class="formula"><i>E</i></span>.
+One can say the &quot;energy of the channel&quot; instead of <a class="reference external" href="https://en.wikipedia.org/wiki/Channel_capacity">channel capacity</a>,
+which is the maximum of <a class="reference external" href="https://en.wikipedia.org/wiki/Mutual_information">mutual information</a>, i.e. the maximum entropy
+by which the input and output probabilities are still dependent on each other.</p>
+<p>Non-binary variables with <span class="formula"><i>C</i></span> values need <span class="formula">log<i>C</i></span> binary channels.
+By doubling the frequency of a channel compared to e.g. the processor,
+the number of bus lines can be halved without energy loss.
+Else reducing lines reduces energy.</p>
+<ul class="simple">
+<li>Our senses are channel variables.</li>
+<li>The phonetic multitude of a natural language are a channel.</li>
+<li>Data types are channels.</li>
+<li>Numbers in mathematics are a flexible arbitrary width channel.</li>
+</ul>
+<p>Higher dynamic systems have channels to exchange subsystems that encapsulate energy.</p>
+<p>Some life on earth has evolved brains with algorithm
+that can decode from sensory input channels to the actual variables of origin.</p>
+<p>The mind is a dynamic system,
+that controls more energy than it consumes,
+by simulating higher energy interactions
+with lower energy interactions.
+Such <a class="reference external" href="https://en.wikipedia.org/wiki/Maxwell%27s_demon">Maxwell demons</a> are ubiquitous,
+but do not work any more if both systems use the same energy encapsulations.</p>
+<p>Evolution is search, i.e. trial and error or mutation and selection.
+Structural evolution needs to invent and prune structures, i.e. concepts,
+to reach a description short in space and/or time,
+to reduce the information per time, i.e. the energy.</p>
+<p>By exchanging more concrete concepts one needs less time than by using low concepts,
+because the concepts are there already in each interlocutor,
+they just need to be selected.</p>
+<p>This is also the case in the physical world.
+A kilo of petrol contains more energy than a kilo of current technology batteries,
+but the exchange in both cases takes the same amount of energy.</p>
+<p>The channel capacity depends on what is sent, on the protocol,
+and thus on sender and receiver.
+Channel capacity can be increased by</p>
+<ul class="simple">
+<li>compression-decompression</li>
+<li>memory and recall of memory</li>
+<li>high level concepts</li>
+</ul>
+<p>Given a fixed energy low level channel like the phonemes of humans,
+there are still the protocol levels above, like the many-layered human concepts.
+On a computer,
+transporting HTML needs less channel energy than a pixel description of the page.</p>
+<p>A brain or computer has a more or less constant energy
+(= processing = communication of information per time).
+Using abstract concepts takes more time.
+Someone who tries to understand, i.e. compare the abstract language, is slower.
+In that time more physical energy is consumed,
+because what flows on the lowest physical level is physical information.</p>
+<p>More brain energy consumption in humans was made possible,
+because by broadening the sources, by becoming a generalist,
+also more energy became available.
+A species is a channel by itself.
+Ecosystems are channel systems that structurally evolve over time.</p>
+<p>The complexity of a language and the complexity of world it describes are covariant.
+Humans evolved intelligence because they were living in a complex world already.</p>
+</div>
+<div class="section" id="pad-physical-function">
+<h2>Physical Function</h2>
+<p>Physically a function is a invariant structure (invariant meaning with a lower rate of change).
+This structure stays the same, while some values change.
+The structure channels information into local cycles.
+Local cycles need less information with equal clock.</p>
+<p>The structure leads to the selection of the next location
+with new impulse and new value.
+A function can be seen as the impulse itself.
+Processing (impulse) and value are alternating.</p>
+<p>The phase space volume of the particle/thread
+is the information summing both independent changes:
+that of the impulses (functions) and that of the value(s).
+Basically phase space volume just counts the locations traversed by the thread.
+Every location is a function application, a time step.
+So the phase space volume is equal to the time,
+but with a separate time unit one gets:</p>
+<div class="formula">
+<i>E</i> = <i>I</i> ⁄ <i>T</i>
+</div>
+<p>The energy of a thread/particle is the phase space volume <span class="formula"><i>I</i></span> per cycle time.</p>
+<p>This corresponds to the average information per average time step <span class="formula">Δ<i>I</i> ⁄ Δ<i>t</i></span> of a value selection.</p>
+<p>In time stretches smaller than the cycle
+the actual selection time of a value and its local/space extend
+are inversely proportional (contravariant)
+to keep the constant energy of the particle.
+The function can be seen as curvilinear coordinate system.</p>
+<p>Time is defined by the sequential processing of a function.
+Exclusiveness of values refers to a location of application, representing a time step.</p>
+<p>In physics, specifying a functional relation,
+corresponds to the transition from the Lagrangian to the Hamiltonian,
+where the former assumes independent particles (<span class="formula"><i>E</i> + <i>E</i> = <i>E</i> − <i>V</i></span>)
+and the latter one particle, i.e. one time (<span class="formula"><i>E</i> + <i>V</i> = <i>H</i></span> = Constant).</p>
+</div>
+<div class="section" id="pad-function-time-complexity">
+<h2>Function Time Complexity</h2>
+<p>A function maps input to output. It works as a channel.
+One can associate an energy to it</p>
+<div class="formula">
+<i>E</i> = <i>h</i> ⁄ Δ<i>t</i> = <i>h</i><i>ν</i>
+</div>
+<ul class="simple">
+<li><span class="formula"><i>ν</i></span> is (processing) rate (speed)</li>
+<li><span class="formula"><i>h</i></span> is (processed) information (memory)</li>
+</ul>
+<p>Both can be predetermined (register width, fix clock rate),
+or a result of runtime adaptations
+(parallelization / number of synapses / NN links, dynamic clocking),
+but normally they stay constant over some more or less local time.</p>
+<p>A processor has basic variables and functions with their according <span class="formula"><i>E</i></span>.
+The execution time of a higher function is the sum of that of lower functions.</p>
+<p>As a result in the containment hierarchy of functions
+every function has got its processing energy,
+which depends on the (underlying) structure and the lowest level processing energy.</p>
+<p>The processing energy corresponds to the <a class="reference external" href="https://en.wikipedia.org/wiki/Big_O_notation">big-O-notation</a> of time complexity.
+In <span class="formula"><i>O</i>(<i>f</i>(<i>n</i>))</span></p>
+<ul class="simple">
+<li><span class="formula"><i>f</i>(<i>n</i>)</span> is number of time steps depending on the size of the input.
+The reflects the layering, i.e. the structure, of the processing.</li>
+<li><span class="formula"><i>ν</i> = 1 ⁄ Δ<i>t</i></span> is replaced by the big <span class="formula"><i>O</i></span>,
+because it depends on the varying system clock and access strategies of systems</li>
+</ul>
+<div class="formula">
+<i>E</i> = <i>O</i>
+</div>
+<p>A processor can process limited, normally constant, information per time.
+Processing energy is shared between parallel threads.
+Threads can be halted or their atomic operations can be of variable duration.
+Parallel threads have separate times.</p>
+<p>Evolution of a processor (HW+SW) and its functions goes towards</p>
+<ul>
+<li><p class="first">a higher <span class="formula"><i>E</i></span> on the supply side
+(computers/processors/functions become more powerful)</p>
+<p>For functions:</p>
+<ul class="simple">
+<li><em>cache</em> arguments (currying):
+- <span class="formula"><i>h</i></span> up due to caching
+- <span class="formula"><i>ν</i></span> up due because no need to supply argument</li>
+<li><em>memoization</em>:<ul>
+<li><span class="formula"><i>h</i></span> up due to the map</li>
+<li><span class="formula"><i>ν</i></span> up due to shortcutting input to output via direct mapping</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p class="first">a lower <span class="formula"><i>E</i></span> on the demand side
+(information is compressed to save computing power)</p>
+<p>For functions: <em>generate</em> arguments on demand.</p>
+<ul class="simple">
+<li><span class="formula"><i>h</i></span> down since no caching</li>
+<li><span class="formula"><i>ν</i></span> down due to needed calculations to supply arguments</li>
+</ul>
+</li>
+</ul>
+<p>In a function with constant <span class="formula"><i>E</i></span>, <span class="formula"><i>h</i></span> and <span class="formula"><i>ν</i></span> are inversely proportional (contravariant).</p>
+</div>
+</div>
+</div>
+</body>
+</html>
