@@ -9,7 +9,7 @@
 
 /*
 https://rolandpuntaier.blogspot.com/2021/01/function-concept-from-lattice-to.html
-The rst file is in a separate project currently called "AL".
+~/mine/oel/pdt/AD/1.rst
 */
 
 .borderless, table.borderless td, table.borderless th {
@@ -890,6 +890,29 @@ to make FCA-like AND uplinks for the <span class="formula"><i>xᵢ</i></span> no
 <p>FCA does not provide fast algorithms with hardware support,
 but FCA can be subsumed by NN.
 FCA can guide the choice of NN architecture.</p>
+<ul class="simple">
+<li>both have input that mixes values of more variables</li>
+<li>both create a map of the actual topology from more inputs</li>
+<li>both encode the topology with links and
+not by closeness of weights and nodes (neurons).</li>
+<li>both need more inputs to produce the map;
+NN via parallel and gradual steps of change, FCA via (sequential) non-gradual steps.</li>
+<li>both require the features/variables beforehand;
+NN to choose training input and NN topology, FCA to choose the kind of input.</li>
+<li>both need more layers to combine more features/variables to functional blocks</li>
+</ul>
+<p>The difference is how the links are usually created:</p>
+<ul class="simple">
+<li>NN reduces links from dense.
+FCA builds links from zero.</li>
+<li>NN adapts gradually using gradient of loss.
+FCA links are boolean: there or not, 1 or 0.
+Usually NN works with floats as weights for gradual change,
+but binary weights (as in FCA) are also possible in NN.
+(<a class="reference external" href="https://en.wikipedia.org/wiki/Hopfield_network">Hopfield network</a>)</li>
+<li>NN needs a loss function, which could be universal, though.
+FCA does without loss function.</li>
+</ul>
 </div>
 <div class="section" id="pad-function-as-multivariate-probability-distribution">
 <h2>Function as Multivariate Probability Distribution</h2>
