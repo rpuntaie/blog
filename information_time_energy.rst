@@ -631,73 +631,10 @@ The same happens in the learning brain, to the economy, and other dynamic system
 Newton
 ------
 
-Newton considered the velocity `v=dx/dt` as energy (vis viva).
-`mv²/2` as energy came from Leibniz.
-
-It would have been better to use `dt/dx` instead of `dx/dt`.
-`dt/dx` is the component of time in the `x` direction.
-For that, one would have had to realize that time is an interaction with more partners.
-Then one could have compared time with time
-`E = dτ/dt = (∂τ/∂x)(dx/dt)`
-and see `dx/dt` as another component of a `τ` change.
-
-Assuming constant `dt` one would have realized a constant `E`,
-if `(∂τ/∂x)(dx/dt)` changes cancel.
-Then `dx/dt = E ∂x/∂τ`, and one could have realized
-that the mass `m` is actually energy `E` or `1/E`,
-depending on which time (`t` or `τ`) one uses.
-
-One can express an energy `E` with another  energy, `m`:
-
-.. math::
-
-   E = \frac{∂τ}{∂x}\;\frac{dx}{dt} = m\frac{dx}{dt}\;\frac{dx}{dt} = mv²
-
-This is the full energy of the layer. `m` is another layer.
-Summing over just one of the two simultaneous factors `(∂τ/∂x)(dx/dt)`
-produces the `1/2` for the kinetic energy alone:
-
-.. math::
-
-   E = ∫dE = ∫d\left(\frac{∂τ}{∂x}\right)\frac{dx}{dt} = ∫md\left(\frac{dx}{dt}\right)\frac{dx}{dt} = ∫mdv v = mv²/2
-
 Newton (rephrased):
 An object rests or moves in a straight line with constant speed,
 unless there is an interaction (force) with another object
 and that force changes both objects (*action=reactio*).
-
-With the *actio=reactio*,
-it is implied that the two object's changes are observables of one change,
-and thus constitute one time step.
-The force is shared between the interacting objects.
-
-Velocity cannot be seen or measured physically from inside its own inertial frame,
-so it has no information.
-From outside that is the same.
-Velocity is a component of a value and not a physical variable.
-A value does have no information.
-What exists physically is a change of velocity,
-and that change is accompanied by another change.
-The force is shared.
-
-Newton's laws define force by the change of velocity `dv/dt`.
-`E(v)` does not stay constant when `v` changes,
-so we cannot repeat with `dt/dv` what we did above with `dt/dx`.
-If we include `x`, then `E(x,v)` stays constant,
-because the `v` and `x` components belong to one time step.
-Then we can do
-
-.. math::
-
-   0 & = \frac{dE}{dt} = \frac{d}{dt}\left(\frac{∂τ}{∂x}\;\frac{dx}{dt}\right) = \\
-   & = \frac{d}{dt}\left(\frac{∂τ}{∂x}\right)\;\frac{dx}{dt} + \frac{∂τ}{∂x}\;\frac{d²x}{dt²} = \\
-   & = \frac{dE}{dx}\;\frac{dx}{dt} + m\frac{dx}{dt}\;\frac{d²x}{dt²}
-
-And then divide by `v` to get Newton's force law:
-
-.. math::
-
-   F := -\frac{dE}{dx} = ma
 
 A straight line would imply an infinity.
 There is no infinity in the physical world.
@@ -718,6 +655,80 @@ An isolated object does not exist.
 If you found one, it already interacted with you.
 If that interaction does not explain its behavior,
 you need to search for other objects it interacts with.
+
+With the *actio=reactio*,
+it is implied that the two object's changes are observables of one change,
+and thus constitute one time step.
+The force is shared between the interacting objects.
+
+Velocity cannot be seen or measured physically from inside its own inertial frame,
+so it has no information.
+From outside that is the same.
+Velocity is a component of a value and not a physical variable.
+A value does have no information.
+What exists physically is a change of velocity,
+and that change is accompanied by another change.
+The force is shared.
+
+.. math::
+
+   0 & = \frac{dE}{dt} = \frac{d}{dt}\left(\frac{∂τ}{∂x}\;\frac{dx}{dt}\right) = \\
+   & = \frac{d}{dt}\left(\frac{∂τ}{∂x}\right)\;\frac{dx}{dt} + \frac{∂τ}{∂x}\;\frac{d²x}{dt²} = \\
+   & = \frac{dE}{dx}\;\frac{dx}{dt} + m\frac{dx}{dt}\;\frac{d²x}{dt²}
+
+And then divide by `dx/dt` to get Newton's force law:
+
+.. math::
+
+   \left[ F \coloneqq -\frac{dE}{dx} \right] = ma
+
+The part in brackets is a definition of force.
+
+The modern way to get to this formula is the Lagrange way, though,
+with a minimization step that finds what actually constitues one time step,
+and the formula is more general: it is the Euler-Lagrange equation.
+
+To get to Newton's formula an unexplained step was used:
+
+.. math::
+
+   \frac{∂τ}{∂x} = m \frac{dx}{dt}
+
+This is thus a consequence of Newton's force law.
+It relates the two time, `τ` and `t`, of two levels.
+
+Giving different variables different times
+solves the *vis-viva* debate that was going on between Newton (`mv`),
+Leibnitz (`mv²/2`) and others.
+
+`∂τ/∂x` is a component of a change, i.e. of a time or information step.
+Time is an interaction with more partners.
+This leads to the concept of energy:
+
+.. math::
+
+   E = \frac{dτ}{dt} = \frac{∂τ}{∂x}\;\frac{dx}{dt}
+
+Reordering gives `dx/dt = E ∂x/∂τ`,
+and by comparing to `m\;dx/dt`
+one can see that the mass `m` is actually an energy, too.
+
+Comparisons to `t` are not physical, but a necessity of the mind.
+By comparing more observable changes to one external time `t`,
+one can relate changes and create a topology and a metric on it
+for a specific system.
+
+The double comparison with the same external `t` leads to `mv²`:
+
+.. math::
+
+   E = \frac{∂τ}{∂x}\;\frac{dx}{dt} = m\frac{dx}{dt}\;\frac{dx}{dt} = mv²
+
+`E` is the full energy. `m` summarizes lower level energies.
+With `c` as maximum `v`,
+there are no lower level changes possible any more,
+and thus mass is exactly the movement itself: `m=E/c²`.
+
 
 .. {mind vs reality}
 
