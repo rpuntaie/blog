@@ -52,6 +52,20 @@ Every level has its independent variables with own times.
 Every level has its own information resolution: `dI=Edt=dx(∂I/∂x)-dp(∂I/∂p)`.
 On the lowest physical level the information unit is `h`.
 
+Mathematical summary:
+
+.. math::
+
+    I = τ \\
+    E = İ = \frac{dI}{dt} = \frac{dτ}{dt} = f \\
+    E = \frac{dτ}{dx}\;\frac{dx}{dt} ⇒ E\frac{dx}{dτ} = \frac{dx}{dt} ⇒ m\;\text{is}\;E \\
+    p = \frac{dτ}{dx} = \frac{dE}{dẋ} = mẋ \\
+    E = \frac{dτ}{dx}\;\frac{dx}{dt} = mẋ^2 \\
+    I = τ = ∫dτ = ∫\frac{dτ}{dt}dt = ∫Edt = ∫δx\frac{∂E}{∂x}+δẋ\frac{∂E}{∂ẋ}dt = ∫δx\left(\frac{∂E}{∂x}-\frac{d}{dt}\;\frac{∂E}{∂ẋ}\right)dt \\
+    \frac{δτ}{δx} = 0 ⇒ \frac{∂E}{∂x}=\frac{d}{dt}\frac{∂E}{∂ẋ} ⇒ F=ṗ \\
+    E_p = ∫\frac{dE}{dx}dx = ∫Fdx = ∫ṗdx = ∫m\frac{dẋ}{dt}dx = ∫ mẋdẋ = mẋ²/2 = E_k\\
+    E = E_p + E_k = mẋ^2
+
 .. {introduction}
 
 Information-Time-Energy
@@ -208,10 +222,10 @@ In a higher physical levels, the `x_i` take part in an interaction:
 
 The energy `E=İ` compares `I` to some external `t`.
 Classical mechanics introduced the
-energy components `∂H/∂{x,p}={-ṗ,ẋ}`,
+energy components `∂H/∂\{x,p\}=\{-ṗ,ẋ\}`,
 the forces.
 Quantum mechanics realized
-that the `dpdx` step is the time step: `∂ψ/∂t = ∂²ψ/(∂p∂x)`,
+that the `dpdx` step is the time step: `dψ/dt = ∂²ψ/(∂p∂x)`,
 by which is meant that,
 on the left side we have `∂t` where on the right side we have `∂p∂x`.
 The `ψ` is our information `I`.
@@ -794,7 +808,7 @@ i.e. the smallest time unit of nature.
 Nature is layered, though, and every level above has a larger time unit.
 
 `I=ψ`. In the Schrödinger and the Dirac equation,
-it is compared to another external time `t`: `\frac{∂ψ}{dt}`
+it is compared to another external time `t`: `\frac{dψ}{dt}`
 Time is information.
 
 The physical world is imprecise and finite.
@@ -816,7 +830,7 @@ The evolution in time `t` of `I=ψ` is the energy `H`
 
 .. math::
 
-  iħ\frac{∂ψ}{dt} = Hψ
+  iħ\frac{dψ}{dt} = Hψ
 
 `i` because of the differentiation and `ħ=\frac{h}{2π}` due to `hν = ħω`.
 
@@ -876,9 +890,9 @@ Minimizing `J=∫Ldt` one gets the Euler-Lagrange equation.
 .. math::
 
    J = ∫ L(x(t),ẋ(t)) dt \\
-  \frac{δJ}{δx} = ∫ \frac{∂L}{∂x}\frac{dx}{dt}dt + ∫\frac{∂L}{∂ẋ}\frac{dẋ}{dt}dt =\\
+  \frac{δJ}{δx} = ∫ \frac{∂L}{∂x}δxdt + ∫\frac{∂L}{∂ẋ}δẋdt =\\
   \text{partial integration of second part} \\
-  ... = ∫ \frac{∂L}{∂x}\frac{dx}{dt} - \frac{d}{dt}\frac{∂L}{∂ẋ}\frac{dx}{dt}
+  ... = ∫ δx\left(\frac{∂L}{∂x} - \frac{d}{dt}\frac{∂L}{∂ẋ}\right)
 
 `δJ/δx = 0` (`J` becomes information `I`):
 
@@ -953,16 +967,26 @@ It leads to the Schrödinger equation.
 The Dirac equations has more observables
 falling into the same system time step.
 
-A specific constant value `H` in this level
-makes one time step in this level
-(which by itself has no information and cannot be described)
-and represents a geodesic in the lower variable,
-i.e. the trajectory of value components of the lower variable.
+The constant `I` is the information of the observed system.
+`I` represents a variable, which cycles,
+forming the geodesic of the curved component space of the system.
+
+In the higher level `I` may be just one value, one time step,
+which by itself has no information and cannot be described.
+
 Taking away values from the trajectory,
 e.g. reducing the radius in the hydrogen atom's electron orbital,
-splits off a separate variable (a photon),
-i.e. splits off information and energy,
-because the energy of a level is basically constant.
+creates a separate variable (a photon),
+i.e. a separate information packet
+to keep the total information constant.
+
+Our coordinates `x` and `p` are not the system coordinates.
+Hamilton's equations `∂E/∂\{x,p\}=\{-ṗ,ẋ\}` become `∂τ/∂\{x,p\}=\{-p,x\}`.
+This explains `∂τ/∂x=mdx/dt` and `E = dτ/dt = dτ/dx\;dx/dt = mẋ^2`.
+`p,x` define extends `∂\{x,p\}` in our coordinates
+that physically count as one for the observed system.
+Only a count of values holds information, not single values.
+The same information of the system is stored in the x and p value count.
 
 Values do not Commute
 ---------------------
@@ -1017,6 +1041,8 @@ For example,
 - if `S` changes fast in a thermodynamic `ST` we cannot reach equilibrium,
   which keeps T based exchange slow
 - if humans interact a lot the thinking in the mind becomes slower due to the distraction
+
+E is constant in a level.
 
 With fixed `E`, large variables (with many values) cycle slowly.
 A higher level variable can become faster
