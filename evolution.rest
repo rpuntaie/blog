@@ -632,7 +632,7 @@ At one point in time:
    L = ∫dL = ∫∂_k L dy^k = ∫ L_k dy^k 
 
 - `L_k dy^k = ∂L/∂ẋ_i dẋ^i` counts the visible information per time step.
- 
+
   `∂L/∂ẋ_i` are called **momenta** `p_i`.
 
   This change sums to **kinetic energy**:
@@ -661,8 +661,8 @@ Finally, accumulation over time gives the total number of changes, called `actio
 
    S = ∫_0^T Ldt
 
-Now `calculus of variations`_ is used to optimize away the double counting, by minimizing `S=∫Ldt`.
-This is called `principle of least action`_:
+`Calculus of variations`_ is used to get rid of non-system counting.
+Minimizing `S=∫Ldt` is called `principle of least action`_:
 *The values of a particle evolve along a line of least action.*
 Demanding this to be minimal means that `symmetry breaking`_ should be minimal,
 which means that the actual information in the particle should be minimal.
@@ -809,8 +809,7 @@ The total derivative is the inverse of the integral, that summed up the time ste
 Structural Evolution
 ====================
 
-`Maximum entropy`_, to get to the double-counting Lagrangian, 
-and `principle of least action`_, to find the Hamiltonian,
+`Maximum entropy`_ and `principle of least action`_
 can be used for general dynamic systems like economy or biological evolution or the brain.
 
 It is not only a method to describe a system, it is also how a system evolves in its complexity.
@@ -1081,7 +1080,7 @@ The `Landauer limit`_ `kTln2` of energy consumption of a selection from a variab
 assumes processing via atoms/molecules.
 It does not apply if comparing different layers.
 
-A `Maxwell demon`__ consumes as much energy as it produces if it processes on the same layer.
+A `Maxwell demon`_ consumes as much energy as it produces if it processes on the same layer.
 But if the processing happens on a lower layer, it can produce energy.
 This is how dynamic structures form.
 

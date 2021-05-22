@@ -709,7 +709,9 @@ To get to Newton's formula an unexplained step was used:
    \frac{∂τ}{∂x} = m \frac{dx}{dt}
 
 This is thus a consequence of Newton's force law.
-It relates the two time, `τ` and `t`, of two levels.
+It relates our coordinates `t` and `x`
+to the system coordinates `τ` and `χ`.
+`χ` is in `∂x`-extends of our `x`.
 
 Giving different variables different times
 solves the *vis-viva* debate that was going on between Newton (`mv`),
@@ -731,8 +733,6 @@ Comparisons to `t` are not physical, but a necessity of the mind.
 By comparing more observable changes to one external time `t`,
 one can relate changes and create a topology and a metric on it
 for a specific system.
-
-The double comparison with the same external `t` leads to `mv²`:
 
 .. math::
 
@@ -869,21 +869,24 @@ The whole motion of the planet is one variable whose values cycle.
 The planet orbit could change by collision with an asteroid,
 but until then the variable's values cycles as is.
 
-The Lagrangian approach is to fixate the time steps and count the changes in the system
-per time step, which is `L`.
+The Lagrangian approach is to fixate the time steps
+and count the changes in the system relative to one component.
+`L` becomes positive and negative.
+`L` expresses the phase the system is in.
 Then sum over the cycle time: `J=∫Ldt`.
 
 What are the number of values in the variable?
 Number of values would be relative to a unit in the macroscopic world,
 but in the quantum scale it can be seen as such:
-number of value, each counting as 1 (`h=1`).
+number of values, each counting as 1 (`h=1`).
 
 We cannot just look at the planet.
 The planet's orbit is due to an interaction between planet and sun.
 They exchange something that keeps them together (force particles).
 This is like handing over money: one spends the other earns.
 Both change their financial status, but the time step is just one.
-`L` would count the money twice, considering the spender and the earner separately.
+`L` would consider only one part, e.g. the spender,
+but the money would flow back again to keep the system running.
 
 Minimizing `J=∫Ldt` one gets the Euler-Lagrange equation.
 
@@ -894,7 +897,7 @@ Minimizing `J=∫Ldt` one gets the Euler-Lagrange equation.
   \text{partial integration of second part} \\
   ... = ∫ δx\left(\frac{∂L}{∂x} - \frac{d}{dt}\frac{∂L}{∂ẋ}\right)
 
-`δJ/δx = 0` (`J` becomes information `I`):
+`δJ/δx = 0`:
 
 .. math::
 
@@ -905,7 +908,6 @@ By replacing `∂_ẋ L = p` and `F=∂_x L`, this is Newtons `F=ṗ=ma`.
 Since we minimized with respect to time,
 this equation tells us what belongs to the same time step.
 
-`L` did double count.
 After minimization we use `H` instead.
 `L(x,ẋ)` is transformed to `H(p,x)` via a Legendre transformation.
 
@@ -928,8 +930,7 @@ Interactions have a constant rate unless the exchanged energy packets become of 
 The cycling values of a variable from this level form the energy packet of the next higher level.
 
 `I = ∫dI = ∫Hdt` is the full count of values, i.e. the full information of the system.
-`H = dI/dt` compares the system time steps `dI` to some other system's time `t`,
-without double counting.
+`H = dI/dt` compares the system time steps `dI` to some other system's time `t`.
 
 The Euler-Lagrange equation become the Hamilton equations.
 
