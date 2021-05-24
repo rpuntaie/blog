@@ -904,10 +904,10 @@ Minimizing `J=∫Ldt` one gets the Euler-Lagrange equation.
 
 .. math::
 
-   J = ∫ L(x(t),ẋ(t)) dt \\
-  \frac{δJ}{δx} = ∫ \frac{∂L}{∂x}δxdt + ∫\frac{∂L}{∂ẋ}δẋdt =\\
-  \text{partial integration of second part} \\
-  ... = ∫ δx\left(\frac{∂L}{∂x} - \frac{d}{dt}\frac{∂L}{∂ẋ}\right)
+    δJ &= ∫\left(δx\frac{∂L}{∂x}+δẋ\frac{∂L}{∂ẋ}\right)dt \\
+    &\text{partial integration of second part} \\
+    &= ∫δx\left(\frac{∂L}{∂x}-\frac{d}{dt}\;\frac{∂L}{∂ẋ}\right)dt \\
+    &\frac{δJ}{δx} = \frac{∂L}{∂x} - \frac{d}{dt}\frac{∂L}{∂ẋ} = 0
 
 `δJ/δx = 0`:
 
