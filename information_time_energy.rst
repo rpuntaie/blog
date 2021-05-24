@@ -10,23 +10,30 @@ Summary
 
 .. _`evolution`: https://rolandpuntaier.blogspot.com/2019/01/evolution.html
 
-In the `evolution` blog I started from "there is no one time",
+In the `evolution`_ blog I started from "there is no one time",
 rather every independent change is its own time.
-Here I come to the conclusion that "time is all" or "information is all".
-This is no contradiction. It is a realization that information is time.
+This already says that information is time.
+To say "time is all" or "information is all" are equivalent.
+Statements are always meant per variable.
 
-Interpretation of energy is clearer here, too.
-To say `E=I/t` is like saying that energy is time divided by time.
+The objective here and in the `evolution`_ blog is *interpretation* of physics
+without the details to produce mathematical consistency.
+
+To say `W=I/t` is like saying that energy is time divided by time.
+
+Note, that as time happens by itself,
+energy here corresponds to mechanical work: W is -Energy.
+Usually one would use `E` for energy, but `E` is used for the electric field, too.
 
 :Variable/value:
 Values of a physical variable are defined by time and define time for the variable.
 Every variable has its own information and its own time.
 
-:Information = action = time:
+:Information = time:
 The information of a variable is the number of values.
 
 :Cycle:
-The values of a variable cycle until the variables ceases to exist.
+The finite number of values of a variable cycle until the variable ceases to exist.
 A variable has a curvature when expressed with its observables.
 Values exist only while occurring.
 
@@ -34,12 +41,12 @@ Values exist only while occurring.
 Component of a value of a variable.
 Component of a time step.
 
-:Energy: `E=dI/dt=İ`.
+:Energy: `W=-H=∂I/∂t=İ`.
 The energy of a variable is its time steps compared to the time steps of another variable.
 When looking at a part of a system,
 energy can also mean the inflow or outflow of information.
 
-:Force: `F=dE/dx=-ṗ`
+:Force: `F=∂W/∂x=-ṗ`
 Component of energy.
 Component of momentum change.
 
@@ -49,7 +56,7 @@ The variables of the lower level become values in this level.
 Every level has its independent variables with own times.
 
 :Resolution:
-Every level has its own information resolution: `dI=Edt=dx(∂I/∂x)-dp(∂I/∂p)`.
+Every level has its own information resolution.
 On the lowest physical level the information unit is `h`.
 
 Mathematical summary:
@@ -57,14 +64,16 @@ Mathematical summary:
 .. math::
 
     I = τ \\
-    E = İ = \frac{dI}{dt} = \frac{dτ}{dt} = f \\
-    E = \frac{dτ}{dx}\;\frac{dx}{dt} ⇒ E\frac{dx}{dτ} = \frac{dx}{dt} ⇒ m\;\text{is}\;E \\
-    p = \frac{dτ}{dx} = \frac{dE}{dẋ} = mẋ \\
-    E = \frac{dτ}{dx}\;\frac{dx}{dt} = mẋ^2 \\
-    I = τ = ∫dτ = ∫\frac{dτ}{dt}dt = ∫Edt = ∫δx\frac{∂E}{∂x}+δẋ\frac{∂E}{∂ẋ}dt = ∫δx\left(\frac{∂E}{∂x}-\frac{d}{dt}\;\frac{∂E}{∂ẋ}\right)dt \\
-    \frac{δτ}{δx} = 0 ⇒ \frac{∂E}{∂x}=\frac{d}{dt}\frac{∂E}{∂ẋ} ⇒ F=ṗ \\
-    E_p = ∫\frac{dE}{dx}dx = ∫Fdx = ∫ṗdx = ∫m\frac{dẋ}{dt}dx = ∫ mẋdẋ = mẋ²/2 = E_k\\
-    E = E_p + E_k = mẋ^2
+    W = İ = \frac{∂I}{∂t} = \frac{∂τ}{∂t} = f \\
+    W = \frac{∂τ}{∂x}\;\frac{∂x}{∂t} ⇒ W\frac{∂x}{∂τ} = \frac{∂x}{∂t} ⇒ m\;\text{is}\;W \\
+    L = pẋ = pẋ-H \; \text{(Lagrangian L:}\;p,ẋ\;\text{a component, while Hamiltonian H full system step)} \\
+    δJ = ∫\left(δx\frac{∂L}{∂x}+δẋ\frac{∂L}{∂ẋ}\right)dt = ∫δx\left(\frac{∂L}{∂x}-\frac{d}{dt}\;\frac{∂L}{∂ẋ}\right)dt \\
+    \frac{δJ}{δx} = 0 ⇒ \frac{∂L}{∂x}=\frac{d}{dt}\frac{∂L}{∂ẋ} ⇒ F=ṗ \\
+    F = \frac{∂L}{∂x} = \frac{∂W}{∂x} = -\frac{∂H}{∂x} \\
+    p = \frac{∂τ}{∂x} = \frac{∂L}{∂ẋ} = \frac{∂W}{∂ẋ} = mẋ \\
+    W = \frac{∂τ}{∂x}\;\frac{∂x}{∂t} = mẋ² \\
+    E_p = ∫\frac{∂W}{∂x}dx = ∫Fdx = ∫ṗdx = ∫m\frac{dẋ}{dt}dx = ∫ mẋdẋ = mẋ²/2 = E_k\\
+    W = E_p(x) + E_k(ẋ) = mẋ²
 
 .. {introduction}
 
@@ -97,19 +106,16 @@ Many physical systems have no memory, but they have information.
 And, although we have a memory of concepts,
 they only become conscious those times we think of them.
 
-You probably have had some maths in school.
-So the concept of a **set** should be familiar.
-The `∈` of a set selects one element from a set.
-But the set has operations like **union** and **intersection**.
+But the mathematical set has operations like **union** and **intersection**.
 They are more complicated and can be decomposed into individual selections.
-
-There is an idea that is more fundamental than the set.
+The `∈` of a set selects one element from a set.
+This set with only `∈` is more fundamental.
 It is the ubiquitous **variable**.
 How could it be otherwise.
 Something so fundamental must be ubiquitous.
 
-The foundation of mathematics is not the set, but the **variable**.
-The variable is the foundation of all dynamic systems.
+The variable is the foundation of mathematics,
+and more general the foundation of all dynamic systems.
 
 The **variable** consists of **values**.
 Other words for values are alternatives or states.
@@ -118,8 +124,6 @@ A variable consists of all the values
 
 - that occur (exhaustiveness) and
 - that exclude each other (exclusiveness)
-
-I define information this way:
 
 **Information** is the number of values of a variable.
 
@@ -139,13 +143,9 @@ Every variable has its own time.
 
 A time step is a value of the variable.
 
-.. math::
-
-   t = I
-
 Components of values ( = coordinates = observables),
 that change at the same time,
-are one value, physically.
+physically constitute only one value.
 
 .. {energy variable}
 
@@ -154,7 +154,7 @@ Energy of a Variable
 
 The values of a variable can occur slowly or fast.
 But that can only be seen, if we have another variable to compare to.
-Our mind has an internal clock, that gives a comparison.
+Our mind has an internal clock that gives a comparison.
 
 When we run a film in slow or fast motion,
 we get an idea that the time during film shooting
@@ -162,34 +162,33 @@ can be seen as either slow or fast,
 depending on our reference time.
 
 In other words: energy is *time* compared to *time*.
-The first time we call information.
+The first "time" we call information or proper time.
 
 .. math::
 
-   E = \frac{ΔI}{Δt} = \frac{Δt_1}{Δt_2}
+   W = \frac{ΔI}{Δt} = \frac{Δτ}{Δt}
 
-Energy is the rate of selection,
-or information rate.
-
-The comparison `E=ΔI/Δt` is with an unrelated other variable `t`.
+The comparison `W=ΔI/Δt` is with an unrelated other variable `t`.
 This happens only in the mind. It is not physical.
 The other `t` is an arbitrarily chosen unit of information
-and `E` is the number value of information (`I=Et`).
+and `W` is the number value of information (`I=Et`).
 One can also do it in reversed,
-then `1/t` (Hertz, Hz) is the unit of `E` and `I` is the number value.
-But `I` demands values, changes, time.
-`I` itself has a proper time.
+then `1/t` (Hertz, Hz) is the unit of `W` and `I` is the number value.
+
+Energy is the rate of selection,
+or information rate or frequency.
 
 In nature many variables are isolated.
 With just one variable the only time its own,
-and `E=dI/dI=1`.
-Information means energy and vice versa.
+and `W=∂I/∂I=1`.
+The concept of information demands values, changes, time on its own.
+`I` itself has a proper time.
 
 Do we need to choose another variable to have time? No.
 Our variable changes its values
 and that is the proper time of the variable.
-Without time the values do not change.
-Then there is no time and so the variable does not get into existence.
+If values do not change,
+then there is no time and so the variable does not get into existence.
 
 The variable thus defines:
 
@@ -201,8 +200,10 @@ Time and information are equivalent, physically.
 With just one variable information and time are synonyms
 and energy is just 1 or has no meaning.
 
+When comparing to another variable,
+information implies energy and energy implies information.
 The comparison is often just a thing of our mind.
-The physical motivation for energy comes when the selections of
+The physical motivation for energy comes, when the selections of
 one variable matters with respect to the selections of another variable.
 The other variable is called time
 to distinguish it from the first variable,
@@ -214,22 +215,11 @@ More `dx_1, dx_2, ...` can constitute one physical change `dI`.
 The value `dI` of a physical variable is an interaction between observables.
 An interaction is one time step with possibly more participants/observables.
 
-In a higher physical levels, the `x_i` take part in an interaction:
+The `x_i` take part in an interaction:
 
 .. math::
 
-   E = \frac{dI}{dt} = \frac{∂I}{∂x_i}\frac{dx_i}{dt} = p_i ẋ_i
-
-The energy `E=İ` compares `I` to some external `t`.
-Classical mechanics introduced the
-energy components `∂H/∂\{x,p\}=\{-ṗ,ẋ\}`,
-the forces.
-Quantum mechanics realized
-that the `dpdx` step is the time step: `dψ/dt = ∂²ψ/(∂p∂x)`,
-by which is meant that,
-on the left side we have `∂t` where on the right side we have `∂p∂x`.
-The `ψ` is our information `I`.
-
+   W = \frac{∂I}{∂t} = \frac{∂I}{∂x_i}\frac{dx_i}{dt} = p_i ẋ_i
 
 .. {cycle}
 
@@ -238,7 +228,7 @@ Cycle
 
 As long as a variable exists
 a variable cycles through its values
-with constant rate `E`.
+with constant rate `W`.
 
 How much external time a cycle takes, depends on
 
@@ -247,17 +237,22 @@ How much external time a cycle takes, depends on
 
 .. math::
 
-   t = \frac{I}{E}
+   t = \frac{I}{W}
 
 Selections order the values.
 If the last value is reached,
 the selection continues with the first.
 This brings the first value near the last.
 How can you do that with one variable alone?
+We need to distinguish between mind variables and physical variables.
+Mind variables vary separately only in the mind,
+while physically they are only a component of a change.
+One physical value has more observable components,
+which do not vary independently and are thus not physical variables.
 
 In two dimension you can create a circle,
 in which the last value is close to the first one.
-And indeed, nature has examples of two variables,
+And indeed, nature has examples of values with two observables,
 think of the electric and magnetic fields in electricity
 or the elevation and velocity of a pendulum.
 
@@ -265,7 +260,7 @@ What is meant by a variable here is defined by a change,
 i.e. by a time step.
 Within one `Δt` changes of at least two observables combine to one.
 
-The value combinations of two or more observables
+All the value combinations of two or more observables together
 form a physical and inherently cyclic variable.
 
 .. {level}
@@ -287,7 +282,7 @@ it is the Planck constant `h`::
    EΔt = ΔI = h
 
 `Δt` and `ΔI` are both information of some distinct variables.
-On the lowest level we have `Δt=ΔI=h` and thus `E=1`.
+On the lowest level we have `Δt=ΔI=h` and thus `W=1`.
 
 `ΔI` also defines an acceptable deviation for a level.
 This is a generalization of energy levels of an electron in atom orbitals,
@@ -298,7 +293,7 @@ All the cumulative changes through the levels
 are limited by the rate on the lowest level.
 Higher level changes are slower,
 because they involve lower level changes
-over more levels.
+over more layers.
 
 If a higher level changes faster,
 then the levels below need to get slower,
@@ -314,12 +309,11 @@ like `h` for the lowest level.
 Speed vs rate of information
 ----------------------------
 
-`E=I/t` compares time with time.
+`W=I/t` compares time with time.
 There is no physical space involved.
 So information cannot be attributed a speed in physical space.
 
 The physical space is contained in the definition of a specific `I`
-(and so in a specific `t`)
 by their simultaneous changes with the components of `I` along them (momenta).
 
 If I say a word,
@@ -327,30 +321,30 @@ the travel time of the word to my interlocutor and its interpretation to a conce
 is one value in our interaction, in our communication.
 The changes (observables) of the communication partners
 to form and interpret the message is shared between the partners.
-This principle applies also to lower level physical interactions.
+This idea applies also to lower level physical interactions.
 
 On the lowest level the signal speed is that of the speed of light `c`.
-On higher levels it is a lot slower (but can also be called the `c` of the level).
+On higher levels it is a lot slower (but could be called the `c` of the level).
 
 `c` compares to an external time `t` already.
 `ct` removes that external time.
 This gives the proper time unit `dI` a space extend.
 
 A value does not move from place to place,
-but it has a space size unit, a space quantum.
+but it has a space extend, a space quantum.
 The components of a value are quantized.
-In the lowest level this is `ΔpΔx ≥ h`.
+In the lowest level this is `ΔpΔx = h`.
 
 The next value can occupy a different space close by.
-With photons `hν` photons that space is `λ=c/ν` away (`hν=hc/λ`),
+With `hν` photons that space is `λ=c/ν` away (`hν=hc/λ`),
 `t=1/ν` later (`Et=hνt=h`).
 
-Higher energies cycle locally which binds some `h` in a mass `m`.
+Higher energies cycle locally, which binds some `h` in a mass `m`.
 `m` encapsulates all the lower levels.
-`E²=p²c²+m²c⁴`.
+`W²=p²c²+m²c⁴`.
 If `p=0`, all the energy is within `m`.
 
-`mv=h/λ` attribution of smaller `λ` to higher momenta
+The `p=mv=h/λ` attribution of smaller `λ` to higher momenta
 are due to the many parallel lower level particles averaging
 and producing a space precision that is not there in the single particle.
 
@@ -360,15 +354,25 @@ and producing a space precision that is not there in the single particle.
 Particle
 --------
 
+If a variable itself is closed
+and it takes part in a higher level interaction,
+then it forms a value component of the higher level variable.
+The value component's internal information has no information
+in the higher level variable, but it has internal information.
+
 A physical variable that acts as a value in a level is sometimes called a particle.
 A particle is a synonym to a variable used to distinguish in specific contexts.
-One can use particle to distinguish from mind variables.
 
-Information quanta have or are a time extend
+Particles are information quanta.
+Particles have or are a time extend
 and also have a physical space extend.
 So the particle is a space-time quantum.
 
-Instead of variable levels we have particle levels.
+A variable level builds on a particle level.
+In an interaction between people, the person is the particle.
+Looking at a person's thinking as a variable,
+concepts are the particles.
+
 The interactions in higher levels take a longer time
 and involve more physical space.
 But the information needs to cycle during such long times,
@@ -378,12 +382,8 @@ which cycles with `h`.
 Interaction in higher levels are via particles in lower levels.
 
 A particle has its internal interactions, its internal time.
-Mass is another name for energy (here information),
+Mass is another name for energy,
 meaning the inner cycling of a particle.
-
-In an interaction between people, the interaction is the particle.
-Looking at a person itself is looking at a lower level particle,
-that has inner interactions (i.e. inner particles).
 
 .. {Static vs dynamic information}
 
@@ -422,15 +422,16 @@ The number of bits/digits/alphabets needed to produce the combinations `I`:
 
    S = log I
 
-S counts the unit variables to produce an described variable's count.
-Seen this way, a variable count in its own unit is 1.
+S counts the unit variables to produce a value combination count.
+The unit variable itself counts as 1.
 This look is that on a level, where the variable is a value.
 
 Between levels, when including a lower level,
 e.g. because the lower level matters,
 we transition from addition to multiplication.
-We transition from multiplication to addition,
-i.e. we use the logarithm, in the other direction.
+In the other direction,
+we transition from multiplication to addition,
+i.e. we use the logarithm.
 
 In thermodynamic systems we have two levels.
 The upper level does not distinguish
@@ -462,11 +463,11 @@ and `V` is a higher level variable that counts the lower level packets.
 
 .. math::
 
-   E = ST = pV
+   ST = pV
 
 A higher level equilibrium means no time in the higher level,
 but it corresponds to a maximum number of lower level interactions.
-All the exchange of information (`E`)
+All the exchange of information (`W`)
 is in the lower level and at equal rate in both direction.
 
 If more exchange were in the higher level,
@@ -491,15 +492,12 @@ which leads to the `Planck law`_.
 Energy as Information Flow
 --------------------------
 
-`E=dI/dt` can compare the whole variable to some unrelated variable `t`,
-in which case `I` stays constant and `E` is a unit conversion (`I=Et`). 
-
+`W=∂I/∂t` can compare the whole variable to some unrelated variable `t`,
+in which case `I` stays constant and the rate `W=I/t`  stays also constant
 But we can also look at a part of a system,
-and see `E=dI/dt` as inflow or outflow of information,
-thereby neglecting the other partner of the interaction.
+and see `W=∂I/∂t` as inflow or outflow of information (see Lagrangian below).
 
 Adding or removing information to a system is a higher level time.
-
 If information is added to a variable,
 the variable becomes a different variable.
 
@@ -510,20 +508,16 @@ The molecular interactions use atoms as packets.
 The atomic nucleus uses nucleons as packets.
 Every layer has its own packets.
 
-Every layer has its own frequency of packet exchange.
-This is the time of the level.
-When compared to some other time we have the energy
-relevant for the level.
+Every layer has its own energy, i.e. frequency of packet exchange.
+A variable serving as time to compare to is level-specific.
 Energy is expressed in a unit relevant for the level.
 Relevant, usable energy is level-specific.
 
 If levels interact more levels need to be considered.
 If one level's frequency is called energy,
 then the next higher level's frequency is called power.
-For example, in electricity energy `E=UQ` is an energy of one level
-and power `P=UI=fE` is the energy of the next level.
-`E` is the quantum `h` in this level (this level's time step),
-and `f` is the energy of the level, the comparison to some external `t`.
+For example, in electricity energy `W=UQ` is an energy of one level
+and power `P=UI=fW` is the energy of the next level.
 
 The energy is important as a measure
 to express the relative rate of information exchange between systems.
@@ -532,23 +526,23 @@ How fast an exchange is in comparison to the other, decides
 - where the accumulation of information happens
 - who survives how long
 
-The joint system dies, if there is nothing to accumulate any more.
+If we have only accumulation on one side,
+the joint system dies, when there is nothing to accumulate any more.
 
-There can also be a back and forth of accumulation,
-for the joint system to survive longer.
+If there is a back and forth of accumulation,
+the joint system survives longer.
 One system is the potential energy for the other system and vice versa.
 The states of the joint system
-can be considered as the values of the system as a variable.
+are the values of the system as a variable.
 
 The exchange of information packets takes time,
 but that time is shared between the two systems.
 The time step thus makes both changes as one.
 
 A variable is an information unit `I`.
-`I` is the time or the variable.
 Comparing it to an external variable `t`
 cannot change the internal physics.
-Energy `E=I/t` is a property of the variable, not of the value,
+Energy `W=I/t` is a property of the variable, not of the value,
 and especially not of the components of a value.
 To express energy as functions of values gives a wrong picture.
 It is an indirect mapping: value -> variable -> energy.
@@ -556,14 +550,13 @@ The variable has one energy.
 All values just map to this energy,
 which is the same for all values.
 
-Saying `E=mv²/2+mgh` describes the `v,h` observables
-sharing the same energy `E`,
+Saying `W=mv²/2+mgh` describes the `v,h` observables
+sharing the same energy `W`,
 i.e. the energy of a variable and not of a value.
-Expressing `E=mv²/2` or `E=mgh` separately and
+Expressing `W=mv²/2` or `W=mgh` separately and
 as a function of values has no meaning.
 
 The word energy is often used in the sense of information, as understood here.
-I also use energy in the sense of information as understood here.
 Here information implies time and thus also energy.
 That physically they are the same,
 is the major statement here.
@@ -576,7 +569,7 @@ this just neglects lower level dynamics (`m`)
 or this level's dynamics `S`.
 So, although not physical,
 to distinguish between energy and information makes sense
-as a tool to give a shorter description of a specific context.
+as a tool to give a shorter description of a local context.
 
 Interaction between Levels
 --------------------------
@@ -589,21 +582,19 @@ They are energy packets.
 
 The high level interactions can be slow (low in level energy)
 compared to lower levels.
-
-A level has a more or less constant information rate `T`.
-But the `S` parallel particles can encapsulate more levels
+A level has a more or less constant information rate.
+The parallel particles encapsulate more lower levels
 (animal, cell, molecule, atom, ...).
 Each level has information processing and thus stores energy.
 
 Information flows between levels, too.
 For example, when two molecules react,
-they release energy to the thermodynamic level (`ΔH`).
-
+they release energy to the thermodynamic level (Enthalpy `ΔH`).
 Lower level variables get destroyed
 to create higher level variables, i.e. higher level processing.
 
 The Maxwell Demon (controller) works between levels.
-Many level systems like living beings (microorganism, plants, animals, ...),
+Many-level systems like living beings (microorganism, plants, animals, ...),
 but also companies or social structures in general
 use this principle of control.
 
@@ -613,10 +604,10 @@ The lower level simulates the logic of the higher level.
 As the lower level is faster,
 it can pick high energy packets.
 Then the controller uses the inner energy of the high energy packet,
-to keeps its own interactions (keep `T`) running or to reproduce (increase `S`)
-(change `T` or `S` in a generalized `E=TS`).
+to keep its own interactions (keep `T`) running or to reproduce (increase `S`)
+(change `T` or `S` in a generalized `W=TS`).
 
-Higher energy packets demands for energy storage.
+Higher energy packets demand for energy storage.
 Storage divided by consumption determines the rate of high level interaction.
 Higher level exchange rates are slower.
 
@@ -633,10 +624,10 @@ Such changes are slower than the selection of the energy packets.
 
 That he total information flow distributes to complex levels on earth
 is due to slow cooling (annealing) over a long time.
-If `E` goes down, `ST` can keep a constant `T` by reducing `S` at a level,
+If `W` goes down, `ST` can keep a constant `T` by reducing `S` at a level,
 e.g. by making larger molecules.
 Systems that encapsulate, live longer in the presence of cooling.
-To live longer means a smaller rate, i.e. less `E`.
+To live longer means a smaller rate, i.e. less `W`.
 The same happens in the learning brain, to the economy, and other dynamic systems.
 
 
@@ -648,16 +639,16 @@ Newton
 Newton (rephrased):
 An object rests or moves in a straight line with constant speed,
 unless there is an interaction (force) with another object
-and that force changes both objects (*action=reactio*).
+and that force changes both objects (*actio=reactio*).
 
 A straight line would imply an infinity.
 There is no infinity in the physical world.
 Real systems always cycle until they cease to exist as system.
 Every curved line seems straight with enough zooming.
 That is why in physics one always uses manifolds
-instead of the mathematical `ℝ^n`.
+instead of the flat `ℝ^n`.
 Newton's straight line needs to be replaced by a geodesic,
-whose curvature is that of the cycling variable.
+whose curvature is that of the components of the cycling variable.
 
 Information implies time.
 Time is force.
@@ -677,57 +668,68 @@ The force is shared between the interacting objects.
 
 Velocity cannot be seen or measured physically from inside its own inertial frame,
 so it has no information.
-From outside that is the same.
+And so it has no information from outside, neither.
 Velocity is a component of a value and not a physical variable.
 A value does have no information.
-What exists physically is a change of velocity,
-and that change is accompanied by another change.
-The force is shared.
+Only a variable has information, and thus exists.
+Not even a change of velocity, as seen from the flat space of our mind,
+does exist, because it is a value and not a variable.
+And indeed within a geodesic the acceleration cannot be measured.
+
+In the following, assuming `∂τ/∂x\;dx/dt` constant,
+demands that `∂τ/∂x` and `dx/dt` change in opposite directions (the minus sign).
+Normally there would be more `x_i` and thus more terms,
+which would not be constant, but the sum would.
+In the Lagrangian (below) the minus sign is introduced through partial integration.
 
 .. math::
 
-   0 & = \frac{dE}{dt} = \frac{d}{dt}\left(\frac{∂τ}{∂x}\;\frac{dx}{dt}\right) = \\
-   & = \frac{d}{dt}\left(\frac{∂τ}{∂x}\right)\;\frac{dx}{dt} + \frac{∂τ}{∂x}\;\frac{d²x}{dt²} = \\
-   & = \frac{dE}{dx}\;\frac{dx}{dt} + m\frac{dx}{dt}\;\frac{d²x}{dt²}
+   0 & = \frac{dW}{dt} = \frac{d}{dt}\left(\frac{∂τ}{∂x}\;\frac{dx}{dt}\right) = \\
+   & = -\frac{d}{dt}\left(\frac{∂τ}{∂x}\right)\;\frac{dx}{dt} + \frac{∂τ}{∂x}\;\frac{d²x}{dt²} = \\
+   & = -\frac{∂W}{∂x}\;\frac{dx}{dt} + m\frac{dx}{dt}\;\frac{d²x}{dt²} \\
+   & \right[\frac{∂}{∂t}\frac{∂τ}{∂x} = \frac{∂ \frac{∂τ}{∂t} }{∂x}=\frac{∂W}{∂x}\left]
 
-And then divide by `dx/dt` to get Newton's force law:
+Divide by `dx/dt` to get Newton's force law:
 
 .. math::
 
-   \left[ F \coloneqq -\frac{dE}{dx} \right] = ma
+   \left[ F \coloneqq \frac{∂W}{∂x} \right] = ma
 
 The part in brackets is a definition of force.
-
-The modern way to get to this formula is the Lagrange way, though,
-with a minimization step that finds what actually constitues one time step,
-and the formula is more general: it is the Euler-Lagrange equation.
 
 To get to Newton's formula an unexplained step was used:
 
 .. math::
 
-   \frac{∂τ}{∂x} = m \frac{dx}{dt}
+   \frac{∂τ}{∂x} = m \frac{∂x}{∂t}
 
 This is thus a consequence of Newton's force law.
 It relates our coordinates `t` and `x`
 to the system coordinates `τ` and `χ`.
-`χ` is in `∂x`-extends of our `x`.
 
-Giving different variables different times
+.. math::
+
+   \frac{∂τ}{∂t} = \frac{∂τ}{∂χ} \frac{∂χ}{∂t} \\
+   \frac{∂τ}{∂χ} = 1 \\
+   \frac{∂χ}{∂t} = m \frac{∂x}{∂t}
+
+`τ` and `χ` count the same changes and thus `∂τ/∂χ=1`
+`χ=mx` expresses that the proper space extend is larger if `m` is larger.
+
+This comparison between variables
+and that a value has components
 solves the *vis-viva* debate that was going on between Newton (`mv`),
-Leibnitz (`mv²/2`) and others.
-
+Leibniz (`mv²/2`) and others.
 `∂τ/∂x` is a component of a change, i.e. of a time or information step.
 Time is an interaction with more partners.
 This leads to the concept of energy:
 
+Also mass turns out to be a kind of energy:
+
 .. math::
 
-   E = \frac{dτ}{dt} = \frac{∂τ}{∂x}\;\frac{dx}{dt}
-
-Reordering gives `dx/dt = E ∂x/∂τ`,
-and by comparing to `m\;dx/dt`
-one can see that the mass `m` is actually an energy, too.
+   W = \frac{∂τ}{∂t} = \frac{∂τ}{∂x}\;\frac{∂x}{∂t}\\
+   \frac{∂x}{∂t} = W \frac{∂x}{∂τ} = m \frac{∂x}{∂τ}
 
 Comparisons to `t` are not physical, but a necessity of the mind.
 By comparing more observable changes to one external time `t`,
@@ -736,13 +738,12 @@ for a specific system.
 
 .. math::
 
-   E = \frac{∂τ}{∂x}\;\frac{dx}{dt} = m\frac{dx}{dt}\;\frac{dx}{dt} = mv²
+   W = \frac{∂τ}{∂x}\;\frac{∂x}{∂t} = m\frac{∂x}{∂t}\;\frac{∂x}{∂t} = mv²
 
-`E` is the full energy. `m` summarizes lower level energies.
+`W` is the full energy. `m` summarizes lower level energies.
 With `c` as maximum `v`,
 there are no lower level changes possible any more,
-and thus mass is exactly the movement itself: `m=E/c²`.
-
+and thus mass is exactly the movement itself: `m=W/c²`.
 
 .. {mind vs reality}
 
@@ -753,8 +754,8 @@ Our mind is a physical system itself,
 and has its own time.
 Actually there are independent parallel processes in the mind,
 which have separate times.
-But they are compared to one time,
-which creates the feeling of conciousness.
+But they are compared,
+which creates one time and the feeling of conciousness.
 
 A variable is defined by its values.
 The number of values is the information `I` of the variable.
@@ -763,6 +764,8 @@ The number of values is the information `I` of the variable.
 "Space" means generally the value-components of an interaction (a value),
 not necessarily physical space.
 
+Values do only exist in conjunction with the variable,
+which exists, because it has information and time.
 The space values exist only when actually happening.
 This also applies to physical space.
 Our memory of physical space,
@@ -774,12 +777,12 @@ The components are mind variables,
 also called observables or coordinates.
 The mind can change them independently,
 i.e. give them their own time,
-but the physical system does not.
+but the physical system may not.
 
 Comparing independent variables,
 results in these quantities:
 
-- **energy** `E=dI/dt` compares times of two variables
+- **energy** `W=∂I/∂t` compares times of two variables
 - **momentum** `p=∂I/∂x` compares time with a component
 
 Independent variables have separate times.
@@ -798,7 +801,7 @@ there need to be at least two components
 to connect the last value with the first.
 `p,x` are such two conjugate components.
 They are called phase space to express in which phase the cycle of the variable is in.
-A `dI` time step corresponds to a `dpdx` in the phase space.
+A `dI` time step corresponds to a `∂I/∂x\;dx=pdx` in the phase space.
 
 `x` is a mind variable,
 where we can spend a lot of time looping to arbitrary precision,
@@ -808,7 +811,7 @@ i.e. the smallest time unit of nature.
 Nature is layered, though, and every level above has a larger time unit.
 
 `I=ψ`. In the Schrödinger and the Dirac equation,
-it is compared to another external time `t`: `\frac{dψ}{dt}`
+it is compared to another external time `t`: `\frac{∂ψ}{∂t}`
 Time is information.
 
 The physical world is imprecise and finite.
@@ -825,12 +828,12 @@ allows to map whatever physical variables to two cycling meta-variables.
 Multiplying (convolving) with the conjugate `<ψ|ψ>`
 finally projects the cycle onto the direction of the observer.
 
-The evolution in time `t` of `I=ψ` is the energy `H`
+The evolution in time `t` of `I=ψ` is the energy `W`
 (Schrödinger equation):
 
 .. math::
 
-  iħ\frac{dψ}{dt} = Hψ
+  iħ\frac{∂ψ}{∂t} = Eψ
 
 `i` because of the differentiation and `ħ=\frac{h}{2π}` due to `hν = ħω`.
 
@@ -839,8 +842,9 @@ The right side is what components constitutes one time step.
 
 In the Dirac equation the `ψ` has four components corresponding to the same time.
 
-The cycling produces the spin.
-For a photon it is the cycling between `E` and `B`
+The cycling produces spin.
+For a photon it is the cycling between 
+electric field `E` and magnetic field `B`
 and it can be mapped to `x_i,t` (`=x_μ`)
 via the Maxwell equations.
 The `E,B`-cycling correspondence to one `x_μ`-rotation
@@ -854,39 +858,47 @@ Fermions have spin `1/2`.
 Lagrangian and Hamiltonian
 --------------------------
 
-A system is described by variables of our choosing (mind variable), like `x_1,x_2,...`,
-which are sometimes collectively named `x`.
-The mind can see all values separately,
-like `x_1` can be space points at position `1m, 2m, ...`.
-But from the system's perspective one change combines changes of different mind variables.
-A value combination of the values of `x_1, x_2, ...` forms one value, i.e. one change,
-and thus defines one system time step.
-The time steps need to cycle. So there is no linear motion involved.
+The information `I` of a variable is its number of values.
+The values constitute time steps.
+The components of all the values form a curved space
+that allows the variable to cycle.
+Comparison to an external time, `W=∂I/∂t`, does not change `I`.
+`W` is a constant of motion.
 
-As an example, a planet in a circular orbit changes `x_1,x_2` and `ẋ_1,ẋ_2`.
-But then, that motion repeats every year.
-The whole motion of the planet is one variable whose values cycle.
-The planet orbit could change by collision with an asteroid,
-but until then the variable's values cycles as is.
+The Lagrangian `L` looks at a possibly small part of a system,
+associating the rest with the location of the observed part,
+as *potential energy* `E_p`.
+Energy by itself is kinetic (`E_k`),
+because it is about time steps, i.e. about changes,
+but one can usually not consider all parts.
+Therefore the potential energy.
 
-The Lagrangian approach is to fixate the time steps
-and count the changes in the system relative to one component.
-`L` becomes positive and negative.
-`L` expresses the phase the system is in.
-Then sum over the cycle time: `J=∫Ldt`.
+.. math::
 
-What are the number of values in the variable?
-Number of values would be relative to a unit in the macroscopic world,
-but in the quantum scale it can be seen as such:
-number of values, each counting as 1 (`h=1`).
+    L(x,ẋ) = E_k - E_p = pẋ - H(x,p(ẋ))
 
-We cannot just look at the planet.
-The planet's orbit is due to an interaction between planet and sun.
-They exchange something that keeps them together (force particles).
-This is like handing over money: one spends the other earns.
-Both change their financial status, but the time step is just one.
-`L` would consider only one part, e.g. the spender,
-but the money would flow back again to keep the system running.
+.. _`Legendre transformation`: https://en.wikipedia.org/wiki/Legendre_transformation
+
+`pẋ - H(x,p(ẋ))` is a `Legendre transformation`_.
+
+As `pẋ` is twice the kinetic energy,
+`H` summarizes potential and kinetic energy.
+`H` constitutes a time step. It is `H=-W`.
+
+.. math::
+
+    H(x,ẋ) = E_k + E_p
+
+`pẋ` in `L=pẋ-H` varies over time.
+So `L(x,ẋ)` oscillates,
+whether around 0 depends on the choice of potential.
+`L` expresses the phase of the observed components.
+The sum over a cycle becomes minimal,
+because the oscillations cancel over one cycle.
+
+.. _`calculus of variations`: https://en.wikipedia.org/wiki/Calculus_of_variations
+
+With variational `Calculus of variations`_ the minimum can be found.
 
 Minimizing `J=∫Ldt` one gets the Euler-Lagrange equation.
 
@@ -908,29 +920,26 @@ By replacing `∂_ẋ L = p` and `F=∂_x L`, this is Newtons `F=ṗ=ma`.
 Since we minimized with respect to time,
 this equation tells us what belongs to the same time step.
 
-After minimization we use `H` instead.
-`L(x,ẋ)` is transformed to `H(p,x)` via a Legendre transformation.
+`L(x,ẋ)` is transformed to `H(p,x)` via a `Legendre transformation`_.
+`H(p,x)` considers the system as a whole,
+rather than the inflow or outflow of information from a component, as with `L`.
 
 .. math::
 
    \frac{dL}{dt}=\frac{d}{dt}\left(ẋ\frac{∂L}{∂ẋ}\right) + \frac{∂L}{∂t} \\
-   0 = \frac{d}{dt}\left(ẋ\frac{∂L}{∂ẋ}-L\right) + \frac{∂L}{∂t} => \\
-   E = H = pẋ - L(x,ẋ(p,x))
+   0 = \frac{d}{dt}\left(ẋ\frac{∂L}{∂ẋ}-L\right) + \frac{∂L}{∂t} \\
+   H(x,p) = pẋ - L(x,ẋ(p,x))
 
-`E=H=dI/dt` for a closed system is constant.
-For a non-closed system there is the `Hamilton-Jacobi`_ `∂J/∂t=-H`,
-which is basically the same, but on a different (upper) level time.
-`d` considers more levels in between and `∂` just on level, but
-regarding time `∂` is inappropriate,
-because `t` is a helper that always summarizes simultaneous events constituting the time step.
+`∂I/∂t=-H` is the `Hamilton-Jacobi`_ equation.
+Information `I` is Hamilton's principal function.
 
 .. _`Hamilton-Jacobi`: https://en.wikipedia.org/wiki/Hamilton%E2%80%93Jacobi_equation
 
 Interactions have a constant rate unless the exchanged energy packets become of higher value.
 The cycling values of a variable from this level form the energy packet of the next higher level.
 
-`I = ∫dI = ∫Hdt` is the full count of values, i.e. the full information of the system.
-`H = dI/dt` compares the system time steps `dI` to some other system's time `t`.
+`I = ∫dI = ∫Wdt` is the full count of values, i.e. the full information of the system.
+`W = -H = ∂I/∂t` compares the system time steps `dI` to some other system's time `t`.
 
 The Euler-Lagrange equation become the Hamilton equations.
 
@@ -940,32 +949,36 @@ The Euler-Lagrange equation become the Hamilton equations.
   \frac{∂H}{∂p} =  \frac{dx}{dt}
 
 
-`F=∂_x H` is the reason for `∫Fds=E`.
+`F=-∂_x H` is the reason for `∫Fds=W`.
 
 Without the external `dt` in the Hamilton equations, we have:
 
 .. math::
 
-  \frac{∂I}{∂x} = -dp \\
-  \frac{∂I}{∂p} = dx
+  \frac{∂I}{∂x} = Δp \\
+  \frac{∂I}{∂p} = Δx
 
-Or:
+Or, integrating either of the two:
 
 .. math::
 
-  dI = dpdx
+  ΔI = ΔpΔx
 
-Each `dI` change is represented by a phase space volume element `dpdx`.
+Each `dI` change is represented by a phase space volume element `ΔpΔx`.
 
 The information resolution of the physical world has a lower limit `h`.
 
 .. math::
 
-  dI = dpdx ≥ h
+  ΔI = ΔpΔx ≥ h
 
-`dpdx` is just an example.
-It leads to the Schrödinger equation.
-The Dirac equations has more observables
+Quantum mechanics realized
+that the `ΔpΔx` step is the time step: `∂ψ/∂t = ∂²ψ/(∂p∂x)`.
+On the left side we have `∂t` where on the right side we have `∂p∂x`.
+The `ψ` is our information `I`.
+
+The Schrödinger equation, and thus `ΔI=ΔpΔx`, is just an example.
+The Dirac equation has more observables
 falling into the same system time step.
 
 The constant `I` is the information of the observed system.
@@ -981,25 +994,18 @@ creates a separate variable (a photon),
 i.e. a separate information packet
 to keep the total information constant.
 
-Our coordinates `x` and `p` are not the system coordinates.
-Hamilton's equations `∂E/∂\{x,p\}=\{-ṗ,ẋ\}` become `∂τ/∂\{x,p\}=\{-p,x\}`.
-This explains `∂τ/∂x=mdx/dt` and `E = dτ/dt = dτ/dx\;dx/dt = mẋ^2`.
-`p,x` define extends `∂\{x,p\}` in our coordinates
-that physically count as one for the observed system.
-Only a count of values holds information, not single values.
-The same information of the system is stored in the x and p value count.
-
 Values do not Commute
 ---------------------
 
 `dI` is a time step and `H` compares it to some external time step `dt`.
-`H(x,q)` is the same for every time step (point in the phase space).
-`H` corresponds to the `h` in the lowest level, just that `h` is not compared to a `dt`.
+`H(x,q)` is the same for every time step,
+i.e. every component combination or point in the phase space.
+`H` corresponds to the `h` in the lowest level.
 
 .. math::
 
-   H=\frac{dI}{dt}=\frac{∂I}{∂x}ẋ-\frac{∂I}{∂p}ṗ \\
-   h = Hdt = dI = \frac{∂I}{∂x}dx-\frac{∂I}{∂p}dp
+   Hdt = dI = \frac{∂I}{∂p}dp+\frac{∂I}{∂x}dx = xdp-pdx ≥ h \\
+   ΔxΔp ≥ ħ/2
 
 So the values of a variable do not commute,
 because they are one time, one causal chain, serial.
@@ -1008,27 +1014,34 @@ The values of different variables do commute,
 because they are independent, parallel, without correlation.
 If one would sum over some external time stretch `T` and divide by `T`,
 one would get 0: `1/T∫(dτ/dt)dt→0`.
+`dτ` would count any possible combined change of independent variables.
+`dt` would be of arbitrary size and would make `T=∫dt` arbitrarily large,
+since there is no cycling.
 
 .. {Topology}
 
 Topology
 --------
 
-A variable by itself is sequential, i.e. causal.
-The values of higher level variables
-are packets composed of
-parallel variables of equal or varying size from lower levels.
-This can account for all the topologies of our universe.
+A variable implies time, which implies processing.
+Two variables have two time, i.e. parallel processing.
+A variable by itself is sequential, i.e. causal,
+meaning the values of a variable form a sequence.
 
-All the topology is constructed by parallel vs serial in levels.
+Serialization of variables,
+makes the variable to a value of a higher level variable.
+
+Higher level variables are a mix of serial and parallel processing
+of lower level variables of varying size.
+The more or less independent times of the variables,
+i.e. the information encapsulations,
+account for all the topologies of our universe.
+
+All the topology is constructed by parallel vs serial in levels
+starting from the elementary `h`.
 
 Since information is time already,
 the universe evolves via information alone.
-
-Values of a variable are serial.
-Variables themselves can be serial or parallel.
-Serialization of variables, makes the variable to a value.
-This is like moving up to the next time level.
 
 The timing of a higher level variable
 is the result of the topology of variables it builds upon.
@@ -1043,23 +1056,23 @@ For example,
   which keeps T based exchange slow
 - if humans interact a lot the thinking in the mind becomes slower due to the distraction
 
-E is constant in a level.
+`W` is constant in a level with an intrinsic uncertainty.
 
-With fixed `E`, large variables (with many values) cycle slowly.
+With fixed `W`, large variables (with many values) cycle slowly.
 A higher level variable can become faster
-by making the lower variables of smaller size (`E²=p²c²+m²c⁴`)
+by making the lower variables of smaller size (`W²=p²c²+m²c⁴`)
 or parallel.
 
-Within a level the interactions (`E`) are highest
-if lower variables are of same `E` or synchronized.
+Within a level the interactions (`W`) are highest
+if lower variables are of same `W`, i.e. synchronized.
 
-If interacting parallel variables do not cycle with same `E`,
+If interacting parallel variables do not cycle with same `W`,
 there is a distribution of information until in equilibrium.
 The distribution of information is also called entropy maximization.
 
 More parallel variables increase the information throughput.
 Energy in higher levels thus compares the degree of parallelization.
-This is a generalization of the thermodynamic `E=ST`.
+This is a generalization of the thermodynamic `W=ST`.
 
 The inertia (mass) of a larger system is due to the time needed
 to change or synchronize lower variables.
@@ -1070,12 +1083,12 @@ It takes information flow and that takes time.
 Quantum Units
 -------------
 
-All the variables that can work as external `t` are  information.
+For `W=I/t`, all the variables that can work as external `t` are information, too.
 The lowest quantum `h` is therefore also a time quantum.
 
 .. math::
 
-  Δt_{\text{min}} = h
+  Δt_\text{min} = h
 
 `c=dx/dt` with constant `c` and minimum time `h`,
 makes the minimum space quantum to
@@ -1084,14 +1097,14 @@ makes the minimum space quantum to
 
   x_{\text{min}} = ch
 
-Energy compares two times and its minimum is thus `E=h/h=1` in the lowest level.
+Energy compares two times and its minimum is thus `W=h/h=1` in the lowest level.
 `mc² = hν = 1` produces `m=1/c²`.
 Setting the maximum coordinate speed to `c=1`
 makes the minimum mass `m=1`.
 
 .. math::
 
-  E_{\text{min}} = 1
+  E_{\text{min}} = 1 \\
   m_{\text{min}} = 1
 
 
@@ -1115,7 +1128,7 @@ Then the minimal values are
    h = 1 \\
    t = 1 \\
    x = ch = 1 \\
-   E = m = 1
+   W = m = 1
 
 One can continue like that for other quantities,
-like electrodynamic `\boldsymbol E` and `\boldsymbol B`.
+like electrodynamic `E` and `B`.
