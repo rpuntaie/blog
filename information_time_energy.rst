@@ -20,31 +20,37 @@ The objective here and in the `evolution`_ blog is *interpretation* of physics
 without the details to produce mathematical consistency.
 
 To say `W=I/t` is like saying that energy is time divided by time.
-
-Note, that as time happens by itself,
-energy here corresponds to mechanical work: W is -Energy.
-Usually one would use `E` for energy, but `E` is used for the electric field, too.
+As time happens by itself,
+energy here corresponds to mechanical work `W`.
 
 :Variable/value:
 Values of a physical variable are defined by time and define time for the variable.
 Every variable has its own information and its own time.
-
-:Information = time:
-The information of a variable is the number of values.
 
 :Cycle:
 The finite number of values of a variable cycle until the variable ceases to exist.
 A variable has a curvature when expressed with its observables.
 Values exist only while occurring.
 
-:Momentum: `p=∂I/∂x`.
+:Information = time:
+The information of a variable is the number of values in a cycle.
+`I=∫Wdt = Wt`. `W` is constant and representing `I`.
+`I` cycles over a space extend in a time period `t`.
+The variable as a value (quantum) has a space-time extend.
+
+:Momentum: `p=∂I/∂x=mẋ`.
 Component of a value of a variable.
 Component of a time step.
 
-:Energy: `W=-H=∂I/∂t=İ`.
-The energy of a variable is its time steps compared to the time steps of another variable.
-When looking at a part of a system,
-energy can also mean the inflow or outflow of information.
+:Energy: `W=-H=∂I/∂t`.
+`I` is constant: `dI/dt = ∂I/∂x\;ẋ + ∂I/∂t = 0`.
+The great trick is to associate the observed changes (the values)
+to the location where they are observed (create a field).
+Then one can look at a part of the system (Lagrangian `L`)
+and see the rest as potential `P(x)`,
+from which information flows in:
+`L(x,ẋ)=mẋ²-P(x)` is an information unit (time unit) with a space direction.
+`J=∫Ldt` counts change and ends with 0 after full cycle.
 
 :Force: `F=∂W/∂x=-ṗ`
 Component of energy.
@@ -64,16 +70,18 @@ Mathematical summary:
 .. math::
 
     I = τ \\
-    W = İ = \frac{∂I}{∂t} = \frac{∂τ}{∂t} = f \\
+    0 = dI/dt = \frac{∂I}{∂x}\frac{dx}{dt}+\frac{∂I}{∂t}  ⇒ W(x,p)=-H(x,p)=\frac{∂I}{∂t}`.
+    W = \frac{∂I}{∂t} = \frac{∂τ}{∂t} = f \\
     W = \frac{∂τ}{∂x}\;\frac{∂x}{∂t} ⇒ W\frac{∂x}{∂τ} = \frac{∂x}{∂t} ⇒ m\;\text{is}\;W \\
-    L = pẋ = pẋ-H \; \text{(Lagrangian L:}\;p,ẋ\;\text{a component, while Hamiltonian H full system step)} \\
+    H = pẋ-L = K+P \; \left[\text{Hamiltonian:}\; \frac{dL}{dt}=\frac{d}{dt}\left(ẋ\frac{∂L}{∂ẋ}\right) ⇒ 0 = \frac{d}{dt}\left(ẋ\frac{∂L}{∂ẋ}-L\right)\right] \\
+    L = pẋ-H = K-P \; \left[\text{Lagrangian: phase of component, while constant H is for full system)} \\
     δJ = ∫\left(δx\frac{∂L}{∂x}+δẋ\frac{∂L}{∂ẋ}\right)dt = ∫δx\left(\frac{∂L}{∂x}-\frac{d}{dt}\;\frac{∂L}{∂ẋ}\right)dt \\
     \frac{δJ}{δx} = 0 ⇒ \frac{∂L}{∂x}=\frac{d}{dt}\frac{∂L}{∂ẋ} ⇒ F=ṗ \\
     F = \frac{∂L}{∂x} = \frac{∂W}{∂x} = -\frac{∂H}{∂x} \\
     p = \frac{∂τ}{∂x} = \frac{∂L}{∂ẋ} = \frac{∂W}{∂ẋ} = mẋ \\
     W = \frac{∂τ}{∂x}\;\frac{∂x}{∂t} = mẋ² \\
-    E_p = ∫\frac{∂W}{∂x}dx = ∫Fdx = ∫ṗdx = ∫m\frac{dẋ}{dt}dx = ∫ mẋdẋ = mẋ²/2 = E_k\\
-    W = E_p(x) + E_k(ẋ) = mẋ²
+    P = ∫\frac{∂W}{∂x}dx = ∫Fdx = ∫ṗdx = ∫m\frac{dẋ}{dt}dx = ∫ mẋdẋ = mẋ²/2 = K\\
+    W = P(x) + K(ẋ) = mẋ²
 
 .. {introduction}
 
@@ -106,11 +114,11 @@ Many physical systems have no memory, but they have information.
 And, although we have a memory of concepts,
 they only become conscious those times we think of them.
 
-But the mathematical set has operations like **union** and **intersection**.
+But the mathematical set has operations like union and intersection.
 They are more complicated and can be decomposed into individual selections.
 The `∈` of a set selects one element from a set.
 This set with only `∈` is more fundamental.
-It is the ubiquitous **variable**.
+It is the ubiquitous variable.
 How could it be otherwise.
 Something so fundamental must be ubiquitous.
 
@@ -219,7 +227,7 @@ The `x_i` take part in an interaction:
 
 .. math::
 
-   W = \frac{∂I}{∂t} = \frac{∂I}{∂x_i}\frac{dx_i}{dt} = p_i ẋ_i
+   W = \frac{∂I}{∂t} = - \frac{∂I}{∂x_i}\frac{dx_i}{dt} = - p_i ẋ_i
 
 .. {cycle}
 
@@ -494,10 +502,10 @@ Energy as Information Flow
 
 `W=∂I/∂t` can compare the whole variable to some unrelated variable `t`,
 in which case `I` stays constant and the rate `W=I/t`  stays also constant
-But we can also look at a part of a system,
+But we can also look at a part of the system,
 and see `W=∂I/∂t` as inflow or outflow of information (see Lagrangian below).
 
-Adding or removing information to a system is a higher level time.
+Adding or removing information to the system is a higher level time.
 If information is added to a variable,
 the variable becomes a different variable.
 
@@ -709,12 +717,12 @@ to the system coordinates `τ` and `χ`.
 
 .. math::
 
-   \frac{∂τ}{∂t} = \frac{∂τ}{∂χ} \frac{∂χ}{∂t} \\
+   \frac{∂τ}{∂t} = \frac{∂τ}{∂χ} \frac{∂χ}{∂x} \frac{dx}{dt} \\
    \frac{∂τ}{∂χ} = 1 \\
-   \frac{∂χ}{∂t} = m \frac{∂x}{∂t}
+   \frac{∂χ}{∂x} = m
 
-`τ` and `χ` count the same changes and thus `∂τ/∂χ=1`
-`χ=mx` expresses that the proper space extend is larger if `m` is larger.
+`τ` and `χ` count the same changes and thus `∂τ/∂χ=1`.
+`∂χ/∂x=m` expresses that `∂x` becomes smaller, if `m` becomes larger.
 
 This comparison between variables
 and that a value has components
@@ -728,8 +736,8 @@ Also mass turns out to be a kind of energy:
 
 .. math::
 
-   W = \frac{∂τ}{∂t} = \frac{∂τ}{∂x}\;\frac{∂x}{∂t}\\
-   \frac{∂x}{∂t} = W \frac{∂x}{∂τ} = m \frac{∂x}{∂τ}
+   W = \frac{∂τ}{∂t} = -H = -\frac{∂τ}{∂x}\;\frac{∂x}{∂t}\\
+   \frac{∂x}{∂t} = H \frac{∂x}{∂τ} = m \frac{∂x}{∂τ}
 
 Comparisons to `t` are not physical, but a necessity of the mind.
 By comparing more observable changes to one external time `t`,
@@ -759,7 +767,7 @@ which creates one time and the feeling of conciousness.
 
 A variable is defined by its values.
 The number of values is the information `I` of the variable.
-`dI` is a system change and thus the system time.
+`dI` is the system change and thus the system time.
 
 "Space" means generally the value-components of an interaction (a value),
 not necessarily physical space.
@@ -865,17 +873,17 @@ that allows the variable to cycle.
 Comparison to an external time, `W=∂I/∂t`, does not change `I`.
 `W` is a constant of motion.
 
-The Lagrangian `L` looks at a possibly small part of a system,
+The Lagrangian `L` looks at a possibly small part of the system,
 associating the rest with the location of the observed part,
-as *potential energy* `E_p`.
-Energy by itself is kinetic (`E_k`),
+as *potential energy* `P`.
+Energy by itself is kinetic (`K`),
 because it is about time steps, i.e. about changes,
 but one can usually not consider all parts.
 Therefore the potential energy.
 
 .. math::
 
-    L(x,ẋ) = E_k - E_p = pẋ - H(x,p(ẋ))
+    L(x,ẋ) = K - P = pẋ - H(x,p(ẋ))
 
 .. _`Legendre transformation`: https://en.wikipedia.org/wiki/Legendre_transformation
 
@@ -887,7 +895,7 @@ As `pẋ` is twice the kinetic energy,
 
 .. math::
 
-    H(x,ẋ) = E_k + E_p
+    H(x,ẋ) = K + P
 
 `pẋ` in `L=pẋ-H` varies over time.
 So `L(x,ẋ)` oscillates,
@@ -900,7 +908,10 @@ because the oscillations cancel over one cycle.
 
 With variational `Calculus of variations`_ the minimum can be found.
 
-Minimizing `J=∫Ldt` one gets the Euler-Lagrange equation.
+Minimizing `J=∫Ldt` one gets the Euler-Lagrange equation or the Hamilton Equation (further down).
+
+In general equations of motion (eom) produce the proper time and information `I` of the system (on-shell).
+Else we would count things twice that actually are one time step (off-shell).
 
 .. math::
 
