@@ -20,8 +20,7 @@ The objective here and in the `evolution`_ blog is *interpretation* of physics
 without the details to produce mathematical consistency.
 
 To say `W=I/t` is like saying that energy is time divided by time.
-As time happens by itself,
-energy here corresponds to mechanical work `W`.
+`W` stands for work.
 
 :Variable/value:
 Values of a physical variable are defined by time and define time for the variable.
@@ -34,9 +33,9 @@ Values exist only while occurring.
 
 :Information = time:
 The information of a variable is the number of values in a cycle.
-`I=∫Wdt = Wt`. `W` is constant and representing `I`.
-`I` cycles over a space extend in a time period `t`.
-The variable as a value (quantum) has a space-time extend.
+`I=∫Wdt=Wt`. `W` is constant and representing `I`.
+`I` cycles over a space extent in a time period `t`.
+The variable as a value (quantum) has a space-time extent.
 
 :Momentum: `p=∂I/∂x=mẋ`.
 Component of a value of a variable.
@@ -49,7 +48,7 @@ to the location where they are observed (create a field).
 Then one can look at a part of the system (Lagrangian `L`)
 and see the rest as potential `P(x)`,
 from which information flows in:
-`L(x,ẋ)=mẋ²-P(x)` is an information unit (time unit) with a space direction.
+`L(x,ẋ)=K(ẋ)-P(x)` is an information unit (time unit) with a space direction.
 `J=∫Ldt` counts change and ends with 0 after full cycle.
 
 :Force: `F=∂W/∂x=-ṗ`
@@ -70,13 +69,13 @@ Mathematical summary:
 .. math::
 
     I = τ \\
-    0 = dI/dt = \frac{∂I}{∂x}\frac{dx}{dt}+\frac{∂I}{∂t}  ⇒ W(x,p)=-H(x,p)=\frac{∂I}{∂t}`.
+    0 = dI/dt = \frac{∂I}{∂x}\;\frac{dx}{dt}+\frac{∂I}{∂t}  ⇒ W(x,p)=-H(x,p)=\frac{∂I}{∂t}`.
     W = \frac{∂I}{∂t} = \frac{∂τ}{∂t} = f \\
     W = \frac{∂τ}{∂x}\;\frac{∂x}{∂t} ⇒ W\frac{∂x}{∂τ} = \frac{∂x}{∂t} ⇒ m\;\text{is}\;W \\
     H = pẋ-L = K+P \; \left[\text{Hamiltonian:}\; \frac{dL}{dt}=\frac{d}{dt}\left(ẋ\frac{∂L}{∂ẋ}\right) ⇒ 0 = \frac{d}{dt}\left(ẋ\frac{∂L}{∂ẋ}-L\right)\right] \\
     L = pẋ-H = K-P \; \left[\text{Lagrangian: phase of component, while constant H is for full system)} \\
     δJ = ∫\left(δx\frac{∂L}{∂x}+δẋ\frac{∂L}{∂ẋ}\right)dt = ∫δx\left(\frac{∂L}{∂x}-\frac{d}{dt}\;\frac{∂L}{∂ẋ}\right)dt \\
-    \frac{δJ}{δx} = 0 ⇒ \frac{∂L}{∂x}=\frac{d}{dt}\frac{∂L}{∂ẋ} ⇒ F=ṗ \\
+    \frac{δJ}{δx} = 0 ⇒ \frac{∂L}{∂x}=\frac{d}{dt}\;\frac{∂L}{∂ẋ} ⇒ F=ṗ \\
     F = \frac{∂L}{∂x} = \frac{∂W}{∂x} = -\frac{∂H}{∂x} \\
     p = \frac{∂τ}{∂x} = \frac{∂L}{∂ẋ} = \frac{∂W}{∂ẋ} = mẋ \\
     W = \frac{∂τ}{∂x}\;\frac{∂x}{∂t} = mẋ² \\
@@ -180,7 +179,7 @@ The comparison `W=ΔI/Δt` is with an unrelated other variable `t`.
 This happens only in the mind. It is not physical.
 The other `t` is an arbitrarily chosen unit of information
 and `W` is the number value of information (`I=Et`).
-One can also do it in reversed,
+One can also do it in reverse,
 then `1/t` (Hertz, Hz) is the unit of `W` and `I` is the number value.
 
 Energy is the rate of selection,
@@ -227,7 +226,7 @@ The `x_i` take part in an interaction:
 
 .. math::
 
-   W = \frac{∂I}{∂t} = - \frac{∂I}{∂x_i}\frac{dx_i}{dt} = - p_i ẋ_i
+   W = \frac{∂I}{∂t} = -H = -\frac{∂I}{∂x_i}\;\frac{dx_i}{dt} = -p_i ẋ_i
 
 .. {cycle}
 
@@ -336,10 +335,10 @@ On higher levels it is a lot slower (but could be called the `c` of the level).
 
 `c` compares to an external time `t` already.
 `ct` removes that external time.
-This gives the proper time unit `dI` a space extend.
+This gives the proper time unit `dI` a space extent.
 
 A value does not move from place to place,
-but it has a space extend, a space quantum.
+but it has a space extent, a space quantum.
 The components of a value are quantized.
 In the lowest level this is `ΔpΔx = h`.
 
@@ -352,7 +351,7 @@ Higher energies cycle locally, which binds some `h` in a mass `m`.
 `W²=p²c²+m²c⁴`.
 If `p=0`, all the energy is within `m`.
 
-The `p=mv=h/λ` attribution of smaller `λ` to higher momenta
+The `p=mẋ=h/λ` attribution of smaller `λ` to higher momenta
 are due to the many parallel lower level particles averaging
 and producing a space precision that is not there in the single particle.
 
@@ -372,8 +371,8 @@ A physical variable that acts as a value in a level is sometimes called a partic
 A particle is a synonym to a variable used to distinguish in specific contexts.
 
 Particles are information quanta.
-Particles have or are a time extend
-and also have a physical space extend.
+Particles have or are a time extent
+and also have a physical space extent.
 So the particle is a space-time quantum.
 
 A variable level builds on a particle level.
@@ -558,10 +557,10 @@ The variable has one energy.
 All values just map to this energy,
 which is the same for all values.
 
-Saying `W=mv²/2+mgh` describes the `v,h` observables
+Saying `W=mẋ²/2+mgx` describes the `v,h` observables
 sharing the same energy `W`,
 i.e. the energy of a variable and not of a value.
-Expressing `W=mv²/2` or `W=mgh` separately and
+Expressing `W=mẋ²/2` or `W=mgx` separately and
 as a function of values has no meaning.
 
 The word energy is often used in the sense of information, as understood here.
@@ -695,7 +694,7 @@ In the Lagrangian (below) the minus sign is introduced through partial integrati
    0 & = \frac{dW}{dt} = \frac{d}{dt}\left(\frac{∂τ}{∂x}\;\frac{dx}{dt}\right) = \\
    & = -\frac{d}{dt}\left(\frac{∂τ}{∂x}\right)\;\frac{dx}{dt} + \frac{∂τ}{∂x}\;\frac{d²x}{dt²} = \\
    & = -\frac{∂W}{∂x}\;\frac{dx}{dt} + m\frac{dx}{dt}\;\frac{d²x}{dt²} \\
-   & \right[\frac{∂}{∂t}\frac{∂τ}{∂x} = \frac{∂ \frac{∂τ}{∂t} }{∂x}=\frac{∂W}{∂x}\left]
+   & \right[\frac{∂}{∂t}\;\frac{∂τ}{∂x} = \frac{∂ \frac{∂τ}{∂t} }{∂x}=\frac{∂W}{∂x}\left]
 
 Divide by `dx/dt` to get Newton's force law:
 
@@ -709,25 +708,18 @@ To get to Newton's formula an unexplained step was used:
 
 .. math::
 
-   \frac{∂τ}{∂x} = m \frac{∂x}{∂t}
+   p = \frac{∂τ}{∂x} = m \frac{∂x}{∂t}
 
 This is thus a consequence of Newton's force law.
-It relates our coordinates `t` and `x`
-to the system coordinates `τ` and `χ`.
+`p = mẋ` is by observation.
+Then it is assigned to `\frac{∂τ}{∂x}` by definition.
+If we do that definition, than `W=mẋ²` further down.
+The physics behind that is that `ẋ` and `x`
+are independent components of a time step: `Δτ=mẋΔx`.
 
-.. math::
-
-   \frac{∂τ}{∂t} = \frac{∂τ}{∂χ} \frac{∂χ}{∂x} \frac{dx}{dt} \\
-   \frac{∂τ}{∂χ} = 1 \\
-   \frac{∂χ}{∂x} = m
-
-`τ` and `χ` count the same changes and thus `∂τ/∂χ=1`.
-`∂χ/∂x=m` expresses that `∂x` becomes smaller, if `m` becomes larger.
-
-This comparison between variables
-and that a value has components
-solves the *vis-viva* debate that was going on between Newton (`mv`),
-Leibniz (`mv²/2`) and others.
+That a value has components
+solves the *vis-viva* debate that was going on between Newton (`mẋ`),
+Leibniz (`mẋ²/2`) and others.
 `∂τ/∂x` is a component of a change, i.e. of a time or information step.
 Time is an interaction with more partners.
 This leads to the concept of energy:
@@ -746,7 +738,7 @@ for a specific system.
 
 .. math::
 
-   W = \frac{∂τ}{∂x}\;\frac{∂x}{∂t} = m\frac{∂x}{∂t}\;\frac{∂x}{∂t} = mv²
+   W = \frac{∂τ}{∂x}\;\frac{∂x}{∂t} = m\frac{∂x}{∂t}\;\frac{∂x}{∂t} = mẋ²
 
 `W` is the full energy. `m` summarizes lower level energies.
 With `c` as maximum `v`,
@@ -889,7 +881,10 @@ Therefore the potential energy.
 
 `pẋ - H(x,p(ẋ))` is a `Legendre transformation`_.
 
-As `pẋ` is twice the kinetic energy,
+`pẋ` is the full energy.
+Splitting off some non-observable part of the system
+and associating it to the location of the observed part
+`H(ẋ,x)=K(ẋ)+P(x)` half-half, makes `K(ẋ)=mẋ²/2`.
 `H` summarizes potential and kinetic energy.
 `H` constitutes a time step. It is `H=-W`.
 
@@ -908,28 +903,38 @@ because the oscillations cancel over one cycle.
 
 With variational `Calculus of variations`_ the minimum can be found.
 
+`W=-H` stays constant. `∫Wdt` would count system time to infinity.
+`L(x)=mẋ²+W=mẋ-H` oscillates and returns to the same value in a cycle.
+`J=∫Ldt` returns to the same value after one or many cycles.
+This can be minimized.
+
 Minimizing `J=∫Ldt` one gets the Euler-Lagrange equation or the Hamilton Equation (further down).
 
 In general equations of motion (eom) produce the proper time and information `I` of the system (on-shell).
-Else we would count things twice that actually are one time step (off-shell).
+Else we would count more than what actually constitutes one time step (off-shell).
 
 .. math::
 
     δJ &= ∫\left(δx\frac{∂L}{∂x}+δẋ\frac{∂L}{∂ẋ}\right)dt \\
     &\text{partial integration of second part} \\
     &= ∫δx\left(\frac{∂L}{∂x}-\frac{d}{dt}\;\frac{∂L}{∂ẋ}\right)dt \\
-    &\frac{δJ}{δx} = \frac{∂L}{∂x} - \frac{d}{dt}\frac{∂L}{∂ẋ} = 0
+    &\frac{δJ}{δx} = \frac{∂L}{∂x} - \frac{d}{dt}\;\frac{∂L}{∂ẋ} = 0
 
 `δJ/δx = 0`:
 
 .. math::
 
-   \frac{∂L}{∂x} - \frac{d}{dt}\frac{∂L}{∂ẋ} = 0
+   \frac{∂L}{∂x} - \frac{d}{dt}\;\frac{∂L}{∂ẋ} = 0
 
 By replacing `∂_ẋ L = p` and `F=∂_x L`, this is Newtons `F=ṗ=ma`.
+Note,
+`F=∂L/∂x` and `p=∂L/∂ẋ=∂τ/∂x` are by definition.
 
-Since we minimized with respect to time,
-this equation tells us what belongs to the same time step.
+- We need to add a physical `p` or `F` separately to find `L` (Newton approach).
+- Or we need to add a physical `L` to get `p` and `F` (Lagrange approach).
+
+One cannot derive Newton's laws from the minimization of the action `J`.
+One cannot derive physics. One needs to observe.
 
 `L(x,ẋ)` is transformed to `H(p,x)` via a `Legendre transformation`_.
 `H(p,x)` considers the system as a whole,
@@ -1067,7 +1072,7 @@ For example,
   which keeps T based exchange slow
 - if humans interact a lot the thinking in the mind becomes slower due to the distraction
 
-`W` is constant in a level with an intrinsic uncertainty.
+`W` is has an intrinsic uncertainty that defines a level.
 
 With fixed `W`, large variables (with many values) cycle slowly.
 A higher level variable can become faster
