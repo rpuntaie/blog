@@ -69,7 +69,7 @@ Mathematical summary:
 .. math::
 
     I = τ \\
-    0 = dI/dt = \frac{∂I}{∂x}\;\frac{dx}{dt}+\frac{∂I}{∂t}  ⇒ W(x,p)=-H(x,p)=\frac{∂I}{∂t}`.
+    0 = dI/dt = \frac{∂I}{∂x}\;\frac{dx}{dt}+\frac{∂I}{∂t}  ⇒ W(x,p)=-H(x,p)=\frac{∂I}{∂t} \\
     W = \frac{∂I}{∂t} = \frac{∂τ}{∂t} = f \\
     W = \frac{∂τ}{∂x}\;\frac{∂x}{∂t} ⇒ W\frac{∂x}{∂τ} = \frac{∂x}{∂t} ⇒ m\;\text{is}\;W \\
     H = pẋ-L = K+P \; \left[\text{Hamiltonian:}\; \frac{dL}{dt}=\frac{d}{dt}\left(ẋ\frac{∂L}{∂ẋ}\right) ⇒ 0 = \frac{d}{dt}\left(ẋ\frac{∂L}{∂ẋ}-L\right)\right] \\
@@ -1148,3 +1148,4 @@ Then the minimal values are
 
 One can continue like that for other quantities,
 like electrodynamic `E` and `B`.
+
