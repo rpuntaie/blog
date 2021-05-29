@@ -685,9 +685,12 @@ And indeed within a geodesic the acceleration cannot be measured.
 
 In the following, assuming `∂τ/∂x\;dx/dt` constant,
 demands that `∂τ/∂x` and `dx/dt` change in opposite directions (the minus sign).
-Normally there would be more `x_i` and thus more terms,
-which would not be constant, but the sum would.
-In the Lagrangian (below) the minus sign is introduced through partial integration.
+Mathematically speaking that is partial integration with vanishing integral,
+which is done below with the Lagrangian.
+Here we demand constant energy,
+while in the Lagrangian method constant energy
+follows from stationary action/information.
+But energy stands for information, too (`W=I/t`).
 
 .. math::
 
@@ -808,7 +811,7 @@ where we can spend a lot of time looping to arbitrary precision,
 but the physical `dI` is limited by the Planck constant `h`.
 `h` is the smallest, lowest level, unit of counting,
 i.e. the smallest time unit of nature.
-Nature is layered, though, and every level above has a larger time unit.
+Nature is layered, though, and every level further up has a larger time unit.
 
 `I=ψ`. In the Schrödinger and the Dirac equation,
 it is compared to another external time `t`: `\frac{∂ψ}{∂t}`
@@ -865,13 +868,15 @@ that allows the variable to cycle.
 Comparison to an external time, `W=∂I/∂t`, does not change `I`.
 `W` is a constant of motion.
 
-The Lagrangian `L` looks at a possibly small part of the system,
-associating the rest with the location of the observed part,
-as *potential energy* `P`.
 Energy by itself is kinetic (`K`),
 because it is about time steps, i.e. about changes,
 but one can usually not consider all parts.
-Therefore the potential energy.
+Therefore one summarizes the remaining parts in *potential energy* (`P`)
+and associates it with the location of the observed part.
+
+The Lagrangian `L` looks at a possibly small part of the system
+and measures the information flow per time
+from the potential part to the kinetic (.i.e. observed) part.
 
 .. math::
 
@@ -881,36 +886,37 @@ Therefore the potential energy.
 
 `pẋ - H(x,p(ẋ))` is a `Legendre transformation`_.
 
-`pẋ` is the full energy.
-Splitting off some non-observable part of the system
-and associating it to the location of the observed part
-`H(ẋ,x)=K(ẋ)+P(x)` half-half, makes `K(ẋ)=mẋ²/2`.
-`H` summarizes potential and kinetic energy.
-`H` constitutes a time step. It is `H=-W`.
+`pẋ=mẋ^2` is the full energy.
+Splitting off the non-observable part of the system half-half,
+makes `K(ẋ)=mẋ²/2`.
+
+`L` constitutes a time step in the interaction between the two systems,
+while `H` represents the information itself. `H=-W=I/t`.
 
 .. math::
 
     H(x,ẋ) = K + P
 
 `pẋ` in `L=pẋ-H` varies over time.
-So `L(x,ẋ)` oscillates,
-whether around 0 depends on the choice of potential.
+So `L(x,ẋ)` oscillates around 0.
 `L` expresses the phase of the observed components.
 The sum over a cycle becomes minimal,
-because the oscillations cancel over one cycle.
+because the information exchange cancels over one cycle.
 
 .. _`calculus of variations`: https://en.wikipedia.org/wiki/Calculus_of_variations
 
-With variational `Calculus of variations`_ the minimum can be found.
+`Calculus of variations`_ produces a condition that needs to be satisfied
+to have stationary information, i.e. constant information.
 
 `W=-H` stays constant. `∫Wdt` would count system time to infinity.
 `L(x)=mẋ²+W=mẋ-H` oscillates and returns to the same value in a cycle.
 `J=∫Ldt` returns to the same value after one or many cycles.
-This can be minimized.
+This is bounded and can be minimized.
 
-Minimizing `J=∫Ldt` one gets the Euler-Lagrange equation or the Hamilton Equation (further down).
+With a stationary `J=∫Ldt` one gets the Euler-Lagrange equation or the Hamilton Equation (further down).
+This corresponds to demanding that `H=-W` is constant, as was done above (`Newton`_).
 
-In general equations of motion (eom) produce the proper time and information `I` of the system (on-shell).
+In general, equations of motion (eom) produce the proper time and information `I` of the system (on-shell).
 Else we would count more than what actually constitutes one time step (off-shell).
 
 .. math::
@@ -920,7 +926,7 @@ Else we would count more than what actually constitutes one time step (off-shell
     &= ∫δx\left(\frac{∂L}{∂x}-\frac{d}{dt}\;\frac{∂L}{∂ẋ}\right)dt \\
     &\frac{δJ}{δx} = \frac{∂L}{∂x} - \frac{d}{dt}\;\frac{∂L}{∂ẋ} = 0
 
-`δJ/δx = 0`:
+Stationary condition `δJ/δx = 0`:
 
 .. math::
 
@@ -930,8 +936,10 @@ By replacing `∂_ẋ L = p` and `F=∂_x L`, this is Newtons `F=ṗ=ma`.
 Note,
 `F=∂L/∂x` and `p=∂L/∂ẋ=∂τ/∂x` are by definition.
 
-- We need to add a physical `p` or `F` separately to find `L` (Newton approach).
-- Or we need to add a physical `L` to get `p` and `F` (Lagrange approach).
+- We need to add a physical `p` and `F`
+  separately to find `L` (Newton approach): e.g. `p=mẋ` or `F=GmM/r^2`
+- Or we need to add a physical `L` to get `p` and `F` (Lagrange approach):
+  e.g. `L = mẋ²/2 - GmM/r = mṙ²/2+mr²\dot{φ}²/2-GmM/r`.
 
 One cannot derive Newton's laws from the minimization of the action `J`.
 One cannot derive physics. One needs to observe.
