@@ -1,5 +1,26 @@
 .. https://rolandpuntaier.blogspot.com/2021/04/information-time-energy.html
 
+        The picture is a world of variables.
+        A variable consists of values.
+        A value is a time step of a variable,
+        which is an interaction shared between components.
+        .
+        A component is a coordinate.
+        Coordinates are not necessarily grouped by spacially separated bodies.
+        But a spacial separation can motivate a split into
+        observed changes and not observed changes of a variable,
+        which will be kinetic and potential energy.
+        .
+        Ultimately I'm thinking of a topology of variables,
+        with their values and their cycle (their time)
+        gradually consuming more space the higher the level.
+        .
+        Every variable has its number of values,
+        which is its information or its time period.
+        Because information implies time.
+        The values need to occur.
+        A variable has one dimension: its phase in the cycle.
+
 .. {anchor}
 
 Information is all.

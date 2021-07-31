@@ -146,11 +146,11 @@ Valuing changes over economic evolution as new (types of) resources emerge.
 Comparison to Physics
 =====================
 
-There is a layer of complicated emotional and/or rational decision making
+There is complicated emotional and/or rational decision making
 between the physical world and economy
 before any economic selection happens.
 
-In physics the 
+In physics the
 
 - number of selections per cycle is **action** (information) and
 - the selections per time is **energy**

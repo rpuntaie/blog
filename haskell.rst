@@ -229,7 +229,7 @@ Ironically the usual composition operator is the point ``(.)``.
   .. code-block:: haskell
 
     -- pointfree
-    sc = sum . sequence [(**2) . sin, (**2) . cos]
+    sc = sum . sequence [(** 2) . sin, (** 2) . cos]
     sc 2 -- 1.0
     -- in this case better:
     sc x = (sin x)**2 + (cos x)**2
