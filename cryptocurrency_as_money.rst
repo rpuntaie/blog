@@ -176,7 +176,7 @@ If `S` is the number of identical and independent variables of size `n`,
 
 The information speed comes into play when comparing to another variable.
 Information/Information = time/time = information/time = energy
-(`E=I/t`).
+(`E=I/t`, see earlier blog on `evolution <https://rolandpuntaier.blogspot.com/2019/01/evolution.html>`__).
 While information is conserved, energy is not.
 The information stays constant even if it spreads to more variables,
 in the same level or vertically in the hierarchy.
@@ -207,17 +207,6 @@ the internal value of the packet (rest mass) is lower.
   - A product has inner cycles (those of components).
   - Products of higher level move slower and have a higher price (mass).
   - The economic pricing hierarchy builds on top of basic living cost.
-
-
-.. note:: energy = information / time
-
-  And action = information.
-  This is basically my interpretation of physics.
-  See my blog on `evolution <https://rolandpuntaier.blogspot.com/2019/01/evolution.html>`__,
-  but since then I realized that information cannot exist without values "happening",
-  i.e. information and time are the same and so energy is basically the relative clock rate,
-  or frequency.
-
 
 
 .. {money, pricing}
