@@ -208,6 +208,18 @@ the internal value of the packet (rest mass) is lower.
   - Products of higher level move slower and have a higher price (mass).
   - The economic pricing hierarchy builds on top of basic living cost.
 
+
+.. note:: energy = information / time
+
+  And action = information.
+  This is basically my interpretation of physics.
+  See my blog on `evolution <https://rolandpuntaier.blogspot.com/2019/01/evolution.html>`__,
+  but since then I realized that information cannot exist without values "happening",
+  i.e. information and time are the same and so energy is basically the relative clock rate,
+  or frequency.
+
+
+
 .. {money, pricing}
 
 money, pricing
@@ -631,7 +643,7 @@ but for them small amounts already matter.
   - buying, when the price falls and
   - sell when the price rises
 
-  Predictable behavior is always a losing in speculation.
+  Predictable behavior is always losing in speculation.
 
 Bots speculate faster and produce stability in human time frames.
 A person can have its own avatar bot and their are bots in several levels.
@@ -646,8 +658,8 @@ For that currencies must be pegged to real assets.
 - The power station decides to increase the price of LOCTRO to gain on the demand.
 - A local consumer bot on electricity (BOTTRO) sees changes in LOCTRO.
   It exchanges LOCTRO for FARTRO (farther away power station).
-  LOCTRO is a stable mix.
-- The bot is fast and humans will actually see no change in price in LOCTRO.
+- The bot is fast and humans will actually see no change in price in BOTTRO.
+  BOTTRO is a stable mix.
 - When all use more electricity,
   because suddenly everybody charges its electric car,
   a personal consumption avatar can swap BOTTRO's for other cryptos,
@@ -767,7 +779,7 @@ Here some central identifiers. Initial ``v`` means vector, i.e. many::
    CConnMan: vNodes
    CNode: hSocket, vRecvMsg
 
-.. node:: hash
+.. note:: hash
 
    Hashes are used for
 
@@ -775,7 +787,7 @@ Here some central identifiers. Initial ``v`` means vector, i.e. many::
    - public key (Pay-to-PubKey Hash = `P2PKH`_)
    - signatures (content according ``SigHashType`` + private key)
    - blocks (``hashPrevBlock``)
-   - `proof-of-work`_ (`POW`_): find a nonce that makes the block hash smaller than ``nBits``
+   - proof-of-work (`POW`_): find a nonce that makes the block hash smaller than ``nBits``
 
    While `POW`_'s smaller-than task is hard,
    finding the data exactly hashing to a given hash is almost impossible.
@@ -802,7 +814,7 @@ To make a common ledger, a common time,
 more mining nodes need to find a way to choose,
 who contributes the next block with transactions to the chain.
 
-The first mining node that fulfills the `proof-of-work`_
+The first mining node that fulfills the proof-of-work,
 adds a block to to the longest chain.
 The frequency of blocks is controlled by the difficulty.
 
@@ -994,7 +1006,7 @@ P2PK::
 
 P2PKH::
 
-  [ <Signature> <Public Key> ] [ OP_DUP OP_HASH160 <Public KeyHash> OP_EQUAL OP_CHECKSIG ]
+  [ <Signature> <Public Key> ] [ OP_DUP OP_HASH160 <public key hash> OP_EQUAL OP_CHECKSIG ]
 
 P2SH allows to provide the public keys (or locks) in a script only when actually spending::
 
@@ -1190,20 +1202,20 @@ whether transactions and blocks are accepted by peers:
 - ``MAX_MONEY``
 - block time: ``MedianTimePast()``
 
-.. node:: behavior vs implementation
+.. note:: behavior vs implementation
 
-    The nodes could have completely different implementations,
-    if the behavior is the same.
-    Two different implementations
-    would need long testing against each other to produce the same behavior.
-    The nodes are controlled by different parties,
-    but they still choose the same implementation to produce the same behavior.
-    The implementation of peers is not visible, though.
-    If advantages are detected,
-    individual nodes slightly change implementation and behavior here and there.
-    The network adapts slowly by introducing new rules and checks them starting from a specific height
-    or ``MedianTimePast()`` time.
-    The upgrades have are named after `BIPs`_ or get special names, like ``taproot``.
+   The nodes could have completely different implementations,
+   if the behavior is the same.
+   Two different implementations
+   would need long testing against each other to produce the same behavior.
+   The nodes are controlled by different parties,
+   but they still choose the same implementation to produce the same behavior.
+   The implementation of peers is not visible, though.
+   If advantages are detected,
+   individual nodes slightly change implementation and behavior here and there.
+   The network adapts slowly by introducing new rules and checks them starting from a specific height
+   or ``MedianTimePast()`` time.
+   The upgrades have are named after `BIPs`_ or get special names, like ``taproot``.
 
 Changes in the behavior need to be taken over by all nodes simultaneously,
 or they are backward incompatible.
