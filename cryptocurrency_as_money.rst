@@ -1,3 +1,5 @@
+.. https://rolandpuntaier.blogspot.com/2022/01/cryptocurrencies-as-money.html
+
 .. _`exchanges`: https://bitcoin.org/en/exchanges
 .. _`forks`: https://en.wikipedia.org/wiki/List_of_bitcoin_forks
 .. _`genesis`: https://en.bitcoin.it/wiki/Genesis_block
@@ -65,7 +67,7 @@ which would make valuation statistical and thus stable.
 
 .. {introduction}
 
-introduction
+Introduction
 ============
 
 If you have a key to a lock (of a house), then you have access (to the house).
@@ -133,7 +135,7 @@ Together they make a collective value, they make money (= fiat money).
 
 .. {time = value = transaction}
 
-time = value = transaction
+Time = Value = Transaction
 ==========================
 
 Value can mean:
@@ -211,7 +213,7 @@ the internal value of the packet (rest mass) is lower.
 
 .. {money, pricing}
 
-money, pricing
+Money, Pricing
 ==============
 
 In human economics,
@@ -416,8 +418,8 @@ unless disruptive events occur.
 
 .. {traditional money compared to crypto}
 
-traditional money compared to crypto
-============================================
+Traditional Money Compared to Crypto
+====================================
 
 Crypto has all the qualities of traditional money:
 
@@ -477,7 +479,7 @@ a company can issue a crypto to finance itself.
   but with separate addresses, like for fungible tokens.
 
 Market
-------
+======
 
 Market cap(italization) is coin supply times
 current price of one coin with respect to a FIAT currency.
@@ -533,7 +535,7 @@ Bitcoin, for example, reduces block subsidy gradually to 0.
 The assumption is that fee and valuation can keep the nodes online.
 
 Scalability
------------
+===========
 
 The independent movements of a large population
 to fulfill their daily needs would make a crypto stable.
@@ -573,7 +575,7 @@ Trading bots can exploit valuation differences of various cryptos,
 level them out and thus produce a stable coin that can work as money.
 
 Trust
------
+=====
 
 A currency is an IOU.
 The amount of currency a person possesses,
@@ -581,8 +583,11 @@ is a promise of society to redeem later with same assets.
 
 A currency is stable if people trust in it,
 and they trust in it if it is stable.
+
+You cannot trust anybody but the statistics of large number.
+
 Individual decisions should not be made due to currency value,
-because it ruins statistics and produces a crash.
+because it ruins statistics.
 
 A Currency must be stable.
 
@@ -597,6 +602,16 @@ Large fiat currencies are rather stable through the sheer amount of transactions
 Stablecoin is normally pegged to to important fiat currencies like the Dollar (Tether),
 Euro or Yen.
 
+Cryptos need to be trustworthy
+
+- the network needs to be reliable and stay online all the time
+- the link to real assets (NFT) must be correct
+- The way programming decisions are made,
+  whether centralized or via enhancement proposal publicly scrutinized
+
+Trading Bot
+===========
+
 Stability is relative, though.
 Just as intermediary to an exchange,
 a short term stability is already enough.
@@ -604,7 +619,7 @@ A bot can quickly react on changes,
 exploit them and produce stability,
 for people to use.
 
-For a valuation to be stable its supply must change according its demand.
+For a valuation to be stable its supply must change according to its demand.
 The bot can swap falling cryptos with rising ones,
 leveling them out.
 This swapping is the result of many bots buying low and selling high,
@@ -621,25 +636,30 @@ but for them small amounts already matter.
   - By convincing others their behavior is a result and thus is of course later.
   - Otherwise one observes and anticipates the actions of others
     before they actually happen.
+    Predictable behavior is always losing in speculation.
+
+  Buy when price is minimum, sell when price is maximum.
 
   With slow competition:
 
-  - buy, when the price increases and
-  - sell, when it decreases
+  - buy, when the price starts to increase and
+  - sell, when it starts to decrease
 
-  But, with fast competition:
+  But, with fast competition, a minimum in local time,
+  is already beyond the minimum, when the exchange serializes independent requests.
+  Then
 
   - buying, when the price falls and
   - sell when the price rises
 
-  Predictable behavior is always losing in speculation.
+  Fast bot competition produces so small and fast vibrations
+  that the currency seems stable for the human eye.
 
-Bots speculate faster and produce stability in human time frames.
-A person can have its own avatar bot and their are bots in several levels.
-
-But the ultimate demand is from humans.
+Let's envision a future time where
+every person has its own avatar bot and their are additional bots in several levels.
+The ultimate demand is from humans, though.
 The avatar must see the human demand.
-For that currencies must be pegged to real assets.
+For that, currencies must be pegged to real assets.
 
 - Let's assume a currency pegged to a local electricity power station (LOCTRO).
 - The demand increases locally in space and time,
@@ -664,14 +684,6 @@ Bots can help stabilize local changes.
 Speculative human changes are local changes.
 Bots can help to merge the many cryptos into a stable global money.
 
-Cryptos need to be trustworthy
-
-- the network needs to be reliable and stay online all the time
-- the link to real assets (NFT) must be correct
-- The way programming decisions are made,
-  whether centralized or via enhancement proposal publicly scrutinized
-
-
 .. note::
 
 
@@ -683,11 +695,9 @@ Cryptos need to be trustworthy
     are a remedy to the scalability problem.
 
 
-
-
 .. {defi and dao}
 
-defi and dao
+DEFI and DAO
 ============
 
 `DEFI`_: decentralized finance
@@ -717,17 +727,15 @@ but often cannot unfold due to lack of information,
 centrally imposed to keep the advantage and power.
 
 The distribution of information is the first step to fairness.
-The fact
+The following crypto properties help towards fairness:
 
-- that the ledger is public,
-- that smart contracts are programmed and can be reviewed before adoption and
-- that neither can be modified afterwards and
-- that this can be done without the need to trust a third party
-
-helps towards fairness.
+- The ledger is public.
+- Smart contracts are programmed and can be reviewed before adoption.
+- Neither can be modified afterwards.
+- Smart contracts can be done without the need to trust a third party.
 
 Extra fairness effort on top of the public ledger is still needed, though.
-The DAO needs its own purpose, its own constitution, local consensus rules, 
+The DAO needs its own purpose, its own constitution, local consensus rules,
 The data for a specific DAO needs to be made conveniently manageable for its members
 according to the DAO's constitution.
 
@@ -748,7 +756,7 @@ which is not decentralized finance any more.
 
 .. {source code}
 
-source code
+Source Code
 ===========
 
 `bitcoin-core`_ was the first and is now reference implementation to many forks.
@@ -785,7 +793,7 @@ Here some central identifiers. Initial ``v`` means vector, i.e. many::
 
 .. {node}
 
-node
+Node
 ====
 
 A bitcoin node is a ``bitcoind`` daemon running on a computer.
@@ -834,7 +842,7 @@ that would be accepted by the network.
 
 .. {network}
 
-network
+Network
 =======
 
 The network has a documented `protocol`_.
@@ -871,7 +879,7 @@ Each node constantly communicates with other nodes:
 
 - ``connman->PushMessage(pfrom, msgMaker.Make(NetMsgType::TX, ...))``, ...
 
-- ``ProcessMessage`` according `protocol`_, especially:
+- ``ProcessMessage`` according to the `protocol`_, especially:
 
   - fetch new blocks and determine ``ChainActive`` (longest chain) (``ActivateBestChain/FindMostWorkChain``)
   - fetch new transactions
@@ -881,7 +889,7 @@ Each node constantly communicates with other nodes:
 
 .. {transactions}
 
-transactions
+Transactions
 ============
 
 Each of the transactions ``vtx`` in a ``CBlock`` have
@@ -921,7 +929,7 @@ minus the sum of all the ``vout[vin[].prevout]``, i.e. ``GetValueIn()``, is fee.
 
 .. {fee}
 
-fee
+Fee
 ===
 
 The fee of a transaction is ``Σoutput - Σinput``.
@@ -975,7 +983,7 @@ This increases the price of the coin (deflationary coin/token).
 
 .. {script}
 
-script
+Script
 ======
 
 Bitcoin has no fields for addresses one spends money to or from.
@@ -1011,7 +1019,7 @@ Hashes are also smaller and thus easier to be communicated on paper or screen pr
 either via `binary-to-text`_ encoding like base58 or a QR code.
 
 ECDSA `cryptography`_ (`secp256k1`_ for Bitcoin) allows to recover the public key from the private key.
-So only the private key needs to be stored/backuped.
+So only the private key needs to be saved.
 
 The public key can also be recovered from a signature and the message/hash that was signed.
 This is actually how ``<signature> <public key> OP_CHECKSIG`` works.
@@ -1038,7 +1046,7 @@ The ``sigHashType`` used in ``scriptSig`` does not depend on ``scripPubKey``,
 i.e. ``OP_CHECKSIG`` will succeed if the public key fits to the signature,
 independent of the content that was signed.
 
-token
+Token
 =====
 
 In general the hash of some data is called token.
@@ -1066,7 +1074,7 @@ and can be copied easily.
 
 .. {wallet}
 
-wallet
+Wallet
 ======
 
 Coins is an unspent output of transactions (UTXO, ``COutPoint``).
@@ -1115,7 +1123,7 @@ bitpay (open source, visa functionality, segwit, schnorr)
 
 .. {mining pow algorithm}
 
-mining
+Mining
 ======
 
 Choose one time line (block chain) for more separate times (nodes).
@@ -1181,30 +1189,31 @@ It redistributes the reward to the miners.
 
 .. {consensus}
 
-consensus
+Consensus
 =========
 
 Apart from fulfilling the difficulty on longest chain,
 there are other relevant rules that decide,
-whether transactions and blocks are accepted by peers:
+whether transactions and blocks are accepted by the network
+(``MAX_MONEY``, ``MedianTimePast()``, ...).
+The coin is the result of the network consensus rules.
+The consensus rules decide,
+which transactions and blocks are accepted.
+The consensus rules are like a parallel program producing one time:
+the blockchain.
 
-- ``MAX_MONEY``
-- block time: ``MedianTimePast()``
-
-.. note:: behavior vs implementation
-
-   The nodes could have completely different implementations,
-   if the behavior is the same.
-   Two different implementations
-   would need long testing against each other to produce the same behavior.
-   The nodes are controlled by different parties,
-   but they still choose the same implementation to produce the same behavior.
-   The implementation of peers is not visible, though.
-   If advantages are detected,
-   individual nodes slightly change implementation and behavior here and there.
-   The network adapts slowly by introducing new rules and checks them starting from a specific height
-   or ``MedianTimePast()`` time.
-   The upgrades have are named after `BIPs`_ or get special names, like ``taproot``.
+The nodes could have completely different implementations,
+if the behavior is the same.
+Two different implementations
+would need long testing against each other to produce the same behavior.
+The nodes are controlled by different parties,
+but they still choose the same implementation to produce the same behavior.
+The implementation of peers is not visible, though.
+If advantages are detected,
+individual nodes slightly change implementation and behavior here and there.
+The network adapts slowly by introducing new rules and checks them starting from a specific height
+or ``MedianTimePast()`` time.
+The upgrades have are named after `BIPs`_ or get special names, like ``taproot``.
 
 Changes in the behavior need to be taken over by all nodes simultaneously,
 or they are backward incompatible.
@@ -1227,8 +1236,8 @@ with its own genesis block.
 .. {bitcoin-cli rpc command}
 
 
-bitcoin-cli rpc command
-=======================
+RPC Command
+===========
 
 After starting, ``bitcoind`` exposes its interface as `RPC`_.
 The RPC names and parameters are also command line arguments of ``bitoin-cli``.
