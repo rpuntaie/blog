@@ -178,7 +178,7 @@ If `S` is the number of identical and independent variables of size `n`,
 
 The information speed comes into play when comparing to another variable.
 Information/Information = time/time = information/time = energy
-(`E=I/t`, see earlier blog on `evolution <https://rolandpuntaier.blogspot.com/2019/01/evolution.html>`__).
+(see `earlier blog <https://rolandpuntaier.blogspot.com/2021/04/information-time-energy.html>`__).
 While information is conserved, energy is not.
 The information stays constant even if it spreads to more variables,
 in the same level or vertically in the hierarchy.
