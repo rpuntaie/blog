@@ -21,14 +21,18 @@ data, any file, binary or text.
 
 .. code:: sh
 
-    gpg2 -e <file>                   # encrypt for yourself; creates .gpg file
-    gpg2 -e <file> -r <recipient>    # encrypt for someone else
-    gpg2 -d <file>.gpg               # decrypt u
+    gpg2 -e <file>                   # --encrypt for yourself; creates .gpg file
+    gpg2 -e <file> -r <recipient>    # --encrypt for --recipient
+    gpg2 -d <file>.gpg               # --decrypt
 
-    gpg2 -s <file>                   # sign a file
-    gpg2 -s -e <file> -r <recipient> # sign and ecrypt a file for someone
-    gpg2 -b <file>                   # create separte signature .asc file
-    gpg2 -v <file>.asc               # verify authenticity of message
+    gpg2 -s <file>                   # --sign a file creates a .gpg file with data+signature
+    gpg2 -s -e <file> -r <recipient> # --sign and --ecrypt a file for someone
+    gpg2 -b <file>                   # --detach-sign creates a .sig file with only the signature
+    gpg2 -verify <file>.sig [<file>] # verify authenticity of message (-v means --verbose)
+
+- .gpg: signature with data
+- .sig: signature without data, binary format
+- .asc: signature without data, ascii format (`--armor`)
 
 To get to use ``gpg2`` like that you need to create a key pair for you.
 
