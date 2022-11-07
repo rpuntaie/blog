@@ -177,8 +177,7 @@ The steps in more detail:
           gpg2 --import sk.asc
           rm sk.asc
 
-      Do the same with ``--export-ownertrust`` and ``--import-ownertrust",
-      or copy ``.gnupg/trustdb.gpg``.
+      Do the same with ``--export-ownertrust`` and ``--import-ownertrust``.
 
 #. remove the master private key
 
