@@ -56,7 +56,7 @@ Values exist only while occurring.
 The information of a variable is the number of values in a cycle.
 `I=∫Wdt=Wt`. `W` is constant and representing `I`.
 `I` cycles over a space extent in a time period `t`.
-The variable as a value (quantum) has a space-time extent.
+The variable as a value has a space-time extent (action quantum).
 
 :Momentum: `p=∂I/∂x=mẋ`.
 Component of a value of a variable.
@@ -78,7 +78,7 @@ Component of momentum change.
 
 :Levels:
 A level consists of parallel variables (encapsulations of interactions or particles).
-The variables of the lower level become values in this level.
+The variable/information/energy of the lower level become value/quantum/action in this level.
 Every level has its independent variables with own times.
 
 :Resolution:
@@ -710,7 +710,7 @@ Mathematically speaking that is partial integration with vanishing integral,
 which is done below with the Lagrangian.
 Here we demand constant energy,
 while in the Lagrangian method constant energy
-follows from stationary action/information.
+follows from stationary action.
 But energy stands for information, too (`W=I/t`).
 
 .. math::
@@ -962,7 +962,7 @@ Note,
 - Or we need to add a physical `L` to get `p` and `F` (Lagrange approach):
   e.g. `L = mẋ²/2 - GmM/r = mṙ²/2+mr²\dot{φ}²/2-GmM/r`.
 
-One cannot derive Newton's laws from the minimization of the action `J`.
+One cannot derive Newton's laws from stationary action `J`.
 One cannot derive physics. One needs to observe.
 
 `L(x,ẋ)` is transformed to `H(p,x)` via a `Legendre transformation`_.
