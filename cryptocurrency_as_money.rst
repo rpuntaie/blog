@@ -1,4 +1,5 @@
 .. https://rolandpuntaier.blogspot.com/2022/01/cryptocurrencies-as-money.html
+   rstdoc cryptocurrency_as_money.rst cryptocurrency_as_money.pdf
 
 .. _`exchanges`: https://bitcoin.org/en/exchanges
 .. _`forks`: https://en.wikipedia.org/wiki/List_of_bitcoin_forks
@@ -932,7 +933,7 @@ minus the sum of all the ``vout[vin[].prevout]``, i.e. ``GetValueIn()``, is fee.
 Fee
 ===
 
-The fee of a transaction is ``Σoutput - Σinput``.
+The fee of a transaction is `Σ\text{output} - Σ\text{input}`.
 The fees of all transactions mined into a block contribute to the coinbase,
 together with the ``subsidy``.
 The fees are not linked to its original transaction via address keys.

@@ -1,4 +1,7 @@
+.. default-role:: math
+
 .. vim: syntax=rst
+   rstdoc infinity.rest infinity.pdf
 
 .. http://rolandpuntaier.blogspot.co.at/2017/04/infinity.html
 
@@ -344,4 +347,5 @@ Usefulness of Infinity
 .. _`sequences`: https://en.wikipedia.org/wiki/Sequence#Formal_definition_and_basic_properties
 .. _`action`: https://en.wikipedia.org/wiki/Action_(physics)
 .. _`h`: https://en.wikipedia.org/wiki/Planck_constant
+
 

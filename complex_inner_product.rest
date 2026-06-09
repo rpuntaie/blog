@@ -1,4 +1,5 @@
 .. vim: syntax=rst
+   rstdoc complex_inner_product.rest complex_inner_product.pdf
 
 .. http://rolandpuntaier.blogspot.co.at/2017/04/complex-inner-product.html
 
@@ -263,11 +264,11 @@ It is called a *pseudoscalar*:
 in the `complex numbers`_ they are combined to one scalar.
 
 One can understand the dot product as wedge product with the `orthogonal complement`_ (`hodge star`_):
-`v_1 · v_2 = *(v_1^v_2*)`.
+`v_1 · v_2 = *(v_1\wedge v_2*)`.
 As occurrences of values of `v_2` are motivated via values of `v_2*`,
 the extent of `v_2*` is the same as that of `v_2`.
-`v_1^v_2*` is a *pseudoscalar*.
-Mapping it to a scalar produces `det(v_1^v_2*)`, which coincides with the normal dot product.
+`v_1\wedge v_2*` is a *pseudoscalar*.
+Mapping it to a scalar produces `det(v_1\wedge v_2*)`, which coincides with the normal dot product.
 
 .. _`hodge star`: https://en.wikipedia.org/wiki/Hodge_star_operator#Formal_definition_for_k-vectors
 .. _`orthogonal complement`: https://en.wikipedia.org/wiki/Orthogonal_complement

@@ -1,4 +1,5 @@
 .. vim: syntax=rst
+   rstdoc ni_daqmx.rest ni_daqmx.pdf
 
 .. http://rolandpuntaier.blogspot.com/2016/08/ni-daqmx.html
 

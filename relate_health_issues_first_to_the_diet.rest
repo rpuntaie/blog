@@ -1,4 +1,5 @@
 .. http://rolandpuntaier.blogspot.com/2016/10/relate-health-issues-first-to-your-diet.html
+   rstdoc relate_health_issues_first_to_the_diet.rest relate_health_issues_first_to_the_diet.pdf
 
 .. {genes, evolution}
 

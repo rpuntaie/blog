@@ -1,4 +1,5 @@
 .. vim: syntax=rst
+   rstdoc scons.rest scons.pdf
 
 .. http://rolandpuntaier.blogspot.com/2015/01/scons.html
 

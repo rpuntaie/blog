@@ -1,4 +1,5 @@
 .. https://rolandpuntaier.blogspot.com/2022/05/individualismdemocracy.html
+   rstdoc ./individualism_democracy.rst ./individualism_democracy.pdf
 
 .. to html
    rstdoc ./individualism_democracy.rst ./individualism_democracy.html rst_html

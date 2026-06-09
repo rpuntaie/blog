@@ -1,4 +1,5 @@
 .. vim: syntax=rst
+   rstdoc information.rest information.pdf
 
 .. http://rolandpuntaier.blogspot.com/2015/03/what-is-information.html
 
@@ -160,10 +161,10 @@ The exclusiveness is essential to it. It is a `measure <https://en.wikipedia.org
 .. note::
 
     *Add* probability for *or* `\vee`, but only for exclusive values of the same variable,
-    else in general `p(a\vee b)=p(a)+p(b)-p(a \& b)` holds. Note that `p(a\vee b)=p(~a&~b)`.
+    else in general `p(a\vee b)=p(a)+p(b)-p(a \& b)` holds. Note that `p(a\vee b)=p(~a \& ~b)`.
 
     *Multiply* probability for *and*, but only for values belonging to independent variables
-    else `p(a&b)=p(a)p(b | a)` holds. See `below`_.
+    else `p(a\&b)=p(a)p(b | a)` holds. See `below`_.
 
 One can select values of `V`, i.e. `V_i`, by first selecting an occurrence of any value (`\log|\bar V|`)
 and then subtract the excess selection done (`\log|\bar V_i|`): `\log|\bar V|-\log|\bar V_i|= -log p_i`.

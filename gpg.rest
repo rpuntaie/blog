@@ -1,4 +1,5 @@
 .. vim: syntax=rst
+   rstdoc gpg.rest gpg.pdf
 
 .. http://rolandpuntaier.blogspot.com/2016/05/gnupg.html
 

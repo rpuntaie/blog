@@ -1,4 +1,5 @@
 .. vim: syntax=rst
+   rstdoc coordinate_transformation.rest coordinate_transformation.pdf
 
 .. http://rolandpuntaier.blogspot.com/2015/01/linear-coordinate-transformation-and.html
 

@@ -1,4 +1,5 @@
 .. https://rolandpuntaier.blogspot.com/2021/04/information-time-energy.html
+   rstdoc information_time_energy.rst information_time_energy.pdf
 
         The picture is a world of variables.
         A variable consists of values.
@@ -94,7 +95,7 @@ Mathematical summary:
     W = \frac{∂I}{∂t} = \frac{∂τ}{∂t} = f \\
     W = \frac{∂τ}{∂x}\;\frac{∂x}{∂t} ⇒ W\frac{∂x}{∂τ} = \frac{∂x}{∂t} ⇒ m\;\text{is}\;W \\
     H = pẋ-L = K+P \; \left[\text{Hamiltonian:}\; \frac{dL}{dt}=\frac{d}{dt}\left(ẋ\frac{∂L}{∂ẋ}\right) ⇒ 0 = \frac{d}{dt}\left(ẋ\frac{∂L}{∂ẋ}-L\right)\right] \\
-    L = pẋ-H = K-P \; \left[\text{Lagrangian: phase of component, while constant H is for full system)} \\
+    L = pẋ-H = K-P \; \left[\text{Lagrangian: phase of component, while constant H is for full system)}\right] \\
     δJ = ∫\left(δx\frac{∂L}{∂x}+δẋ\frac{∂L}{∂ẋ}\right)dt = ∫δx\left(\frac{∂L}{∂x}-\frac{d}{dt}\;\frac{∂L}{∂ẋ}\right)dt \\
     \frac{δJ}{δx} = 0 ⇒ \frac{∂L}{∂x}=\frac{d}{dt}\;\frac{∂L}{∂ẋ} ⇒ F=ṗ \\
     F = \frac{∂L}{∂x} = \frac{∂W}{∂x} = -\frac{∂H}{∂x} \\
@@ -718,13 +719,13 @@ But energy stands for information, too (`W=I/t`).
    0 & = \frac{dW}{dt} = \frac{d}{dt}\left(\frac{∂τ}{∂x}\;\frac{dx}{dt}\right) = \\
    & = -\frac{d}{dt}\left(\frac{∂τ}{∂x}\right)\;\frac{dx}{dt} + \frac{∂τ}{∂x}\;\frac{d²x}{dt²} = \\
    & = -\frac{∂W}{∂x}\;\frac{dx}{dt} + m\frac{dx}{dt}\;\frac{d²x}{dt²} \\
-   & \right[\frac{∂}{∂t}\;\frac{∂τ}{∂x} = \frac{∂ \frac{∂τ}{∂t} }{∂x}=\frac{∂W}{∂x}\left]
+   & \left[\frac{∂}{∂t}\;\frac{∂τ}{∂x} = \frac{∂ \frac{∂τ}{∂t} }{∂x}=\frac{∂W}{∂x}\right]
 
 Divide by `dx/dt` to get Newton's force law:
 
 .. math::
 
-   \left[ F \coloneqq \frac{∂W}{∂x} \right] = ma
+   \left[ F = \frac{∂W}{∂x} \right] = ma
 
 The part in brackets is a definition of force.
 

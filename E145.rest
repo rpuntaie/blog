@@ -1,4 +1,5 @@
 .. vim: syntax=rst
+   rstdoc E145.rest E145.pdf
 
 .. http://rolandpuntaier.blogspot.com/2015/02/lenovo-e145-with-archlinux.html
 

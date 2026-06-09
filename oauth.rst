@@ -1,4 +1,5 @@
 .. https://gist.github.com/rpuntaie/7148c2295e0852a98e219a211b812e79
+   rstdoc oauth.rst oauth.pdf
 
 Python OAuth Libraries
 ======================

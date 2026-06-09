@@ -1,4 +1,5 @@
 .. vim: syntax=rst
+   rstdoc fca.rest fca.pdf
 
 .. http://rolandpuntaier.blogspot.com/2015/06/fca.html
 

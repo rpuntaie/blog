@@ -1,4 +1,5 @@
 .. vim: syntax=rst
+   rstdoc variable_structure_space.rest variable_structure_space.pdf
 
 .. http://rolandpuntaier.blogspot.co.at/2017/02/from-variable-to-structure.html
 

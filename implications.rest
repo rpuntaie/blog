@@ -1,4 +1,5 @@
 .. vim: syntax=rst
+   rstdoc implications.rest implications.pdf
 
 .. http://rolandpuntaier.blogspot.com/2015/07/implications.html
 
@@ -73,11 +74,11 @@ are given by the
 
 .. math:: 
 
-    \begin{align}
+    \begin{matrix}
     \emptyset & \Rightarrow \{U\rightarrow U\} &\:(A1)\\
     \{U\rightarrow V\} & \Rightarrow \{UW\rightarrow U\} &\:(A2)\\
     \{U\rightarrow V, VW \rightarrow Z\} & \Rightarrow \{UW\rightarrow Z\} &\:(A3)\\
-    \end{align}
+    \end{matrix}
 
 
 Some derived ones are (`\equiv` is `\Rightarrow` in both directions):
@@ -149,7 +150,7 @@ element `j`.
 Construction of `B`
 ----------------------------
 
-Because of A5 (`\{U\rightarrow V, U \rightarrow W\} & \equiv \{U\rightarrow VW\}`)
+Because of A5 (`\{U\rightarrow V, U \rightarrow W\} \equiv \{U\rightarrow VW\}`)
 we can reduce `H` to implications of the shape 
 `U\rightarrow U\cup\{i\}`, abbreviated `U\rightarrow i` (thus `Ui\rightarrow j` means
 `U\cup\{i\}\rightarrow U\cup\{i,j\}`.
@@ -223,38 +224,38 @@ So every binary attribute coding becomes a ternary implication coding.
 For `n=1`
 
 .. math::
-    (g_{[1]})^{H_{1}}= \begin{array}{cl}
-    1,0,1 \\ 1,1,1 \end{array}\:&\:
-    (g_{[1]})^{L_{1}}= \begin{array}{cl}
+    (g_{[1]})^{H_{1}}= \begin{matrix}{cl}
+    1,0,1 \\ 1,1,1 \end{matrix}\:&\:
+    (g_{[1]})^{L_{1}}= \begin{matrix}{cl}
     0,0,1 & \textrm{if }g_{1}=0\\
-    0,0,0 & \textrm{if }g_{1}=1\end{array}
+    0,0,0 & \textrm{if }g_{1}=1\end{matrix}
 
 For `n>1`
 
 .. math::
 
-    (g_{[n]})^{H_{n}}=\begin{array}{ll}
+    (g_{[n]})^{H_{n}}=\begin{matrix}{ll}
     0\: & \: 1\: & \: 2 \\
-    U\rightarrow V \: & \: 
-    U \rightarrow Vi\: & \: 
+    U \rightarrow V \: & \:
+    U \rightarrow Vi\: & \:
     Ui \rightarrow Vi \\
     (g_{[n-1]})^{H_{n-1}}\:&\:
     (g_{[n-1]})^{L_{n-1}}\:&\:
     1^{3^{n-1}} & \textrm{if }g_{n}=0\\
     (g_{[n-1]})^{H_{n-1}}\:&\:
     (g_{[n-1]})^{H_{n-1}}\:&\:
-    (g_{[n-1]})^{H_{n-1}} & \textrm{if }g_{n}=1\end{array}
+    (g_{[n-1]})^{H_{n-1}} & \textrm{if }g_{n}=1\end{matrix}
 
 
 .. math::
 
-    (g_{[n]})^{L_{n}}= \begin{array}{ll}
+    (g_{[n]})^{L_{n}}= \begin{matrix}{ll}
     (g_{[n-1]})^{L_{n-1}}\:&\:
     (g_{[n-1]})^{L_{n-1}}\:&\:
     1^{3^{n-1}} & \textrm{if }g_{n}=0\\
     (g_{[n-1]})^{L_{n-1}}\:&\:
     (g_{[n-1]})^{L_{n-1}}\:&\:
-    (g_{[n-1]})^{L_{n-1}} & \textrm{if }g_{n}=1\end{array}
+    (g_{[n-1]})^{L_{n-1}} & \textrm{if }g_{n}=1\end{matrix}
 
 The recursive construct with coding `1 = x\in V < 2 = x\in U`
 shows that the column position, interpreted as ternary number, codes the implication.
@@ -316,17 +317,17 @@ This implication coding can be derived from the column position recursively (see
 For `n=1`:
 
 .. math::
-    (g_{[1]})^{B_{1}}= \begin{array}{cl}
-    0 \\ 1 \end{array}\:&\:
-    (g_{[1]})^{A_{1}}= \begin{array}{cl}
+    (g_{[1]})^{B_{1}}= \begin{matrix}{cl}
+    0 \\ 1 \end{matrix}\:&\:
+    (g_{[1]})^{A_{1}}= \begin{matrix}{cl}
     0 & 1 & \textrm{if }g_{1}=0\\
-    0 &0 & \textrm{if }g_{1}=1\end{array}
+    0 &0 & \textrm{if }g_{1}=1\end{matrix}
 
 For `n>1`:
 
 .. math::
 
-    (g_{[n]})^{B_{n}}= \begin{array}{c}
+    (g_{[n]})^{B_{n}}= \begin{matrix}{c}
     U \rightarrow \star \: & \: 
     U \rightarrow i \: & \: 
     Ui \rightarrow \star\\
@@ -337,11 +338,11 @@ For `n>1`:
     (g_{[n-1]})^{B_{n-1}}\:&\:
     1^{2^{n-1}}\:&\:
     (g_{[n-1]})^{B_{n-1}}\:&\:
-    \textrm{if }g_{n}=1\end{array}
+    \textrm{if }g_{n}=1\end{matrix}
 
 .. math::
 
-    (g_{[n]})^{A_{n}}=\begin{array}{c}
+    (g_{[n]})^{A_{n}}=\begin{matrix}{c}
     U \rightarrow j \:&\:
     Ui \rightarrow j \\
     (g_{[n-1]})^{A_{n-1}}\:&\:
@@ -349,7 +350,7 @@ For `n>1`:
     \textrm{if }g_{n}=0\\
     (g_{[n-1]})^{A_{n-1}}\:&\:
     (g_{[n-1]})^{A_{n-1}}\:&\:
-    \textrm{if }g_{n}=1\end{array}
+    \textrm{if }g_{n}=1\end{matrix}
 
 
 The following Python returns the implication coding for a column `t`.
@@ -474,7 +475,7 @@ The Basis
 
 In the construction of the minimal antichain the 2nd Armstrong rule has been used,
 but there is still redundancy due to the 3rd Armstrong rule
-`\{U\rightarrow V, VW \rightarrow Z\} & \Rightarrow \{UW\rightarrow Z\}`.
+`\{U\rightarrow V, VW \rightarrow Z\} \Rightarrow \{UW\rightarrow Z\}`.
 
 A component-wise operation is created to represent the 3rd Armstrong rule for the 0,1,2-coding
 

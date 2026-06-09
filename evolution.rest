@@ -1,4 +1,5 @@
 .. vim: syntax=rst
+   rstdoc evolution.rest evolution.pdf
 
 .. https://rolandpuntaier.blogspot.com/2019/01/evolution.html
 
@@ -400,7 +401,6 @@ Time steps `Δt` are change steps:
 
    ΔK & = Δt \frac{ d K}{ d t} & = Δt \frac{ d K}{ d ẏ} ÿ & = Δt ẏ ÿ               & = Δy ÿ \\
    ΔV & = Δt \frac{ d V}{ d t} & = Δt \frac{ d V}{ d y} ẏ & = Δy \frac{ d V}{ d y} & = Δy F \\
-
    F  & = -\frac{ d V}{ d y} = ÿ 
 
 Vice versa, starting from the latter (`Newton second law`_), one can derive
@@ -422,8 +422,8 @@ Selection after selection produces a causal chain: the time evolution.
 *Interaction* is better depicting this mutuality.
 Interaction is a more general concept, but in its elementary manifestation
 synonymous to selection.
-``F`` forms an interaction consisting of change of selection speed per ``Δy``.
-``∫Fdy`` is the gained selection speed (energy).
+`F` forms an interaction consisting of change of selection speed per `Δy`.
+`∫Fdy` is the gained selection speed (energy).
 
 
 More Times = More Energies
@@ -546,7 +546,7 @@ Every level has it's own *speed limit* for interactions.
 
 A common `topological space`_ can have effects similar to 
 the `Lorentz transformation`_ in the physical spacetime `manifold`_,
-if there is an *energy limit* `c` (=information speed=minimal δτ).
+if there is an *energy limit* `c` (=information speed=minimal `δτ`).
 
 There are no hidden selections on the lowest level.
 `c` is values per time and we assume it constant.

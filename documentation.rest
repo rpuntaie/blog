@@ -1,4 +1,5 @@
 .. vim: syntax=rst
+   rstdoc documentation.rest documentation.pdf
 
 .. http://rolandpuntaier.blogspot.co.at/2018/01/software-documentation.html
 

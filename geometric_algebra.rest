@@ -1,4 +1,5 @@
 .. vim: syntax=rst
+   rstdoc geometric_algebra.rest geometric_algebra.pdf
 
 .. http://rolandpuntaier.blogspot.com/2016/08/geometric-algebra_21.html
 

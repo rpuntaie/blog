@@ -10,6 +10,8 @@
 /*
 https://rolandpuntaier.blogspot.com/2021/01/function-concept-from-lattice-to.html
 ~/mine/oel/pdt/AD/1.rst
+pandoc -f html -t rst from_concepts_to_computing.html -o from_concepts_to_computing.rst
+rstdoc from_concepts_to_computing.rst from_concepts_to_computing.pdf
 */
 
 .borderless, table.borderless td, table.borderless th {
@@ -688,7 +690,7 @@ The order people are used is that of space complexity,
 i.e. number of variables, not the number of usages (extent).</p>
 <p>So here higher means more concrete, further up,
 and lower means more abstract, or further down.
-<tt class="docutils literal">{{1 <span class="pre">2},{I}}</span> &lt; <span class="pre">{{1},{I</span> walk}</tt>, because <tt class="docutils literal"><span class="pre">{I}⊂{I</span> walk}</tt>.
+<tt class="docutils literal">{{1 <span class="pre">2},{I}}</span> &lt; <span class="pre">{{1},{I</span> walk}</tt>, because <tt class="docutils literal"><span class="pre">{I}</span>&sub;<span class="pre">{I walk}</span></tt>.
 <tt class="docutils literal"><span class="pre">{{1},{I</span> walk}}</tt> and <tt class="docutils literal"><span class="pre">{{2},{I</span> run}}</tt> cannot be compared.</p>
 <p>One can cut away the most abstract part (filter)
 or the most concrete part (ideal) and still have a lattice.</p>

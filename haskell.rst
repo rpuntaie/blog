@@ -1,4 +1,5 @@
 .. https://rolandpuntaier.blogspot.com/2020/07/watch-me-learn-haskell.html
+   rstdoc haskell.rst haskell.pdf
 
 **********************
 Watch Me Learn Haskell
@@ -986,6 +987,8 @@ that processes input: a parser.
 - ``many`` continues recursive application of the constructor beyond ``empty``
 
 .. {monad}
+
+20260106: monad sequencing is closure nesting
 
 Monad
 -----

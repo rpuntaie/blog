@@ -1,4 +1,5 @@
 .. vim: syntax=rst
+   rstdoc waf.rest waf.html
 
 .. http://rolandpuntaier.blogspot.com/2015/12/waf-build-system.html
 

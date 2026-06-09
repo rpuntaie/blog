@@ -1,4 +1,5 @@
 .. vim: syntax=rst
+   rstdoc natural_information.rest natural_information.pdf
 
 .. http://rolandpuntaier.blogspot.co.at/2016/10/natural-information.html
 
