@@ -11,6 +11,7 @@ Mostly this is quite useless stuff. I'm just learning.
   *Energy* is comparing a local time/change with our global time measure.
 :locality_principle: reality_is_local
 :reality_is_local: Knowledge is not reality.
+:control_principle: Maxwell demon as cooling. In economy money as control_currency.
 :verification_falsification: reality_is_local and existence_by_change.
   Every document, every thought, is just a dead/no_change state in the development of awareness.
   It exists only by somebody reading and comparing to reality.
@@ -111,7 +112,7 @@ documentation.rest
 | ./employment_inequality.html
 | ./employment_inequality.rst
 
-.. does not yet understand: money = control , control = money
+.. does not yet state: money = control , control = money
 .. ethics_of_control
 
 
@@ -157,4 +158,7 @@ documentation.rest
 2026
 ====
 
+| https://rolandpuntaier.blogspot.com/2026/06/money.html
+| ./money.typ
 
+.. control_principle, control_currency
