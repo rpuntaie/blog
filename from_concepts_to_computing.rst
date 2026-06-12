@@ -909,7 +909,7 @@
          between subsystems. The subsystems change because of the gain
          or loss of information.
 
-         If the system as a whole looses energy certain structures
+         If the system as a whole loses energy certain structures
          settle in and stay for a longer time. This *structural cooling*
          reduces the dimension (number of variables), which reduces the
          information and frees it to the surrounding (e.g. `exergonic
@@ -960,7 +960,7 @@
          constant, while the information is inherent to the system.
          Energy conservation for a closed system says that the
          *information of the system is conserved*. A closed system is
-         only locally closed, though. Non-closed cycles loose or gain
+         only locally closed, though. Non-closed cycles lose or gain
          information per time, i.e. energy.
 
          An invariant binds variables and makes their values to value

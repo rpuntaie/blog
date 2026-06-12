@@ -185,7 +185,7 @@ The function does not completely define the target variable, if not `surjective`
 If not surjective the target variable might arise from more functions.
 The target variable would thus motivate a variable of functions towards it.
 
-The function looses information, if not `injective`_.
+The function loses information, if not `injective`_.
 Then, a common target value links source values,
 i.e. it produces a topological structure in the source variable.
 

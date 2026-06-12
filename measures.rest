@@ -69,7 +69,7 @@ via summing only over disjoint sets resulting from intersection and complementat
   an `extensive variable`_. A measure on an infinite variable `V`
   splits `V` into disjoint sets and thus fits into this definition.
   But there are more `i,j` with same `μ(σ_i)+μ(σ_j)`, i.e. the 
-  measure looses information. What remains is the 
+  measure loses information. What remains is the 
   measure value of the underlying `extensive values`_ (tautology).
 
 Examples of measures are

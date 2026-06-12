@@ -485,7 +485,7 @@ the "owner" must become a service provider.
 Employees become self-employed or partnerships and rent.
 The illegality of a monopoly demands such a shift of control to the workers.
 The cost for the rent needs to be regulated.
-So basically the "owner" looses control to the benefit of more people.
+So basically the "owner" loses control to the benefit of more people.
 The spreading of control produces more overall economy.
 This is done for the electric grid or the railway lines and similar natural monopolies,
 but just recently and not yet everywhere.
@@ -500,7 +500,7 @@ that the "owners" cannot use and therefore is lost.
 Work produces wealth, but work for someone
 burns a part of it for every individual,
 because it concentrates it and then gets unused
-and finally looses its value.
+and finally loses its value.
 
 Work that does not have a local aim is lost.
 

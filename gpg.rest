@@ -39,8 +39,8 @@ To get to use ``gpg2`` like that you need to create a key pair for you.
 
 .. note:: A password you will use for *some* time, but a ``gpg`` key pair should accompany you for
     a *long, long time*. It is like the key to a flat.
-    If you loose it you loose access to your encrypted data or access to internet services you use,
-    but you also loose the `trust <https://www.gnupg.org/gph/en/manual/x547.html>`_ associated with your public key.
+    If you lose it you lose access to your encrypted data or access to internet services you use,
+    but you also lose the `trust <https://www.gnupg.org/gph/en/manual/x547.html>`_ associated with your public key.
 
     Opt therefore for a longer and stronger key length (currently 4096 bits) and
     adopt Debian practice to only use `subkeys <https://wiki.debian.org/Subkeys>`_,

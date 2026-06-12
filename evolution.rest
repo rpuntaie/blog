@@ -303,13 +303,13 @@ This also means that time and energy and thus information are local quantities.
 
 .. admonition:: Reversibility
 
-   A system that does not loose information is reversible.
+   A system that does not lose information is reversible.
    Physically reversibility is also local.
-   A completely reversible system would not interact and thus not loose any information.
+   A completely reversible system would not interact and thus not lose any information.
    But such a system could never be observed.
    Supposing the information of the whole universe is preserved,
    then, due to its `expansion`_, the density of information decreases.
-   The reason or consequence is, that subsystems interact, i.e. loose energy.
+   The reason or consequence is, that subsystems interact, i.e. lose energy.
 
 Since one `dτ` always has `dx_i` and `dẋ_i` in parallel, the element of information is `dI=dẋ_i dx_i`.
 Locally `dI=dτ=dχ=dτ \times dχ/dτ=1`.
