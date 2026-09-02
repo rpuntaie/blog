@@ -1,9 +1,10 @@
 /*
-typst watch money.typ ~/tmp/money.pdf
-zathura ~/tmp/money.pdf
-pandoc -f typst -t rst money.typ -o ~/tmp/money.rst
-rstdoc ~/tmp/money.rst ~/tmp/money.html
+typst watch control_currency.typ ~/tmp/control_currency.pdf
+zathura ~/tmp/control_currency.pdf
+pandoc -f typst -t rst control_currency.typ -o ~/tmp/control_currency.rst
+rstdoc ~/tmp/control_currency.rst ~/tmp/control_currency.html
 
+https://rolandpuntaier.blogspot.com/2026/06/money.html
 */
 
 #import "@preview/note-me:0.6.0": *
@@ -101,69 +102,8 @@ On wording:
 / `keep_them_busy`: Intelligence is control, but also needs time.
                   Taking away the time from the subjects, their intelligence to counter regime control is reduced.
 
-
-== physics of control <control_principle>
-
-Energy is rate of change. Action is accumulated change.
-
-// {spacetime particle variable layer}
-
-Here some synonyms of `action`:
-
-/ Spacetime:  Spacetime conveys that space (what changes) and time (the change) are physically one.
-              Splitting spacetime into space and time is a mind thing and not physical.
-/ variable: The values of the variable are changing, implying both the exclusive states and their change.
-            A mind variable is physically happening/real in the mind but might not be mappable to an external world physical equivalent even if intended.
-/ particle: Particle refers to one spacetime (the particle) among many similar (layer).
-            "This spacetime consists of lower layer spacetimes" = "This particle consists by lower layer particles".
-
-Between layer's:
-The lower layer's action change is this layer's step/quantum (Hamiltonian $H$) by which this layer's spacetime emerges (Lagrangian).
-The Lagrangian is a 2D variable, the components being called potential energy $U$ and kinetic energy $T$
-
-While there are more $q_i$ changes observable (collectively named just $q$), they are components
-of one change in a 2D deterministic spacetime $L=T-U$ line. Nature does not do a $q_i$ projecting to 2D,
-but rather relation between the many lowest layer 2D spacetimes produce the mental 3D world.
-With many independent localizations, layers of changes, the actual world around us is high-dimensional, with a 3D substrate.
-
-The action $S=∫ L dif t$ is the full spacetime extension of a potential-kinetic-cycle. In an independent cycle the action is constant.
-Constant action leads to the equation of motion (Euler-Lagrange Equation):
-$ F = ( dif p ) / ( dif t ) $
-$ F := ( partial L ) / ( partial q ) $
-$ p := ( partial L ) / ( partial dot( q  ) ) $
-
-Every spacetime particle is curved by $F != 0$.
-$F = 0$ corresponds to no change, which is synonymous to non-existence.
-
-In the real world of layers, $S$ is not stationary.
-It changes in $H$-steps lost to the layer above: $( partial S ) / (partial t) = -H$.
-The local Lagrangian becomes part of another change (dependent on another time) and its 2D curve is not a cycle any more,
-a spiral possibly, unless the loss is compensated by an equivalent gain from yet further down,
-keeping a particle busy with turnover from below to above.
-
-The layer above has the same description,
-but with
-- different action $S$
-- different time extension $tau = S / H$
-- different space extension $lambda = S / p$
-Hamiltonian $H$ is the layer's time unit. Momentum $p$ is the layer's space unit.
-It follows a layer-specific speed $v=lambda/tau$
-linking space and time via layer specific $lambda = v tau$.
-
-Special relativity is basically the relationship between layers,
-totalling lowest layer spacetime creation speed to $c$:
-$(E / c^2)^2 = ( p/c ) ^2 + ( m_0 )^2$.
-Total mass is $m=E/c^2$. $m_0$ is the masses from layers below.
-
-$q$ is a parameter, an observable. It could be money/wealth.
-- Force $F$ would depend on money $q$.
-- Momentum $p$ would be due to money flow $dot(q)$.
-- The Euler-Lagrange equation then say: Change in money flow is (due to) force at that wealth state.
-Where is the link to reality? The valuation/pricing.
-If the valuation is concentrated, there will be no cycles, but fast cooling: harvesting to exhaustion, then move on.
-
 // {maxwell demon gatekeeper control}
-=== `control_principle`
+=== `control_principle` <control_principle>
 
 The loss of energy/time up the layers is a cooling process, gradually, over many cycles.
 A Maxwell demon `control_principle` is the usage of the loss of lower layers.
