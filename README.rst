@@ -22,8 +22,11 @@ Mostly this is quite useless stuff. I'm just learning.
 :ethics_of_control: centralized control follows centralized ethics
 :dogma_is_wrong: because violating verification_falsification (reality_is_local and existence_by_change)
 
-2015
+Year
 ====
+
+2015
+----
 
 | http://rolandpuntaier.blogspot.com/2015/01/scons.html
 | ./scons.rest
@@ -51,7 +54,7 @@ Mostly this is quite useless stuff. I'm just learning.
 | ./waf.rest
 
 2016
-====
+----
 
 | http://rolandpuntaier.blogspot.com/2016/05/gnupg.html
 | ./gpg.rest
@@ -70,7 +73,7 @@ Mostly this is quite useless stuff. I'm just learning.
 
 
 2017
-====
+----
 
 | http://rolandpuntaier.blogspot.co.at/2017/02/from-variable-to-structure.html
 | ./variable_structure_space.rest
@@ -87,13 +90,13 @@ Mostly this is quite useless stuff. I'm just learning.
 | ./measures.rest
 
 2018
-====
+----
 
 http://rolandpuntaier.blogspot.co.at/2018/01/software-documentation.html
 documentation.rest
 
 2019
-====
+----
 
 | https://rolandpuntaier.blogspot.com/2019/01/evolution.html
 | ./evolution.rest
@@ -112,12 +115,12 @@ documentation.rest
 | ./employment_inequality.html
 | ./employment_inequality.rst
 
-.. does not yet state: money = control , control = money
+.. does not yet state: money - control , control - money
 .. ethics_of_control
 
 
 2020
-====
+----
 
 | https://rolandpuntaier.blogspot.com/2020/07/watch-me-learn-haskell.html
 | ./haskell.rst
@@ -127,7 +130,7 @@ documentation.rest
 
 
 2021
-====
+----
 
 | https://rolandpuntaier.blogspot.com/2021/01/function-concept-from-lattice-to.html
 | ./from_concepts_to_computing.html
@@ -138,13 +141,13 @@ documentation.rest
 | https://rolandpuntaier.blogspot.com/2021/04/information-time-energy.html
 | ./information_time_energy.rst
 
-.. information = time (varible not yet named spacetime), energy = τ/t, 2D cycle, mind vs reality
+.. information - time (varible not yet named spacetime), energy - τ/t, 2D cycle, mind vs reality
 .. information_is_time_is_action
 .. intelligence_is_control
 .. mind_variable
 
 2022
-====
+----
 
 | https://rolandpuntaier.blogspot.com/2022/01/cryptocurrencies-as-money.html
 | cryptocurrency_as_money.rst
@@ -156,9 +159,16 @@ documentation.rest
 .. ethics_of_control
 
 2026
-====
+----
 
 | https://rolandpuntaier.blogspot.com/2026/06/money.html
-| ./money.typ
+| ./control_currency.typ
+
+| https://rolandpuntaier.blogspot.com/2026/09/between-layers-understanding-and.html
+| ./between_layers.typ
+
+| https://rolandpuntaier.blogspot.com/2026/09/interest.html
+| ./interest_in_pareto_freezing.typ
 
 .. control_principle, control_currency
+
