@@ -860,12 +860,11 @@ Given the little resistance some individuals could harvest large regions
 
 For emperors to have more language zones under their control was normal.
 More ethnically confined nationalism can be understood as counter-movement to imperialism.
-But it did not solve concentration of power and wealth.
 Capitalism had communism as counter-movement,
 but it did not solve concentration of power and wealth.
 These movements just show that people did not live well,
 that they tried to find alternatives,
-but were misguided by populists that promised a better life,
+and were misguided by populists that promised a better life,
 but actually just wanted more control for themselves.
 
 Unbiased education and own thinking would have helped.

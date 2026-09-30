@@ -167,8 +167,12 @@ documentation.rest
 | https://rolandpuntaier.blogspot.com/2026/09/between-layers-understanding-and.html
 | ./between_layers.typ
 
+| currency_control for control_currency
 | https://rolandpuntaier.blogspot.com/2026/09/interest.html
 | ./interest_in_pareto_freezing.typ
+
+| https://rolandpuntaier.blogspot.com/2026/09/into_ai_age.html
+| ./into_ai_age.typ
 
 .. control_principle, control_currency
 
